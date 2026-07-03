@@ -17,7 +17,9 @@ const DEFAULT_STATE = {
   ttsCount: 0,
   dictationDone: [],
   goalStreakDays: 0,
-  lastGoalDate: null
+  lastGoalDate: null,
+  lessonNotes: {},
+  reminderDismissedDate: null
 }
 
 function load() {
@@ -338,6 +340,33 @@ export function checkBadges(state) {
     }
   }
   return newlyEarned
+}
+
+// ── Lesson Notes ──
+
+export function saveLessonNote(lessonId, text) {
+  const s = load()
+  if (!s.lessonNotes) s.lessonNotes = {}
+  s.lessonNotes[lessonId] = { text, updatedAt: new Date().toISOString() }
+  save(s)
+}
+
+export function getLessonNote(lessonId) {
+  const s = load()
+  return (s.lessonNotes || {})[lessonId]?.text || ''
+}
+
+// ── Daily Reminder ──
+
+export function dismissTodayReminder() {
+  const s = load()
+  s.reminderDismissedDate = todayStr()
+  save(s)
+}
+
+export function isReminderDismissedToday() {
+  const s = load()
+  return s.reminderDismissedDate === todayStr()
 }
 
 export function getBadges() {
