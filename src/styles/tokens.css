@@ -1,0 +1,129 @@
+:root {
+  /* Colors */
+  --ground:       #F0F4F1;
+  --surface:      #FFFFFF;
+  --surface-2:    #F7FAF8;
+  --border:       #D4DDD6;
+  --border-soft:  #E8EDE9;
+  --text:         #1A2420;
+  --text-muted:   #5A7066;
+  --text-faint:   #8FA89F;
+  --accent:       #1F6B47;
+  --accent-hover: #195839;
+  --accent-soft:  #E8F2EC;
+  --accent-mid:   #C5DFD0;
+  --gold:         #F5C842;
+  --gold-soft:    #FEF7DC;
+  --danger:       #C84B31;
+  --danger-soft:  #FAEAE6;
+  --success:      #1F6B47;
+  --success-soft: #E8F2EC;
+
+  /* Typography */
+  --font-display: 'Poppins', 'Sarabun', sans-serif;
+  --font-body:    'Poppins', 'Sarabun', sans-serif;
+  --font-mono:    'JetBrains Mono', 'Courier New', monospace;
+
+  /* Type scale */
+  --text-xs:      0.6875rem;
+  --text-sm:      0.8125rem;
+  --text-base:    1rem;
+  --text-lg:      1.125rem;
+  --text-xl:      1.25rem;
+  --text-2xl:     1.5rem;
+  --text-3xl:     2rem;
+  --text-4xl:     2.75rem;
+  --text-display: 3.5rem;
+
+  /* Spacing */
+  --sp-1:  0.25rem;
+  --sp-2:  0.5rem;
+  --sp-3:  0.75rem;
+  --sp-4:  1rem;
+  --sp-5:  1.25rem;
+  --sp-6:  1.5rem;
+  --sp-8:  2rem;
+  --sp-10: 2.5rem;
+  --sp-12: 3rem;
+  --sp-16: 4rem;
+
+  /* Radii */
+  --r-sm:  0.375rem;
+  --r-md:  0.625rem;
+  --r-lg:  1rem;
+  --r-xl:  1.5rem;
+  --r-full: 9999px;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 3px rgba(26,36,32,0.08);
+  --shadow-md: 0 4px 16px rgba(26,36,32,0.1);
+  --shadow-lg: 0 8px 32px rgba(26,36,32,0.12);
+
+  /* Sidebar */
+  --sidebar-width: 220px;
+  --sidebar-collapsed: 68px;
+
+  /* Transitions */
+  --ease: cubic-bezier(0.4, 0, 0.2, 1);
+  --duration: 200ms;
+}
+
+[data-theme="dark"] {
+  --ground:       #0E1612;
+  --surface:      #152019;
+  --surface-2:    #1C2B22;
+  --border:       #2A3D31;
+  --border-soft:  #223328;
+  --text:         #E8F0EA;
+  --text-muted:   #7DAA8A;
+  --text-faint:   #4D7060;
+  --accent:       #3FBF74;
+  --accent-hover: #35A864;
+  --accent-soft:  #1A3327;
+  --accent-mid:   #254D38;
+  --gold:         #F5C842;
+  --gold-soft:    #2A2210;
+  --danger:       #F07060;
+  --danger-soft:  #2E1818;
+  --success:      #3FBF74;
+  --success-soft: #1A3327;
+}
+
+/* Dark mode overrides for hardcoded colours in components */
+[data-theme="dark"] .level-C1,
+[data-theme="dark"] .level-C2 {
+  background: #1C2B44;
+  color: #7AABF0;
+}
+
+[data-theme="dark"] .level-A1,
+[data-theme="dark"] .level-A2 {
+  color: #D4A820;
+}
+
+[data-theme="dark"] .rating-hard {
+  background: #2A1E0A;
+  color: #E8903A;
+  border-color: #5A3A10;
+}
+
+[data-theme="dark"] .btn-gold {
+  color: #3A2800;
+}
+
+[data-theme="dark"] .streak-widget {
+  color: #D4A820;
+}
+
+[data-theme="dark"] .flashcard-back {
+  background: #0D2E1C;
+  background-image:
+    radial-gradient(ellipse at 20% 50%, rgba(255,255,255,0.02) 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 20%, rgba(255,255,255,0.03) 0%, transparent 50%);
+}
+
+[data-theme="dark"] input,
+[data-theme="dark"] select,
+[data-theme="dark"] textarea {
+  color-scheme: dark;
+}

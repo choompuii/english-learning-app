@@ -1,0 +1,19 @@
+{
+  "permissions": {
+    "allow": [
+      "Skill(run)",
+      "Bash(npm run *)",
+      "Bash(curl -s http://localhost:3000)",
+      "Bash(curl -s \"http://localhost:3000/src/main.js\")",
+      "Bash(curl -s \"http://localhost:3000/src/pages/search.js\")",
+      "Bash(curl -s \"http://localhost:3000/src/pages/notebook.js\")",
+      "Bash(curl -s \"http://localhost:3000/src/pages/dictation.js\")",
+      "Bash(curl -s \"http://localhost:3000/src/pages/review-mistakes.js\")",
+      "Bash(curl -s \"http://localhost:3000/src/components/flashcard.js\")",
+      "Bash(node --input-type=module)"
+    ]
+  },
+  "enabledMcpjsonServers": [
+    "gitlab"
+  ]
+}
