@@ -1,6 +1,6 @@
 import { getLessonById, lessons } from '../data/lessons.js'
 import { getDeckById } from '../data/vocabulary.js'
-import { startLesson, completeLesson, getLessonStatus, getDeckProgress, getQuizBest, getProgress } from '../store.js'
+import { startLesson, completeLesson, getLessonStatus, getDeckProgress, getQuizBest, getProgress, saveLessonNote, getLessonNote } from '../store.js'
 import { getOrderedLessons } from '../utils/progression.js'
 import { speak, attachTtsListeners } from '../utils/tts.js'
 import { floatXP, streakPop, showNewBadges } from '../utils/fx.js'
@@ -44,7 +44,18 @@ export function renderLessonReader({ id }) {
         ${lesson.sections.map(renderSection).join('')}
       </article>
 
-      <div style="margin-top:var(--sp-10);padding-top:var(--sp-8);border-top:1px solid var(--border);display:flex;flex-direction:column;gap:var(--sp-4)">
+      <!-- Lesson Notes -->
+      <div style="margin-top:var(--sp-10);padding-top:var(--sp-6);border-top:1px solid var(--border)">
+        <div style="font-size:var(--text-xs);font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--text-muted);margin-bottom:var(--sp-3)">📝 My Notes</div>
+        <textarea id="lesson-notes"
+          placeholder="จดบันทึกส่วนตัวสำหรับบทเรียนนี้... (บันทึกอัตโนมัติ)"
+          style="width:100%;min-height:96px;padding:var(--sp-3) var(--sp-4);border:1.5px solid var(--border);border-radius:var(--r-lg);font-family:var(--font-body);font-size:var(--text-sm);resize:vertical;background:var(--surface);color:var(--text);line-height:1.6;transition:border-color 200ms var(--ease);box-sizing:border-box"
+          rows="4"
+        >${getLessonNote(id).replace(/</g, '&lt;').replace(/>/g, '&gt;')}</textarea>
+        <div style="font-size:var(--text-xs);color:var(--text-faint);margin-top:var(--sp-1);text-align:right" id="notes-status">บันทึกอัตโนมัติ</div>
+      </div>
+
+      <div style="margin-top:var(--sp-6);padding-top:var(--sp-6);border-top:1px solid var(--border);display:flex;flex-direction:column;gap:var(--sp-4)">
         ${renderNextStep(lesson, deck, status)}
 
         <div style="display:flex;justify-content:space-between;align-items:center;margin-top:var(--sp-2)">
@@ -58,6 +69,23 @@ export function renderLessonReader({ id }) {
   `
 
   attachTtsListeners(main)
+
+  const notesArea = main.querySelector('#lesson-notes')
+  const notesStatus = main.querySelector('#notes-status')
+  if (notesArea) {
+    notesArea.addEventListener('focus', () => { notesArea.style.borderColor = 'var(--accent)' })
+    notesArea.addEventListener('blur', () => { notesArea.style.borderColor = 'var(--border)' })
+    let saveTimer
+    notesArea.addEventListener('input', () => {
+      notesStatus.textContent = 'กำลังพิมพ์...'
+      clearTimeout(saveTimer)
+      saveTimer = setTimeout(() => {
+        saveLessonNote(id, notesArea.value)
+        notesStatus.textContent = '✓ บันทึกแล้ว'
+        setTimeout(() => { notesStatus.textContent = 'บันทึกอัตโนมัติ' }, 2000)
+      }, 600)
+    })
+  }
 
   const completeBtn = main.querySelector('#complete-btn')
   if (completeBtn) {

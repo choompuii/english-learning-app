@@ -61,6 +61,12 @@ const navItems = [
     label: 'Progress',
     hash: '/progress',
     icon: `<svg class="nav-icon" viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>`
+  },
+  {
+    id: 'grammar',
+    label: 'Grammar Check',
+    hash: '/grammar',
+    icon: `<svg class="nav-icon" viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/><line x1="9" y1="10" x2="14" y2="15"/></svg>`
   }
 ]
 

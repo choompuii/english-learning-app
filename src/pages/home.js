@@ -1,8 +1,17 @@
-import { getProgress, setLevel, getDailyGoal } from '../store.js'
+import { getProgress, setLevel, getDailyGoal, dismissTodayReminder, isReminderDismissedToday } from '../store.js'
 import { navigate } from '../router.js'
 import { lessons } from '../data/lessons.js'
 import { decks } from '../data/vocabulary.js'
 import { getOrderedLessons, isLessonPassed, getNextLesson } from '../utils/progression.js'
+
+function getWordOfTheDay() {
+  const allCards = decks.flatMap(d => d.cards.map(c => ({ ...c, deckTitle: d.title, level: d.level })))
+  if (!allCards.length) return null
+  const today = new Date()
+  const start = new Date(today.getFullYear(), 0, 0)
+  const dayOfYear = Math.floor((today - start) / 86400000)
+  return allCards[(dayOfYear + today.getFullYear()) % allCards.length]
+}
 
 const LEVELS = [
   { code: 'A1', label: 'Beginner' },
@@ -107,8 +116,25 @@ function renderDashboard(main, state) {
 
   const lessonPct = totalLessons > 0 ? Math.round((completedLessons / totalLessons) * 100) : 0
 
+  const showReminder = (todayXp === 0) && !isReminderDismissedToday()
+  const wotd = getWordOfTheDay()
+
   main.innerHTML = `
     <div class="page">
+      ${showReminder ? `
+        <div id="reminder-banner" style="background:var(--gold-soft);border:1.5px solid var(--gold);border-radius:var(--r-xl);padding:var(--sp-4) var(--sp-5);margin-bottom:var(--sp-6);display:flex;align-items:center;gap:var(--sp-4);animation:pop-in 0.3s ease">
+          <span style="font-size:1.5rem;flex-shrink:0">⏰</span>
+          <div style="flex:1;min-width:0">
+            <div style="font-weight:700;font-size:var(--text-sm);color:#5C4300">ยังไม่ได้เรียนวันนี้เลย!</div>
+            <div style="font-size:var(--text-xs);color:#7A5C1A;margin-top:2px">เรียนนิดหน่อยก็ยังดี — ก้าวเล็กๆ ทุกวันสร้างความแตกต่างได้มาก</div>
+          </div>
+          <div style="display:flex;align-items:center;gap:var(--sp-2);flex-shrink:0">
+            <a href="#/lessons" class="btn btn-gold btn-sm">เรียนเลย →</a>
+            <button id="dismiss-reminder" style="background:none;border:none;cursor:pointer;color:#7A5C1A;font-size:1.1rem;padding:var(--sp-1);line-height:1" title="ปิด">✕</button>
+          </div>
+        </div>
+      ` : ''}
+
       <!-- Hero greeting -->
       <div style="margin-bottom:var(--sp-8)">
         <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:var(--sp-4)">
@@ -199,6 +225,30 @@ function renderDashboard(main, state) {
         </div>
       `}
 
+      <!-- Word of the Day -->
+      ${wotd ? `
+        <div style="margin-bottom:var(--sp-6)">
+          <div style="font-size:var(--text-xs);font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--text-muted);margin-bottom:var(--sp-3)">📖 Word of the Day</div>
+          <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--r-xl);padding:var(--sp-5) var(--sp-6)">
+            <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:var(--sp-4);flex-wrap:wrap">
+              <div style="flex:1;min-width:0">
+                <div style="display:flex;align-items:baseline;gap:var(--sp-3);flex-wrap:wrap;margin-bottom:var(--sp-1)">
+                  <span style="font-size:var(--text-2xl);font-weight:800;color:var(--accent)">${wotd.front}</span>
+                  <span style="font-size:var(--text-sm);color:var(--text-faint);font-family:var(--font-mono)">${wotd.phonetic || ''}</span>
+                </div>
+                <div style="font-size:var(--text-sm);color:var(--text-muted);margin-bottom:var(--sp-2)">${wotd.back}</div>
+                <div style="font-size:var(--text-sm);color:var(--text);font-style:italic;margin-bottom:var(--sp-2)">"${wotd.example}"</div>
+                <div style="font-size:var(--text-sm);color:var(--text-muted)">🇹🇭 ${wotd.thai}</div>
+              </div>
+              <div style="display:flex;flex-direction:column;align-items:flex-end;gap:var(--sp-2);flex-shrink:0">
+                <span class="level-badge level-${wotd.level}">${wotd.level}</span>
+                <span style="font-size:var(--text-xs);color:var(--text-faint)">${wotd.deckTitle}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      ` : ''}
+
       <!-- Quick action buttons -->
       <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:var(--sp-3)">
         <a href="#/flashcards" style="display:flex;align-items:center;gap:var(--sp-3);background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);padding:var(--sp-4) var(--sp-5);text-decoration:none;color:var(--text);transition:all 200ms var(--ease)"
@@ -244,6 +294,15 @@ function renderDashboard(main, state) {
   main.querySelector('#change-level-btn').addEventListener('click', () => {
     renderLevelSelect(main, state)
   })
+
+  const dismissBtn = main.querySelector('#dismiss-reminder')
+  if (dismissBtn) {
+    dismissBtn.addEventListener('click', () => {
+      dismissTodayReminder()
+      const banner = main.querySelector('#reminder-banner')
+      if (banner) banner.remove()
+    })
+  }
 }
 
 function greeting() {
