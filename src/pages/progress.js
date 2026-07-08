@@ -31,6 +31,26 @@ export function renderProgress() {
   const earnedCount = badges.filter(b => b.earned).length
   const activityLog = getActivityLog()
 
+  const LEVEL_ORDER = ['A1', 'A2', 'B1', 'B2', 'C1', 'C2']
+  const bestPct = e => (e.bestTotal > 0 ? Math.round((e.bestScore / e.bestTotal) * 100) : 0)
+
+  // Sentence Builder best scores, in CEFR order, only for levels the user has played
+  const sbRows = LEVEL_ORDER
+    .filter(lvl => state.sentenceBuilder && state.sentenceBuilder[lvl])
+    .map(lvl => {
+      const e = state.sentenceBuilder[lvl]
+      return statRow(`<span class="level-badge level-${lvl}">${lvl}</span>`, `🏆 ${e.bestScore}/${e.bestTotal}`, `${bestPct(e)}%`, `${e.plays} ครั้ง`)
+    })
+
+  // Speed Round best scores per deck, ordered by the deck's CEFR level
+  const srRows = Object.entries(state.speedRound || {})
+    .map(([deckId, e]) => ({ deck: decks.find(d => d.id === deckId), e }))
+    .filter(x => x.deck)
+    .sort((a, b) => LEVEL_ORDER.indexOf(a.deck.level) - LEVEL_ORDER.indexOf(b.deck.level))
+    .map(({ deck, e }) =>
+      statRow(`<span class="level-badge level-${deck.level}">${deck.level}</span> <span style="color:var(--text);font-weight:500">${deck.icon || '📚'} ${deck.title}</span>`, `🏆 ${e.bestScore}/${e.bestTotal}`, `${bestPct(e)}%`, '')
+    )
+
   // Human letter
   const letter = generateLetter(state, completedLessons, studiedCards, streak, avgScore)
 
@@ -116,6 +136,9 @@ export function renderProgress() {
         </div>
       ` : ''}
 
+      ${renderStatSection('Sentence Builder', sbRows)}
+      ${renderStatSection('Speed Round', srRows)}
+
       <!-- Badge Gallery -->
       <div style="margin-bottom:var(--sp-8)">
         <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:var(--sp-4)">
@@ -163,6 +186,31 @@ export function renderProgress() {
     setDailyGoal(parseInt(e.target.value))
     renderProgress()
   })
+}
+
+// One row in a best-score list: leading label(s), trophy score, percent, and a
+// right-aligned trailing note. Empty cells are omitted.
+function statRow(lead, score, pct, trailing) {
+  return `
+    <div style="display:flex;align-items:center;gap:var(--sp-3);padding:var(--sp-3) var(--sp-4);background:var(--surface);border-radius:var(--r-md);border:1px solid var(--border-soft)">
+      ${lead}
+      <span style="margin-left:auto;font-weight:600;color:var(--text)">${score}</span>
+      <span style="font-size:var(--text-sm);color:var(--text-muted);min-width:42px;text-align:right">${pct}</span>
+      ${trailing ? `<span style="font-size:var(--text-xs);color:var(--text-muted)">${trailing}</span>` : ''}
+    </div>`
+}
+
+// A titled list of stat rows; renders nothing when there are no rows.
+function renderStatSection(title, rows) {
+  if (!rows.length) return ''
+  return `
+    <div style="margin-bottom:var(--sp-8)">
+      <h3 style="font-family:var(--font-body);font-weight:600;font-size:var(--text-lg);margin-bottom:var(--sp-4)">${title}</h3>
+      <div style="display:flex;flex-direction:column;gap:var(--sp-2)">
+        ${rows.join('')}
+      </div>
+    </div>
+  `
 }
 
 function renderHeatmap(log) {

@@ -3,14 +3,20 @@ import { navigate } from '../router.js'
 import { lessons } from '../data/lessons.js'
 import { decks } from '../data/vocabulary.js'
 import { getOrderedLessons, isLessonPassed, getNextLesson } from '../utils/progression.js'
+import { ttsButton, attachTtsListeners } from '../utils/tts.js'
 
-function getWordOfTheDay() {
+function getWordOfTheDay(level) {
   const allCards = decks.flatMap(d => d.cards.map(c => ({ ...c, deckTitle: d.title, level: d.level })))
-  if (!allCards.length) return null
+  // Prefer words from the learner's current level; fall back to all words if that
+  // level has no vocabulary yet.
+  const pool = (level && allCards.some(c => c.level === level))
+    ? allCards.filter(c => c.level === level)
+    : allCards
+  if (!pool.length) return null
   const today = new Date()
   const start = new Date(today.getFullYear(), 0, 0)
   const dayOfYear = Math.floor((today - start) / 86400000)
-  return allCards[(dayOfYear + today.getFullYear()) % allCards.length]
+  return pool[(dayOfYear + today.getFullYear()) % pool.length]
 }
 
 const LEVELS = [
@@ -117,7 +123,7 @@ function renderDashboard(main, state) {
   const lessonPct = totalLessons > 0 ? Math.round((completedLessons / totalLessons) * 100) : 0
 
   const showReminder = (todayXp === 0) && !isReminderDismissedToday()
-  const wotd = getWordOfTheDay()
+  const wotd = getWordOfTheDay(state.selectedLevel)
 
   main.innerHTML = `
     <div class="page">
@@ -235,9 +241,10 @@ function renderDashboard(main, state) {
                 <div style="display:flex;align-items:baseline;gap:var(--sp-3);flex-wrap:wrap;margin-bottom:var(--sp-1)">
                   <span style="font-size:var(--text-2xl);font-weight:800;color:var(--accent)">${wotd.front}</span>
                   <span style="font-size:var(--text-sm);color:var(--text-faint);font-family:var(--font-mono)">${wotd.phonetic || ''}</span>
+                  ${ttsButton(wotd.front, 'ฟังคำนี้')}
                 </div>
                 <div style="font-size:var(--text-sm);color:var(--text-muted);margin-bottom:var(--sp-2)">${wotd.back}</div>
-                <div style="font-size:var(--text-sm);color:var(--text);font-style:italic;margin-bottom:var(--sp-2)">"${wotd.example}"</div>
+                <div style="font-size:var(--text-sm);color:var(--text);font-style:italic;margin-bottom:var(--sp-2)">"${wotd.example}" ${ttsButton(wotd.example, 'ฟังประโยคตัวอย่าง')}</div>
                 <div style="font-size:var(--text-sm);color:var(--text-muted)">🇹🇭 ${wotd.thai}</div>
               </div>
               <div style="display:flex;flex-direction:column;align-items:flex-end;gap:var(--sp-2);flex-shrink:0">
@@ -290,6 +297,8 @@ function renderDashboard(main, state) {
       </div>
     </div>
   `
+
+  attachTtsListeners(main)
 
   main.querySelector('#change-level-btn').addEventListener('click', () => {
     renderLevelSelect(main, state)

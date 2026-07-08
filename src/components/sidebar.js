@@ -67,6 +67,18 @@ const navItems = [
     label: 'Grammar Check',
     hash: '/grammar',
     icon: `<svg class="nav-icon" viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/><line x1="9" y1="10" x2="14" y2="15"/></svg>`
+  },
+  {
+    id: 'sentence-builder',
+    label: 'Sentence Builder',
+    hash: '/sentence-builder',
+    icon: `<svg class="nav-icon" viewBox="0 0 24 24"><rect x="3" y="8" width="5" height="3" rx="1"/><rect x="10" y="8" width="5" height="3" rx="1"/><rect x="17" y="8" width="4" height="3" rx="1"/><rect x="3" y="13" width="7" height="3" rx="1"/><rect x="12" y="13" width="5" height="3" rx="1"/></svg>`
+  },
+  {
+    id: 'speed-round',
+    label: 'Speed Round',
+    hash: '/speed-round',
+    icon: `<svg class="nav-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>`
   }
 ]
 

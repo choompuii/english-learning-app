@@ -12,6 +12,8 @@ import { renderNotebook } from './pages/notebook.js'
 import { renderReviewMistakes } from './pages/review-mistakes.js'
 import { renderDictationBrowser, renderDictation } from './pages/dictation.js'
 import { renderGrammarCheck } from './pages/grammar-check.js'
+import { renderSentenceBuilder } from './pages/sentence-builder.js'
+import { renderSpeedRound } from './pages/speed-round.js'
 
 // Register routes
 route('/', () => renderHome())
@@ -28,6 +30,8 @@ route('/review-mistakes', () => renderReviewMistakes())
 route('/dictation', () => renderDictationBrowser())
 route('/dictation/:id', ({ id }) => renderDictation({ id }))
 route('/grammar', () => renderGrammarCheck())
+route('/sentence-builder', () => renderSentenceBuilder())
+route('/speed-round', () => renderSpeedRound())
 
 // Boot
 renderSidebar()

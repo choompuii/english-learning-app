@@ -2746,6 +2746,383 @@ export const lessons = [
       }
     ]
   }
+  ,
+  {
+    id: 'b2-reported-speech-01',
+    title: '"What did she say?" — Reported Speech',
+    level: 'B2',
+    topic: 'grammar',
+    estimatedMinutes: 13,
+    description: 'Master reported speech — how to retell what someone said without quoting directly, including tense backshift, say vs tell, and reported questions.',
+    vocabularyDeckId: 'b2-reported-speech-vocab',
+    quizId: 'b2-reported-speech-quiz',
+    sections: [
+      {
+        type: 'intro',
+        heading: 'Why Thai speakers struggle with this',
+        body: 'Reported speech is how we tell someone what another person said — without quoting exact words. In Thai, the verb tense rarely changes when reporting speech. In English, it almost always does. Master this and your storytelling, meeting summaries, and professional writing will instantly sound more natural.'
+      },
+      {
+        type: 'explanation',
+        heading: 'Say vs Tell — the rule Thai learners always mix up',
+        body: 'Use SAY when there is no named listener, or when you add "to + person."\nUse TELL when you must name the listener directly after the verb.\n\n✅ She said she was tired.\n✅ She said to me that she was tired.\n✅ She told me she was tired.\n\n❌ She told that she was tired. (missing object after "told")\n❌ She said me she was tired. (wrong — use "told me" or "said to me")\n\nMemory tip: TELL always needs a person right after it.'
+      },
+      {
+        type: 'explanation',
+        heading: 'Tense backshift',
+        body: 'When we report past speech, the verb tense shifts one step back.\n\nDirect → Reported:\n"I am tired." → She said she was tired.\n"I work here." → He said he worked there.\n"I was sleeping." → She said she had been sleeping.\n"I have finished." → He said he had finished.\n"I will call you." → She said she would call me.\n"I can help." → He said he could help.\n"I may be late." → She said she might be late.\n\n💡 No backshift when the fact is still true:\n→ He said the Earth orbits the sun. (scientific fact — present stays)'
+      },
+      {
+        type: 'example',
+        sentences: [
+          { en: '"I am hungry," she said. → She said she was hungry.', th: 'เธอพูดว่าเธอหิว' },
+          { en: '"We will arrive at noon," they said. → They said they would arrive at noon.', th: 'พวกเขาบอกว่าจะมาถึงตอนเที่ยง' },
+          { en: '"I can swim," he told me. → He told me he could swim.', th: 'เขาบอกฉันว่าเขาว่ายน้ำได้' },
+          { en: '"I have lost my keys," she said. → She said she had lost her keys.', th: 'เธอพูดว่าเธอทำกุญแจหาย' },
+          { en: '"I may call later," he said. → He said he might call later.', th: 'เขาพูดว่าอาจจะโทรมาทีหลัง' }
+        ]
+      },
+      {
+        type: 'explanation',
+        heading: 'Reporting questions and commands',
+        body: 'REPORTING YES/NO QUESTIONS — use "if" or "whether"\n"Are you ready?" → She asked if I was ready.\n"Did he leave?" → He asked whether she had left.\n\nREPORTING WH-QUESTIONS — question word + normal word order (no inversion, no do/does/did)\n"Where do you live?" → She asked where I lived. (NOT "where did I live")\n"What time does the train leave?" → He asked what time the train left.\n\nREPORTING COMMANDS — tell/ask + object + to-infinitive\n"Close the door!" → He told her to close the door.\n"Please help me." → She asked him to help her.\n"Don\'t be late." → The teacher told us not to be late.'
+      },
+      {
+        type: 'example',
+        sentences: [
+          { en: '"Where is the station?" she asked. → She asked where the station was.', th: 'เธอถามว่าสถานีอยู่ที่ไหน' },
+          { en: '"Do you speak Thai?" he asked. → He asked if I spoke Thai.', th: 'เขาถามว่าฉันพูดภาษาไทยได้ไหม' },
+          { en: '"Open your books," the teacher said. → The teacher told us to open our books.', th: 'ครูบอกให้เราเปิดหนังสือ' },
+          { en: '"Don\'t touch that," she said. → She told him not to touch that.', th: 'เธอบอกเขาว่าอย่าแตะสิ่งนั้น' },
+          { en: '"Why did you leave?" she asked. → She asked why I had left.', th: 'เธอถามว่าทำไมฉันถึงจากไป' }
+        ]
+      },
+      {
+        type: 'tip',
+        body: '⚠️ Top 4 mistakes Thai learners make:\n1. Forgetting tense backshift: ❌ "He said he is tired." ✅ "He said he was tired."\n2. Question word order in reported questions: ❌ "She asked where was I going." ✅ "She asked where I was going."\n3. Dropping the object after "tell": ❌ "He told to leave." ✅ "He told her to leave."\n4. Using "say" with a direct object: ❌ "She said me the answer." ✅ "She told me the answer."'
+      },
+      {
+        type: 'dialogue',
+        lines: [
+          { speaker: 'A', text: 'Did you speak to the manager about the schedule?' },
+          { speaker: 'B', text: 'Yes. She said she would send the new timetable by Friday.' },
+          { speaker: 'A', text: 'Did she say anything about the Monday meeting?' },
+          { speaker: 'B', text: 'She told me it had been moved to Tuesday morning.' },
+          { speaker: 'A', text: 'Really? I asked her last week if the time could be changed and she said it couldn\'t.' },
+          { speaker: 'B', text: 'Well, apparently the director requested a later slot. She told everyone to update their calendars.' }
+        ]
+      }
+    ]
+  },
+  {
+    id: 'b2-complaints-01',
+    title: '"I\'d like to raise a concern" — Complaints & Apologies',
+    level: 'B2',
+    topic: 'speaking',
+    estimatedMinutes: 14,
+    description: 'Learn to complain clearly and get results without being rude — and how to respond when someone complains to you.',
+    vocabularyDeckId: 'b2-complaints-vocab',
+    quizId: 'b2-complaints-quiz',
+    sections: [
+      {
+        type: 'intro',
+        heading: 'Why polite complaints get better results',
+        body: 'Complaining is a normal part of daily life — in shops, restaurants, offices, and with friends. But the way you complain makes a huge difference. Thai learners often make one of two mistakes: they are either too blunt ("This is wrong! Fix it!") or too vague and polite, so the problem never gets resolved. This lesson teaches you to complain clearly and confidently while staying respectful — and how to respond when someone complains to you.'
+      },
+      {
+        type: 'explanation',
+        heading: 'Softening a complaint',
+        body: 'Lead with a softening phrase to signal you are reasonable — this makes the other person more willing to help.\n\n• "I\'m afraid there\'s a problem with…" — polite and factual\n• "I wanted to bring something to your attention…" — formal, workplace or email\n• "I don\'t want to make a fuss, but…" — signals you are reluctant to complain\n• "I\'m a little concerned about…" — mild, good for minor issues\n• "I think there may have been a misunderstanding…" — removes blame, focuses on facts\n\nStructure: Softener + specific problem + desired outcome.\nExample: "I\'m afraid there\'s a problem with my order — I received the wrong item. Could you help me sort this out?"'
+      },
+      {
+        type: 'explanation',
+        heading: 'Escalating politely',
+        body: 'When the first attempt fails, escalate by stating facts — not emotions.\n\n• "I\'ve already mentioned this twice, and the issue hasn\'t been resolved."\n• "I\'d like to speak to a manager, please."\n• "I\'m afraid I\'ll have to take this further if it isn\'t addressed."\n• "I\'ve been waiting for three weeks — I really do need this resolved today."\n• "I\'d appreciate a written response within 48 hours."\n\nKey: State facts (how many times, how long) not emotions. Facts are harder to argue with and sound more professional.'
+      },
+      {
+        type: 'example',
+        sentences: [
+          { en: "I'm afraid there's a problem with my bill — I've been charged twice.", th: 'กลัวว่าจะมีปัญหากับบิล — ถูกเรียกเก็บเงินสองครั้ง' },
+          { en: "I wanted to bring something to your attention — the heating in my room isn't working.", th: 'อยากแจ้งให้ทราบว่าเครื่องทำความร้อนในห้องไม่ทำงาน' },
+          { en: "I've already raised this with your colleague, but the problem hasn't been fixed.", th: 'แจ้งเรื่องนี้กับเพื่อนร่วมงานของคุณแล้ว แต่ยังไม่ได้รับการแก้ไข' },
+          { en: "I'd like to speak to a manager, please — I need this resolved today.", th: 'อยากจะพูดคุยกับผู้จัดการ — ต้องการให้เรื่องนี้ได้รับการแก้ไขในวันนี้' },
+          { en: "I'm afraid I'll have to escalate this if no action is taken by Friday.", th: 'กลัวว่าจะต้องยกระดับเรื่องนี้หากไม่มีการดำเนินการภายในวันศุกร์' }
+        ]
+      },
+      {
+        type: 'explanation',
+        heading: 'Responding to complaints & apologising genuinely',
+        body: 'Your first job when someone complains is to acknowledge their feelings before jumping to solutions.\n\nResponding:\n• "I completely understand your frustration." — validates feelings\n• "Thank you for bringing this to my attention." — shows you value feedback\n• "You\'re absolutely right, and I apologise for that." — admits fault directly\n• "Let me look into this right away." — shows immediate action\n\nApologising:\n• "I sincerely apologise for the inconvenience." — formal, strong\n• "That was entirely our fault — I\'m very sorry." — takes full responsibility\n• "I\'m so sorry this happened — it\'s not the standard we aim for." — personal\n\n⚠️ Avoid: "I\'m sorry you feel that way." — this is a non-apology that blames the person\'s feelings, not your actions.'
+      },
+      {
+        type: 'example',
+        sentences: [
+          { en: "I completely understand your frustration — this should not have happened.", th: 'เข้าใจความหงุดหงิดของคุณ — สิ่งนี้ไม่ควรเกิดขึ้น' },
+          { en: "I sincerely apologise for the inconvenience this has caused you.", th: 'ขอโทษอย่างจริงใจสำหรับความไม่สะดวกที่เกิดขึ้น' },
+          { en: "That was entirely our fault, and I take full responsibility.", th: 'นั่นเป็นความผิดของเราทั้งหมด และฉันรับผิดชอบเต็มที่' },
+          { en: "Let me look into this right away and get back to you within the hour.", th: 'ให้ฉันตรวจสอบเรื่องนี้ทันทีและติดต่อกลับภายในหนึ่งชั่วโมง' },
+          { en: "I'd like to offer you a full refund as a gesture of goodwill.", th: 'อยากเสนอเงินคืนเต็มจำนวนเป็นท่าทีแห่งความปรารถนาดี' },
+          { en: "We'll make sure this doesn't happen again — you have my word.", th: 'เราจะแน่ใจว่าสิ่งนี้จะไม่เกิดขึ้นอีก — คุณมีคำพูดของฉัน' }
+        ]
+      },
+      {
+        type: 'tip',
+        body: '💡 The "solution sandwich" — a powerful structure for handling complaints:\n1. Acknowledge: "I completely understand your frustration."\n2. Apologise: "I sincerely apologise for the inconvenience."\n3. Action: "Let me fix this right now — I\'ll arrange a full refund."\n4. Prevent: "We\'ll make sure this doesn\'t happen again."\n\nThis four-step structure works in customer service, workplace disputes, and everyday situations. Practice it until it feels automatic.'
+      },
+      {
+        type: 'dialogue',
+        lines: [
+          { speaker: 'A', text: "Excuse me — I'm afraid there's a problem with my order. I ordered the salmon, but this is chicken." },
+          { speaker: 'B', text: "Oh, I'm so sorry about that. You're absolutely right — I sincerely apologise for the mix-up." },
+          { speaker: 'A', text: "Thank you. This is actually the second time this has happened today, so I'm a little frustrated." },
+          { speaker: 'B', text: "I completely understand your frustration, and I'm very sorry. That's not the standard we aim for at all." },
+          { speaker: 'A', text: "I appreciate that. I'd just like the correct dish, and perhaps speak to a manager." },
+          { speaker: 'B', text: "Of course. I'll put your salmon order in as a priority right now. The manager will come over shortly." },
+          { speaker: 'A', text: "That's very helpful, thank you." },
+          { speaker: 'B', text: "And your meal tonight will be on the house as a gesture of goodwill. We'll make sure this doesn't happen again." }
+        ]
+      }
+    ]
+  },
+  {
+    id: 'c2-register-01',
+    title: '"Tone matters" — Register & Style in English',
+    level: 'C2',
+    topic: 'vocabulary',
+    estimatedMinutes: 16,
+    description: 'Advanced learners know the grammar and vocabulary — but sound "off" because they can\'t switch register. Learn to shift between formal, professional, and casual English with confidence.',
+    vocabularyDeckId: 'c2-register-vocab',
+    quizId: 'c2-register-quiz',
+    sections: [
+      {
+        type: 'intro',
+        heading: 'What separates advanced from truly fluent',
+        body: 'You can know 10,000 words and have perfect grammar, and still sound wrong. Why? Register. Register is the variety of language suited to a specific context — formal, professional, casual, or intimate. A C2 speaker doesn\'t just know more words; they know which word fits the moment. The phrase "I\'m gonna get some grub" is not "incorrect" — it\'s the wrong register for a job interview. Mastering register is what separates advanced from truly fluent.'
+      },
+      {
+        type: 'explanation',
+        heading: 'The four register levels',
+        body: 'FROZEN — fixed, unchanging language: legal contracts, ceremonial vows, religious texts.\n"Do you solemnly swear to tell the truth, the whole truth, and nothing but the truth?"\n\nFORMAL — professional, academic, public discourse. No contractions, precise vocabulary.\n"The committee has resolved to defer the proposal pending further deliberation."\n\nCONSULTATIVE — polite and professional but conversational. Some contractions, interactive tone.\n"I\'d recommend we review the figures before we proceed — does that work for you?"\n\nCASUAL — everyday conversation. Colloquialisms, contractions, ellipsis.\n"We should probably check those numbers first, right?"\n\nMost professionals need all four — formal for documents, consultative for meetings, casual for team chat.'
+      },
+      {
+        type: 'explanation',
+        heading: 'Upgrading your vocabulary — informal → formal',
+        body: 'The single fastest way to shift register is vocabulary. Anglo-Saxon words are often more casual; Latin/French-derived words tend to sound more formal.\n\nInformal → Formal:\nget → obtain / acquire\nuse → utilise\nhelp → assist / facilitate\nask → enquire / request\nshow → demonstrate\nend → terminate / conclude\nfind out → ascertain\nsay → state / assert\nneed → require\nchange → alter / amend\nthink → consider\nagree → concur\n\nCompare:\n❌ Over-formal in casual context: "I shall endeavour to ascertain the whereabouts of your keys."\n✅ Natural consultative: "I\'ll look into where your keys are."'
+      },
+      {
+        type: 'example',
+        sentences: [
+          { en: 'Casual: "Can you look at this before Friday?" / Formal: "I would be grateful if you could review this prior to Friday."', th: 'ขอร้องแบบทั่วไป vs แบบทางการ' },
+          { en: 'Casual: "We need to talk about costs." / Formal: "I wish to discuss the matter of expenditure."', th: 'พูดเรื่องค่าใช้จ่ายแบบทั่วไป vs ทางการ' },
+          { en: 'Casual: "The deal fell through." / Formal: "The agreement was not concluded."', th: 'ดีลล้มเหลว — ทั่วไป vs ทางการ' },
+          { en: 'Casual: "I agree completely." / Formal: "I am in full concurrence with that position."', th: 'เห็นด้วย — ทั่วไป vs ทางการ' },
+          { en: 'Casual: "We\'re gonna end the project." / Formal: "We intend to terminate the project."', th: 'จะสิ้นสุดโครงการ — ทั่วไป vs ทางการ' }
+        ]
+      },
+      {
+        type: 'explanation',
+        heading: 'How sentence structure signals register',
+        body: 'CONTRACTIONS — removed in formal writing\nCasual: "I\'m not sure it\'ll work."\nFormal: "I am not certain this will prove effective."\n\nPASSIVE VOICE — creates objectivity and distance in formal writing\nCasual: "We made some mistakes."\nFormal: "Some errors were made." / "A number of errors occurred."\n\nMODAL HEDGING — formal writing softens claims\nCasual: "This definitely works."\nFormal: "This would appear to yield positive results in most cases."\n\nSENTENCE LENGTH — longer and more complex in formal writing\nCasual: "The plan didn\'t work. We need a new one."\nFormal: "Given that the initial approach has proven insufficient, a revised strategy is now required."'
+      },
+      {
+        type: 'tip',
+        body: '⚠️ The false formality trap — being over-formal sounds cold or even sarcastic.\n\nDo NOT write: "I am writing to inquire as to whether you would be so kind as to furnish me with your telephone number."\n\nInstead: "I\'d be grateful if you could share your contact number."\n\nAlso avoid: Using formal vocabulary randomly in casual contexts. "I shall endeavour to attend your party" to a friend sounds robotic, not polite.\n\nRule of thumb: Match the register of the person you are communicating with, then adjust slightly higher for professional contexts.'
+      },
+      {
+        type: 'dialogue',
+        lines: [
+          { speaker: '💬 Casual', text: "Hey, I need that report before Friday. Can you send it over? Cheers." },
+          { speaker: '📋 Formal', text: "I write to request that the report be forwarded to me no later than the close of business on Friday." },
+          { speaker: '💬 Casual', text: "Oh — and if there are any numbers that look off, just flag it for me." },
+          { speaker: '📋 Formal', text: "Should any figures appear to warrant attention, I would appreciate it if you could bring these to my notice." },
+          { speaker: '💬 Casual', text: "Cool. Oh, by the way — the meeting got pushed to next week." },
+          { speaker: '📋 Formal', text: "I wish to inform you that the meeting has been rescheduled and will now take place in the forthcoming week." },
+          { speaker: '💬 Casual', text: "Right, let\'s just go with consultative for most things — frozen register for actual emails, yeah?" },
+          { speaker: '📋 Formal', text: "Indeed. One would concur that the consultative register serves most professional purposes admirably." }
+        ]
+      }
+    ]
+  },
+  {
+    id: 'c2-academic-writing-01',
+    title: 'Academic Writing Essentials',
+    level: 'C2',
+    topic: 'grammar',
+    estimatedMinutes: 18,
+    description: 'Master thesis construction, paragraph architecture, cohesion devices, and formal vocabulary — the toolkit of sophisticated academic prose.',
+    vocabularyDeckId: 'c2-academic-writing-vocab',
+    quizId: 'c2-academic-writing-quiz',
+    sections: [
+      {
+        type: 'intro',
+        heading: 'Why academic writing is a distinct skill',
+        body: 'Academic writing is not simply formal English — it is a disciplined mode governed by conventions of logic, evidence, and register. Thai learners often find the transition challenging because Thai academic discourse tolerates more implicitness than English academic prose demands. This lesson gives you the core tools: thesis construction, paragraph architecture, cohesion devices, passive voice for objectivity, and eliminating informal language.'
+      },
+      {
+        type: 'explanation',
+        heading: 'Constructing a thesis statement',
+        body: 'A thesis statement is the single most important sentence in an academic essay. It appears at the end of the introduction and performs three functions: it identifies the topic, stakes a debatable claim, and signals the essay\'s organisational logic.\n\nWeak: "This essay will discuss climate change."\nStrong: "Although technological innovation offers partial remedies, the systemic causes of climate change demand coordinated international policy reform that prioritises equity alongside efficiency."\n\nA strong thesis must be:\n1. Specific — narrows the topic to a precise claim\n2. Arguable — a reasonable person could disagree\n3. Scoped — matches the length and depth of the essay\n\nAvoid theses that merely announce intention ("I will argue that...") rather than making the argument itself. In formal academic prose, the first person is minimised; the claim should stand on its own logic.'
+      },
+      {
+        type: 'explanation',
+        heading: 'Topic sentences and PIE paragraph structure',
+        body: 'Every body paragraph follows an internal architecture. The most reliable model is PIE:\n\nP — Point: the topic sentence, which states the paragraph\'s single controlling idea\nI — Illustration: evidence, data, quotation, or example that supports the point\nE — Explanation: your analytical commentary linking evidence back to the thesis\n\nThe topic sentence must be a generalisation the rest of the paragraph proves. It should not be a fact or a question.\n\nWeak: "Many scientists have studied deforestation."\nStrong: "The accelerating rate of deforestation in equatorial regions constitutes a direct threat to global carbon sequestration capacity."\n\nThe strong version makes a claim, contains evaluative language, and is specific enough to be proven within one paragraph.'
+      },
+      {
+        type: 'explanation',
+        heading: 'Cohesion devices: connecting ideas with precision',
+        body: 'Cohesion devices signal the logical relationship between ideas. Using them incorrectly is one of the most common C2-level errors.\n\nADDITION\nFurthermore — adds a point of equal or greater weight\nMoreover — adds a point that strengthens the previous claim\n\nCONTRAST\nHowever — introduces a counterpoint\nNevertheless / Nonetheless — concedes a point but maintains the original claim\nNotwithstanding — formal; means "despite this"\n\nCAUSATION\nConsequently / Therefore / Thus — show logical consequence\nIn light of — introduces a conclusion drawn from evidence\n\nSCOPE\nWith respect to / With regard to — shifts focus within the argument\nInsofar as — limits the extent of a claim ("insofar as the data permit")\n\n⚠️ "Furthermore" is additive, NOT contrastive. Never write "The results were positive. Furthermore, there were some problems." Use "however" or "nevertheless" for contrast.'
+      },
+      {
+        type: 'example',
+        sentences: [
+          { en: 'The data unequivocally demonstrate that urban air quality has deteriorated over the past two decades.', th: 'ข้อมูลแสดงให้เห็นอย่างชัดเจนว่าคุณภาพอากาศเขตเมืองเสื่อมลงในสองทศวรรษที่ผ่านมา' },
+          { en: 'Furthermore, the disproportionate impact on low-income communities demands immediate policy intervention.', th: 'นอกจากนี้ ผลกระทบที่ไม่สมส่วนต่อชุมชนรายได้น้อยยังต้องการการแทรกแซงทางนโยบายเร่งด่วน' },
+          { en: "Notwithstanding the government's stated commitment, tangible progress remains elusive.", th: 'แม้รัฐบาลจะให้คำมั่น แต่ความคืบหน้าที่จับต้องได้ยังคงห่างไกล' },
+          { en: 'In light of these findings, a reassessment of current regulatory frameworks is warranted.', th: 'เมื่อพิจารณาจากผลการค้นพบเหล่านี้ การประเมินกรอบกฎระเบียบใหม่จึงสมควร' },
+          { en: 'The mechanism whereby cellular stress triggers apoptosis has been extensively characterised in recent literature.', th: 'กลไกที่ความเครียดของเซลล์กระตุ้นให้เกิดการตายของเซลล์ได้รับการอธิบายในวรรณกรรมล่าสุด' },
+          { en: 'These results are consistent with the aforementioned theoretical framework and reinforce its predictive validity.', th: 'ผลลัพธ์เหล่านี้สอดคล้องกับกรอบทฤษฎีที่กล่าวถึงก่อนหน้าและเสริมความถูกต้องในการทำนาย' }
+        ]
+      },
+      {
+        type: 'explanation',
+        heading: 'Passive voice for objectivity',
+        body: 'Academic writing uses passive voice to foreground findings rather than the researcher, conveying methodological impartiality.\n\nActive: "We collected the samples in March."\nPassive: "The samples were collected in March."\n\nUse passive when:\n1. The agent is unknown or unimportant: "Several anomalies were recorded."\n2. You want to emphasise what was done: "The legislation was amended in response to public pressure."\n3. Describing a general procedure: "The solution is heated to 80°C."\n\nHowever, do NOT use passive mechanically. In humanities, first person is increasingly accepted: "I argue that..." is more accountable than "It is argued that..." — which obscures who is making the claim.'
+      },
+      {
+        type: 'tip',
+        body: '💡 Quick register audit: before submitting any academic text, search for these red-flag words — "thing", "stuff", "a lot", "get", "big", "small", "good", "bad", "show", "kids", "guys", "really", "very", "basically", "kind of", "sort of". Each one is an opportunity to elevate precision and formality. Replace with domain-specific vocabulary or quantified language.'
+      },
+      {
+        type: 'dialogue',
+        lines: [
+          { speaker: 'A', text: "My supervisor said my thesis statement is too vague. I'm not sure how to make it more specific without narrowing my argument too much." },
+          { speaker: 'B', text: "Could you read me what you currently have?" },
+          { speaker: 'A', text: '"This essay will examine the relationship between social media and mental health in young people."' },
+          { speaker: 'B', text: "I see the problem immediately — it announces a topic rather than staking a claim. What is the actual argument you're making about that relationship?" },
+          { speaker: 'A', text: "I'm arguing that the correlation is real but the causal direction is misunderstood — most studies conflate correlation with causation, and the evidence for direct harm is weaker than media coverage suggests." },
+          { speaker: 'B', text: '"Notwithstanding widespread media claims to the contrary, the empirical evidence for a direct causal link between social media use and deteriorating adolescent mental health remains methodologically inconclusive." That stakes a position, engages the counterargument, and signals your analytical direction.' }
+        ]
+      }
+    ]
+  },
+  {
+    id: 'c2-cleft-sentences-01',
+    title: 'Cleft Sentences & Emphasis',
+    level: 'C2',
+    topic: 'grammar',
+    estimatedMinutes: 15,
+    description: 'Master it-cleft, wh-cleft, and all-cleft structures to control focus, add rhetorical weight, and sound like a truly proficient English user.',
+    vocabularyDeckId: 'c2-cleft-vocab',
+    quizId: 'c2-cleft-quiz',
+    sections: [
+      {
+        type: 'intro',
+        heading: 'Why cleft sentences matter',
+        body: 'In everyday English, word order alone cannot always convey which piece of information is most important. Cleft sentences solve this by splitting a single clause into two, placing one element in sharp focus. Native speakers use them constantly — in arguments, narratives, academic writing, and casual conversation — to control exactly what the listener pays attention to. Producing and recognising these structures fluently marks you as a truly proficient user of the language.'
+      },
+      {
+        type: 'explanation',
+        heading: 'It-cleft: focusing the subject or object',
+        body: 'Form: It + be + FOCUSED ELEMENT + who/that/where/when + rest of clause\n\nThe focused element can be a noun phrase, adverb, or prepositional phrase.\n\nBase: "John broke the window."\nFocus subject: "It was John who broke the window."\nFocus time: "It was in 1945 that the war ended."\nFocus place: "It was in this very room that the treaty was signed."\n\nThe verb in the relative clause agrees with the focused noun:\n"It is the students who are responsible." (plural)\n"It is trust that holds relationships together." (singular)\n\nIn informal speech, contractions are common: "It\'s the lies that bother me."'
+      },
+      {
+        type: 'explanation',
+        heading: 'Wh-cleft (pseudo-cleft): focusing the predicate',
+        body: 'Form: What + subject + verb + be + FOCUSED ELEMENT\n\nThe wh-clause acts as the topic (known information), and the element after be is the focused comment (new information). This builds up reflectively to the focus.\n\n"What I need is a break."\n"What surprised me was her calm reaction."\n"What the data shows is a clear upward trend."\n"What we cannot accept is any form of discrimination."\n\nReverse pseudo-cleft places the focus first:\n"A break is what I need." — slightly more emphatic.\n\nRegister: More common in formal speech and academic writing than casual conversation.'
+      },
+      {
+        type: 'explanation',
+        heading: 'All-cleft and no-cleft (what-do cleft)',
+        body: 'All-cleft — restricts and minimises the focus element:\nForm: All + subject + verb + be + FOCUS\n"All I want is peace."\n"All they did was complain for two hours."\nTone: weariness, resignation, or simplicity — very common in spoken English.\n\nNo-cleft / What-do cleft — foregrounds an action:\nForm: What + subject + did + was + BARE INFINITIVE\n"What she did was ignore us."\n"What they did was restructure the entire department."\n\n⚠️ Common error: the verb after "was" must be a bare infinitive, NOT a gerund.\nWrong: "What she did was ignoring us."\nRight: "What she did was ignore us."'
+      },
+      {
+        type: 'example',
+        sentences: [
+          { en: 'It was the prime minister who announced the decision.', th: 'เป็นนายกรัฐมนตรีที่เป็นผู้ประกาศการตัดสินใจ' },
+          { en: 'It was not until midnight that the guests finally left.', th: 'กว่าแขกจะกลับก็ดึกถึงเที่ยงคืน' },
+          { en: 'What I find most disturbing is the lack of accountability.', th: 'สิ่งที่ฉันพบว่าน่ากังวลที่สุดคือการขาดความรับผิดชอบ' },
+          { en: 'All she asked for was a simple apology.', th: 'สิ่งที่เธอขอก็แค่คำขอโทษง่ายๆ' },
+          { en: 'What the government did was raise taxes without consultation.', th: 'สิ่งที่รัฐบาลทำคือขึ้นภาษีโดยไม่ปรึกษาหารือ' },
+          { en: 'A clear explanation is what this situation demands.', th: 'คำอธิบายที่ชัดเจนคือสิ่งที่สถานการณ์นี้ต้องการ' },
+          { en: 'It is money, not fame, that motivates him.', th: 'เงินทอง ไม่ใช่ชื่อเสียง ที่เป็นแรงจูงใจของเขา' }
+        ]
+      },
+      {
+        type: 'tip',
+        body: '⚠️ Three common errors:\n\n1. Wrong verb form in no-cleft: "What he did was to leave" is accepted but "What he did was leaving" is non-standard. Bare infinitive preferred: "What he did was leave."\n\n2. Subject-verb agreement in it-cleft: The verb agrees with the FOCUSED NOUN, not with "it".\nCorrect: "It is the results that matter."\nIncorrect: "It is the results that matters."\n\n3. Overusing clefts: They are emphatic by nature. Reserve them for genuine moments of contrast or focus — too many in a short passage sounds mechanical.'
+      },
+      {
+        type: 'dialogue',
+        lines: [
+          { speaker: 'A', text: "I heard the project was cancelled because of budget issues." },
+          { speaker: 'B', text: "Actually, it wasn't the budget that caused the cancellation — it was the lack of stakeholder support." },
+          { speaker: 'A', text: "Really? But what I understood from the memo was that funding had run out." },
+          { speaker: 'B', text: "What the memo said was that funding was under review. That's quite different from being cancelled." },
+          { speaker: 'A', text: "So all they needed was a few more sponsors to commit, and it would have gone ahead?" },
+          { speaker: 'B', text: "Precisely. It was in the final board meeting that the decision was actually made — and by then, it was too late to renegotiate." },
+          { speaker: 'A', text: "What frustrates me is that nobody communicated any of this clearly until it was over." },
+          { speaker: 'B', text: "That's exactly it. What they did was wait until the outcome was certain before saying anything — completely backwards." }
+        ]
+      }
+    ]
+  },
+  {
+    id: 'c2-rhetoric-01',
+    title: 'The Art of Rhetoric & Persuasive Language',
+    level: 'C2',
+    topic: 'speaking',
+    estimatedMinutes: 17,
+    description: 'Explore Aristotle\'s three appeals and the structural devices — anaphora, tricolon, rhetorical questions, concession-rebuttal — that make arguments unforgettable.',
+    vocabularyDeckId: 'c2-rhetoric-vocab',
+    quizId: 'c2-rhetoric-quiz',
+    sections: [
+      {
+        type: 'intro',
+        heading: 'Rhetoric: the architecture of persuasion',
+        body: 'Rhetoric is the art of using language effectively and persuasively. Far from being a modern invention, it was codified by Aristotle over 2,300 years ago, and its principles underpin everything from political speeches and courtroom arguments to advertising copy and TED talks. At C2 level, understanding rhetoric means not just producing fluent language, but understanding why certain words, structures, and sequences move people — and how to deploy or resist that power deliberately.'
+      },
+      {
+        type: 'explanation',
+        heading: 'Ethos, Pathos, Logos: Aristotle\'s rhetorical triangle',
+        body: 'Aristotle identified three modes of persuasion:\n\nETHOS (character/credibility) — establish authority or trustworthiness:\n"As someone who has worked in climate science for thirty years, I can tell you the data is unambiguous."\n\nPATHOS (emotion) — engage the audience\'s feelings:\n"Imagine your own child going to bed hungry every night. That is the reality for one in five children in this country."\n\nLOGOS (logic/reason) — evidence, data, structured argument:\n"Studies across fourteen countries consistently show a 40% reduction in workplace accidents following mandatory safety training."\n\nEffective rhetoric rarely relies on just one mode. The most powerful persuasive texts weave all three together: establishing credibility, engaging emotion, and providing rational support simultaneously.'
+      },
+      {
+        type: 'example',
+        sentences: [
+          { en: 'As a surgeon who has performed over two thousand operations, I urge you to reconsider this policy. (ethos)', th: 'ในฐานะศัลยแพทย์ที่ผ่าตัดมาแล้วกว่าสองพันครั้ง ฉันขอร้องให้ทบทวนนโยบายนี้ (อีธอส)' },
+          { en: 'Think of the families who will lose everything if this legislation passes. (pathos)', th: 'ลองนึกถึงครอบครัวที่จะสูญเสียทุกอย่างหากกฎหมายนี้ผ่าน (พาธอส)' },
+          { en: 'The evidence is clear: countries with stricter gun laws have significantly lower homicide rates. (logos)', th: 'หลักฐานชัดเจน: ประเทศที่มีกฎหมายอาวุธปืนเข้มงวดกว่ามีอัตราการฆาตกรรมต่ำกว่า (โลกอส)' },
+          { en: 'Three independent audits found no evidence of wrongdoing — the allegations are simply unfounded. (logos)', th: 'การตรวจสอบอิสระสามครั้งไม่พบหลักฐานการกระทำผิด (โลกอส)' }
+        ]
+      },
+      {
+        type: 'explanation',
+        heading: 'Tricolon and anaphora: rhythm and force',
+        body: 'TRICOLON — a series of three parallel elements for rhythm, completeness, and memorability:\n"Life, liberty, and the pursuit of happiness."\n"Government of the people, by the people, for the people." (Lincoln)\n"Blood, toil, tears, and sweat." (Churchill)\n\nWhy three works: one is a statement, two creates contrast, three creates a pattern. The third element often delivers the punch.\n\nAscending tricolon (increasing intensity): "We came, we saw, we conquered."\n\nANAPHORA — repetition of a word/phrase at the start of successive clauses:\n"We shall fight on the beaches, we shall fight on the landing grounds, we shall fight in the fields..." (Churchill)\n"I have a dream that... I have a dream that..." (King)\n"Every day, children go without food. Every day, families lose their homes. Every day, the crisis deepens."\n\nAnaphora works by creating rhythm, accumulating evidence or emotion, and building toward a climax.'
+      },
+      {
+        type: 'explanation',
+        heading: 'Rhetorical questions and concession-rebuttal',
+        body: 'RHETORICAL QUESTIONS — asked for effect, not to receive an answer:\n"Is this really the kind of society we want to build?" (implies "no")\n"Doesn\'t every child deserve a fair education?" (implies "yes")\n\nThey create shared commitment: the audience answers silently and in doing so commits to the speaker\'s position. Use sparingly — overuse seems evasive.\n\nCONCESSION + REBUTTAL — acknowledging opposing views to strengthen your argument:\n"While it is true that X, Y demonstrates..."\n"Although X may seem compelling, the evidence shows..."\n"Granted, X is a valid concern. Nevertheless, Y..."\n\nWhy it works:\n1. Ethos: acknowledging the other side shows fairness and intelligence\n2. Pre-emption: you address objections before opponents can raise them\n3. Contrast: the rebuttal lands harder after a fair concession\n\nA weak argument makes no concessions ("This policy is simply wrong, full stop."). A strong argument anticipates counterarguments and addresses them directly.'
+      },
+      {
+        type: 'tip',
+        body: '💡 Combining devices for maximum effect:\n\n"While some may claim that reform is too costly (concession), what history teaches us is that the cost of inaction is always higher (wh-cleft + rebuttal). Every generation that neglected this challenge passed the burden on to the next. Every generation that acted secured a better future (anaphora). It is not our wealth that defines us — it is our choices (it-cleft)."\n\nWhen analysing or writing at C2 level, identify which modes of persuasion are operating and how structural devices reinforce them.'
+      },
+      {
+        type: 'dialogue',
+        lines: [
+          { speaker: 'A', text: "I keep being told I need to be more persuasive in my arguments, but I'm not sure what that actually means." },
+          { speaker: 'B', text: "It usually means you're relying too heavily on logos — data and logic — without engaging the audience emotionally or establishing why they should trust you." },
+          { speaker: 'A', text: "So I need more pathos? But isn't that manipulative — trying to make people feel things rather than think?" },
+          { speaker: 'B', text: "Aristotle saw all three appeals as legitimate. What becomes manipulative is pathos without logos — emotion that bypasses reasoning entirely." },
+          { speaker: 'A', text: "And should I acknowledge the other side's arguments? My instinct is to push my case and ignore counterarguments." },
+          { speaker: 'B', text: "That's a risky strategy. A well-placed concession — 'Granted, the cost is significant; however...' — actually makes your rebuttal far more credible. Ignoring counterarguments signals either ignorance or bad faith." }
+        ]
+      }
+    ]
+  }
 ]
 
 export function getLessonById(id) {

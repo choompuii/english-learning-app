@@ -7,6 +7,8 @@ const DEFAULT_STATE = {
   xp: 0,
   lessons: {},
   quizzes: {},
+  sentenceBuilder: {},
+  speedRound: {},
   flashcards: {},
   notebook: [],
   dailyGoal: 50,
@@ -147,6 +149,51 @@ export function recordQuizAttempt(quizId, score, total, answers) {
 export function getQuizBest(quizId) {
   const s = load()
   return s.quizzes[quizId] || null
+}
+
+// ── Mini-game best scores (Sentence Builder & Speed Round) ──
+// Each records a best result per key (a level or a deck). The number of plays varies
+// with retries/skips, so "best" is judged by accuracy (percentage), higher raw score
+// breaking ties. Like recordQuizAttempt, finishing a session touches the streak and
+// checks for new badges (XP itself is awarded per correct answer via addBonusXP).
+function recordBestResult(namespace, key, score, total) {
+  const s = load()
+  if (!s[namespace]) s[namespace] = {}
+  const prev = s[namespace][key] || { bestScore: 0, bestTotal: 0, plays: 0 }
+
+  const pct = total > 0 ? score / total : 0
+  const prevPct = prev.bestTotal > 0 ? prev.bestScore / prev.bestTotal : -1
+  const beats = pct > prevPct || (pct === prevPct && score > prev.bestScore)
+  const isNewRecord = beats && prev.plays > 0
+
+  const entry = {
+    bestScore: beats ? score : prev.bestScore,
+    bestTotal: beats ? total : prev.bestTotal,
+    plays: prev.plays + 1
+  }
+  s[namespace][key] = entry
+  touchStreak(s)
+  const newBadges = checkBadges(s)
+  save(s)
+  return { ...entry, isNewRecord, newBadges }
+}
+
+export function recordSentenceBuilderResult(level, score, total) {
+  return recordBestResult('sentenceBuilder', level, score, total)
+}
+
+export function getSentenceBuilderBest(level) {
+  const s = load()
+  return (s.sentenceBuilder || {})[level] || null
+}
+
+export function recordSpeedRoundResult(deckId, correct, total) {
+  return recordBestResult('speedRound', deckId, correct, total)
+}
+
+export function getSpeedRoundBest(deckId) {
+  const s = load()
+  return (s.speedRound || {})[deckId] || null
 }
 
 // SM-2 spaced repetition
@@ -340,6 +387,20 @@ export function checkBadges(state) {
     }
   }
   return newlyEarned
+}
+
+// ── Bonus XP (Speed Round etc.) ──
+
+export function addBonusXP(amount) {
+  const s = load()
+  touchStreak(s)
+  s.xp = (s.xp || 0) + amount
+  addTodayXp(s, amount)
+  touchActivityLog(s, amount)
+  touchGoalStreak(s)
+  const newBadges = checkBadges(s)
+  save(s)
+  return newBadges
 }
 
 // ── Lesson Notes ──

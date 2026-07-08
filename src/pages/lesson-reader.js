@@ -1,7 +1,6 @@
 import { getLessonById, lessons } from '../data/lessons.js'
-import { getDeckById } from '../data/vocabulary.js'
-import { startLesson, completeLesson, getLessonStatus, getDeckProgress, getQuizBest, getProgress, saveLessonNote, getLessonNote } from '../store.js'
-import { getOrderedLessons } from '../utils/progression.js'
+import { startLesson, completeLesson, getLessonStatus, getProgress, saveLessonNote, getLessonNote } from '../store.js'
+import { getOrderedLessons, getNextAction } from '../utils/progression.js'
 import { speak, attachTtsListeners } from '../utils/tts.js'
 import { floatXP, streakPop, showNewBadges } from '../utils/fx.js'
 
@@ -21,9 +20,8 @@ export function renderLessonReader({ id }) {
   if (status.status === 'not-started') startLesson(id)
   const startTime = Date.now()
 
-  const deck = lesson.vocabularyDeckId ? getDeckById(lesson.vocabularyDeckId) : null
-  const vocabMap = {}
-  if (deck) deck.cards.forEach(c => { vocabMap[c.front.toLowerCase()] = c })
+  // The single guided next step for this lesson (study vocab → quiz → next lesson → done)
+  const nextAction = getNextAction(lesson, state, ordered)
 
   main.innerHTML = `
     <div class="page">
@@ -56,13 +54,16 @@ export function renderLessonReader({ id }) {
       </div>
 
       <div style="margin-top:var(--sp-6);padding-top:var(--sp-6);border-top:1px solid var(--border);display:flex;flex-direction:column;gap:var(--sp-4)">
-        ${renderNextStep(lesson, deck, status)}
+        ${renderNextStepBlock(nextAction)}
 
-        <div style="display:flex;justify-content:space-between;align-items:center;margin-top:var(--sp-2)">
+        <div style="display:flex;justify-content:space-between;align-items:center;gap:var(--sp-3);flex-wrap:wrap;margin-top:var(--sp-2)">
           <a href="#/lessons" class="btn btn-ghost">← All Lessons</a>
-          ${status.status !== 'completed' ? `
-            <button class="btn btn-primary" id="complete-btn">Mark Complete ✓</button>
-          ` : `<span style="color:var(--accent);font-weight:600">✓ Completed</span>`}
+          ${status.status !== 'completed'
+            ? `<button class="btn btn-primary" id="complete-btn" style="white-space:nowrap">เสร็จแล้ว — ${nextAction.cta}</button>`
+            : `<div style="display:flex;align-items:center;gap:var(--sp-3);flex-wrap:wrap">
+                 <span style="color:var(--accent);font-weight:600">✓ เรียนจบแล้ว</span>
+                 <a href="${nextAction.href}" class="btn btn-primary" style="white-space:nowrap">${nextAction.cta}</a>
+               </div>`}
         </div>
       </div>
     </div>
@@ -99,77 +100,43 @@ export function renderLessonReader({ id }) {
         setTimeout(() => streakPop(stateAfter.streakDays), 600)
       }
       if (newBadges && newBadges.length) setTimeout(() => showNewBadges(newBadges), 800)
-      completeBtn.replaceWith(Object.assign(document.createElement('span'), {
-        style: 'color:var(--accent);font-weight:600',
-        textContent: '✓ Completed'
-      }))
+
+      // Give the celebration a beat, then guide the learner straight to the next step
+      completeBtn.disabled = true
+      completeBtn.textContent = 'เยี่ยม! กำลังพาไปต่อ…'
+      setTimeout(() => { window.location.hash = nextAction.href }, 900)
     })
   }
 }
 
-function renderNextStep(lesson, deck, status) {
-  const deckStudied = deck ? getDeckProgress(deck.id, deck.cards.length).studied > 0 : true
-  const quizDone = lesson.quizId ? !!getQuizBest(lesson.quizId) : true
+const TONE_STYLES = {
+  accent: { bg: 'var(--accent-soft)', border: '2px solid var(--accent-mid)', eyebrow: 'var(--accent)' },
+  gold: { bg: 'var(--gold-soft)', border: '2px solid var(--gold)', eyebrow: '#8B6914' },
+  neutral: { bg: 'var(--surface-2)', border: '1px solid var(--border)', eyebrow: 'var(--text-muted)' }
+}
 
-  // Step 1: study vocab
-  if (lesson.vocabularyDeckId && !deckStudied) {
+// Renders the informational "what's next" block from a getNextAction() descriptor.
+// The block only explains the next step — the single action button lives in the bottom bar.
+function renderNextStepBlock(action) {
+  if (action.type === 'done') {
     return `
-      <div style="background:var(--accent-soft);border:2px solid var(--accent-mid);border-radius:var(--r-lg);padding:var(--sp-5) var(--sp-6)">
-        <div style="font-size:var(--text-xs);font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:var(--accent);margin-bottom:var(--sp-2)">ขั้นตอนต่อไป</div>
-        <div style="display:flex;align-items:center;justify-content:space-between;gap:var(--sp-4)">
-          <div>
-            <div style="font-weight:600;margin-bottom:2px">📚 เรียน Vocabulary ก่อน</div>
-            <div style="font-size:var(--text-sm);color:var(--text-muted)">${deck.cards.length} flashcards — ช่วยให้จำคำศัพท์ได้แน่น</div>
-          </div>
-          <a href="#/flashcards/${lesson.vocabularyDeckId}" class="btn btn-primary" style="white-space:nowrap">Study Words →</a>
-        </div>
+      <div style="background:var(--accent-soft);border-radius:var(--r-lg);padding:var(--sp-5);text-align:center">
+        <div style="font-size:1.5rem;margin-bottom:var(--sp-2)">${action.emoji}</div>
+        <div style="font-weight:600">${action.title}</div>
+        <div style="font-size:var(--text-sm);color:var(--text-muted);margin-top:2px">${action.subtitle}</div>
       </div>
     `
   }
 
-  // Step 2: take quiz
-  if (lesson.quizId && !quizDone) {
-    return `
-      <div style="background:var(--gold-soft);border:2px solid var(--gold);border-radius:var(--r-lg);padding:var(--sp-5) var(--sp-6)">
-        <div style="font-size:var(--text-xs);font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:#8B6914;margin-bottom:var(--sp-2)">ขั้นตอนต่อไป</div>
-        <div style="display:flex;align-items:center;justify-content:space-between;gap:var(--sp-4)">
-          <div>
-            <div style="font-weight:600;margin-bottom:2px">❓ ทดสอบความเข้าใจ</div>
-            <div style="font-size:var(--text-sm);color:var(--text-muted)">Quiz 20 ข้อ — วัดว่าเข้าใจแล้วแค่ไหน</div>
-          </div>
-          <a href="#/quiz/${lesson.quizId}" class="btn btn-gold" style="white-space:nowrap">Take Quiz →</a>
-        </div>
-      </div>
-    `
-  }
-
-  // Step 3: next lesson
-  const allLessons = lessons
-  const currentIdx = allLessons.findIndex(l => l.id === lesson.id)
-  const nextLesson = allLessons[currentIdx + 1]
-  if (nextLesson) {
-    return `
-      <div style="background:var(--surface-2);border:1px solid var(--border);border-radius:var(--r-lg);padding:var(--sp-5) var(--sp-6)">
-        <div style="font-size:var(--text-xs);font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:var(--text-muted);margin-bottom:var(--sp-2)">บทเรียนถัดไป</div>
-        <div style="display:flex;align-items:center;justify-content:space-between;gap:var(--sp-4)">
-          <div style="min-width:0">
-            <div style="font-weight:600;margin-bottom:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${nextLesson.title}</div>
-            <div style="font-size:var(--text-sm);color:var(--text-muted)">
-              <span class="level-badge level-${nextLesson.level}">${nextLesson.level}</span>
-              <span style="margin-left:var(--sp-2)">⏱ ${nextLesson.estimatedMinutes} min</span>
-            </div>
-          </div>
-          <a href="#/lessons/${nextLesson.id}" class="btn btn-primary" style="white-space:nowrap">เริ่มเลย →</a>
-        </div>
-      </div>
-    `
-  }
-
-  // All done
+  const tone = TONE_STYLES[action.tone] || TONE_STYLES.neutral
+  const eyebrow = action.type === 'next-lesson' ? 'บทเรียนถัดไป' : 'ขั้นตอนต่อไป'
   return `
-    <div style="background:var(--accent-soft);border-radius:var(--r-lg);padding:var(--sp-5);text-align:center">
-      <div style="font-size:1.5rem;margin-bottom:var(--sp-2)">🎉</div>
-      <div style="font-weight:600">ทำครบทุก lesson แล้ว!</div>
+    <div style="background:${tone.bg};border:${tone.border};border-radius:var(--r-lg);padding:var(--sp-5) var(--sp-6)">
+      <div style="font-size:var(--text-xs);font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:${tone.eyebrow};margin-bottom:var(--sp-2)">${eyebrow}</div>
+      <div style="min-width:0">
+        <div style="font-weight:600;margin-bottom:2px">${action.emoji} ${action.title}</div>
+        <div style="font-size:var(--text-sm);color:var(--text-muted)">${action.subtitle}</div>
+      </div>
     </div>
   `
 }
