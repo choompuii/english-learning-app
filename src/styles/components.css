@@ -116,6 +116,37 @@
   border: 1px solid var(--border);
 }
 
+/* ── Level Filter ── */
+.level-filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-2);
+  margin-bottom: var(--sp-5);
+}
+.level-filter-pill {
+  padding: var(--sp-2) var(--sp-4);
+  border-radius: var(--r-full);
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text-muted);
+  font-size: var(--text-sm);
+  font-weight: 700;
+  font-family: var(--font-mono);
+  letter-spacing: 0.03em;
+  cursor: pointer;
+  transition: background var(--duration) var(--ease), color var(--duration) var(--ease), border-color var(--duration) var(--ease), transform 80ms;
+}
+.level-filter-pill:active { transform: scale(0.95); }
+.level-filter-pill:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+.level-filter-pill.active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+
 /* ── Progress bar ── */
 .progress-bar {
   height: 6px;

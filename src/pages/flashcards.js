@@ -1,9 +1,22 @@
 import { decks } from '../data/vocabulary.js'
 import { getProgress, getDeckProgress } from '../store.js'
 
+// CEFR levels ordered from lowest to highest
+const LEVEL_ORDER = ['A1', 'A2', 'B1', 'B2', 'C1', 'C2']
+
+// Remembered across visits within a session
+let activeLevel = 'all'
+
 export function renderFlashcards() {
   const main = document.getElementById('main-content')
   const state = getProgress()
+
+  // Sort decks by level, lowest to highest (stable within a level)
+  const sorted = [...decks].sort(
+    (a, b) => LEVEL_ORDER.indexOf(a.level) - LEVEL_ORDER.indexOf(b.level)
+  )
+  // Only offer levels that actually have decks
+  const levels = LEVEL_ORDER.filter(level => sorted.some(deck => deck.level === level))
 
   main.innerHTML = `
     <div class="page">
@@ -14,15 +27,42 @@ export function renderFlashcards() {
       <div style="margin-bottom:var(--sp-5)">
         <a href="#/dictation" class="btn btn-secondary">✍️ Dictation exercise</a>
       </div>
-      <div class="deck-grid">
-        ${decks.map(deck => deckCard(deck, state)).join('')}
+      <div class="level-filter">
+        ${['all', ...levels].map(filterPill).join('')}
       </div>
+      <div class="deck-grid" id="deck-grid"></div>
     </div>
   `
 
-  main.querySelectorAll('.deck-card').forEach(card => {
-    card.addEventListener('click', () => window.location.hash = `/flashcards/${card.dataset.id}`)
+  const grid = main.querySelector('#deck-grid')
+
+  function paint() {
+    const visible = activeLevel === 'all'
+      ? sorted
+      : sorted.filter(deck => deck.level === activeLevel)
+
+    grid.innerHTML = visible.map(deck => deckCard(deck, state)).join('')
+    grid.querySelectorAll('.deck-card').forEach(card => {
+      card.addEventListener('click', () => window.location.hash = `/flashcards/${card.dataset.id}`)
+    })
+    main.querySelectorAll('.level-filter-pill').forEach(pill => {
+      pill.classList.toggle('active', pill.dataset.level === activeLevel)
+    })
+  }
+
+  main.querySelectorAll('.level-filter-pill').forEach(pill => {
+    pill.addEventListener('click', () => {
+      activeLevel = pill.dataset.level
+      paint()
+    })
   })
+
+  paint()
+}
+
+function filterPill(level) {
+  const label = level === 'all' ? 'All' : level
+  return `<button class="level-filter-pill" data-level="${level}">${label}</button>`
 }
 
 function deckCard(deck, state) {
