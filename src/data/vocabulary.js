@@ -1527,7 +1527,1554 @@ export const decks = [
       { id: 'rh-09', front: 'assertion', phonetic: '/əˈsɜːʃən/', back: 'a confident statement of a fact or belief presented without supporting evidence', example: 'Saying "this policy has failed" is a mere assertion unless backed by data.', thai: 'การยืนยัน / การกล่าวอ้าง (โดยไม่มีหลักฐาน)' },
       { id: 'rh-10', front: 'rhetorical question', phonetic: '/rɪˈtɒrɪkəl ˈkwestʃən/', back: 'a question asked for effect rather than to receive an answer; the implied answer is shared by speaker and audience', example: '"Are we really prepared to stand by and do nothing?" implies "no" without stating it.', thai: 'คำถามเชิงวาทศาสตร์ — ถามเพื่อผลทางวาทศิลป์ ไม่ใช่เพื่อคำตอบ' }
     ]
-  }
+  },
+{
+    id: 'a1-family-vocab',
+    lessonId: null,
+    title: 'Family & Relationships',
+    level: 'A1',
+    icon: '👨‍👩‍👧',
+    cards: [
+      { id: 'fam-01', front: 'mother', phonetic: '/ˈmʌðə(r)/', back: 'a female parent', example: 'My mother cooks dinner every evening.', thai: 'แม่' },
+      { id: 'fam-02', front: 'father', phonetic: '/ˈfɑːðə(r)/', back: 'a male parent', example: 'My father drives to work every day.', thai: 'พ่อ' },
+      { id: 'fam-03', front: 'brother', phonetic: '/ˈbrʌðə(r)/', back: 'a boy or man with the same parents as you', example: 'I have one brother and two sisters.', thai: 'พี่ชาย / น้องชาย' },
+      { id: 'fam-04', front: 'sister', phonetic: '/ˈsɪstə(r)/', back: 'a girl or woman with the same parents as you', example: 'My sister is older than me.', thai: 'พี่สาว / น้องสาว' },
+      { id: 'fam-05', front: 'baby', phonetic: '/ˈbeɪbi/', back: 'a very young child', example: 'The baby is sleeping now.', thai: 'ทารก' },
+      { id: 'fam-06', front: 'grandmother', phonetic: '/ˈɡrænmʌðə(r)/', back: 'the mother of your mother or father', example: 'My grandmother tells me stories.', thai: 'ยาย / ย่า' },
+      { id: 'fam-07', front: 'friend', phonetic: '/frend/', back: 'a person you know and like', example: 'She is my best friend.', thai: 'เพื่อน' },
+      { id: 'fam-08', front: 'family', phonetic: '/ˈfæməli/', back: 'a group of people who are related to each other', example: 'My family is very big.', thai: 'ครอบครัว' }
+    ]
+  },
+  {
+    id: 'a1-colours-vocab',
+    lessonId: null,
+    title: 'Colours',
+    level: 'A1',
+    icon: '🎨',
+    cards: [
+      { id: 'col-01', front: 'red', phonetic: '/red/', back: 'the colour of blood or a tomato', example: 'The apple is red.', thai: 'สีแดง' },
+      { id: 'col-02', front: 'blue', phonetic: '/bluː/', back: 'the colour of the sky on a clear day', example: 'I have a blue car.', thai: 'สีน้ำเงิน' },
+      { id: 'col-03', front: 'green', phonetic: '/ɡriːn/', back: 'the colour of grass and leaves', example: 'The grass is green.', thai: 'สีเขียว' },
+      { id: 'col-04', front: 'yellow', phonetic: '/ˈjeləʊ/', back: 'the colour of the sun or a lemon', example: 'The banana is yellow.', thai: 'สีเหลือง' },
+      { id: 'col-05', front: 'black', phonetic: '/blæk/', back: 'the colour of night, the darkest colour', example: 'She has black hair.', thai: 'สีดำ' },
+      { id: 'col-06', front: 'white', phonetic: '/waɪt/', back: 'the colour of snow or milk', example: 'The wall is white.', thai: 'สีขาว' },
+      { id: 'col-07', front: 'orange', phonetic: '/ˈɒrɪndʒ/', back: 'the colour between red and yellow', example: 'I like my orange shirt.', thai: 'สีส้ม' },
+      { id: 'col-08', front: 'pink', phonetic: '/pɪŋk/', back: 'a light red colour', example: 'The flower is pink.', thai: 'สีชมพู' }
+    ]
+  },
+  {
+    id: 'a1-days-months-vocab',
+    lessonId: null,
+    title: 'Days & Months',
+    level: 'A1',
+    icon: '📅',
+    cards: [
+      { id: 'day-01', front: 'Monday', phonetic: '/ˈmʌndeɪ/', back: 'the first day of the work week', example: 'I go to school on Monday.', thai: 'วันจันทร์' },
+      { id: 'day-02', front: 'Friday', phonetic: '/ˈfraɪdeɪ/', back: 'the day before the weekend', example: 'We have a party on Friday.', thai: 'วันศุกร์' },
+      { id: 'day-03', front: 'Sunday', phonetic: '/ˈsʌndeɪ/', back: 'the last day of the week, a day of rest', example: 'I sleep late on Sunday.', thai: 'วันอาทิตย์' },
+      { id: 'day-04', front: 'week', phonetic: '/wiːk/', back: 'a period of seven days', example: 'There are seven days in a week.', thai: 'สัปดาห์' },
+      { id: 'day-05', front: 'month', phonetic: '/mʌnθ/', back: 'one of the twelve parts of a year', example: 'January is the first month.', thai: 'เดือน' },
+      { id: 'day-06', front: 'January', phonetic: '/ˈdʒænjuəri/', back: 'the first month of the year', example: 'My birthday is in January.', thai: 'มกราคม' },
+      { id: 'day-07', front: 'December', phonetic: '/dɪˈsembə(r)/', back: 'the last month of the year', example: 'It is cold in December.', thai: 'ธันวาคม' },
+      { id: 'day-08', front: 'year', phonetic: '/jɪə(r)/', back: 'a period of twelve months', example: 'I am nine years old.', thai: 'ปี' }
+    ]
+  },
+  {
+    id: 'a1-weather-vocab',
+    lessonId: null,
+    title: 'Weather',
+    level: 'A1',
+    icon: '🌤️',
+    cards: [
+      { id: 'wea-01', front: 'sunny', phonetic: '/ˈsʌni/', back: 'having a lot of light from the sun', example: 'It is sunny today.', thai: 'แดดจ้า' },
+      { id: 'wea-02', front: 'rain', phonetic: '/reɪn/', back: 'water that falls from the sky', example: 'I take an umbrella in the rain.', thai: 'ฝน' },
+      { id: 'wea-03', front: 'cloud', phonetic: '/klaʊd/', back: 'a white or grey shape in the sky', example: 'There is one cloud in the sky.', thai: 'เมฆ' },
+      { id: 'wea-04', front: 'hot', phonetic: '/hɒt/', back: 'having a high temperature', example: 'It is very hot in summer.', thai: 'ร้อน' },
+      { id: 'wea-05', front: 'cold', phonetic: '/kəʊld/', back: 'having a low temperature', example: 'It is cold in the morning.', thai: 'หนาว' },
+      { id: 'wea-06', front: 'wind', phonetic: '/wɪnd/', back: 'moving air outside', example: 'The wind is strong today.', thai: 'ลม' },
+      { id: 'wea-07', front: 'snow', phonetic: '/snəʊ/', back: 'soft white pieces of frozen water that fall from the sky', example: 'Children play in the snow.', thai: 'หิมะ' },
+      { id: 'wea-08', front: 'warm', phonetic: '/wɔːm/', back: 'a little hot, but not too hot', example: 'The water is warm.', thai: 'อบอุ่น' }
+    ]
+  },
+  {
+    id: 'a1-food-drink-vocab',
+    lessonId: null,
+    title: 'Food & Drink',
+    level: 'A1',
+    icon: '🍔',
+    cards: [
+      { id: 'foo-01', front: 'bread', phonetic: '/bred/', back: 'a common food made from flour and baked in an oven', example: 'I eat bread for breakfast.', thai: 'ขนมปัง' },
+      { id: 'foo-02', front: 'rice', phonetic: '/raɪs/', back: 'small white grains that people cook and eat', example: 'We eat rice every day.', thai: 'ข้าว' },
+      { id: 'foo-03', front: 'water', phonetic: '/ˈwɔːtə(r)/', back: 'a clear liquid that people drink', example: 'Please give me some water.', thai: 'น้ำ' },
+      { id: 'foo-04', front: 'milk', phonetic: '/mɪlk/', back: 'a white drink that comes from cows', example: 'She drinks milk in the morning.', thai: 'นม' },
+      { id: 'foo-05', front: 'egg', phonetic: '/eɡ/', back: 'a round food from a chicken', example: 'I want one egg, please.', thai: 'ไข่' },
+      { id: 'foo-06', front: 'coffee', phonetic: '/ˈkɒfi/', back: 'a hot brown drink that many adults like', example: 'My father drinks coffee every morning.', thai: 'กาแฟ' },
+      { id: 'foo-07', front: 'meat', phonetic: '/miːt/', back: 'food that comes from animals', example: 'I do not eat meat.', thai: 'เนื้อสัตว์' },
+      { id: 'foo-08', front: 'sugar', phonetic: '/ˈʃʊɡə(r)/', back: 'a sweet white food you add to drinks', example: 'I put sugar in my tea.', thai: 'น้ำตาล' }
+    ]
+  },
+  {
+    id: 'a1-fruits-vegetables-vocab',
+    lessonId: null,
+    title: 'Fruits & Vegetables',
+    level: 'A1',
+    icon: '🍎',
+    cards: [
+      { id: 'frv-01', front: 'apple', phonetic: '/ˈæpl/', back: 'a round red or green fruit', example: 'I eat an apple every day.', thai: 'แอปเปิล' },
+      { id: 'frv-02', front: 'banana', phonetic: '/bəˈnɑːnə/', back: 'a long yellow fruit', example: 'The monkey likes bananas.', thai: 'กล้วย' },
+      { id: 'frv-03', front: 'orange', phonetic: '/ˈɒrɪndʒ/', back: 'a round orange fruit', example: 'This orange is very sweet.', thai: 'ส้ม' },
+      { id: 'frv-04', front: 'tomato', phonetic: '/təˈmɑːtəʊ/', back: 'a soft red fruit used in cooking', example: 'I put a tomato in my salad.', thai: 'มะเขือเทศ' },
+      { id: 'frv-05', front: 'carrot', phonetic: '/ˈkærət/', back: 'a long orange vegetable', example: 'Rabbits love carrots.', thai: 'แครอท' },
+      { id: 'frv-06', front: 'potato', phonetic: '/pəˈteɪtəʊ/', back: 'a round vegetable that grows in the ground', example: 'We eat potatoes for dinner.', thai: 'มันฝรั่ง' },
+      { id: 'frv-07', front: 'mango', phonetic: '/ˈmæŋɡəʊ/', back: 'a sweet yellow tropical fruit', example: 'Thai mangoes are delicious.', thai: 'มะม่วง' },
+      { id: 'frv-08', front: 'onion', phonetic: '/ˈʌnjən/', back: 'a round vegetable with a strong smell', example: 'The onion makes me cry.', thai: 'หัวหอม' }
+    ]
+  },
+  {
+    id: 'a1-body-parts-vocab',
+    lessonId: null,
+    title: 'Body Parts',
+    level: 'A1',
+    icon: '💪',
+    cards: [
+      { id: 'bod-01', front: 'head', phonetic: '/hed/', back: 'the top part of your body, above your neck', example: 'I wear a hat on my head.', thai: 'หัว / ศีรษะ' },
+      { id: 'bod-02', front: 'hand', phonetic: '/hænd/', back: 'the part at the end of your arm with fingers', example: 'Wash your hands before you eat.', thai: 'มือ' },
+      { id: 'bod-03', front: 'eye', phonetic: '/aɪ/', back: 'the part of your body you use to see', example: 'She has big brown eyes.', thai: 'ตา' },
+      { id: 'bod-04', front: 'ear', phonetic: '/ɪə(r)/', back: 'the part of your body you use to hear', example: 'A rabbit has long ears.', thai: 'หู' },
+      { id: 'bod-05', front: 'nose', phonetic: '/nəʊz/', back: 'the part of your face you use to smell', example: 'The clown has a red nose.', thai: 'จมูก' },
+      { id: 'bod-06', front: 'mouth', phonetic: '/maʊθ/', back: 'the part of your face you use to eat and speak', example: 'Open your mouth, please.', thai: 'ปาก' },
+      { id: 'bod-07', front: 'leg', phonetic: '/leɡ/', back: 'the long part of your body you use to walk', example: 'My legs are tired after the run.', thai: 'ขา' },
+      { id: 'bod-08', front: 'foot', phonetic: '/fʊt/', back: 'the part of your body at the end of your leg', example: 'I hurt my foot.', thai: 'เท้า' }
+    ]
+  },
+  {
+    id: 'a1-clothes-vocab',
+    lessonId: null,
+    title: 'Clothes',
+    level: 'A1',
+    icon: '👕',
+    cards: [
+      { id: 'clo-01', front: 'shirt', phonetic: '/ʃɜːt/', back: 'a piece of clothing you wear on the top of your body', example: 'He wears a white shirt to work.', thai: 'เสื้อเชิ้ต' },
+      { id: 'clo-02', front: 'trousers', phonetic: '/ˈtraʊzəz/', back: 'clothing that covers your legs', example: 'These trousers are too long.', thai: 'กางเกงขายาว' },
+      { id: 'clo-03', front: 'dress', phonetic: '/dres/', back: 'a piece of clothing worn by women and girls', example: 'She wears a red dress.', thai: 'ชุดกระโปรง' },
+      { id: 'clo-04', front: 'shoes', phonetic: '/ʃuːz/', back: 'things you wear on your feet', example: 'My new shoes are black.', thai: 'รองเท้า' },
+      { id: 'clo-05', front: 'hat', phonetic: '/hæt/', back: 'something you wear on your head', example: 'I wear a hat in the sun.', thai: 'หมวก' },
+      { id: 'clo-06', front: 'jacket', phonetic: '/ˈdʒækɪt/', back: 'a short coat you wear when it is cold', example: 'Put on your jacket, it is cold.', thai: 'เสื้อแจ็คเก็ต' },
+      { id: 'clo-07', front: 'socks', phonetic: '/sɒks/', back: 'soft things you wear on your feet inside shoes', example: 'I have blue socks today.', thai: 'ถุงเท้า' },
+      { id: 'clo-08', front: 'skirt', phonetic: '/skɜːt/', back: 'clothing worn by women that hangs from the waist', example: 'Her skirt is very pretty.', thai: 'กระโปรง' }
+    ]
+  },
+  {
+    id: 'a1-house-rooms-vocab',
+    lessonId: null,
+    title: 'House & Rooms',
+    level: 'A1',
+    icon: '🏠',
+    cards: [
+      { id: 'hou-01', front: 'house', phonetic: '/haʊs/', back: 'a building where people live', example: 'They live in a big house.', thai: 'บ้าน' },
+      { id: 'hou-02', front: 'kitchen', phonetic: '/ˈkɪtʃɪn/', back: 'the room where you cook food', example: 'My mother is in the kitchen.', thai: 'ห้องครัว' },
+      { id: 'hou-03', front: 'bedroom', phonetic: '/ˈbedruːm/', back: 'the room where you sleep', example: 'My bedroom is small.', thai: 'ห้องนอน' },
+      { id: 'hou-04', front: 'bathroom', phonetic: '/ˈbɑːθruːm/', back: 'the room where you wash and take a bath', example: 'The bathroom is upstairs.', thai: 'ห้องน้ำ' },
+      { id: 'hou-05', front: 'door', phonetic: '/dɔː(r)/', back: 'the part you open to go into a room', example: 'Please close the door.', thai: 'ประตู' },
+      { id: 'hou-06', front: 'window', phonetic: '/ˈwɪndəʊ/', back: 'the glass part of a wall that lets in light', example: 'Open the window for fresh air.', thai: 'หน้าต่าง' },
+      { id: 'hou-07', front: 'garden', phonetic: '/ˈɡɑːdn/', back: 'the area outside a house with plants and grass', example: 'We have flowers in our garden.', thai: 'สวน' },
+      { id: 'hou-08', front: 'floor', phonetic: '/flɔː(r)/', back: 'the part of a room you walk on', example: 'The cat is on the floor.', thai: 'พื้น' }
+    ]
+  },
+  {
+    id: 'a1-furniture-vocab',
+    lessonId: null,
+    title: 'Furniture',
+    level: 'A1',
+    icon: '🛋️',
+    cards: [
+      { id: 'fur-01', front: 'table', phonetic: '/ˈteɪbl/', back: 'a piece of furniture with a flat top and legs', example: 'We eat at the table.', thai: 'โต๊ะ' },
+      { id: 'fur-02', front: 'chair', phonetic: '/tʃeə(r)/', back: 'a seat for one person', example: 'Please sit on this chair.', thai: 'เก้าอี้' },
+      { id: 'fur-03', front: 'bed', phonetic: '/bed/', back: 'a piece of furniture you sleep on', example: 'I go to bed at nine.', thai: 'เตียง' },
+      { id: 'fur-04', front: 'sofa', phonetic: '/ˈsəʊfə/', back: 'a long soft seat for two or more people', example: 'We watch TV on the sofa.', thai: 'โซฟา' },
+      { id: 'fur-05', front: 'lamp', phonetic: '/læmp/', back: 'a small light for a table or floor', example: 'Turn on the lamp, please.', thai: 'โคมไฟ' },
+      { id: 'fur-06', front: 'desk', phonetic: '/desk/', back: 'a table where you write or work', example: 'My books are on the desk.', thai: 'โต๊ะทำงาน' },
+      { id: 'fur-07', front: 'shelf', phonetic: '/ʃelf/', back: 'a flat board on a wall to put things on', example: 'The cups are on the shelf.', thai: 'ชั้นวางของ' },
+      { id: 'fur-08', front: 'cupboard', phonetic: '/ˈkʌbəd/', back: 'a piece of furniture with doors to keep things in', example: 'The plates are in the cupboard.', thai: 'ตู้' }
+    ]
+  },
+  {
+    id: 'a1-animals-vocab',
+    lessonId: null,
+    title: 'Animals',
+    level: 'A1',
+    icon: '🐘',
+    cards: [
+      { id: 'ani-01', front: 'elephant', phonetic: '/ˈelɪfənt/', back: 'a very big grey animal with a long nose', example: 'The elephant is very big.', thai: 'ช้าง' },
+      { id: 'ani-02', front: 'lion', phonetic: '/ˈlaɪən/', back: 'a big wild cat that lives in Africa', example: 'The lion is the king of animals.', thai: 'สิงโต' },
+      { id: 'ani-03', front: 'monkey', phonetic: '/ˈmʌŋki/', back: 'an animal that climbs trees and eats fruit', example: 'The monkey eats a banana.', thai: 'ลิง' },
+      { id: 'ani-04', front: 'bird', phonetic: '/bɜːd/', back: 'an animal with wings that can fly', example: 'A bird sings in the tree.', thai: 'นก' },
+      { id: 'ani-05', front: 'fish', phonetic: '/fɪʃ/', back: 'an animal that lives in water', example: 'The fish swims in the river.', thai: 'ปลา' },
+      { id: 'ani-06', front: 'cow', phonetic: '/kaʊ/', back: 'a big farm animal that gives milk', example: 'The cow eats grass.', thai: 'วัว' },
+      { id: 'ani-07', front: 'horse', phonetic: '/hɔːs/', back: 'a large animal that people ride', example: 'She rides a brown horse.', thai: 'ม้า' },
+      { id: 'ani-08', front: 'tiger', phonetic: '/ˈtaɪɡə(r)/', back: 'a big wild cat with orange and black stripes', example: 'The tiger runs very fast.', thai: 'เสือ' }
+    ]
+  },
+  {
+    id: 'a1-pets-vocab',
+    lessonId: null,
+    title: 'Pets',
+    level: 'A1',
+    icon: '🐶',
+    cards: [
+      { id: 'pet-01', front: 'dog', phonetic: '/dɒɡ/', back: 'a popular pet animal that barks', example: 'My dog likes to play.', thai: 'สุนัข' },
+      { id: 'pet-02', front: 'cat', phonetic: '/kæt/', back: 'a small pet animal that says meow', example: 'The cat sleeps all day.', thai: 'แมว' },
+      { id: 'pet-03', front: 'rabbit', phonetic: '/ˈræbɪt/', back: 'a small animal with long ears', example: 'The rabbit eats a carrot.', thai: 'กระต่าย' },
+      { id: 'pet-04', front: 'hamster', phonetic: '/ˈhæmstə(r)/', back: 'a small pet that looks like a little mouse', example: 'My hamster runs in its wheel.', thai: 'หนูแฮมสเตอร์' },
+      { id: 'pet-05', front: 'parrot', phonetic: '/ˈpærət/', back: 'a colourful pet bird that can copy words', example: 'The parrot can say hello.', thai: 'นกแก้ว' },
+      { id: 'pet-06', front: 'goldfish', phonetic: '/ˈɡəʊldfɪʃ/', back: 'a small orange fish people keep as a pet', example: 'I feed my goldfish every day.', thai: 'ปลาทอง' },
+      { id: 'pet-07', front: 'turtle', phonetic: '/ˈtɜːtl/', back: 'a slow animal with a hard shell', example: 'The turtle walks very slowly.', thai: 'เต่า' },
+      { id: 'pet-08', front: 'puppy', phonetic: '/ˈpʌpi/', back: 'a baby dog', example: 'The puppy is very cute.', thai: 'ลูกสุนัข' }
+    ]
+  },
+  {
+    id: 'a1-jobs-vocab',
+    lessonId: null,
+    title: 'Jobs & Occupations',
+    level: 'A1',
+    icon: '👷',
+    cards: [
+      { id: 'job-01', front: 'teacher', phonetic: '/ˈtiːtʃə(r)/', back: 'a person who helps students learn', example: 'My teacher is very kind.', thai: 'ครู' },
+      { id: 'job-02', front: 'doctor', phonetic: '/ˈdɒktə(r)/', back: 'a person who helps sick people', example: 'The doctor helps me when I am ill.', thai: 'หมอ' },
+      { id: 'job-03', front: 'nurse', phonetic: '/nɜːs/', back: 'a person who helps sick people in a hospital', example: 'The nurse is very busy today.', thai: 'พยาบาล' },
+      { id: 'job-04', front: 'farmer', phonetic: '/ˈfɑːmə(r)/', back: 'a person who grows food on a farm', example: 'The farmer grows rice.', thai: 'ชาวนา / เกษตรกร' },
+      { id: 'job-05', front: 'cook', phonetic: '/kʊk/', back: 'a person whose job is to make food', example: 'The cook makes good soup.', thai: 'พ่อครัว / แม่ครัว' },
+      { id: 'job-06', front: 'driver', phonetic: '/ˈdraɪvə(r)/', back: 'a person who drives a car or bus', example: 'The bus driver is friendly.', thai: 'คนขับรถ' },
+      { id: 'job-07', front: 'police officer', phonetic: '/pəˈliːs ˌɒfɪsə(r)/', back: 'a person who keeps people safe', example: 'The police officer helps people.', thai: 'ตำรวจ' },
+      { id: 'job-08', front: 'student', phonetic: '/ˈstjuːdnt/', back: 'a person who studies at a school', example: 'I am a student.', thai: 'นักเรียน' }
+    ]
+  },
+  {
+    id: 'a1-feelings-vocab',
+    lessonId: null,
+    title: 'Feelings & Emotions',
+    level: 'A1',
+    icon: '😊',
+    cards: [
+      { id: 'fee-01', front: 'happy', phonetic: '/ˈhæpi/', back: 'feeling good and pleased', example: 'I am happy to see you.', thai: 'มีความสุข' },
+      { id: 'fee-02', front: 'sad', phonetic: '/sæd/', back: 'feeling unhappy', example: 'She is sad because her cat is sick.', thai: 'เศร้า' },
+      { id: 'fee-03', front: 'angry', phonetic: '/ˈæŋɡri/', back: 'feeling very upset or cross', example: 'He is angry with his brother.', thai: 'โกรธ' },
+      { id: 'fee-04', front: 'tired', phonetic: '/ˈtaɪəd/', back: 'feeling that you need to rest or sleep', example: 'I am tired after school.', thai: 'เหนื่อย' },
+      { id: 'fee-05', front: 'scared', phonetic: '/skeəd/', back: 'feeling afraid', example: 'The child is scared of the dark.', thai: 'กลัว' },
+      { id: 'fee-06', front: 'hungry', phonetic: '/ˈhʌŋɡri/', back: 'feeling that you want to eat', example: 'I am hungry, let us eat.', thai: 'หิว' },
+      { id: 'fee-07', front: 'excited', phonetic: '/ɪkˈsaɪtɪd/', back: 'feeling very happy about something good', example: 'She is excited about the trip.', thai: 'ตื่นเต้น' },
+      { id: 'fee-08', front: 'bored', phonetic: '/bɔːd/', back: 'feeling that something is not interesting', example: "I am bored, there is nothing to do.", thai: 'เบื่อ' }
+    ]
+  },
+  {
+    id: 'a1-daily-actions-vocab',
+    lessonId: null,
+    title: 'Common Verbs (Daily Actions)',
+    level: 'A1',
+    icon: '🏃',
+    cards: [
+      { id: 'act-01', front: 'eat', phonetic: '/iːt/', back: 'to put food in your mouth', example: 'I eat breakfast at seven.', thai: 'กิน' },
+      { id: 'act-02', front: 'drink', phonetic: '/drɪŋk/', back: 'to take liquid into your body', example: 'I drink water every day.', thai: 'ดื่ม' },
+      { id: 'act-03', front: 'sleep', phonetic: '/sliːp/', back: 'to rest with your eyes closed at night', example: 'I sleep for eight hours.', thai: 'นอน' },
+      { id: 'act-04', front: 'walk', phonetic: '/wɔːk/', back: 'to move on your feet', example: 'I walk to school.', thai: 'เดิน' },
+      { id: 'act-05', front: 'read', phonetic: '/riːd/', back: 'to look at words and understand them', example: 'She reads a book before bed.', thai: 'อ่าน' },
+      { id: 'act-06', front: 'write', phonetic: '/raɪt/', back: 'to make words with a pen or pencil', example: 'I write my name here.', thai: 'เขียน' },
+      { id: 'act-07', front: 'run', phonetic: '/rʌn/', back: 'to move fast on your feet', example: 'The children run in the park.', thai: 'วิ่ง' },
+      { id: 'act-08', front: 'work', phonetic: '/wɜːk/', back: 'to do a job', example: 'My father works in an office.', thai: 'ทำงาน' }
+    ]
+  },
+  {
+    id: 'a1-transport-vocab',
+    lessonId: null,
+    title: 'Transport',
+    level: 'A1',
+    icon: '🚌',
+    cards: [
+      { id: 'tra-01', front: 'car', phonetic: '/kɑː(r)/', back: 'a vehicle with four wheels for a few people', example: 'We go to the beach by car.', thai: 'รถยนต์' },
+      { id: 'tra-02', front: 'bus', phonetic: '/bʌs/', back: 'a big vehicle that carries many people', example: 'I take the bus to school.', thai: 'รถบัส / รถเมล์' },
+      { id: 'tra-03', front: 'train', phonetic: '/treɪn/', back: 'a long vehicle that runs on rails', example: 'The train is very fast.', thai: 'รถไฟ' },
+      { id: 'tra-04', front: 'bike', phonetic: '/baɪk/', back: 'a vehicle with two wheels that you push with your feet', example: 'He rides his bike to work.', thai: 'จักรยาน' },
+      { id: 'tra-05', front: 'plane', phonetic: '/pleɪn/', back: 'a vehicle that flies in the sky', example: 'We fly to Japan on a plane.', thai: 'เครื่องบิน' },
+      { id: 'tra-06', front: 'boat', phonetic: '/bəʊt/', back: 'a small vehicle that travels on water', example: 'We cross the river by boat.', thai: 'เรือ' },
+      { id: 'tra-07', front: 'taxi', phonetic: '/ˈtæksi/', back: 'a car you pay to take you somewhere', example: 'Let us take a taxi to the airport.', thai: 'แท็กซี่' },
+      { id: 'tra-08', front: 'motorbike', phonetic: '/ˈməʊtəbaɪk/', back: 'a vehicle with two wheels and an engine', example: 'Many people ride motorbikes in Thailand.', thai: 'มอเตอร์ไซค์' }
+    ]
+  },
+  {
+    id: 'a1-school-vocab',
+    lessonId: null,
+    title: 'School & Classroom',
+    level: 'A1',
+    icon: '🏫',
+    cards: [
+      { id: 'sch-01', front: 'book', phonetic: '/bʊk/', back: 'pages with words that you read', example: 'This book is very interesting.', thai: 'หนังสือ' },
+      { id: 'sch-02', front: 'pen', phonetic: '/pen/', back: 'a thing you use to write with ink', example: 'Can I borrow your pen?', thai: 'ปากกา' },
+      { id: 'sch-03', front: 'pencil', phonetic: '/ˈpensl/', back: 'a thing you use to write or draw', example: 'I draw with a pencil.', thai: 'ดินสอ' },
+      { id: 'sch-04', front: 'teacher', phonetic: '/ˈtiːtʃə(r)/', back: 'a person who teaches in a school', example: 'The teacher writes on the board.', thai: 'ครู' },
+      { id: 'sch-05', front: 'classroom', phonetic: '/ˈklɑːsruːm/', back: 'a room where students learn', example: 'Our classroom is big.', thai: 'ห้องเรียน' },
+      { id: 'sch-06', front: 'desk', phonetic: '/desk/', back: 'a table where a student works', example: 'I sit at my desk.', thai: 'โต๊ะเรียน' },
+      { id: 'sch-07', front: 'bag', phonetic: '/bæɡ/', back: 'a thing you carry your books in', example: 'My school bag is heavy.', thai: 'กระเป๋า' },
+      { id: 'sch-08', front: 'board', phonetic: '/bɔːd/', back: 'a flat surface the teacher writes on', example: 'Look at the board, please.', thai: 'กระดาน' }
+    ]
+  },
+  {
+    id: 'a1-countries-vocab',
+    lessonId: null,
+    title: 'Countries & Nationalities',
+    level: 'A1',
+    icon: '🌍',
+    cards: [
+      { id: 'cou-01', front: 'Thailand', phonetic: '/ˈtaɪlænd/', back: 'a country in Southeast Asia', example: 'I live in Thailand.', thai: 'ประเทศไทย' },
+      { id: 'cou-02', front: 'Thai', phonetic: '/taɪ/', back: 'a person or thing from Thailand', example: 'I am Thai.', thai: 'คนไทย / ไทย' },
+      { id: 'cou-03', front: 'England', phonetic: '/ˈɪŋɡlənd/', back: 'a country in the United Kingdom', example: 'London is in England.', thai: 'ประเทศอังกฤษ' },
+      { id: 'cou-04', front: 'America', phonetic: '/əˈmerɪkə/', back: 'a large country in North America', example: 'My friend lives in America.', thai: 'ประเทศอเมริกา' },
+      { id: 'cou-05', front: 'Japan', phonetic: '/dʒəˈpæn/', back: 'a country in East Asia', example: 'Japan has many beautiful temples.', thai: 'ประเทศญี่ปุ่น' },
+      { id: 'cou-06', front: 'China', phonetic: '/ˈtʃaɪnə/', back: 'a very big country in Asia', example: 'China is a very big country.', thai: 'ประเทศจีน' },
+      { id: 'cou-07', front: 'country', phonetic: '/ˈkʌntri/', back: 'an area of land with its own people and government', example: 'What country are you from?', thai: 'ประเทศ' },
+      { id: 'cou-08', front: 'city', phonetic: '/ˈsɪti/', back: 'a big town with many people', example: 'Bangkok is a big city.', thai: 'เมือง' }
+    ]
+  },
+{
+    id: 'a2-health-fitness-vocab',
+    lessonId: null,
+    title: 'Health & Fitness',
+    level: 'A2',
+    icon: '💪',
+    cards: [
+      { id: 'hf-01', front: 'exercise', phonetic: '/ˈeksəsaɪz/', back: 'physical activity done to stay healthy or fit', example: 'I exercise three times a week at the gym.', thai: 'ออกกำลังกาย' },
+      { id: 'hf-02', front: 'healthy', phonetic: '/ˈhelθi/', back: 'good for your body; not ill', example: 'Eating vegetables keeps you healthy.', thai: 'มีสุขภาพดี' },
+      { id: 'hf-03', front: 'muscle', phonetic: '/ˈmʌsl/', back: 'a part of the body that helps you move', example: 'Lifting weights makes your muscles stronger.', thai: 'กล้ามเนื้อ' },
+      { id: 'hf-04', front: 'sleep', phonetic: '/sliːp/', back: 'to rest with your eyes closed at night', example: 'You should sleep eight hours every night.', thai: 'นอนหลับ' },
+      { id: 'hf-05', front: 'stretch', phonetic: '/stretʃ/', back: 'to make your body longer to relax the muscles', example: 'I stretch my legs before I run.', thai: 'ยืดเส้น' },
+      { id: 'hf-06', front: 'diet', phonetic: '/ˈdaɪət/', back: 'the food that you usually eat', example: 'A good diet has a lot of fruit and vegetables.', thai: 'อาหารการกิน' },
+      { id: 'hf-07', front: 'weight', phonetic: '/weɪt/', back: 'how heavy a person or thing is', example: 'She wants to lose some weight this year.', thai: 'น้ำหนัก' },
+      { id: 'hf-08', front: 'tired', phonetic: '/ˈtaɪəd/', back: 'feeling that you need to rest or sleep', example: 'I feel tired after a long day at work.', thai: 'เหนื่อย' }
+    ]
+  },
+  {
+    id: 'a2-travel-holidays-vocab',
+    lessonId: null,
+    title: 'Travel & Holidays',
+    level: 'A2',
+    icon: '✈️',
+    cards: [
+      { id: 'tr-01', front: 'passport', phonetic: '/ˈpɑːspɔːt/', back: 'a small book that lets you travel to other countries', example: 'Do not forget your passport at the airport.', thai: 'หนังสือเดินทาง' },
+      { id: 'tr-02', front: 'luggage', phonetic: '/ˈlʌɡɪdʒ/', back: 'the bags you take with you when you travel', example: 'My luggage was very heavy on the trip.', thai: 'กระเป๋าเดินทาง' },
+      { id: 'tr-03', front: 'flight', phonetic: '/flaɪt/', back: 'a journey by plane', example: 'Our flight to Japan leaves at nine.', thai: 'เที่ยวบิน' },
+      { id: 'tr-04', front: 'hotel', phonetic: '/həʊˈtel/', back: 'a place where you pay to sleep when travelling', example: 'We stayed in a small hotel near the beach.', thai: 'โรงแรม' },
+      { id: 'tr-05', front: 'ticket', phonetic: '/ˈtɪkɪt/', back: 'a paper or card that lets you travel or enter', example: 'I bought a train ticket to the city.', thai: 'ตั๋ว' },
+      { id: 'tr-06', front: 'tourist', phonetic: '/ˈtʊərɪst/', back: 'a person who visits a place on holiday', example: 'Many tourists visit the temple every day.', thai: 'นักท่องเที่ยว' },
+      { id: 'tr-07', front: 'souvenir', phonetic: '/ˌsuːvəˈnɪə/', back: 'a thing you buy to remember a place', example: 'I bought a small souvenir for my sister.', thai: 'ของที่ระลึก' },
+      { id: 'tr-08', front: 'abroad', phonetic: '/əˈbrɔːd/', back: 'in or to another country', example: 'They go abroad every summer for a holiday.', thai: 'ต่างประเทศ' }
+    ]
+  },
+  {
+    id: 'a2-technology-everyday-vocab',
+    lessonId: null,
+    title: 'Everyday Technology',
+    level: 'A2',
+    icon: '📱',
+    cards: [
+      { id: 'tech-01', front: 'download', phonetic: '/ˌdaʊnˈləʊd/', back: 'to move a file from the internet to your device', example: 'I want to download this song to my phone.', thai: 'ดาวน์โหลด' },
+      { id: 'tech-02', front: 'charge', phonetic: '/tʃɑːdʒ/', back: 'to put electricity into a battery', example: 'I need to charge my phone before we leave.', thai: 'ชาร์จ' },
+      { id: 'tech-03', front: 'screen', phonetic: '/skriːn/', back: 'the flat part of a device that shows pictures', example: 'The screen on my laptop is very bright.', thai: 'หน้าจอ' },
+      { id: 'tech-04', front: 'password', phonetic: '/ˈpɑːswɜːd/', back: 'a secret word you use to open an account', example: 'Please type your password to log in.', thai: 'รหัสผ่าน' },
+      { id: 'tech-05', front: 'app', phonetic: '/æp/', back: 'a small program you use on a phone', example: 'I use a map app to find the way.', thai: 'แอปพลิเคชัน' },
+      { id: 'tech-06', front: 'wireless', phonetic: '/ˈwaɪələs/', back: 'working without wires or cables', example: 'The hotel has free wireless internet.', thai: 'ไร้สาย' },
+      { id: 'tech-07', front: 'update', phonetic: '/ˌʌpˈdeɪt/', back: 'to make software newer and better', example: 'You should update the app to fix the problem.', thai: 'อัปเดต' },
+      { id: 'tech-08', front: 'message', phonetic: '/ˈmesɪdʒ/', back: 'a short written note you send to someone', example: 'She sent me a message this morning.', thai: 'ข้อความ' }
+    ]
+  },
+  {
+    id: 'a2-household-chores-vocab',
+    lessonId: null,
+    title: 'Household Chores',
+    level: 'A2',
+    icon: '🧹',
+    cards: [
+      { id: 'hc-01', front: 'sweep', phonetic: '/swiːp/', back: 'to clean the floor with a brush', example: 'I sweep the kitchen floor every morning.', thai: 'กวาด' },
+      { id: 'hc-02', front: 'laundry', phonetic: '/ˈlɔːndri/', back: 'clothes that need washing or have been washed', example: 'I do the laundry on Sundays.', thai: 'ซักผ้า' },
+      { id: 'hc-03', front: 'dust', phonetic: '/dʌst/', back: 'to clean away the fine dirt on surfaces', example: 'Please dust the shelves in the living room.', thai: 'ปัดฝุ่น' },
+      { id: 'hc-04', front: 'tidy', phonetic: '/ˈtaɪdi/', back: 'to put things in their correct place', example: 'Can you tidy your room before dinner?', thai: 'จัดให้เป็นระเบียบ' },
+      { id: 'hc-05', front: 'vacuum', phonetic: '/ˈvækjuːm/', back: 'to clean a floor with a machine that sucks dirt', example: 'He vacuums the carpet twice a week.', thai: 'ดูดฝุ่น' },
+      { id: 'hc-06', front: 'iron', phonetic: '/ˈaɪən/', back: 'to make clothes flat and smooth with a hot tool', example: 'I need to iron my shirt for work.', thai: 'รีดผ้า' },
+      { id: 'hc-07', front: 'rubbish', phonetic: '/ˈrʌbɪʃ/', back: 'things you throw away because you do not want them', example: 'Please take the rubbish outside.', thai: 'ขยะ' },
+      { id: 'hc-08', front: 'wash up', phonetic: '/ˌwɒʃ ˈʌp/', back: 'to clean the plates and cups after a meal', example: 'I will wash up after we eat.', thai: 'ล้างจาน' }
+    ]
+  },
+  {
+    id: 'a2-sports-games-vocab',
+    lessonId: null,
+    title: 'Sports & Games',
+    level: 'A2',
+    icon: '⚽',
+    cards: [
+      { id: 'sg-01', front: 'team', phonetic: '/tiːm/', back: 'a group of people who play together', example: 'Our team won the match yesterday.', thai: 'ทีม' },
+      { id: 'sg-02', front: 'score', phonetic: '/skɔː/', back: 'the number of points in a game', example: 'The final score was two to one.', thai: 'คะแนน' },
+      { id: 'sg-03', front: 'win', phonetic: '/wɪn/', back: 'to be first or best in a game', example: 'I hope we win the game today.', thai: 'ชนะ' },
+      { id: 'sg-04', front: 'coach', phonetic: '/kəʊtʃ/', back: 'a person who trains a sports team', example: 'The coach helped us play better.', thai: 'โค้ช' },
+      { id: 'sg-05', front: 'match', phonetic: '/mætʃ/', back: 'a sports game between two teams or players', example: 'The football match starts at seven.', thai: 'การแข่งขัน' },
+      { id: 'sg-06', front: 'practice', phonetic: '/ˈpræktɪs/', back: 'doing something many times to get better', example: 'We have football practice on Tuesdays.', thai: 'ฝึกซ้อม' },
+      { id: 'sg-07', front: 'player', phonetic: '/ˈpleɪə/', back: 'a person who takes part in a game or sport', example: 'He is the best player on the team.', thai: 'ผู้เล่น' },
+      { id: 'sg-08', front: 'referee', phonetic: '/ˌrefəˈriː/', back: 'a person who makes sure players follow the rules', example: 'The referee stopped the game.', thai: 'ผู้ตัดสิน' }
+    ]
+  },
+  {
+    id: 'a2-cooking-kitchen-vocab',
+    lessonId: null,
+    title: 'Cooking & Kitchen',
+    level: 'A2',
+    icon: '🍳',
+    cards: [
+      { id: 'ck-01', front: 'boil', phonetic: '/bɔɪl/', back: 'to heat water or food until it bubbles', example: 'Boil the water before you add the rice.', thai: 'ต้ม' },
+      { id: 'ck-02', front: 'fry', phonetic: '/fraɪ/', back: 'to cook food in hot oil', example: 'I fry the eggs in a little oil.', thai: 'ทอด' },
+      { id: 'ck-03', front: 'recipe', phonetic: '/ˈresəpi/', back: 'a set of steps that show how to cook a dish', example: 'This recipe is very easy to follow.', thai: 'สูตรอาหาร' },
+      { id: 'ck-04', front: 'knife', phonetic: '/naɪf/', back: 'a tool with a sharp edge for cutting food', example: 'Use a knife to cut the vegetables.', thai: 'มีด' },
+      { id: 'ck-05', front: 'oven', phonetic: '/ˈʌvn/', back: 'a machine that cooks food with heat inside', example: 'Put the cake in the oven for thirty minutes.', thai: 'เตาอบ' },
+      { id: 'ck-06', front: 'mix', phonetic: '/mɪks/', back: 'to put different things together', example: 'Mix the flour and the eggs in a bowl.', thai: 'ผสม' },
+      { id: 'ck-07', front: 'taste', phonetic: '/teɪst/', back: 'to eat a small amount to check the flavour', example: 'Taste the soup and add more salt.', thai: 'ชิม' },
+      { id: 'ck-08', front: 'slice', phonetic: '/slaɪs/', back: 'to cut something into thin flat pieces', example: 'Please slice the bread for me.', thai: 'หั่นเป็นแผ่น' }
+    ]
+  },
+  {
+    id: 'a2-describing-people-vocab',
+    lessonId: null,
+    title: 'Describing People',
+    level: 'A2',
+    icon: '🧑',
+    cards: [
+      { id: 'dp-01', front: 'tall', phonetic: '/tɔːl/', back: 'having a bigger than usual height', example: 'My brother is very tall.', thai: 'สูง' },
+      { id: 'dp-02', front: 'curly', phonetic: '/ˈkɜːli/', back: 'having hair with lots of round shapes', example: 'She has beautiful curly hair.', thai: 'หยิก' },
+      { id: 'dp-03', front: 'young', phonetic: '/jʌŋ/', back: 'not old; having lived a short time', example: 'The teacher is quite young.', thai: 'เด็ก' },
+      { id: 'dp-04', front: 'thin', phonetic: '/θɪn/', back: 'not fat; having little body weight', example: 'He is tall and thin.', thai: 'ผอม' },
+      { id: 'dp-05', front: 'beard', phonetic: '/bɪəd/', back: 'the hair that grows on a man\'s face', example: 'My uncle has a long grey beard.', thai: 'เครา' },
+      { id: 'dp-06', front: 'handsome', phonetic: '/ˈhænsəm/', back: 'good-looking, usually about a man', example: 'The actor is very handsome.', thai: 'หล่อ' },
+      { id: 'dp-07', front: 'middle-aged', phonetic: '/ˌmɪdl ˈeɪdʒd/', back: 'not young and not old, about forty to sixty', example: 'A middle-aged man sat next to me.', thai: 'วัยกลางคน' },
+      { id: 'dp-08', front: 'good-looking', phonetic: '/ˌɡʊd ˈlʊkɪŋ/', back: 'having a nice or pleasant appearance', example: 'She is a good-looking woman.', thai: 'หน้าตาดี' }
+    ]
+  },
+  {
+    id: 'a2-nature-outdoors-vocab',
+    lessonId: null,
+    title: 'Nature & Outdoors',
+    level: 'A2',
+    icon: '🏞️',
+    cards: [
+      { id: 'no-01', front: 'mountain', phonetic: '/ˈmaʊntɪn/', back: 'a very high hill made of rock', example: 'We climbed a high mountain last week.', thai: 'ภูเขา' },
+      { id: 'no-02', front: 'river', phonetic: '/ˈrɪvə/', back: 'a long line of water that flows to the sea', example: 'Children were swimming in the river.', thai: 'แม่น้ำ' },
+      { id: 'no-03', front: 'forest', phonetic: '/ˈfɒrɪst/', back: 'a large area with many trees', example: 'We walked through a quiet forest.', thai: 'ป่า' },
+      { id: 'no-04', front: 'lake', phonetic: '/leɪk/', back: 'a large area of water with land all around', example: 'They went fishing at the lake.', thai: 'ทะเลสาบ' },
+      { id: 'no-05', front: 'field', phonetic: '/fiːld/', back: 'a piece of open land, often for grass or crops', example: 'The cows are eating grass in the field.', thai: 'ทุ่งนา' },
+      { id: 'no-06', front: 'wild', phonetic: '/waɪld/', back: 'living in nature, not kept by people', example: 'We saw a wild animal in the forest.', thai: 'ป่า/ไม่เชื่อง' },
+      { id: 'no-07', front: 'hill', phonetic: '/hɪl/', back: 'a small mountain; a high area of land', example: 'Our house is on a small hill.', thai: 'เนินเขา' },
+      { id: 'no-08', front: 'valley', phonetic: '/ˈvæli/', back: 'the low land between two hills or mountains', example: 'A small town sits in the green valley.', thai: 'หุบเขา' }
+    ]
+  },
+  {
+    id: 'a2-weather-seasons-vocab',
+    lessonId: null,
+    title: 'Weather & Seasons',
+    level: 'A2',
+    icon: '🌦️',
+    cards: [
+      { id: 'ws-01', front: 'cloudy', phonetic: '/ˈklaʊdi/', back: 'with many clouds in the sky', example: 'It was cloudy all morning.', thai: 'มีเมฆมาก' },
+      { id: 'ws-02', front: 'windy', phonetic: '/ˈwɪndi/', back: 'with a lot of wind', example: 'It is very windy near the sea.', thai: 'มีลมแรง' },
+      { id: 'ws-03', front: 'storm', phonetic: '/stɔːm/', back: 'very bad weather with wind and rain', example: 'A big storm is coming tonight.', thai: 'พายุ' },
+      { id: 'ws-04', front: 'rainbow', phonetic: '/ˈreɪnbəʊ/', back: 'the bow of colours in the sky after rain', example: 'We saw a rainbow after the rain.', thai: 'รุ้งกินน้ำ' },
+      { id: 'ws-05', front: 'spring', phonetic: '/sprɪŋ/', back: 'the season after winter when plants grow', example: 'Flowers bloom in the spring.', thai: 'ฤดูใบไม้ผลิ' },
+      { id: 'ws-06', front: 'autumn', phonetic: '/ˈɔːtəm/', back: 'the season when leaves fall from trees', example: 'The weather gets cooler in autumn.', thai: 'ฤดูใบไม้ร่วง' },
+      { id: 'ws-07', front: 'fog', phonetic: '/fɒɡ/', back: 'thick cloud near the ground that is hard to see through', example: 'There was heavy fog on the road.', thai: 'หมอก' },
+      { id: 'ws-08', front: 'temperature', phonetic: '/ˈtemprətʃə/', back: 'how hot or cold something is', example: 'The temperature is very high today.', thai: 'อุณหภูมิ' }
+    ]
+  },
+  {
+    id: 'a2-free-time-entertainment-vocab',
+    lessonId: null,
+    title: 'Free Time & Entertainment',
+    level: 'A2',
+    icon: '🎬',
+    cards: [
+      { id: 'fte-01', front: 'hobby', phonetic: '/ˈhɒbi/', back: 'something you enjoy doing in your free time', example: 'Painting is my favourite hobby.', thai: 'งานอดิเรก' },
+      { id: 'fte-02', front: 'concert', phonetic: '/ˈkɒnsət/', back: 'a show where people play or sing music', example: 'We went to a rock concert on Friday.', thai: 'คอนเสิร์ต' },
+      { id: 'fte-03', front: 'relax', phonetic: '/rɪˈlæks/', back: 'to rest and become calm', example: 'I like to relax at home on Sundays.', thai: 'ผ่อนคลาย' },
+      { id: 'fte-04', front: 'audience', phonetic: '/ˈɔːdiəns/', back: 'the people who watch or listen to a show', example: 'The audience clapped after the song.', thai: 'ผู้ชม' },
+      { id: 'fte-05', front: 'movie', phonetic: '/ˈmuːvi/', back: 'a story shown with moving pictures', example: 'We watched a funny movie last night.', thai: 'ภาพยนตร์' },
+      { id: 'fte-06', front: 'board game', phonetic: '/ˈbɔːd ɡeɪm/', back: 'a game you play on a flat board with pieces', example: 'We play a board game every weekend.', thai: 'เกมกระดาน' },
+      { id: 'fte-07', front: 'ticket', phonetic: '/ˈtɪkɪt/', back: 'a paper that lets you enter a show or event', example: 'I bought two tickets for the show.', thai: 'ตั๋ว' },
+      { id: 'fte-08', front: 'enjoy', phonetic: '/ɪnˈdʒɔɪ/', back: 'to get pleasure from something', example: 'I really enjoy reading books.', thai: 'สนุกกับ' }
+    ]
+  },
+  {
+    id: 'a2-transport-getting-around-vocab',
+    lessonId: null,
+    title: 'Transport & Getting Around',
+    level: 'A2',
+    icon: '🚌',
+    cards: [
+      { id: 'tg-01', front: 'station', phonetic: '/ˈsteɪʃn/', back: 'a place where trains or buses stop', example: 'I will meet you at the train station.', thai: 'สถานี' },
+      { id: 'tg-02', front: 'platform', phonetic: '/ˈplætfɔːm/', back: 'the place where you wait for a train', example: 'The train leaves from platform three.', thai: 'ชานชาลา' },
+      { id: 'tg-03', front: 'traffic', phonetic: '/ˈtræfɪk/', back: 'the cars and vehicles on the roads', example: 'There is a lot of traffic this morning.', thai: 'การจราจร' },
+      { id: 'tg-04', front: 'journey', phonetic: '/ˈdʒɜːni/', back: 'the act of travelling from one place to another', example: 'The journey to the city takes an hour.', thai: 'การเดินทาง' },
+      { id: 'tg-05', front: 'fare', phonetic: '/feə/', back: 'the money you pay to travel', example: 'The bus fare is very cheap here.', thai: 'ค่าโดยสาร' },
+      { id: 'tg-06', front: 'get on', phonetic: '/ˌɡet ˈɒn/', back: 'to enter a bus, train, or plane', example: 'We get on the bus at the corner.', thai: 'ขึ้นรถ' },
+      { id: 'tg-07', front: 'get off', phonetic: '/ˌɡet ˈɒf/', back: 'to leave a bus, train, or plane', example: 'Get off at the next stop.', thai: 'ลงรถ' },
+      { id: 'tg-08', front: 'timetable', phonetic: '/ˈtaɪmteɪbl/', back: 'a list of times when buses or trains run', example: 'Check the timetable for the next train.', thai: 'ตารางเวลา' }
+    ]
+  },
+  {
+    id: 'a2-feelings-personality-vocab',
+    lessonId: null,
+    title: 'Feelings & Personality',
+    level: 'A2',
+    icon: '😊',
+    cards: [
+      { id: 'fp-01', front: 'nervous', phonetic: '/ˈnɜːvəs/', back: 'worried or a little afraid about something', example: 'I feel nervous before an exam.', thai: 'ประหม่า' },
+      { id: 'fp-02', front: 'friendly', phonetic: '/ˈfrendli/', back: 'kind and nice to other people', example: 'My new neighbour is very friendly.', thai: 'เป็นมิตร' },
+      { id: 'fp-03', front: 'shy', phonetic: '/ʃaɪ/', back: 'not comfortable meeting or talking to people', example: 'He is too shy to speak in class.', thai: 'ขี้อาย' },
+      { id: 'fp-04', front: 'excited', phonetic: '/ɪkˈsaɪtɪd/', back: 'very happy about something that will happen', example: 'The children are excited about the trip.', thai: 'ตื่นเต้น' },
+      { id: 'fp-05', front: 'kind', phonetic: '/kaɪnd/', back: 'caring and nice to other people', example: 'She is always kind to animals.', thai: 'ใจดี' },
+      { id: 'fp-06', front: 'bored', phonetic: '/bɔːd/', back: 'not interested because nothing is happening', example: 'I was bored during the long film.', thai: 'เบื่อ' },
+      { id: 'fp-07', front: 'confident', phonetic: '/ˈkɒnfɪdənt/', back: 'sure about yourself and your abilities', example: 'She is confident when she speaks English.', thai: 'มั่นใจ' },
+      { id: 'fp-08', front: 'lazy', phonetic: '/ˈleɪzi/', back: 'not wanting to work or do anything', example: 'He is too lazy to clean his room.', thai: 'ขี้เกียจ' }
+    ]
+  },
+  {
+    id: 'a2-past-experiences-vocab',
+    lessonId: null,
+    title: 'Past Experiences',
+    level: 'A2',
+    icon: '📸',
+    cards: [
+      { id: 'pe-01', front: 'ago', phonetic: '/əˈɡəʊ/', back: 'used to say how far back in time something was', example: 'I visited London two years ago.', thai: 'ที่แล้ว' },
+      { id: 'pe-02', front: 'memory', phonetic: '/ˈmeməri/', back: 'something you remember from the past', example: 'I have happy memories of my childhood.', thai: 'ความทรงจำ' },
+      { id: 'pe-03', front: 'last', phonetic: '/lɑːst/', back: 'the one before this one in time', example: 'We went to the beach last summer.', thai: 'ที่ผ่านมา' },
+      { id: 'pe-04', front: 'once', phonetic: '/wʌns/', back: 'one time in the past', example: 'I once met a famous singer.', thai: 'ครั้งหนึ่ง' },
+      { id: 'pe-05', front: 'yesterday', phonetic: '/ˈjestədeɪ/', back: 'the day before today', example: 'I saw an old friend yesterday.', thai: 'เมื่อวาน' },
+      { id: 'pe-06', front: 'happened', phonetic: '/ˈhæpənd/', back: 'took place in the past', example: 'A funny thing happened at school.', thai: 'เกิดขึ้น' },
+      { id: 'pe-07', front: 'used to', phonetic: '/ˈjuːst tuː/', back: 'did something regularly in the past but not now', example: 'I used to play tennis every weekend.', thai: 'เคย' },
+      { id: 'pe-08', front: 'recently', phonetic: '/ˈriːsntli/', back: 'not long ago; in the near past', example: 'I recently started a new job.', thai: 'เมื่อเร็วๆ นี้' }
+    ]
+  },
+  {
+    id: 'a2-future-plans-vocab',
+    lessonId: null,
+    title: 'Future Plans',
+    level: 'A2',
+    icon: '🗓️',
+    cards: [
+      { id: 'fu-01', front: 'plan', phonetic: '/plæn/', back: 'an idea about what you will do later', example: 'We have a plan to travel next year.', thai: 'แผนการ' },
+      { id: 'fu-02', front: 'hope', phonetic: '/həʊp/', back: 'to want something good to happen', example: 'I hope to pass my exam.', thai: 'หวัง' },
+      { id: 'fu-03', front: 'soon', phonetic: '/suːn/', back: 'in a short time from now', example: 'I will call you soon.', thai: 'เร็วๆ นี้' },
+      { id: 'fu-04', front: 'goal', phonetic: '/ɡəʊl/', back: 'something you want to do in the future', example: 'My goal is to speak English well.', thai: 'เป้าหมาย' },
+      { id: 'fu-05', front: 'decide', phonetic: '/dɪˈsaɪd/', back: 'to choose what you will do', example: 'We must decide where to go.', thai: 'ตัดสินใจ' },
+      { id: 'fu-06', front: 'next', phonetic: '/nekst/', back: 'the one that comes after this one', example: 'I will start my new job next week.', thai: 'ถัดไป' },
+      { id: 'fu-07', front: 'promise', phonetic: '/ˈprɒmɪs/', back: 'to say you will surely do something', example: 'I promise to help you tomorrow.', thai: 'สัญญา' },
+      { id: 'fu-08', front: 'save', phonetic: '/seɪv/', back: 'to keep money to use later', example: 'I save money to buy a car.', thai: 'เก็บออม' }
+    ]
+  },
+{
+    id: 'b1-work-careers-vocab',
+    lessonId: null,
+    title: 'Work & Careers',
+    level: 'B1',
+    icon: '💼',
+    cards: [
+      { id: 'work-01', front: 'colleague', phonetic: '/ˈkɒliːɡ/', back: 'a person you work with', example: 'My colleague helped me finish the report on time.', thai: 'เพื่อนร่วมงาน' },
+      { id: 'work-02', front: 'salary', phonetic: '/ˈsæləri/', back: 'the money you are paid regularly for your job', example: 'She earns a good salary at her new company.', thai: 'เงินเดือน' },
+      { id: 'work-03', front: 'promotion', phonetic: '/prəˈməʊʃən/', back: 'a move to a higher or more important job', example: 'He got a promotion after three years of hard work.', thai: 'การเลื่อนตำแหน่ง' },
+      { id: 'work-04', front: 'deadline', phonetic: '/ˈdedlaɪn/', back: 'the time by which something must be finished', example: 'We have a tight deadline for this project.', thai: 'กำหนดส่งงาน' },
+      { id: 'work-05', front: 'apply for', phonetic: '/əˈplaɪ fɔː/', back: 'to make a formal request for a job', example: 'I want to apply for the manager position.', thai: 'สมัคร' },
+      { id: 'work-06', front: 'overtime', phonetic: '/ˈəʊvətaɪm/', back: 'extra hours worked beyond normal working time', example: 'She worked overtime to meet the deadline.', thai: 'ทำงานล่วงเวลา' },
+      { id: 'work-07', front: 'skill', phonetic: '/skɪl/', back: 'an ability to do something well', example: 'Good communication is an important skill at work.', thai: 'ทักษะ' },
+      { id: 'work-08', front: 'resign', phonetic: '/rɪˈzaɪn/', back: 'to officially leave your job', example: 'He decided to resign and start his own business.', thai: 'ลาออก' }
+    ]
+  },
+  {
+    id: 'b1-environment-climate-vocab',
+    lessonId: null,
+    title: 'Environment & Climate',
+    level: 'B1',
+    icon: '🌍',
+    cards: [
+      { id: 'env-01', front: 'pollution', phonetic: '/pəˈluːʃən/', back: 'harmful substances that damage air, water, or land', example: 'Air pollution in the city has increased this year.', thai: 'มลพิษ' },
+      { id: 'env-02', front: 'recycle', phonetic: '/ˌriːˈsaɪkəl/', back: 'to treat waste so it can be used again', example: 'We recycle paper, glass, and plastic at home.', thai: 'รีไซเคิล' },
+      { id: 'env-03', front: 'climate change', phonetic: '/ˈklaɪmət tʃeɪndʒ/', back: 'long-term changes in weather patterns on Earth', example: 'Climate change is affecting farmers around the world.', thai: 'การเปลี่ยนแปลงสภาพภูมิอากาศ' },
+      { id: 'env-04', front: 'renewable energy', phonetic: '/rɪˈnjuːəbəl ˈenədʒi/', back: 'energy from sources that will not run out', example: 'Solar power is a popular form of renewable energy.', thai: 'พลังงานหมุนเวียน' },
+      { id: 'env-05', front: 'greenhouse gas', phonetic: '/ˈɡriːnhaʊs ɡæs/', back: 'a gas that traps heat and warms the planet', example: 'Cars produce a lot of greenhouse gas.', thai: 'ก๊าซเรือนกระจก' },
+      { id: 'env-06', front: 'endangered', phonetic: '/ɪnˈdeɪndʒəd/', back: 'at risk of disappearing forever', example: 'Tigers are an endangered species.', thai: 'ใกล้สูญพันธุ์' },
+      { id: 'env-07', front: 'waste', phonetic: '/weɪst/', back: 'materials that are thrown away as no longer useful', example: 'The factory dumps its waste into the river.', thai: 'ของเสีย' },
+      { id: 'env-08', front: 'sustainable', phonetic: '/səˈsteɪnəbəl/', back: 'able to continue without harming the environment', example: 'They use sustainable farming methods.', thai: 'ยั่งยืน' }
+    ]
+  },
+  {
+    id: 'b1-media-news-vocab',
+    lessonId: null,
+    title: 'Media & News',
+    level: 'B1',
+    icon: '📰',
+    cards: [
+      { id: 'med-01', front: 'headline', phonetic: '/ˈhedlaɪn/', back: 'the title of a news story printed in large letters', example: 'The headline was about the election results.', thai: 'พาดหัวข่าว' },
+      { id: 'med-02', front: 'journalist', phonetic: '/ˈdʒɜːnəlɪst/', back: 'a person who writes news for newspapers or TV', example: 'The journalist interviewed the mayor yesterday.', thai: 'นักข่าว' },
+      { id: 'med-03', front: 'broadcast', phonetic: '/ˈbrɔːdkɑːst/', back: 'to send out a programme on TV or radio', example: 'The match will be broadcast live tonight.', thai: 'ออกอากาศ' },
+      { id: 'med-04', front: 'coverage', phonetic: '/ˈkʌvərɪdʒ/', back: 'the reporting of an event by the media', example: 'The storm received wide news coverage.', thai: 'การรายงานข่าว' },
+      { id: 'med-05', front: 'biased', phonetic: '/ˈbaɪəst/', back: 'unfairly supporting one side or opinion', example: 'Some people think the report was biased.', thai: 'ลำเอียง' },
+      { id: 'med-06', front: 'source', phonetic: '/sɔːs/', back: 'a person or place that gives information', example: 'The reporter protected the name of her source.', thai: 'แหล่งข่าว' },
+      { id: 'med-07', front: 'article', phonetic: '/ˈɑːtɪkəl/', back: 'a piece of writing in a newspaper or magazine', example: 'I read an interesting article about health.', thai: 'บทความ' },
+      { id: 'med-08', front: 'fake news', phonetic: '/feɪk njuːz/', back: 'false information spread as if it were true', example: 'Be careful about fake news on the internet.', thai: 'ข่าวปลอม' }
+    ]
+  },
+  {
+    id: 'b1-money-banking-vocab',
+    lessonId: null,
+    title: 'Money & Banking',
+    level: 'B1',
+    icon: '🏦',
+    cards: [
+      { id: 'mon-01', front: 'account', phonetic: '/əˈkaʊnt/', back: 'an arrangement to keep your money at a bank', example: 'I opened a savings account last week.', thai: 'บัญชี' },
+      { id: 'mon-02', front: 'interest', phonetic: '/ˈɪntrəst/', back: 'extra money paid for borrowing or saving money', example: 'This account pays two percent interest a year.', thai: 'ดอกเบี้ย' },
+      { id: 'mon-03', front: 'withdraw', phonetic: '/wɪðˈdrɔː/', back: 'to take money out of a bank account', example: 'I need to withdraw some cash from the ATM.', thai: 'ถอนเงิน' },
+      { id: 'mon-04', front: 'loan', phonetic: '/ləʊn/', back: 'money you borrow and must pay back', example: 'They took out a loan to buy a house.', thai: 'เงินกู้' },
+      { id: 'mon-05', front: 'budget', phonetic: '/ˈbʌdʒɪt/', back: 'a plan for how to spend your money', example: 'We made a monthly budget to save money.', thai: 'งบประมาณ' },
+      { id: 'mon-06', front: 'debt', phonetic: '/det/', back: 'money that you owe to someone', example: 'He is trying to pay off his credit card debt.', thai: 'หนี้' },
+      { id: 'mon-07', front: 'transfer', phonetic: '/trænsˈfɜː/', back: 'to move money from one account to another', example: 'I will transfer the money to your account today.', thai: 'โอนเงิน' },
+      { id: 'mon-08', front: 'exchange rate', phonetic: '/ɪksˈtʃeɪndʒ reɪt/', back: 'the value of one currency compared to another', example: 'The exchange rate for the dollar is high now.', thai: 'อัตราแลกเปลี่ยน' }
+    ]
+  },
+  {
+    id: 'b1-education-studying-vocab',
+    lessonId: null,
+    title: 'Education & Studying',
+    level: 'B1',
+    icon: '🎓',
+    cards: [
+      { id: 'edu-01', front: 'degree', phonetic: '/dɪˈɡriː/', back: 'a qualification you get from a university', example: 'She has a degree in economics.', thai: 'ปริญญา' },
+      { id: 'edu-02', front: 'revise', phonetic: '/rɪˈvaɪz/', back: 'to study again before an exam', example: 'I need to revise for my English test.', thai: 'ทบทวนบทเรียน' },
+      { id: 'edu-03', front: 'assignment', phonetic: '/əˈsaɪnmənt/', back: 'a task or piece of work given to a student', example: 'The teacher gave us a writing assignment.', thai: 'งานที่มอบหมาย' },
+      { id: 'edu-04', front: 'scholarship', phonetic: '/ˈskɒləʃɪp/', back: 'money given to a student to help pay for study', example: 'He won a scholarship to study abroad.', thai: 'ทุนการศึกษา' },
+      { id: 'edu-05', front: 'lecture', phonetic: '/ˈlektʃə/', back: 'a formal talk given to teach students', example: 'The lecture on history was very interesting.', thai: 'การบรรยาย' },
+      { id: 'edu-06', front: 'graduate', phonetic: '/ˈɡrædʒueɪt/', back: 'to finish your studies and get a qualification', example: 'She will graduate from university next year.', thai: 'สำเร็จการศึกษา' },
+      { id: 'edu-07', front: 'subject', phonetic: '/ˈsʌbdʒɪkt/', back: 'an area of knowledge studied at school', example: 'Maths is my favourite subject.', thai: 'วิชา' },
+      { id: 'edu-08', front: 'deadline', phonetic: '/ˈdedlaɪn/', back: 'the last date to hand in your work', example: 'The deadline for the essay is Friday.', thai: 'วันกำหนดส่ง' }
+    ]
+  },
+  {
+    id: 'b1-relationships-friendship-vocab',
+    lessonId: null,
+    title: 'Relationships & Friendship',
+    level: 'B1',
+    icon: '🤝',
+    cards: [
+      { id: 'rel-01', front: 'get on with', phonetic: '/ɡet ˈɒn wɪð/', back: 'to have a good relationship with someone', example: 'I get on with my sister very well.', thai: 'เข้ากันได้ดีกับ' },
+      { id: 'rel-02', front: 'trust', phonetic: '/trʌst/', back: 'to believe someone is honest and reliable', example: 'A good friendship is built on trust.', thai: 'ความไว้วางใจ' },
+      { id: 'rel-03', front: 'argue', phonetic: '/ˈɑːɡjuː/', back: 'to disagree with someone in an angry way', example: 'They argue about small things sometimes.', thai: 'ทะเลาะ' },
+      { id: 'rel-04', front: 'support', phonetic: '/səˈpɔːt/', back: 'to help someone during a difficult time', example: 'My friends supported me when I was sad.', thai: 'สนับสนุน' },
+      { id: 'rel-05', front: 'break up', phonetic: '/breɪk ʌp/', back: 'to end a romantic relationship', example: 'They broke up after two years together.', thai: 'เลิกกัน' },
+      { id: 'rel-06', front: 'loyal', phonetic: '/ˈlɔɪəl/', back: 'always faithful and supportive to someone', example: "She is a loyal friend who never lets me down.", thai: 'ซื่อสัตย์' },
+      { id: 'rel-07', front: 'reunion', phonetic: '/riːˈjuːniən/', back: 'a meeting of people who have not met for a while', example: 'We had a family reunion last summer.', thai: 'การกลับมาพบกัน' },
+      { id: 'rel-08', front: 'close', phonetic: '/kləʊs/', back: 'knowing and liking someone very much', example: 'We have been close friends since childhood.', thai: 'สนิท' }
+    ]
+  },
+  {
+    id: 'b1-technology-internet-vocab',
+    lessonId: null,
+    title: 'Technology & The Internet',
+    level: 'B1',
+    icon: '💻',
+    cards: [
+      { id: 'tech-01', front: 'download', phonetic: '/ˌdaʊnˈləʊd/', back: 'to copy data from the internet to your device', example: 'I need to download the app first.', thai: 'ดาวน์โหลด' },
+      { id: 'tech-02', front: 'password', phonetic: '/ˈpɑːswɜːd/', back: 'a secret word used to access an account', example: 'You should change your password regularly.', thai: 'รหัสผ่าน' },
+      { id: 'tech-03', front: 'browser', phonetic: '/ˈbraʊzə/', back: 'a program used to look at websites', example: 'Open your browser and search for the site.', thai: 'เว็บเบราว์เซอร์' },
+      { id: 'tech-04', front: 'update', phonetic: '/ˌʌpˈdeɪt/', back: 'to make software the newest version', example: 'You need to update your phone software.', thai: 'อัปเดต' },
+      { id: 'tech-05', front: 'device', phonetic: '/dɪˈvaɪs/', back: 'a piece of electronic equipment', example: 'You can use the app on any device.', thai: 'อุปกรณ์' },
+      { id: 'tech-06', front: 'virus', phonetic: '/ˈvaɪrəs/', back: 'a harmful program that damages computers', example: 'A virus made my laptop very slow.', thai: 'ไวรัส' },
+      { id: 'tech-07', front: 'wireless', phonetic: '/ˈwaɪələs/', back: 'working without using cables or wires', example: 'The hotel has free wireless internet.', thai: 'ไร้สาย' },
+      { id: 'tech-08', front: 'back up', phonetic: '/bæk ʌp/', back: 'to make an extra copy of data for safety', example: 'Remember to back up your files.', thai: 'สำรองข้อมูล' }
+    ]
+  },
+  {
+    id: 'b1-crime-law-vocab',
+    lessonId: null,
+    title: 'Crime & Law (Basics)',
+    level: 'B1',
+    icon: '⚖️',
+    cards: [
+      { id: 'crm-01', front: 'suspect', phonetic: '/ˈsʌspekt/', back: 'a person the police think may be guilty', example: 'The police arrested a suspect this morning.', thai: 'ผู้ต้องสงสัย' },
+      { id: 'crm-02', front: 'witness', phonetic: '/ˈwɪtnəs/', back: 'a person who saw a crime happen', example: 'The witness described what she saw.', thai: 'พยาน' },
+      { id: 'crm-03', front: 'guilty', phonetic: '/ˈɡɪlti/', back: 'having done something wrong or illegal', example: 'The court found him guilty of theft.', thai: 'มีความผิด' },
+      { id: 'crm-04', front: 'evidence', phonetic: '/ˈevɪdəns/', back: 'facts that prove something is true', example: 'There was not enough evidence to arrest him.', thai: 'หลักฐาน' },
+      { id: 'crm-05', front: 'arrest', phonetic: '/əˈrest/', back: 'to take someone to the police station by law', example: 'The officer arrested the thief.', thai: 'จับกุม' },
+      { id: 'crm-06', front: 'fine', phonetic: '/faɪn/', back: 'money you must pay as a punishment', example: 'He got a fine for driving too fast.', thai: 'ค่าปรับ' },
+      { id: 'crm-07', front: 'trial', phonetic: '/ˈtraɪəl/', back: 'a legal process to decide if someone is guilty', example: 'The trial will start next month.', thai: 'การพิจารณาคดี' },
+      { id: 'crm-08', front: 'illegal', phonetic: '/ɪˈliːɡəl/', back: 'not allowed by the law', example: 'It is illegal to park here.', thai: 'ผิดกฎหมาย' }
+    ]
+  },
+  {
+    id: 'b1-housing-renting-vocab',
+    lessonId: null,
+    title: 'Housing & Renting',
+    level: 'B1',
+    icon: '🏠',
+    cards: [
+      { id: 'hou-01', front: 'rent', phonetic: '/rent/', back: 'money paid regularly to live in a place', example: 'The rent for this flat is quite high.', thai: 'ค่าเช่า' },
+      { id: 'hou-02', front: 'landlord', phonetic: '/ˈlændlɔːd/', back: 'a person who owns a property and rents it out', example: 'The landlord fixed the broken heater.', thai: 'เจ้าของบ้านเช่า' },
+      { id: 'hou-03', front: 'tenant', phonetic: '/ˈtenənt/', back: 'a person who pays to live in a place', example: 'The new tenant moves in next week.', thai: 'ผู้เช่า' },
+      { id: 'hou-04', front: 'deposit', phonetic: '/dɪˈpɒzɪt/', back: 'money paid in advance in case of damage', example: 'We paid a deposit before moving in.', thai: 'เงินมัดจำ' },
+      { id: 'hou-05', front: 'lease', phonetic: '/liːs/', back: 'a legal agreement to rent a property', example: 'We signed a one-year lease.', thai: 'สัญญาเช่า' },
+      { id: 'hou-06', front: 'furnished', phonetic: '/ˈfɜːnɪʃt/', back: 'having furniture already inside', example: 'The apartment is fully furnished.', thai: 'มีเฟอร์นิเจอร์' },
+      { id: 'hou-07', front: 'mortgage', phonetic: '/ˈmɔːɡɪdʒ/', back: 'a loan used to buy a house', example: 'They pay their mortgage every month.', thai: 'สินเชื่อบ้าน' },
+      { id: 'hou-08', front: 'neighbourhood', phonetic: '/ˈneɪbəhʊd/', back: 'the area around where you live', example: 'It is a quiet and safe neighbourhood.', thai: 'ย่านที่อยู่อาศัย' }
+    ]
+  },
+  {
+    id: 'b1-fitness-wellbeing-vocab',
+    lessonId: null,
+    title: 'Fitness & Wellbeing',
+    level: 'B1',
+    icon: '🏃',
+    cards: [
+      { id: 'fit-01', front: 'exercise', phonetic: '/ˈeksəsaɪz/', back: 'physical activity to keep your body healthy', example: 'I do exercise three times a week.', thai: 'ออกกำลังกาย' },
+      { id: 'fit-02', front: 'stress', phonetic: '/stres/', back: 'worry caused by a difficult situation', example: 'Yoga helps me reduce stress.', thai: 'ความเครียด' },
+      { id: 'fit-03', front: 'workout', phonetic: '/ˈwɜːkaʊt/', back: 'a session of physical exercise', example: 'My morning workout takes about an hour.', thai: 'การออกกำลังกาย' },
+      { id: 'fit-04', front: 'diet', phonetic: '/ˈdaɪət/', back: 'the food a person usually eats', example: 'A balanced diet is good for your health.', thai: 'อาหารการกิน' },
+      { id: 'fit-05', front: 'relax', phonetic: '/rɪˈlæks/', back: 'to rest and become calm', example: 'I like to relax by listening to music.', thai: 'ผ่อนคลาย' },
+      { id: 'fit-06', front: 'fit', phonetic: '/fɪt/', back: 'healthy and strong, especially from exercise', example: 'Running keeps me fit and healthy.', thai: 'แข็งแรง' },
+      { id: 'fit-07', front: 'sleep', phonetic: '/sliːp/', back: 'to rest with your eyes closed and mind inactive', example: 'Adults need about eight hours of sleep.', thai: 'การนอนหลับ' },
+      { id: 'fit-08', front: 'wellbeing', phonetic: '/ˌwelˈbiːɪŋ/', back: 'the state of being healthy and happy', example: 'Good sleep improves your wellbeing.', thai: 'ความเป็นอยู่ที่ดี' }
+    ]
+  },
+  {
+    id: 'b1-shopping-consumer-rights-vocab',
+    lessonId: null,
+    title: 'Shopping & Consumer Rights',
+    level: 'B1',
+    icon: '🛒',
+    cards: [
+      { id: 'shp-01', front: 'refund', phonetic: '/ˈriːfʌnd/', back: 'money given back when you return something', example: 'I got a full refund for the broken phone.', thai: 'เงินคืน' },
+      { id: 'shp-02', front: 'receipt', phonetic: '/rɪˈsiːt/', back: 'a paper showing what you paid for', example: 'Keep the receipt in case you want to return it.', thai: 'ใบเสร็จ' },
+      { id: 'shp-03', front: 'warranty', phonetic: '/ˈwɒrənti/', back: 'a promise to repair a product if it breaks', example: 'The laptop has a two-year warranty.', thai: 'การรับประกัน' },
+      { id: 'shp-04', front: 'discount', phonetic: '/ˈdɪskaʊnt/', back: 'a reduction in the normal price', example: 'They offer a ten percent discount for students.', thai: 'ส่วนลด' },
+      { id: 'shp-05', front: 'faulty', phonetic: '/ˈfɔːlti/', back: 'not working correctly; broken', example: 'I returned the faulty toaster to the shop.', thai: 'ชำรุด' },
+      { id: 'shp-06', front: 'exchange', phonetic: '/ɪksˈtʃeɪndʒ/', back: 'to give back an item and get a different one', example: 'Can I exchange this shirt for a larger size?', thai: 'แลกเปลี่ยนสินค้า' },
+      { id: 'shp-07', front: 'complaint', phonetic: '/kəmˈpleɪnt/', back: 'a statement that you are not satisfied', example: 'She made a complaint about the poor service.', thai: 'การร้องเรียน' },
+      { id: 'shp-08', front: 'bargain', phonetic: '/ˈbɑːɡɪn/', back: 'something bought for less than its real value', example: 'These shoes were a real bargain in the sale.', thai: 'ของราคาถูก' }
+    ]
+  },
+  {
+    id: 'b1-food-nutrition-vocab',
+    lessonId: null,
+    title: 'Food & Nutrition',
+    level: 'B1',
+    icon: '🥗',
+    cards: [
+      { id: 'fod-01', front: 'ingredient', phonetic: '/ɪnˈɡriːdiənt/', back: 'one of the foods used to make a dish', example: 'Rice is the main ingredient in this meal.', thai: 'ส่วนผสม' },
+      { id: 'fod-02', front: 'protein', phonetic: '/ˈprəʊtiːn/', back: 'a nutrient that helps build the body', example: 'Eggs and fish are high in protein.', thai: 'โปรตีน' },
+      { id: 'fod-03', front: 'vitamin', phonetic: '/ˈvɪtəmɪn/', back: 'a natural substance needed for good health', example: 'Oranges contain a lot of vitamin C.', thai: 'วิตามิน' },
+      { id: 'fod-04', front: 'organic', phonetic: '/ɔːˈɡænɪk/', back: 'grown without artificial chemicals', example: 'She only buys organic vegetables.', thai: 'ออร์แกนิก' },
+      { id: 'fod-05', front: 'nutritious', phonetic: '/njuːˈtrɪʃəs/', back: 'containing things the body needs to be healthy', example: 'This soup is cheap and nutritious.', thai: 'มีคุณค่าทางโภชนาการ' },
+      { id: 'fod-06', front: 'calorie', phonetic: '/ˈkæləri/', back: 'a unit that measures energy in food', example: 'This snack is low in calories.', thai: 'แคลอรี' },
+      { id: 'fod-07', front: 'raw', phonetic: '/rɔː/', back: 'not cooked', example: 'Some fish is eaten raw in Japan.', thai: 'ดิบ' },
+      { id: 'fod-08', front: 'balanced', phonetic: '/ˈbælənst/', back: 'having the right amount of different foods', example: 'A balanced meal includes vegetables and protein.', thai: 'สมดุล' }
+    ]
+  },
+{
+    id: 'b2-marketing-vocab',
+    lessonId: null,
+    title: 'Marketing & Advertising',
+    level: 'B2',
+    icon: '📣',
+    cards: [
+      { id: 'mkt-01', front: 'target audience', phonetic: '/ˈtɑːɡɪt ˈɔːdiəns/', back: 'the specific group of people a product or message is aimed at', example: 'Our target audience is young professionals aged 25 to 35.', thai: 'กลุ่มเป้าหมาย' },
+      { id: 'mkt-02', front: 'brand awareness', phonetic: '/brænd əˈweənəs/', back: 'the extent to which consumers recognise and remember a brand', example: 'The campaign was designed to build brand awareness among first-time buyers.', thai: 'การรับรู้แบรนด์' },
+      { id: 'mkt-03', front: 'market segment', phonetic: '/ˈmɑːkɪt ˈseɡmənt/', back: 'a distinct subgroup of a market defined by shared characteristics', example: 'They identified a profitable market segment that competitors had overlooked.', thai: 'ส่วนของตลาด' },
+      { id: 'mkt-04', front: 'unique selling point', phonetic: '/juˈniːk ˈselɪŋ pɔɪnt/', back: 'the feature that makes a product different from and better than rivals', example: "The product's unique selling point is its lifetime guarantee.", thai: 'จุดขายที่โดดเด่น' },
+      { id: 'mkt-05', front: 'endorsement', phonetic: '/ɪnˈdɔːsmənt/', back: 'a public statement of approval, often by a celebrity, to promote something', example: 'The athlete earned millions through product endorsements.', thai: 'การรับรอง' },
+      { id: 'mkt-06', front: 'conversion rate', phonetic: '/kənˈvɜːʃən reɪt/', back: 'the percentage of people who take a desired action after seeing an advert', example: 'Redesigning the landing page doubled our conversion rate.', thai: 'อัตราการเปลี่ยนเป็นลูกค้า' },
+      { id: 'mkt-07', front: 'word of mouth', phonetic: '/wɜːd əv maʊθ/', back: 'informal promotion spread by satisfied customers talking to others', example: 'Most of our new clients came through word of mouth.', thai: 'การบอกต่อ' },
+      { id: 'mkt-08', front: 'rebranding', phonetic: '/riːˈbrændɪŋ/', back: 'the process of changing the image or identity of a company or product', example: 'After the scandal, the firm underwent a complete rebranding.', thai: 'การปรับภาพลักษณ์แบรนด์ใหม่' }
+    ]
+  },
+  {
+    id: 'b2-business-strategy-vocab',
+    lessonId: null,
+    title: 'Business Strategy',
+    level: 'B2',
+    icon: '♟️',
+    cards: [
+      { id: 'strat-01', front: 'competitive advantage', phonetic: '/kəmˈpetətɪv ədˈvɑːntɪdʒ/', back: 'a condition that puts a company in a stronger position than its rivals', example: 'Low production costs gave them a clear competitive advantage.', thai: 'ความได้เปรียบในการแข่งขัน' },
+      { id: 'strat-02', front: 'market share', phonetic: '/ˈmɑːkɪt ʃeə/', back: 'the portion of total sales in a market held by one company', example: 'The startup captured ten percent of the market share within a year.', thai: 'ส่วนแบ่งการตลาด' },
+      { id: 'strat-03', front: 'diversification', phonetic: '/daɪˌvɜːsɪfɪˈkeɪʃən/', back: 'expanding into new products or markets to reduce risk', example: 'Diversification into software protected the company during the downturn.', thai: 'การกระจายความเสี่ยงทางธุรกิจ' },
+      { id: 'strat-04', front: 'stakeholder', phonetic: '/ˈsteɪkhəʊldə/', back: 'a person or group with an interest in the success of a business', example: 'The board consulted every stakeholder before the merger.', thai: 'ผู้มีส่วนได้ส่วนเสีย' },
+      { id: 'strat-05', front: 'benchmark', phonetic: '/ˈbentʃmɑːk/', back: 'a standard against which performance can be measured', example: 'We use industry leaders as a benchmark for our own results.', thai: 'เกณฑ์มาตรฐานเปรียบเทียบ' },
+      { id: 'strat-06', front: 'scalable', phonetic: '/ˈskeɪləbəl/', back: 'able to grow and handle increased demand without losing efficiency', example: 'Investors prefer a scalable business model.', thai: 'ที่ขยายขนาดได้' },
+      { id: 'strat-07', front: 'long-term vision', phonetic: '/lɒŋ tɜːm ˈvɪʒən/', back: 'a clear idea of what an organisation wants to achieve in the future', example: 'A strong long-term vision keeps the whole team aligned.', thai: 'วิสัยทัศน์ระยะยาว' },
+      { id: 'strat-08', front: 'contingency plan', phonetic: '/kənˈtɪndʒənsi plæn/', back: 'a backup plan prepared in case the main plan fails', example: 'They had a contingency plan ready if the supplier pulled out.', thai: 'แผนสำรอง' }
+    ]
+  },
+  {
+    id: 'b2-finance-investment-vocab',
+    lessonId: null,
+    title: 'Finance & Investment',
+    level: 'B2',
+    icon: '💹',
+    cards: [
+      { id: 'fin-01', front: 'return on investment', phonetic: '/rɪˈtɜːn ɒn ɪnˈvestmənt/', back: 'the profit gained relative to the amount of money invested', example: 'The renovation delivered a strong return on investment.', thai: 'ผลตอบแทนจากการลงทุน' },
+      { id: 'fin-02', front: 'portfolio', phonetic: '/pɔːtˈfəʊliəʊ/', back: 'the collection of investments owned by a person or organisation', example: 'She spread her risk across a diverse investment portfolio.', thai: 'พอร์ตการลงทุน' },
+      { id: 'fin-03', front: 'liquidity', phonetic: '/lɪˈkwɪdəti/', back: 'how easily an asset can be converted into cash', example: 'Property offers poor liquidity compared with shares.', thai: 'สภาพคล่อง' },
+      { id: 'fin-04', front: 'dividend', phonetic: '/ˈdɪvɪdend/', back: 'a share of profits paid regularly to shareholders', example: 'The company announced a higher dividend this quarter.', thai: 'เงินปันผล' },
+      { id: 'fin-05', front: 'volatile', phonetic: '/ˈvɒlətaɪl/', back: 'likely to change rapidly and unpredictably in value', example: 'Cryptocurrency remains an extremely volatile market.', thai: 'ผันผวน' },
+      { id: 'fin-06', front: 'assets', phonetic: '/ˈæsets/', back: 'items of value owned by a person or company', example: 'The firm sold off its non-core assets to raise cash.', thai: 'สินทรัพย์' },
+      { id: 'fin-07', front: 'compound interest', phonetic: '/ˈkɒmpaʊnd ˈɪntrəst/', back: 'interest calculated on both the initial sum and accumulated interest', example: 'Compound interest helps small savings grow significantly over time.', thai: 'ดอกเบี้ยทบต้น' },
+      { id: 'fin-08', front: 'hedge', phonetic: '/hedʒ/', back: 'an investment made to reduce the risk of losses elsewhere', example: 'Gold is often used as a hedge against inflation.', thai: 'การป้องกันความเสี่ยง' }
+    ]
+  },
+  {
+    id: 'b2-leadership-management-vocab',
+    lessonId: null,
+    title: 'Leadership & Management',
+    level: 'B2',
+    icon: '🧭',
+    cards: [
+      { id: 'lead-01', front: 'delegate', phonetic: '/ˈdelɪɡeɪt/', back: 'to give responsibility for a task to someone else', example: 'A good manager knows how to delegate effectively.', thai: 'มอบหมายงาน' },
+      { id: 'lead-02', front: 'empower', phonetic: '/ɪmˈpaʊə/', back: 'to give someone the confidence or authority to act independently', example: 'The new policy empowers staff to make their own decisions.', thai: 'ให้อำนาจ' },
+      { id: 'lead-03', front: 'accountability', phonetic: '/əˌkaʊntəˈbɪləti/', back: 'the state of being responsible for and having to explain your actions', example: 'Leaders must accept accountability when things go wrong.', thai: 'ความรับผิดชอบที่ต้องตอบได้' },
+      { id: 'lead-04', front: 'morale', phonetic: '/məˈrɑːl/', back: 'the level of confidence and enthusiasm within a group', example: 'Praise from management boosted team morale.', thai: 'ขวัญกำลังใจ' },
+      { id: 'lead-05', front: 'mentor', phonetic: '/ˈmentɔː/', back: 'an experienced person who advises and guides someone less experienced', example: 'She acted as a mentor to several junior colleagues.', thai: 'พี่เลี้ยงผู้ให้คำปรึกษา' },
+      { id: 'lead-06', front: 'lead by example', phonetic: '/liːd baɪ ɪɡˈzɑːmpəl/', back: 'to behave in the way you expect others to behave', example: 'He leads by example, arriving early every day.', thai: 'เป็นแบบอย่างที่ดี' },
+      { id: 'lead-07', front: 'visionary', phonetic: '/ˈvɪʒənəri/', back: 'having clear and imaginative ideas about the future', example: 'The company was built by a visionary founder.', thai: 'ผู้มีวิสัยทัศน์' },
+      { id: 'lead-08', front: 'micromanage', phonetic: '/ˈmaɪkrəʊmænɪdʒ/', back: 'to control every small detail of work rather than trusting others', example: 'Employees resent managers who micromanage them.', thai: 'จัดการจุกจิกเกินไป' }
+    ]
+  },
+  {
+    id: 'b2-data-analytics-vocab',
+    lessonId: null,
+    title: 'Data & Analytics',
+    level: 'B2',
+    icon: '📊',
+    cards: [
+      { id: 'data-01', front: 'insight', phonetic: '/ˈɪnsaɪt/', back: 'a useful understanding gained from analysing information', example: 'The survey provided valuable insights into customer behaviour.', thai: 'ข้อมูลเชิงลึก' },
+      { id: 'data-02', front: 'trend', phonetic: '/trend/', back: 'a general direction in which something is changing over time', example: 'Sales data revealed a clear upward trend.', thai: 'แนวโน้ม' },
+      { id: 'data-03', front: 'metric', phonetic: '/ˈmetrɪk/', back: 'a standard measurement used to track performance', example: 'Customer retention is a key metric for our team.', thai: 'ตัวชี้วัด' },
+      { id: 'data-04', front: 'correlation', phonetic: '/ˌkɒrəˈleɪʃən/', back: 'a relationship in which two things change together', example: 'There is a strong correlation between price and demand.', thai: 'ความสัมพันธ์เชิงสถิติ' },
+      { id: 'data-05', front: 'forecast', phonetic: '/ˈfɔːkɑːst/', back: 'a prediction of future events based on current data', example: 'Our forecast suggests demand will rise next quarter.', thai: 'การพยากรณ์' },
+      { id: 'data-06', front: 'raw data', phonetic: '/rɔː ˈdeɪtə/', back: 'information collected before it has been processed or analysed', example: 'The raw data still needs to be cleaned before analysis.', thai: 'ข้อมูลดิบ' },
+      { id: 'data-07', front: 'dashboard', phonetic: '/ˈdæʃbɔːd/', back: 'a screen that displays key data in an easy-to-read format', example: 'The dashboard shows real-time sales figures.', thai: 'แดชบอร์ดแสดงข้อมูล' },
+      { id: 'data-08', front: 'outlier', phonetic: '/ˈaʊtlaɪə/', back: 'a value that differs greatly from the others in a data set', example: 'We removed one outlier that was distorting the average.', thai: 'ค่าผิดปกติ' }
+    ]
+  },
+  {
+    id: 'b2-project-management-vocab',
+    lessonId: null,
+    title: 'Project Management',
+    level: 'B2',
+    icon: '📋',
+    cards: [
+      { id: 'proj-01', front: 'milestone', phonetic: '/ˈmaɪlstəʊn/', back: 'an important stage or event marking progress in a project', example: 'Completing the prototype was a major milestone.', thai: 'จุดหมายสำคัญของโครงการ' },
+      { id: 'proj-02', front: 'deliverable', phonetic: '/dɪˈlɪvərəbəl/', back: 'a specific item or result that must be produced by a deadline', example: 'The first deliverable is due at the end of the month.', thai: 'ผลงานที่ต้องส่งมอบ' },
+      { id: 'proj-03', front: 'scope', phonetic: '/skəʊp/', back: 'the full range of work that a project is meant to cover', example: 'Adding new features would expand the project scope.', thai: 'ขอบเขตงาน' },
+      { id: 'proj-04', front: 'bottleneck', phonetic: '/ˈbɒtlnek/', back: 'a stage that slows down the whole process', example: 'Approval delays became the main bottleneck.', thai: 'จุดคอขวด' },
+      { id: 'proj-05', front: 'timeline', phonetic: '/ˈtaɪmlaɪn/', back: 'a schedule showing when each stage should happen', example: 'We agreed on a realistic timeline for delivery.', thai: 'กรอบเวลา' },
+      { id: 'proj-06', front: 'allocate resources', phonetic: '/ˈæləkeɪt rɪˈsɔːsɪz/', back: 'to assign money, people, or materials to different tasks', example: 'We need to allocate resources more carefully next time.', thai: 'จัดสรรทรัพยากร' },
+      { id: 'proj-07', front: 'scope creep', phonetic: '/skəʊp kriːp/', back: 'the gradual, uncontrolled expansion of a project beyond its plan', example: 'Scope creep pushed the launch back by two months.', thai: 'การขยายขอบเขตงานเกินแผน' },
+      { id: 'proj-08', front: 'kick-off', phonetic: '/ˈkɪk ɒf/', back: 'the initial meeting that formally starts a project', example: 'The kick-off is scheduled for Monday morning.', thai: 'การเริ่มต้นโครงการ' }
+    ]
+  },
+  {
+    id: 'b2-contracts-legal-vocab',
+    lessonId: null,
+    title: 'Contracts & Legal Basics',
+    level: 'B2',
+    icon: '⚖️',
+    cards: [
+      { id: 'law-01', front: 'clause', phonetic: '/klɔːz/', back: 'a particular section or condition in a legal document', example: 'The confidentiality clause protects both parties.', thai: 'ข้อกำหนดในสัญญา' },
+      { id: 'law-02', front: 'liability', phonetic: '/ˌlaɪəˈbɪləti/', back: 'legal responsibility for something, especially costs or damage', example: "The contract limits the supplier's liability.", thai: 'ความรับผิดทางกฎหมาย' },
+      { id: 'law-03', front: 'breach of contract', phonetic: '/briːtʃ əv ˈkɒntrækt/', back: 'the act of breaking the terms of a legal agreement', example: 'Missing the deadline counted as a breach of contract.', thai: 'การผิดสัญญา' },
+      { id: 'law-04', front: 'terms and conditions', phonetic: '/tɜːmz ənd kənˈdɪʃənz/', back: 'the rules that apply to an agreement or service', example: 'Please read the terms and conditions before signing.', thai: 'ข้อกำหนดและเงื่อนไข' },
+      { id: 'law-05', front: 'binding', phonetic: '/ˈbaɪndɪŋ/', back: 'legally forcing someone to do what has been agreed', example: 'Once signed, the agreement is legally binding.', thai: 'มีผลผูกพันทางกฎหมาย' },
+      { id: 'law-06', front: 'waiver', phonetic: '/ˈweɪvə/', back: 'a formal decision to give up a right or claim', example: 'He signed a waiver releasing the company from responsibility.', thai: 'การสละสิทธิ์' },
+      { id: 'law-07', front: 'indemnity', phonetic: '/ɪnˈdemnəti/', back: 'protection against loss, usually in the form of compensation', example: 'The clause provides indemnity against third-party claims.', thai: 'การชดใช้ค่าเสียหาย' },
+      { id: 'law-08', front: 'terminate', phonetic: '/ˈtɜːmɪneɪt/', back: 'to bring an agreement to an official end', example: 'Either party may terminate the contract with notice.', thai: 'ยกเลิกสัญญา' }
+    ]
+  },
+  {
+    id: 'b2-customer-service-vocab',
+    lessonId: null,
+    title: 'Customer Service',
+    level: 'B2',
+    icon: '🎧',
+    cards: [
+      { id: 'cust-01', front: 'resolve an issue', phonetic: '/rɪˈzɒlv ən ˈɪʃuː/', back: 'to find a satisfactory solution to a problem', example: 'Our team aims to resolve every issue within 24 hours.', thai: 'แก้ไขปัญหา' },
+      { id: 'cust-02', front: 'escalate', phonetic: '/ˈeskəleɪt/', back: 'to refer a problem to someone more senior', example: 'If I cannot help, I will escalate your case to a manager.', thai: 'ส่งต่อเรื่องให้ระดับสูงขึ้น' },
+      { id: 'cust-03', front: 'refund', phonetic: '/ˈriːfʌnd/', back: 'a return of money paid for a product or service', example: 'We issued a full refund for the faulty item.', thai: 'การคืนเงิน' },
+      { id: 'cust-04', front: 'goodwill', phonetic: '/ɡʊdˈwɪl/', back: 'a friendly attitude that builds trust with customers', example: 'They offered a discount as a gesture of goodwill.', thai: 'ความปรารถนาดี' },
+      { id: 'cust-05', front: 'satisfaction', phonetic: '/ˌsætɪsˈfækʃən/', back: 'the feeling of being pleased with a product or service', example: 'Customer satisfaction has risen since the update.', thai: 'ความพึงพอใจ' },
+      { id: 'cust-06', front: 'follow up', phonetic: '/ˈfɒləʊ ʌp/', back: 'to check again later to ensure a problem is fully solved', example: 'I will follow up with you tomorrow to confirm.', thai: 'ติดตามผล' },
+      { id: 'cust-07', front: 'inquiry', phonetic: '/ɪnˈkwaɪəri/', back: 'a request for information from a customer', example: 'We received several inquiries about the new service.', thai: 'การสอบถาม' },
+      { id: 'cust-08', front: 'loyalty', phonetic: '/ˈlɔɪəlti/', back: "a customer's tendency to keep choosing the same brand", example: 'The rewards programme improved customer loyalty.', thai: 'ความภักดีต่อแบรนด์' }
+    ]
+  },
+  {
+    id: 'b2-innovation-rd-vocab',
+    lessonId: null,
+    title: 'Innovation & R&D',
+    level: 'B2',
+    icon: '💡',
+    cards: [
+      { id: 'inno-01', front: 'prototype', phonetic: '/ˈprəʊtətaɪp/', back: 'an early model built to test a concept before full production', example: 'The team built a prototype to test the new design.', thai: 'ต้นแบบ' },
+      { id: 'inno-02', front: 'breakthrough', phonetic: '/ˈbreɪkθruː/', back: 'an important discovery or development that solves a problem', example: 'The lab announced a major breakthrough in battery technology.', thai: 'ความก้าวหน้าครั้งสำคัญ' },
+      { id: 'inno-03', front: 'cutting-edge', phonetic: '/ˌkʌtɪŋ ˈedʒ/', back: 'the most advanced and modern stage of development', example: 'They invest heavily in cutting-edge research.', thai: 'ล้ำสมัยที่สุด' },
+      { id: 'inno-04', front: 'feasibility', phonetic: '/ˌfiːzəˈbɪləti/', back: 'the likelihood that something can be done successfully', example: 'We ran a feasibility study before committing funds.', thai: 'ความเป็นไปได้' },
+      { id: 'inno-05', front: 'patent', phonetic: '/ˈpætənt/', back: 'a legal right protecting an invention from being copied', example: 'They filed a patent for the new mechanism.', thai: 'สิทธิบัตร' },
+      { id: 'inno-06', front: 'iteration', phonetic: '/ˌɪtəˈreɪʃən/', back: 'a repeated version of something, improved each time', example: 'Each iteration of the app fixed earlier bugs.', thai: 'การพัฒนาซ้ำเพื่อปรับปรุง' },
+      { id: 'inno-07', front: 'disruptive', phonetic: '/dɪsˈrʌptɪv/', back: 'radically changing an existing market or way of doing things', example: 'Streaming was a disruptive technology for cinemas.', thai: 'ที่เปลี่ยนแปลงตลาดอย่างพลิกโฉม' },
+      { id: 'inno-08', front: 'pipeline', phonetic: '/ˈpaɪplaɪn/', back: 'a set of projects or products being developed in stages', example: 'Several new drugs are in the research pipeline.', thai: 'โครงการที่อยู่ระหว่างพัฒนา' }
+    ]
+  },
+  {
+    id: 'b2-workplace-conflict-vocab',
+    lessonId: null,
+    title: 'Workplace Conflict',
+    level: 'B2',
+    icon: '🤝',
+    cards: [
+      { id: 'conf-01', front: 'mediate', phonetic: '/ˈmiːdieɪt/', back: 'to help two disagreeing sides reach an agreement', example: 'HR was asked to mediate the dispute between the two teams.', thai: 'ไกล่เกลี่ย' },
+      { id: 'conf-02', front: 'grievance', phonetic: '/ˈɡriːvəns/', back: 'a formal complaint about unfair treatment', example: 'He filed a grievance against his supervisor.', thai: 'ข้อร้องทุกข์' },
+      { id: 'conf-03', front: 'compromise', phonetic: '/ˈkɒmprəmaɪz/', back: 'an agreement reached when each side gives up something', example: 'After hours of talks, they reached a compromise.', thai: 'การประนีประนอม' },
+      { id: 'conf-04', front: 'tension', phonetic: '/ˈtenʃən/', back: 'a strained or uneasy feeling between people', example: 'There was noticeable tension after the reorganisation.', thai: 'ความตึงเครียด' },
+      { id: 'conf-05', front: 'defuse', phonetic: '/ˌdiːˈfjuːz/', back: 'to make a tense or dangerous situation calmer', example: 'She managed to defuse the argument with a joke.', thai: 'ผ่อนคลายสถานการณ์ตึงเครียด' },
+      { id: 'conf-06', front: 'passive-aggressive', phonetic: '/ˌpæsɪv əˈɡresɪv/', back: 'expressing anger indirectly rather than openly', example: 'His passive-aggressive emails frustrated the whole team.', thai: 'ก้าวร้าวแบบเก็บกด' },
+      { id: 'conf-07', front: 'common ground', phonetic: '/ˈkɒmən ɡraʊnd/', back: 'shared opinions or interests that help people agree', example: 'We eventually found common ground on the budget.', thai: 'จุดร่วมที่เห็นพ้องกัน' },
+      { id: 'conf-08', front: 'resolution', phonetic: '/ˌrezəˈluːʃən/', back: 'the act of settling a disagreement or problem', example: 'Both sides welcomed the peaceful resolution.', thai: 'การแก้ไขข้อขัดแย้ง' }
+    ]
+  },
+  {
+    id: 'b2-public-speaking-vocab',
+    lessonId: null,
+    title: 'Public Speaking',
+    level: 'B2',
+    icon: '🎤',
+    cards: [
+      { id: 'spk-01', front: 'engage the audience', phonetic: '/ɪnˈɡeɪdʒ ðə ˈɔːdiəns/', back: 'to hold the attention and interest of listeners', example: 'A good story helps you engage the audience early on.', thai: 'ดึงดูดผู้ฟัง' },
+      { id: 'spk-02', front: 'articulate', phonetic: '/ɑːˈtɪkjuleɪt/', back: 'to express ideas clearly and effectively', example: 'She articulated her argument with impressive clarity.', thai: 'พูดอย่างชัดเจน' },
+      { id: 'spk-03', front: 'rapport', phonetic: '/ræˈpɔː/', back: 'a friendly connection built with an audience', example: 'He quickly built rapport with the crowd.', thai: 'ความสัมพันธ์อันดี' },
+      { id: 'spk-04', front: 'gesture', phonetic: '/ˈdʒestʃə/', back: 'a movement of the hands or body to add meaning', example: 'Confident gestures make a speaker more persuasive.', thai: 'ท่าทางประกอบการพูด' },
+      { id: 'spk-05', front: 'pace', phonetic: '/peɪs/', back: 'the speed at which you deliver your speech', example: 'Slow your pace during the most important points.', thai: 'จังหวะการพูด' },
+      { id: 'spk-06', front: 'stage fright', phonetic: '/steɪdʒ fraɪt/', back: 'nervousness felt before or during a performance', example: 'Even experienced speakers get stage fright.', thai: 'อาการตื่นเวที' },
+      { id: 'spk-07', front: 'emphasis', phonetic: '/ˈemfəsɪs/', back: 'special importance given to a word or idea', example: 'Put emphasis on the key benefit for the listener.', thai: 'การเน้นย้ำ' },
+      { id: 'spk-08', front: 'wrap up', phonetic: '/ræp ʌp/', back: 'to bring a talk to a clear and satisfying end', example: 'Let me wrap up with three main takeaways.', thai: 'สรุปปิดท้าย' }
+    ]
+  },
+  {
+    id: 'b2-networking-vocab',
+    lessonId: null,
+    title: 'Networking',
+    level: 'B2',
+    icon: '🔗',
+    cards: [
+      { id: 'net-01', front: 'contact', phonetic: '/ˈkɒntækt/', back: 'a person you know who may be useful professionally', example: 'She has valuable contacts in the publishing industry.', thai: 'ผู้ติดต่อ/สายสัมพันธ์' },
+      { id: 'net-02', front: 'break the ice', phonetic: '/breɪk ðə aɪs/', back: 'to make people feel more relaxed at the start of a meeting', example: 'A light question can break the ice at an event.', thai: 'ทำลายความเงียบเก้อ' },
+      { id: 'net-03', front: 'follow-up', phonetic: '/ˈfɒləʊ ʌp/', back: 'a further contact made after an initial meeting', example: 'I sent a follow-up email the next morning.', thai: 'การติดต่อกลับ' },
+      { id: 'net-04', front: 'mutual connection', phonetic: '/ˈmjuːtʃuəl kəˈnekʃən/', back: 'a person that two people both know', example: 'We were introduced through a mutual connection.', thai: 'คนรู้จักร่วมกัน' },
+      { id: 'net-05', front: 'elevator pitch', phonetic: '/ˈelɪveɪtə pɪtʃ/', back: 'a very short, persuasive description of yourself or an idea', example: 'Prepare an elevator pitch before the conference.', thai: 'การแนะนำตัวสั้นกระชับ' },
+      { id: 'net-06', front: 'reach out', phonetic: '/riːtʃ aʊt/', back: 'to make contact with someone, often to ask for help', example: 'Feel free to reach out if you have questions.', thai: 'ติดต่อเข้าหา' },
+      { id: 'net-07', front: 'referral', phonetic: '/rɪˈfɜːrəl/', back: 'the act of recommending someone to another person', example: 'Most of her clients come through referrals.', thai: 'การแนะนำต่อ' },
+      { id: 'net-08', front: 'build relationships', phonetic: '/bɪld rɪˈleɪʃənʃɪps/', back: 'to develop trust and connection with people over time', example: 'Networking is really about building relationships.', thai: 'สร้างความสัมพันธ์' }
+    ]
+  },
+  {
+    id: 'b2-career-development-vocab',
+    lessonId: null,
+    title: 'Career Development',
+    level: 'B2',
+    icon: '📈',
+    cards: [
+      { id: 'car-01', front: 'promotion', phonetic: '/prəˈməʊʃən/', back: 'a move to a more senior position at work', example: 'Her hard work finally earned her a promotion.', thai: 'การเลื่อนตำแหน่ง' },
+      { id: 'car-02', front: 'upskill', phonetic: '/ˈʌpskɪl/', back: 'to learn new skills to improve your career', example: 'Employees are encouraged to upskill regularly.', thai: 'พัฒนาทักษะเพิ่ม' },
+      { id: 'car-03', front: 'career path', phonetic: '/kəˈrɪə pɑːθ/', back: "the series of jobs and steps in a person's working life", example: 'The company offers a clear career path for graduates.', thai: 'เส้นทางอาชีพ' },
+      { id: 'car-04', front: 'appraisal', phonetic: '/əˈpreɪzəl/', back: "a formal review of an employee's performance", example: 'My annual appraisal is scheduled for next week.', thai: 'การประเมินผลงาน' },
+      { id: 'car-05', front: 'plateau', phonetic: '/ˈplætəʊ/', back: 'a stage where progress stops for a period of time', example: 'After five years he felt his career had reached a plateau.', thai: 'ภาวะหยุดนิ่งในอาชีพ' },
+      { id: 'car-06', front: 'transferable skills', phonetic: '/trænsˈfɜːrəbəl skɪlz/', back: 'abilities that are useful in many different jobs', example: 'Communication is a valuable transferable skill.', thai: 'ทักษะที่ใช้ได้หลากหลายงาน' },
+      { id: 'car-07', front: 'aspiration', phonetic: '/ˌæspəˈreɪʃən/', back: 'a strong desire to achieve something in your career', example: 'Her aspiration is to lead her own department.', thai: 'ความมุ่งหวัง' },
+      { id: 'car-08', front: 'work-life balance', phonetic: '/wɜːk laɪf ˈbæləns/', back: 'a healthy division between working hours and personal life', example: 'The new schedule improved my work-life balance.', thai: 'ความสมดุลชีวิตและงาน' }
+    ]
+  },
+  {
+    id: 'b2-ethics-at-work-vocab',
+    lessonId: null,
+    title: 'Ethics at Work',
+    level: 'B2',
+    icon: '🛡️',
+    cards: [
+      { id: 'eth-01', front: 'integrity', phonetic: '/ɪnˈteɡrəti/', back: 'the quality of being honest and having strong moral principles', example: 'She is respected for her integrity and fairness.', thai: 'ความซื่อสัตย์มีคุณธรรม' },
+      { id: 'eth-02', front: 'conflict of interest', phonetic: '/ˈkɒnflɪkt əv ˈɪntrəst/', back: 'a situation where personal interests may affect professional judgement', example: 'He declared a conflict of interest before the vote.', thai: 'ผลประโยชน์ทับซ้อน' },
+      { id: 'eth-03', front: 'whistleblower', phonetic: '/ˈwɪsəlbləʊə/', back: 'someone who reports wrongdoing within an organisation', example: 'A whistleblower exposed the accounting fraud.', thai: 'ผู้เปิดโปงการทุจริต' },
+      { id: 'eth-04', front: 'transparency', phonetic: '/trænsˈpærənsi/', back: 'openness and honesty in how decisions are made', example: 'Customers expect greater transparency from big firms.', thai: 'ความโปร่งใส' },
+      { id: 'eth-05', front: 'bribery', phonetic: '/ˈbraɪbəri/', back: 'giving money or gifts to influence someone dishonestly', example: 'The company has a strict policy against bribery.', thai: 'การให้สินบน' },
+      { id: 'eth-06', front: 'accountability', phonetic: '/əˌkaʊntəˈbɪləti/', back: 'being answerable for your decisions and actions', example: 'Ethical leadership requires genuine accountability.', thai: 'ความรับผิดชอบที่ตรวจสอบได้' },
+      { id: 'eth-07', front: 'code of conduct', phonetic: '/kəʊd əv ˈkɒndʌkt/', back: 'a set of rules about how people should behave at work', example: 'All new staff must sign the code of conduct.', thai: 'จรรยาบรรณ' },
+      { id: 'eth-08', front: 'discrimination', phonetic: '/dɪˌskrɪmɪˈneɪʃən/', back: 'unfair treatment based on characteristics such as race or gender', example: 'The firm was fined for age discrimination.', thai: 'การเลือกปฏิบัติ' }
+    ]
+  },
+  {
+    id: 'b2-sales-persuasion-vocab',
+    lessonId: null,
+    title: 'Sales & Persuasion',
+    level: 'B2',
+    icon: '🛒',
+    cards: [
+      { id: 'sal-01', front: 'close a deal', phonetic: '/kləʊz ə diːl/', back: 'to successfully complete a sale or agreement', example: 'She closed the deal after weeks of negotiation.', thai: 'ปิดการขาย' },
+      { id: 'sal-02', front: 'objection', phonetic: '/əbˈdʒekʃən/', back: 'a reason a customer gives for not wanting to buy', example: 'A skilled salesperson can handle any objection.', thai: 'ข้อโต้แย้งของลูกค้า' },
+      { id: 'sal-03', front: 'upsell', phonetic: '/ˈʌpsel/', back: 'to persuade a customer to buy a more expensive option', example: 'Staff are trained to upsell premium packages.', thai: 'เสนอขายสินค้าราคาสูงกว่า' },
+      { id: 'sal-04', front: 'incentive', phonetic: '/ɪnˈsentɪv/', back: 'something offered to encourage a purchase or action', example: 'Free shipping is a strong incentive to buy now.', thai: 'สิ่งจูงใจ' },
+      { id: 'sal-05', front: 'lead', phonetic: '/liːd/', back: 'a potential customer who has shown some interest', example: 'The campaign generated hundreds of new leads.', thai: 'ลูกค้าที่มีแนวโน้ม' },
+      { id: 'sal-06', front: 'persuasive', phonetic: '/pəˈsweɪsɪv/', back: 'good at convincing people to agree or act', example: 'His persuasive pitch won over the investors.', thai: 'ที่โน้มน้าวใจได้' },
+      { id: 'sal-07', front: 'value proposition', phonetic: '/ˈvæljuː ˌprɒpəˈzɪʃən/', back: 'the clear benefit a product offers to a customer', example: 'Our value proposition is speed at a low price.', thai: 'ข้อเสนอคุณค่า' },
+      { id: 'sal-08', front: 'follow through', phonetic: '/ˈfɒləʊ θruː/', back: 'to complete what you have promised a customer', example: 'Sales are lost when reps fail to follow through.', thai: 'ทำตามที่รับปากจนสำเร็จ' }
+    ]
+  },
+{
+    id: 'c1-academic-writing-vocab',
+    lessonId: null,
+    title: 'Academic Writing',
+    level: 'C1',
+    icon: '✍️',
+    cards: [
+      { id: 'acw-01', front: 'hypothesis', phonetic: '/haɪˈpɒθəsɪs/', back: 'a proposed explanation put forward as a starting point for further investigation', example: 'The researchers formulated a hypothesis before conducting their controlled experiments.', thai: 'สมมติฐาน' },
+      { id: 'acw-02', front: 'corroborate', phonetic: '/kəˈrɒbəreɪt/', back: 'to confirm or give support to a statement, theory, or finding', example: 'Subsequent studies corroborated her original claims about the phenomenon.', thai: 'ยืนยันสนับสนุน' },
+      { id: 'acw-03', front: 'methodology', phonetic: '/ˌmeθəˈdɒlədʒi/', back: 'the systematic body of methods and principles used in a particular field of study', example: 'The paper was criticised for a methodology that lacked scientific rigour.', thai: 'ระเบียบวิธีวิจัย' },
+      { id: 'acw-04', front: 'substantiate', phonetic: '/səbˈstænʃieɪt/', back: 'to provide evidence to support or prove the truth of something', example: 'The author failed to substantiate his sweeping generalisations with data.', thai: 'พิสูจน์ให้เห็นจริง' },
+      { id: 'acw-05', front: 'discourse', phonetic: '/ˈdɪskɔːs/', back: 'written or spoken communication treated as a coherent, extended body of ideas', example: 'Her thesis contributes meaningfully to the academic discourse on migration.', thai: 'วาทกรรม' },
+      { id: 'acw-06', front: 'paradigm', phonetic: '/ˈpærədaɪm/', back: 'a typical example or fundamental model underlying a field of thought', example: 'The discovery triggered a paradigm shift in evolutionary biology.', thai: 'กระบวนทัศน์' },
+      { id: 'acw-07', front: 'empirical', phonetic: '/ɪmˈpɪrɪkəl/', back: 'based on observation or experiment rather than theory alone', example: 'The conclusions rest on solid empirical evidence gathered over a decade.', thai: "อิงประสบการณ์เชิงประจักษ์" },
+      { id: 'acw-08', front: 'notwithstanding', phonetic: '/ˌnɒtwɪθˈstændɪŋ/', back: 'in spite of; without being prevented by something', example: 'Notwithstanding the limited sample, the trends observed are compelling.', thai: 'ถึงแม้ว่า' }
+    ]
+  },
+  {
+    id: 'c1-politics-government-vocab',
+    lessonId: null,
+    title: 'Politics & Government',
+    level: 'C1',
+    icon: '🏛️',
+    cards: [
+      { id: 'pol-01', front: 'constituency', phonetic: '/kənˈstɪtjuənsi/', back: 'a body of voters in a specified area who elect a representative', example: 'The minister returned to her constituency to address voters concerns.', thai: 'เขตเลือกตั้ง' },
+      { id: 'pol-02', front: 'bipartisan', phonetic: '/baɪˈpɑːtɪzæn/', back: 'involving the agreement or cooperation of two political parties', example: 'The reform passed thanks to rare bipartisan support in the legislature.', thai: 'สองพรรคร่วมมือ' },
+      { id: 'pol-03', front: 'incumbent', phonetic: '/ɪnˈkʌmbənt/', back: 'the current holder of an office or position', example: 'The incumbent president faces a formidable challenge in the coming election.', thai: 'ผู้ดำรงตำแหน่งปัจจุบัน' },
+      { id: 'pol-04', front: 'referendum', phonetic: '/ˌrefəˈrendəm/', back: 'a general vote by the electorate on a single political question', example: 'The government called a referendum to resolve the constitutional deadlock.', thai: 'การลงประชามติ' },
+      { id: 'pol-05', front: 'sovereignty', phonetic: '/ˈsɒvrɪnti/', back: 'the supreme authority of a state to govern itself without external interference', example: 'The treaty was seen by critics as an erosion of national sovereignty.', thai: 'อำนาจอธิปไตย' },
+      { id: 'pol-06', front: 'coalition', phonetic: '/ˌkəʊəˈlɪʃən/', back: 'a temporary alliance of parties formed to govern jointly', example: 'The fragile coalition collapsed within months of taking power.', thai: 'รัฐบาลผสม' },
+      { id: 'pol-07', front: 'mandate', phonetic: '/ˈmændeɪt/', back: 'the authority granted by an electorate to a party to act on its behalf', example: 'The landslide victory gave the party a clear mandate for reform.', thai: 'อาณัติจากประชาชน' },
+      { id: 'pol-08', front: 'lobbying', phonetic: '/ˈlɒbiɪŋ/', back: 'the practice of seeking to influence legislators on behalf of an interest group', example: 'Aggressive corporate lobbying shaped the final version of the bill.', thai: 'การวิ่งเต้นทางการเมือง' }
+    ]
+  },
+  {
+    id: 'c1-economics-finance-vocab',
+    lessonId: null,
+    title: 'Economics & Finance',
+    level: 'C1',
+    icon: '📈',
+    cards: [
+      { id: 'eco-01', front: 'inflation', phonetic: '/ɪnˈfleɪʃən/', back: 'a general increase in prices and fall in the purchasing value of money', example: 'Rising inflation has eroded consumers spending power this year.', thai: 'ภาวะเงินเฟ้อ' },
+      { id: 'eco-02', front: 'recession', phonetic: '/rɪˈseʃən/', back: 'a period of temporary economic decline with reduced trade and activity', example: 'Analysts warn the economy may slip into a prolonged recession.', thai: 'ภาวะเศรษฐกิจถดถอย' },
+      { id: 'eco-03', front: 'liquidity', phonetic: '/lɪˈkwɪdəti/', back: 'the degree to which an asset can be quickly converted into cash', example: 'The bank faced a liquidity crisis when depositors withdrew funds en masse.', thai: 'สภาพคล่อง' },
+      { id: 'eco-04', front: 'depreciation', phonetic: '/dɪˌpriːʃiˈeɪʃən/', back: 'a reduction in the value of an asset or currency over time', example: 'The sharp depreciation of the currency made imports prohibitively expensive.', thai: 'การเสื่อมค่า' },
+      { id: 'eco-05', front: 'fiscal', phonetic: '/ˈfɪskəl/', back: 'relating to government revenue, especially taxation and public spending', example: 'The chancellor unveiled an austere fiscal policy to reduce the deficit.', thai: 'เกี่ยวกับการคลัง' },
+      { id: 'eco-06', front: 'monetary policy', phonetic: '/ˈmʌnɪtəri ˈpɒləsi/', back: 'central bank actions controlling money supply and interest rates', example: 'Tightening monetary policy is intended to curb runaway inflation.', thai: 'นโยบายการเงิน' },
+      { id: 'eco-07', front: 'diversification', phonetic: '/daɪˌvɜːsɪfɪˈkeɪʃən/', back: 'the practice of spreading investments to reduce exposure to risk', example: 'Prudent diversification shielded the portfolio from the market crash.', thai: 'การกระจายความเสี่ยง' },
+      { id: 'eco-08', front: 'speculation', phonetic: '/ˌspekjuˈleɪʃən/', back: 'trading in assets with high risk in the hope of substantial gains', example: 'Rampant speculation drove property prices to unsustainable heights.', thai: 'การเก็งกำไร' }
+    ]
+  },
+  {
+    id: 'c1-science-research-vocab',
+    lessonId: null,
+    title: 'Science & Research',
+    level: 'C1',
+    icon: '🔬',
+    cards: [
+      { id: 'sci-01', front: 'peer review', phonetic: '/ˈpɪə rɪˌvjuː/', back: 'evaluation of scholarly work by experts in the same field before publication', example: 'The study underwent rigorous peer review before appearing in the journal.', thai: 'การตรวจสอบโดยผู้เชี่ยวชาญ' },
+      { id: 'sci-02', front: 'variable', phonetic: '/ˈveəriəbəl/', back: 'a factor that can change and may affect the outcome of an experiment', example: 'Researchers must isolate each variable to draw valid conclusions.', thai: 'ตัวแปร' },
+      { id: 'sci-03', front: 'reproducible', phonetic: '/ˌriːprəˈdjuːsəbəl/', back: 'capable of being repeated with the same results by other researchers', example: 'The findings were dismissed because they were not reproducible.', thai: 'ทำซ้ำได้' },
+      { id: 'sci-04', front: 'catalyst', phonetic: '/ˈkætəlɪst/', back: 'a substance that accelerates a reaction without being consumed by it', example: 'The enzyme acts as a catalyst, dramatically speeding up the process.', thai: 'ตัวเร่งปฏิกิริยา' },
+      { id: 'sci-05', front: 'anomaly', phonetic: '/əˈnɒməli/', back: 'something that deviates from what is standard, normal, or expected', example: 'The data revealed a statistical anomaly that demanded further scrutiny.', thai: 'ความผิดปกติ' },
+      { id: 'sci-06', front: 'correlation', phonetic: '/ˌkɒrəˈleɪʃən/', back: 'a mutual relationship or connection between two or more variables', example: 'A strong correlation does not necessarily imply direct causation.', thai: 'สหสัมพันธ์' },
+      { id: 'sci-07', front: 'quantitative', phonetic: '/ˈkwɒntɪtətɪv/', back: 'relating to or measured by the quantity of something rather than its quality', example: 'The team gathered quantitative data through large-scale surveys.', thai: 'เชิงปริมาณ' },
+      { id: 'sci-08', front: 'synthesis', phonetic: '/ˈsɪnθəsɪs/', back: 'the combination of components or ideas to form a coherent whole', example: 'The review offers a masterly synthesis of decades of research.', thai: 'การสังเคราะห์' }
+    ]
+  },
+  {
+    id: 'c1-law-justice-vocab',
+    lessonId: null,
+    title: 'Law & Justice',
+    level: 'C1',
+    icon: '⚖️',
+    cards: [
+      { id: 'law-01', front: 'jurisdiction', phonetic: '/ˌdʒʊərɪsˈdɪkʃən/', back: 'the official power of a court or authority to make legal decisions', example: 'The case falls outside the jurisdiction of the federal courts.', thai: 'เขตอำนาจศาล' },
+      { id: 'law-02', front: 'precedent', phonetic: '/ˈpresɪdənt/', back: 'an earlier legal decision serving as a rule for subsequent similar cases', example: 'The landmark ruling set an important precedent for privacy law.', thai: 'บรรทัดฐานคดี' },
+      { id: 'law-03', front: 'litigation', phonetic: '/ˌlɪtɪˈɡeɪʃən/', back: 'the process of taking legal action through the courts', example: 'The dispute dragged on through years of costly litigation.', thai: 'การดำเนินคดี' },
+      { id: 'law-04', front: 'plaintiff', phonetic: '/ˈpleɪntɪf/', back: 'a person who brings a legal case against another in a court of law', example: 'The plaintiff sought substantial damages for breach of contract.', thai: 'โจทก์' },
+      { id: 'law-05', front: 'acquittal', phonetic: '/əˈkwɪtəl/', back: 'a judgment that a person is not guilty of the charge against them', example: 'The jury delivered a swift acquittal for lack of evidence.', thai: 'การยกฟ้อง' },
+      { id: 'law-06', front: 'defamation', phonetic: '/ˌdefəˈmeɪʃən/', back: 'the act of damaging a persons reputation with false statements', example: 'The newspaper was sued for defamation over the misleading article.', thai: 'การหมิ่นประมาท' },
+      { id: 'law-07', front: 'indictment', phonetic: '/ɪnˈdaɪtmənt/', back: 'a formal charge or accusation of a serious crime', example: 'A grand jury handed down an indictment on multiple counts of fraud.', thai: 'การฟ้องคดีอาญา' },
+      { id: 'law-08', front: 'testimony', phonetic: '/ˈtestɪməni/', back: 'a formal statement given under oath, typically in court', example: 'Her testimony proved decisive in securing the conviction.', thai: 'คำให้การ' }
+    ]
+  },
+  {
+    id: 'c1-philosophy-ethics-vocab',
+    lessonId: null,
+    title: 'Philosophy & Ethics',
+    level: 'C1',
+    icon: '🧠',
+    cards: [
+      { id: 'phi-01', front: 'epistemology', phonetic: '/ɪˌpɪstəˈmɒlədʒi/', back: 'the branch of philosophy concerned with the nature and limits of knowledge', example: 'His lecture on epistemology questioned how we can truly know anything.', thai: 'ญาณวิทยา' },
+      { id: 'phi-02', front: 'utilitarianism', phonetic: '/ˌjuːtɪliˈteəriənɪzəm/', back: 'the doctrine that actions are right if they promote the greatest happiness', example: 'Utilitarianism judges an act solely by its consequences.', thai: 'ประโยชน์นิยม' },
+      { id: 'phi-03', front: 'dichotomy', phonetic: '/daɪˈkɒtəmi/', back: 'a division or contrast between two things represented as opposed', example: 'He rejected the rigid dichotomy between reason and emotion.', thai: 'การแบ่งเป็นสองขั้ว' },
+      { id: 'phi-04', front: 'determinism', phonetic: '/dɪˈtɜːmɪnɪzəm/', back: 'the belief that all events are determined by previously existing causes', example: 'Determinism casts doubt on the very notion of free will.', thai: 'นิยัตินิยม' },
+      { id: 'phi-05', front: 'relativism', phonetic: '/ˈrelətɪvɪzəm/', back: 'the view that truth or morality exists only in relation to context', example: 'Moral relativism holds that no ethical standard is universally valid.', thai: 'สัมพัทธนิยม' },
+      { id: 'phi-06', front: 'inherent', phonetic: '/ɪnˈherənt/', back: 'existing as a permanent, essential, or characteristic attribute', example: 'They argued that dignity is inherent in every human being.', thai: 'ที่มีอยู่ในตัว' },
+      { id: 'phi-07', front: 'premise', phonetic: '/ˈpremɪs/', back: 'a statement assumed to be true as the basis for an argument', example: 'The entire argument collapses if the initial premise is false.', thai: 'ข้อตั้งต้น' },
+      { id: 'phi-08', front: 'metaphysics', phonetic: '/ˌmetəˈfɪzɪks/', back: 'the branch of philosophy dealing with the fundamental nature of reality', example: 'Questions of time and existence belong to the realm of metaphysics.', thai: 'อภิปรัชญา' }
+    ]
+  },
+  {
+    id: 'c1-psychology-vocab',
+    lessonId: null,
+    title: 'Psychology',
+    level: 'C1',
+    icon: '🧩',
+    cards: [
+      { id: 'psy-01', front: 'cognition', phonetic: '/kɒɡˈnɪʃən/', back: 'the mental processes involved in acquiring knowledge and understanding', example: 'Sleep deprivation markedly impairs cognition and decision-making.', thai: 'การรับรู้และคิด' },
+      { id: 'psy-02', front: 'conditioning', phonetic: '/kənˈdɪʃənɪŋ/', back: 'a learning process by which behaviour is shaped through association', example: 'Classical conditioning explains how the response was learned.', thai: 'การวางเงื่อนไข' },
+      { id: 'psy-03', front: 'cognitive bias', phonetic: '/ˈkɒɡnətɪv ˈbaɪəs/', back: 'a systematic error in thinking that affects judgments and decisions', example: 'Confirmation bias leads people to favour evidence that suits them.', thai: 'อคติทางความคิด' },
+      { id: 'psy-04', front: 'repression', phonetic: '/rɪˈpreʃən/', back: 'the unconscious blocking of distressing thoughts or memories', example: 'Freud regarded repression as a central defence mechanism.', thai: 'การเก็บกด' },
+      { id: 'psy-05', front: 'resilience', phonetic: '/rɪˈzɪliəns/', back: 'the capacity to recover quickly from difficulties or adversity', example: 'Therapy aims to build the emotional resilience of trauma survivors.', thai: 'ความยืดหยุ่นทางใจ' },
+      { id: 'psy-06', front: 'perception', phonetic: '/pəˈsepʃən/', back: 'the process of interpreting sensory information to understand the environment', example: 'Our perception of colour can be influenced by surrounding hues.', thai: 'การรับรู้' },
+      { id: 'psy-07', front: 'introspection', phonetic: '/ˌɪntrəˈspekʃən/', back: 'the examination of ones own conscious thoughts and feelings', example: 'Deep introspection helped her identify the roots of her anxiety.', thai: 'การพินิจภายในตน' },
+      { id: 'psy-08', front: 'reinforcement', phonetic: '/ˌriːɪnˈfɔːsmənt/', back: 'a consequence that strengthens the likelihood of a behaviour recurring', example: 'Positive reinforcement encouraged the child to keep practising.', thai: 'การเสริมแรง' }
+    ]
+  },
+  {
+    id: 'c1-global-issues-vocab',
+    lessonId: null,
+    title: 'Global Issues',
+    level: 'C1',
+    icon: '🌍',
+    cards: [
+      { id: 'glo-01', front: 'globalisation', phonetic: '/ˌɡləʊbəlaɪˈzeɪʃən/', back: 'the process by which economies and cultures become interconnected worldwide', example: 'Globalisation has reshaped labour markets across the developing world.', thai: 'โลกาภิวัตน์' },
+      { id: 'glo-02', front: 'displacement', phonetic: '/dɪsˈpleɪsmənt/', back: 'the forced movement of people from their home region', example: 'The conflict caused the mass displacement of millions of civilians.', thai: 'การพลัดถิ่น' },
+      { id: 'glo-03', front: 'humanitarian', phonetic: '/hjuːˌmænɪˈteəriən/', back: 'concerned with promoting human welfare and relieving suffering', example: 'Aid agencies mounted a vast humanitarian response to the famine.', thai: 'ด้านมนุษยธรรม' },
+      { id: 'glo-04', front: 'inequality', phonetic: '/ˌɪnɪˈkwɒləti/', back: 'an unequal distribution of resources, opportunities, or rights', example: 'Widening income inequality threatens social cohesion.', thai: 'ความเหลื่อมล้ำ' },
+      { id: 'glo-05', front: 'proliferation', phonetic: '/prəˌlɪfəˈreɪʃən/', back: 'a rapid increase in the number or spread of something', example: 'The proliferation of nuclear weapons remains a grave global concern.', thai: 'การแพร่ขยาย' },
+      { id: 'glo-06', front: 'sanctions', phonetic: '/ˈsæŋkʃənz/', back: 'penalties imposed on a state to compel compliance with international norms', example: 'The council imposed economic sanctions on the aggressor nation.', thai: 'มาตรการคว่ำบาตร' },
+      { id: 'glo-07', front: 'diplomacy', phonetic: '/dɪˈpləʊməsi/', back: 'the management of international relations through negotiation', example: 'Patient diplomacy averted what could have become open warfare.', thai: 'การทูต' },
+      { id: 'glo-08', front: 'famine', phonetic: '/ˈfæmɪn/', back: 'an extreme and widespread scarcity of food', example: 'Prolonged drought pushed the region to the brink of famine.', thai: 'ทุพภิกขภัย' }
+    ]
+  },
+  {
+    id: 'c1-journalism-media-vocab',
+    lessonId: null,
+    title: 'Journalism & Media',
+    level: 'C1',
+    icon: '📰',
+    cards: [
+      { id: 'jou-01', front: 'objectivity', phonetic: '/ˌɒbdʒekˈtɪvəti/', back: 'the practice of reporting facts impartially without personal bias', example: 'Critics questioned the objectivity of the networks coverage.', thai: 'ความเป็นกลาง' },
+      { id: 'jou-02', front: 'sensationalism', phonetic: '/senˈseɪʃənəlɪzəm/', back: 'the use of shocking stories at the expense of accuracy', example: 'The tabloid was accused of sensationalism to boost circulation.', thai: 'การเสนอข่าวเร้าอารมณ์' },
+      { id: 'jou-03', front: 'censorship', phonetic: '/ˈsensəʃɪp/', back: 'the suppression of material deemed objectionable or sensitive', example: 'State censorship prevented the story from ever reaching the public.', thai: 'การเซ็นเซอร์' },
+      { id: 'jou-04', front: 'exposé', phonetic: '/ekˈspəʊzeɪ/', back: 'a published account revealing something discreditable to the public', example: 'The reporters exposé brought down the corrupt administration.', thai: 'การเปิดโปง' },
+      { id: 'jou-05', front: 'propaganda', phonetic: '/ˌprɒpəˈɡændə/', back: 'biased information used to promote a particular political cause', example: 'The regime flooded the airwaves with relentless propaganda.', thai: 'การโฆษณาชวนเชื่อ' },
+      { id: 'jou-06', front: 'editorial', phonetic: '/ˌedɪˈtɔːriəl/', back: 'an article expressing the opinion of a publications editors', example: 'The paper ran a scathing editorial condemning the new law.', thai: 'บทบรรณาธิการ' },
+      { id: 'jou-07', front: 'credibility', phonetic: '/ˌkredɪˈbɪləti/', back: 'the quality of being trusted and believed in', example: 'Repeated errors gradually undermined the outlets credibility.', thai: 'ความน่าเชื่อถือ' },
+      { id: 'jou-08', front: 'scrutiny', phonetic: '/ˈskruːtɪni/', back: 'critical observation or examination of something in detail', example: 'The politicians finances came under intense media scrutiny.', thai: 'การตรวจสอบอย่างเข้มงวด' }
+    ]
+  },
+  {
+    id: 'c1-art-literature-criticism-vocab',
+    lessonId: null,
+    title: 'Art & Literature Criticism',
+    level: 'C1',
+    icon: '🎨',
+    cards: [
+      { id: 'art-01', front: 'aesthetic', phonetic: '/iːsˈθetɪk/', back: 'concerned with beauty or the appreciation of artistic form', example: 'The novels aesthetic appeal lies in its lyrical prose.', thai: 'เกี่ยวกับสุนทรียะ' },
+      { id: 'art-02', front: 'allegory', phonetic: '/ˈæləɡəri/', back: 'a narrative whose characters and events symbolise deeper meanings', example: 'The fable works as an allegory for political tyranny.', thai: 'อุปมานิทัศน์' },
+      { id: 'art-03', front: 'juxtaposition', phonetic: '/ˌdʒʌkstəpəˈzɪʃən/', back: 'the placing of contrasting elements close together for effect', example: 'The painter creates tension through the juxtaposition of light and shadow.', thai: 'การวางเทียบกัน' },
+      { id: 'art-04', front: 'motif', phonetic: '/məʊˈtiːf/', back: 'a recurring theme, image, or idea in an artistic work', example: 'The motif of the caged bird recurs throughout the poem.', thai: 'แนวคิดที่ปรากฏซ้ำ' },
+      { id: 'art-05', front: 'connoisseur', phonetic: '/ˌkɒnəˈsɜː/', back: 'an expert judge in matters of taste, especially fine art', example: 'Only a true connoisseur could distinguish the forgery from the original.', thai: 'ผู้เชี่ยวชาญด้านศิลปะ' },
+      { id: 'art-06', front: 'evocative', phonetic: '/ɪˈvɒkətɪv/', back: 'bringing strong images, memories, or feelings vividly to mind', example: 'Her evocative descriptions transport the reader to another era.', thai: 'ที่เร้าอารมณ์ความรู้สึก' },
+      { id: 'art-07', front: 'nuance', phonetic: '/ˈnjuːɑːns/', back: 'a subtle difference in meaning, expression, or tone', example: 'The translation loses much of the poems delicate nuance.', thai: 'ความละเอียดอ่อน' },
+      { id: 'art-08', front: 'satire', phonetic: '/ˈsætaɪə/', back: 'the use of humour or irony to expose and criticise folly or vice', example: 'The play is a biting satire on bourgeois hypocrisy.', thai: 'การเสียดสี' }
+    ]
+  },
+  {
+    id: 'c1-debate-argumentation-vocab',
+    lessonId: null,
+    title: 'Debate & Argumentation',
+    level: 'C1',
+    icon: '🗣️',
+    cards: [
+      { id: 'deb-01', front: 'rebuttal', phonetic: '/rɪˈbʌtəl/', back: 'a statement that contradicts or refutes an opposing argument', example: 'Her closing rebuttal dismantled every point the opposition had made.', thai: 'การโต้แย้งหักล้าง' },
+      { id: 'deb-02', front: 'concede', phonetic: '/kənˈsiːd/', back: 'to admit that something is true or valid, often reluctantly', example: 'He was forced to concede that his opponents figures were accurate.', thai: 'ยอมรับ' },
+      { id: 'deb-03', front: 'fallacy', phonetic: '/ˈfæləsi/', back: 'a mistaken belief or flawed reasoning that undermines an argument', example: 'Attacking the speaker rather than the point is a common fallacy.', thai: 'การใช้เหตุผลผิด' },
+      { id: 'deb-04', front: 'coherent', phonetic: '/kəʊˈhɪərənt/', back: 'logically ordered and consistent so as to be clearly understood', example: 'She presented a coherent case that was difficult to refute.', thai: 'ที่เป็นเหตุเป็นผลสอดคล้อง' },
+      { id: 'deb-05', front: 'compelling', phonetic: '/kəmˈpelɪŋ/', back: 'evoking interest or conviction in a powerful and irresistible way', example: 'The prosecution built a compelling argument from circumstantial evidence.', thai: 'ที่โน้มน้าวใจอย่างมาก' },
+      { id: 'deb-06', front: 'undermine', phonetic: '/ˌʌndəˈmaɪn/', back: 'to weaken or damage something gradually or insidiously', example: 'A single inconsistency can undermine an otherwise strong case.', thai: 'บ่อนทำลาย' },
+      { id: 'deb-07', front: 'premise', phonetic: '/ˈpremɪs/', back: 'a proposition on which an argument is based or from which a conclusion is drawn', example: 'The conclusion is invalid because the premise itself is flawed.', thai: 'ข้อสมมติฐาน' },
+      { id: 'deb-08', front: 'persuasive', phonetic: '/pəˈsweɪsɪv/', back: 'good at convincing someone to believe or do something', example: 'His persuasive delivery swayed even the sceptical members of the panel.', thai: 'ที่โน้มน้าวใจ' }
+    ]
+  },
+  {
+    id: 'c1-sustainability-environment-vocab',
+    lessonId: null,
+    title: 'Sustainability & Environment',
+    level: 'C1',
+    icon: '♻️',
+    cards: [
+      { id: 'sus-01', front: 'sustainability', phonetic: '/səˌsteɪnəˈbɪləti/', back: 'the ability to maintain resources without depleting them for the future', example: 'The firm rebranded itself around a commitment to sustainability.', thai: 'ความยั่งยืน' },
+      { id: 'sus-02', front: 'carbon footprint', phonetic: '/ˈkɑːbən ˈfʊtprɪnt/', back: 'the total greenhouse gas emissions caused by an individual or organisation', example: 'Cycling to work significantly reduces your carbon footprint.', thai: 'รอยเท้าคาร์บอน' },
+      { id: 'sus-03', front: 'biodiversity', phonetic: '/ˌbaɪəʊdaɪˈvɜːsəti/', back: 'the variety of plant and animal life within a particular habitat', example: 'Deforestation is devastating the biodiversity of the rainforest.', thai: 'ความหลากหลายทางชีวภาพ' },
+      { id: 'sus-04', front: 'renewable', phonetic: '/rɪˈnjuːəbəl/', back: 'derived from sources that are naturally replenished and not depleted', example: 'The nation aims to source half its power from renewable energy.', thai: 'ที่หมุนเวียนทดแทนได้' },
+      { id: 'sus-05', front: 'depletion', phonetic: '/dɪˈpliːʃən/', back: 'the reduction of a resource to a critically low level', example: 'Overfishing has led to severe depletion of marine stocks.', thai: 'การพร่องลง' },
+      { id: 'sus-06', front: 'emissions', phonetic: '/ɪˈmɪʃənz/', back: 'gases or substances discharged into the atmosphere', example: 'Stricter regulations aim to slash industrial carbon emissions.', thai: 'การปล่อยมลพิษ' },
+      { id: 'sus-07', front: 'conservation', phonetic: '/ˌkɒnsəˈveɪʃən/', back: 'the protection and careful management of the natural environment', example: 'Conservation efforts have brought the species back from extinction.', thai: 'การอนุรักษ์' },
+      { id: 'sus-08', front: 'ecosystem', phonetic: '/ˈiːkəʊsɪstəm/', back: 'a community of organisms interacting with their physical environment', example: 'A single invasive species can disrupt an entire ecosystem.', thai: 'ระบบนิเวศ' }
+    ]
+  },
+  {
+    id: 'c1-medicine-healthcare-vocab',
+    lessonId: null,
+    title: 'Medicine & Healthcare',
+    level: 'C1',
+    icon: '🩺',
+    cards: [
+      { id: 'med-01', front: 'diagnosis', phonetic: '/ˌdaɪəɡˈnəʊsɪs/', back: 'the identification of an illness by examining its symptoms', example: 'An early diagnosis dramatically improves the patients prognosis.', thai: 'การวินิจฉัยโรค' },
+      { id: 'med-02', front: 'chronic', phonetic: '/ˈkrɒnɪk/', back: 'persisting for a long time or constantly recurring', example: 'Chronic conditions require ongoing management rather than a cure.', thai: 'เรื้อรัง' },
+      { id: 'med-03', front: 'immunity', phonetic: '/ɪˈmjuːnəti/', back: 'the bodys ability to resist a particular infection or toxin', example: 'Vaccination confers immunity against several deadly diseases.', thai: 'ภูมิคุ้มกัน' },
+      { id: 'med-04', front: 'prognosis', phonetic: '/prɒɡˈnəʊsɪs/', back: 'the likely course and outcome of a medical condition', example: 'Despite the surgery, the prognosis remained guarded.', thai: 'การพยากรณ์โรค' },
+      { id: 'med-05', front: 'epidemic', phonetic: '/ˌepɪˈdemɪk/', back: 'a widespread occurrence of a disease in a community at one time', example: 'Health officials scrambled to contain the emerging epidemic.', thai: 'การระบาด' },
+      { id: 'med-06', front: 'rehabilitation', phonetic: '/ˌriːəˌbɪlɪˈteɪʃən/', back: 'the process of restoring health or function after illness or injury', example: 'Months of rehabilitation helped him regain full mobility.', thai: 'การฟื้นฟูสมรรถภาพ' },
+      { id: 'med-07', front: 'symptomatic', phonetic: '/ˌsɪmptəˈmætɪk/', back: 'showing or relating to the symptoms of a disease', example: 'Only symptomatic patients were admitted for further testing.', thai: 'ที่แสดงอาการ' },
+      { id: 'med-08', front: 'contagious', phonetic: '/kənˈteɪdʒəs/', back: 'capable of being transmitted from one person to another by contact', example: 'The infection is highly contagious in its early stages.', thai: 'ที่ติดต่อได้' }
+    ]
+  },
+  {
+    id: 'c1-technology-ai-vocab',
+    lessonId: null,
+    title: 'Technology & Artificial Intelligence',
+    level: 'C1',
+    icon: '🤖',
+    cards: [
+      { id: 'tec-01', front: 'algorithm', phonetic: '/ˈælɡərɪðəm/', back: 'a set of rules or steps followed to solve a problem or process data', example: 'The recommendation algorithm tailors content to each user.', thai: 'อัลกอริทึม' },
+      { id: 'tec-02', front: 'automation', phonetic: '/ˌɔːtəˈmeɪʃən/', back: 'the use of machines or software to perform tasks with minimal human input', example: 'Widespread automation is transforming the manufacturing sector.', thai: 'ระบบอัตโนมัติ' },
+      { id: 'tec-03', front: 'machine learning', phonetic: '/məˈʃiːn ˈlɜːnɪŋ/', back: 'a field where systems improve performance by learning from data', example: 'Machine learning enables the model to refine its predictions over time.', thai: 'การเรียนรู้ของเครื่อง' },
+      { id: 'tec-04', front: 'encryption', phonetic: '/ɪnˈkrɪpʃən/', back: 'the process of encoding data so that only authorised parties can read it', example: 'End-to-end encryption safeguards users private messages.', thai: 'การเข้ารหัส' },
+      { id: 'tec-05', front: 'scalability', phonetic: '/ˌskeɪləˈbɪləti/', back: 'the capacity of a system to handle growth in demand efficiently', example: 'Cloud architecture was chosen for its remarkable scalability.', thai: 'ความสามารถในการขยายตัว' },
+      { id: 'tec-06', front: 'neural network', phonetic: '/ˈnjʊərəl ˈnetwɜːk/', back: 'a computing system modelled loosely on the human brains structure', example: 'A deep neural network powers the image-recognition software.', thai: 'โครงข่ายประสาทเทียม' },
+      { id: 'tec-07', front: 'obsolete', phonetic: '/ˈɒbsəliːt/', back: 'no longer produced or used because it is out of date', example: 'Rapid innovation renders yesterdays devices obsolete.', thai: 'ที่ล้าสมัย' },
+      { id: 'tec-08', front: 'disruption', phonetic: '/dɪsˈrʌpʃən/', back: 'a radical change to an industry caused by innovation', example: 'Streaming platforms caused massive disruption to the film industry.', thai: 'การพลิกโฉม' }
+    ]
+  },
+  {
+    id: 'c1-sociology-society-vocab',
+    lessonId: null,
+    title: 'Sociology & Society',
+    level: 'C1',
+    icon: '👥',
+    cards: [
+      { id: 'soc-01', front: 'demographic', phonetic: '/ˌdeməˈɡræfɪk/', back: 'relating to the statistical characteristics of a human population', example: 'Marketers analysed the demographic profile of their audience.', thai: 'เชิงประชากรศาสตร์' },
+      { id: 'soc-02', front: 'stratification', phonetic: '/ˌstrætɪfɪˈkeɪʃən/', back: 'the arrangement of society into hierarchical layers or classes', example: 'Social stratification determines access to education and wealth.', thai: 'การแบ่งชั้นทางสังคม' },
+      { id: 'soc-03', front: 'assimilation', phonetic: '/əˌsɪmɪˈleɪʃən/', back: 'the process by which a group adopts the culture of a larger society', example: 'The immigrants gradual assimilation took more than one generation.', thai: 'การกลืนกลายทางวัฒนธรรม' },
+      { id: 'soc-04', front: 'marginalisation', phonetic: '/ˌmɑːdʒɪnəlaɪˈzeɪʃən/', back: 'the treatment of a group as insignificant or peripheral', example: 'Policy reform sought to end the marginalisation of minorities.', thai: 'การถูกกีดกันสู่ชายขอบ' },
+      { id: 'soc-05', front: 'cohesion', phonetic: '/kəʊˈhiːʒən/', back: 'the state of forming a united and interconnected whole', example: 'Shared values are vital to maintaining social cohesion.', thai: 'ความเป็นอันหนึ่งอันเดียว' },
+      { id: 'soc-06', front: 'norm', phonetic: '/nɔːm/', back: 'an accepted standard of behaviour shared by members of a group', example: 'Social norms dictate what is considered acceptable conduct.', thai: 'บรรทัดฐานทางสังคม' },
+      { id: 'soc-07', front: 'urbanisation', phonetic: '/ˌɜːbənaɪˈzeɪʃən/', back: 'the increasing concentration of population in towns and cities', example: 'Rapid urbanisation has strained the citys infrastructure.', thai: 'การขยายตัวของเมือง' },
+      { id: 'soc-08', front: 'mobility', phonetic: '/məʊˈbɪləti/', back: 'the ability of individuals to move between social or economic positions', example: 'Education is often seen as a key driver of social mobility.', thai: 'การเลื่อนชั้นทางสังคม' }
+    ]
+  },
+{
+    id: 'c2-diplomacy-vocab',
+    lessonId: null,
+    title: 'Diplomatic Language',
+    level: 'C2',
+    icon: '🕊️',
+    cards: [
+      { id: 'dip-01', front: 'circumspect', phonetic: '/ˈsɜːkəmspekt/', back: 'wary and unwilling to take risks; measured and cautious in speech and conduct', example: 'She remained circumspect throughout, refusing to be drawn on the particulars of the settlement.', thai: 'ระมัดระวัง / รอบคอบ' },
+      { id: 'dip-02', front: 'conciliatory', phonetic: '/kənˈsɪliətəri/', back: 'intended to placate or reconcile, especially by making concessions', example: 'His conciliatory tone did much to defuse the standoff between the two delegations.', thai: 'ที่มุ่งปรองดอง / ที่ประนีประนอม' },
+      { id: 'dip-03', front: 'overture', phonetic: '/ˈəʊvətʃə/', back: 'a tentative proposal or approach made to initiate negotiation or reconciliation', example: 'Their peace overtures were rebuffed, at least initially, as mere posturing.', thai: 'การหยั่งเชิง / การเสนอเปิดการเจรจา' },
+      { id: 'dip-04', front: 'rapprochement', phonetic: '/ræˈprɒʃmɒ̃/', back: 'the re-establishment of cordial relations between states or parties after estrangement', example: 'The summit signalled a cautious rapprochement after decades of mutual suspicion.', thai: 'การฟื้นฟูความสัมพันธ์อันดี' },
+      { id: 'dip-05', front: 'equivocate', phonetic: '/ɪˈkwɪvəkeɪt/', back: "to use deliberately ambiguous language so as to conceal one's true position", example: 'Pressed on sanctions, the minister equivocated, offering neither assent nor refusal.', thai: 'พูดกำกวมเลี่ยงคำตอบ' },
+      { id: 'dip-06', front: 'entente', phonetic: '/ɒnˈtɒnt/', back: 'a friendly understanding or informal alliance between states', example: 'A quiet entente had formed, though no treaty ever committed it to paper.', thai: "ความเข้าใจอันดี / ความตกลงอย่างไม่เป็นทางการ" },
+      { id: 'dip-07', front: 'sotto voce', phonetic: '/ˌsɒtəʊ ˈvəʊtʃeɪ/', back: 'in a quiet voice, as if not intended to be overheard; discreetly', example: 'The concession was made sotto voce, off the record and never formally acknowledged.', thai: 'อย่างกระซิบ / อย่างไม่ให้ผู้อื่นได้ยิน' },
+      { id: 'dip-08', front: 'demarche', phonetic: '/ˈdeɪmɑːʃ/', back: 'a formal diplomatic representation or protest made through official channels', example: 'The ambassador delivered a stern demarche over the border incursion.', thai: 'การยื่นประท้วงทางการทูตอย่างเป็นทางการ' }
+    ]
+  },
+  {
+    id: 'c2-idiom-mastery-vocab',
+    lessonId: null,
+    title: 'Idiomatic Mastery',
+    level: 'C2',
+    icon: '🎭',
+    cards: [
+      { id: 'idm-01', front: 'a storm in a teacup', phonetic: '/ə stɔːm ɪn ə ˈtiːkʌp/', back: 'a great deal of agitation over a trivial matter', example: 'The so-called scandal proved a storm in a teacup, forgotten within a week.', thai: 'เรื่องเล็กที่ถูกทำให้ใหญ่โต' },
+      { id: 'idm-02', front: 'gild the lily', phonetic: '/ɡɪld ðə ˈlɪli/', back: 'to adorn or embellish something already beautiful, to superfluous or vulgar effect', example: 'The prose was elegant enough; the extra adjectives merely gilded the lily.', thai: 'ตกแต่งเกินจำเป็นจนกลายเป็นส่วนเกิน' },
+      { id: 'idm-03', front: 'a red herring', phonetic: '/ə red ˈherɪŋ/', back: 'a misleading clue or diversion that draws attention from the real issue', example: 'The witness statement turned out to be a red herring that cost the inquiry weeks.', thai: 'สิ่งลวงให้เขวออกจากประเด็นจริง' },
+      { id: 'idm-04', front: 'sail close to the wind', phonetic: '/seɪl kləʊs tə ðə wɪnd/', back: 'to behave in a way that verges on the illegal or improper', example: 'His accounting practices sailed close to the wind, though never quite over the line.', thai: 'ทำเสี่ยงเฉียดผิดกฎ' },
+      { id: 'idm-05', front: 'the elephant in the room', phonetic: '/ði ˈelɪfənt ɪn ðə ruːm/', back: 'an obvious, weighty problem that everyone conspicuously avoids discussing', example: 'Nobody mentioned the layoffs, the elephant in the room at every meeting.', thai: 'ปัญหาชัดเจนที่ทุกคนเลี่ยงจะพูดถึง' },
+      { id: 'idm-06', front: "hoist by one's own petard", phonetic: '/hɔɪst baɪ wʌnz əʊn pɪˈtɑːd/', back: 'harmed by the very scheme one devised to harm others', example: 'The saboteur was hoist by his own petard when the trap ensnared him instead.', thai: 'ติดกับดักที่ตัวเองวางไว้' },
+      { id: 'idm-07', front: 'beg the question', phonetic: '/beɡ ðə ˈkwestʃən/', back: 'to assume the truth of the very point under dispute (in strict usage)', example: 'To call the policy "obviously fair" begs the question of what fairness demands.', thai: 'ตั้งข้อสรุปโดยสมมติสิ่งที่ยังต้องพิสูจน์' },
+      { id: 'idm-08', front: 'the proof of the pudding', phonetic: '/ðə pruːf əv ðə ˈpʊdɪŋ/', back: 'the true value of something is judged only by putting it to use', example: 'The strategy looks sound on paper, but the proof of the pudding is in the results.', thai: 'คุณค่าที่แท้จริงพิสูจน์ได้จากการลงมือทำ' }
+    ]
+  },
+  {
+    id: 'c2-legal-register-vocab',
+    lessonId: null,
+    title: 'Legal Register',
+    level: 'C2',
+    icon: '⚖️',
+    cards: [
+      { id: 'leg-01', front: 'notwithstanding', phonetic: '/ˌnɒtwɪðˈstændɪŋ/', back: 'in spite of; used to signal that a provision overrides others', example: 'Notwithstanding any prior agreement, this clause shall take precedence.', thai: 'ถึงแม้ว่า / โดยไม่คำนึงถึง' },
+      { id: 'leg-02', front: 'estoppel', phonetic: '/ɪˈstɒpl/', back: 'a legal bar preventing a person from asserting a claim inconsistent with an earlier position', example: 'The doctrine of estoppel prevented the company from reneging on its representation.', thai: 'หลักกฎหมายห้ามปฏิเสธข้อเท็จจริงที่เคยยืนยัน' },
+      { id: 'leg-03', front: 'tortious', phonetic: '/ˈtɔːʃəs/', back: 'constituting a civil wrong for which damages may be recovered', example: 'Her conduct was found tortious, exposing the firm to substantial liability.', thai: 'อันเป็นการละเมิดทางแพ่ง' },
+      { id: 'leg-04', front: 'indemnify', phonetic: '/ɪnˈdemnɪfaɪ/', back: 'to compensate for loss, or to secure against future legal liability', example: 'The contractor agreed to indemnify the client against any third-party claims.', thai: 'ชดใช้ / ค้ำประกันต่อความเสียหาย' },
+      { id: 'leg-05', front: 'prima facie', phonetic: '/ˌpraɪmə ˈfeɪʃi/', back: 'accepted as correct until proved otherwise; on first appearance', example: 'The claimant established a prima facie case sufficient to survive dismissal.', thai: 'เมื่อแรกเห็น / พอเป็นหลักฐานเบื้องต้น' },
+      { id: 'leg-06', front: 'ultra vires', phonetic: '/ˌʌltrə ˈvaɪriːz/', back: 'beyond the legal power or authority of a body or official', example: "The regulator's order was quashed as ultra vires its statutory mandate.", thai: 'เกินขอบเขตอำนาจที่กฎหมายให้ไว้' },
+      { id: 'leg-07', front: 'severable', phonetic: '/ˈsevərəbl/', back: 'capable of being separated so that invalidity of one part does not void the whole', example: 'The unlawful clause was severable, leaving the remainder of the contract intact.', thai: 'ที่แยกออกได้โดยไม่กระทบส่วนอื่น' },
+      { id: 'leg-08', front: 'in abeyance', phonetic: '/ɪn əˈbeɪəns/', back: 'temporarily suspended or held in a state of dormancy pending resolution', example: 'Enforcement was held in abeyance until the appeal had been determined.', thai: 'ถูกระงับไว้ชั่วคราว / ค้างอยู่' }
+    ]
+  },
+  {
+    id: 'c2-literary-devices-vocab',
+    lessonId: null,
+    title: 'Literary Devices',
+    level: 'C2',
+    icon: '📖',
+    cards: [
+      { id: 'lit-01', front: 'zeugma', phonetic: '/ˈzjuːɡmə/', back: 'a figure in which one word governs two others in different senses', example: 'He stole both her heart and her wallet, a zeugma the novelist relished.', thai: 'การใช้คำเดียวโยงสองความหมาย' },
+      { id: 'lit-02', front: 'litotes', phonetic: '/laɪˈtəʊtiːz/', back: 'affirmation expressed by negating its contrary, often for understated effect', example: '"Not unimpressive" is a litotes that damns with faint praise.', thai: 'การเน้นด้วยการปฏิเสธสิ่งตรงข้าม' },
+      { id: 'lit-03', front: 'synecdoche', phonetic: '/sɪˈnekdəki/', back: 'a figure in which a part stands for the whole, or the whole for a part', example: 'Calling a car "a set of wheels" is a familiar synecdoche.', thai: 'การใช้ส่วนแทนทั้งหมด' },
+      { id: 'lit-04', front: 'anaphora', phonetic: '/əˈnæfərə/', back: 'the deliberate repetition of a word or phrase at the start of successive clauses', example: 'The speech gathered force through anaphora, each line opening with "We shall".', thai: 'การกล่าวซ้ำคำต้นประโยคเพื่อเน้น' },
+      { id: 'lit-05', front: 'chiasmus', phonetic: '/kaɪˈæzməs/', back: 'a reversal of grammatical structure in two balanced, mirrored clauses', example: 'The chiasmus "ask not what your country can do for you" lingers in memory.', thai: 'การสลับโครงสร้างแบบกระจกเงา' },
+      { id: 'lit-06', front: 'bathos', phonetic: '/ˈbeɪθɒs/', back: 'an anticlimactic descent from the elevated to the trivial, often unintentional', example: 'The elegy collapsed into bathos with its final, mawkish couplet.', thai: 'การตกจากความสูงส่งลงสู่ความสามัญอย่างเก้อเขิน' },
+      { id: 'lit-07', front: 'verisimilitude', phonetic: '/ˌverɪsɪˈmɪlɪtjuːd/', back: 'the appearance of being true or real within a work of fiction', example: 'The dialogue lent the novel a verisimilitude that critics much admired.', thai: 'ความสมจริงในงานเขียน' },
+      { id: 'lit-08', front: 'apostrophe', phonetic: '/əˈpɒstrəfi/', back: 'a rhetorical address to an absent person or abstract entity', example: 'In an apostrophe to Death, the poet defies its supposed dominion.', thai: 'การเอ่ยพาดพิงถึงสิ่งที่ไม่อยู่หรือสิ่งนามธรรม' }
+    ]
+  },
+  {
+    id: 'c2-connotation-vocab',
+    lessonId: null,
+    title: 'Nuanced Connotation',
+    level: 'C2',
+    icon: '🎨',
+    cards: [
+      { id: 'con-01', front: 'frugal', phonetic: '/ˈfruːɡl/', back: 'sparing with money in an approving sense, as opposed to "stingy"', example: 'He was frugal rather than mean, forgoing luxuries without begrudging others theirs.', thai: 'ประหยัด (ในทางชื่นชม)' },
+      { id: 'con-02', front: 'notorious', phonetic: '/nəʊˈtɔːriəs/', back: 'famous, but for something regarded as bad; carrying pejorative weight', example: 'The district was notorious for its nightlife, a reputation few boasted of.', thai: 'มีชื่อเสียงในทางเสีย / ฉาวโฉ่' },
+      { id: 'con-03', front: 'childlike', phonetic: '/ˈtʃaɪldlaɪk/', back: 'having the innocent, appealing qualities of a child (contrast the negative "childish")', example: 'Her childlike wonder at the paintings was disarming rather than immature.', thai: 'บริสุทธิ์ไร้เดียงสาอย่างเด็ก (ในทางบวก)' },
+      { id: 'con-04', front: 'slender', phonetic: '/ˈslendə/', back: 'attractively thin; a positively toned counterpart to "scrawny"', example: 'She had a slender build that lent her an air of quiet elegance.', thai: 'เพรียวบาง (ในทางชื่นชม)' },
+      { id: 'con-05', front: 'assertive', phonetic: '/əˈsɜːtɪv/', back: 'confident and forthright in a positive way, as against "aggressive"', example: 'Being assertive, she stated her terms plainly without ever bullying.', thai: 'กล้าแสดงออกอย่างมั่นใจ (ในทางบวก)' },
+      { id: 'con-06', front: 'inquisitive', phonetic: '/ɪnˈkwɪzətɪv/', back: 'curious in an eager, favourable sense, distinct from intrusive "nosy"', example: 'The child was inquisitive, forever asking how and why things worked.', thai: 'อยากรู้อยากเห็น (ในทางบวก)' },
+      { id: 'con-07', front: 'shrewd', phonetic: '/ʃruːd/', back: 'having sharp, practical judgement, often admiringly of business sense', example: "A shrewd investor, she read the market's turns before her rivals did.", thai: 'เฉียบแหลม / มีไหวพริบ' },
+      { id: 'con-08', front: 'unctuous', phonetic: '/ˈʌŋktʃuəs/', back: 'excessively flattering or ingratiating in a way that feels insincere', example: "His unctuous compliments only deepened the guests' distrust.", thai: 'ประจบสอพลออย่างน่ารังเกียจ' }
+    ]
+  },
+  {
+    id: 'c2-hedging-vocab',
+    lessonId: null,
+    title: 'Hedging & Nuance',
+    level: 'C2',
+    icon: '🌫️',
+    cards: [
+      { id: 'hed-01', front: 'ostensibly', phonetic: '/ɒˈstensɪbli/', back: 'apparently or as stated, though perhaps not in reality', example: 'He resigned ostensibly for health reasons, though few believed it.', thai: 'ตามที่อ้าง / เผินๆ ดูเหมือนว่า' },
+      { id: 'hed-02', front: 'arguably', phonetic: '/ˈɑːɡjuəbli/', back: 'as can be reasonably contended; used to soften a strong claim', example: 'She is arguably the finest essayist of her generation.', thai: 'อาจกล่าวได้ว่า' },
+      { id: 'hed-03', front: 'by and large', phonetic: '/baɪ ənd lɑːdʒ/', back: 'on the whole; used to concede exceptions to a generalisation', example: 'By and large the reforms succeeded, though pockets of resistance remained.', thai: 'โดยรวมแล้ว' },
+      { id: 'hed-04', front: 'tentatively', phonetic: '/ˈtentətɪvli/', back: 'in a provisional, uncommitted manner, open to revision', example: 'We have tentatively scheduled the launch for spring, pending approval.', thai: 'อย่างไม่แน่นอน / อย่างเบื้องต้น' },
+      { id: 'hed-05', front: 'to some degree', phonetic: '/tə sʌm dɪˈɡriː/', back: 'partly; a hedge acknowledging that a claim holds only in part', example: 'The criticism is, to some degree, warranted, but it overstates the case.', thai: 'ในระดับหนึ่ง' },
+      { id: 'hed-06', front: 'purportedly', phonetic: '/pəˈpɔːtɪdli/', back: 'according to what is claimed, with an implied reservation of doubt', example: 'The document was purportedly leaked, though its provenance is murky.', thai: 'ตามที่กล่าวอ้าง (โดยแฝงความสงสัย)' },
+      { id: 'hed-07', front: 'insofar as', phonetic: '/ˌɪnsəʊˈfɑːr əz/', back: 'to the extent that; delimits a claim to a specific respect', example: 'The theory holds insofar as the assumptions of the model obtain.', thai: 'เท่าที่ / ในขอบเขตที่ว่า' },
+      { id: 'hed-08', front: 'not inconceivable', phonetic: '/nɒt ˌɪnkənˈsiːvəbl/', back: 'a cautious double negative granting a faint possibility', example: "It is not inconceivable that rates will rise again before year's end.", thai: 'ไม่ใช่ว่าเป็นไปไม่ได้ / ก็อาจเป็นได้' }
+    ]
+  },
+  {
+    id: 'c2-discourse-markers-vocab',
+    lessonId: null,
+    title: 'Formal Discourse Markers',
+    level: 'C2',
+    icon: '🔗',
+    cards: [
+      { id: 'dis-01', front: 'notwithstanding the foregoing', phonetic: '/ˌnɒtwɪðˈstændɪŋ ðə ˈfɔːɡəʊɪŋ/', back: 'in spite of what has just been said; a formal concessive connector', example: 'Notwithstanding the foregoing, the board reserves the right to intervene.', thai: 'ถึงแม้ที่กล่าวมาข้างต้น' },
+      { id: 'dis-02', front: 'to that end', phonetic: '/tə ðæt end/', back: 'for that purpose; links an action to a previously stated aim', example: 'We aim to cut emissions; to that end, several measures are proposed.', thai: 'เพื่อจุดประสงค์นั้น' },
+      { id: 'dis-03', front: 'be that as it may', phonetic: '/bi ðæt əz ɪt meɪ/', back: 'a formal concession granting a point before setting it aside', example: 'Be that as it may, the deadline cannot be moved.', thai: 'ถึงจะเป็นเช่นนั้นก็ตาม' },
+      { id: 'dis-04', front: 'in the final analysis', phonetic: '/ɪn ðə ˈfaɪnl əˈnælɪsɪs/', back: 'when everything is considered; introduces an ultimate conclusion', example: 'In the final analysis, the venture failed for want of capital, not vision.', thai: 'เมื่อพิเคราะห์ถึงที่สุดแล้ว' },
+      { id: 'dis-05', front: 'inasmuch as', phonetic: '/ˌɪnəzˈmʌtʃ əz/', back: 'to the extent that, or because; a formal causal or delimiting link', example: 'The clause applies inasmuch as the parties are domiciled abroad.', thai: 'เนื่องด้วย / เท่าที่ว่า' },
+      { id: 'dis-06', front: 'hitherto', phonetic: '/ˌhɪðəˈtuː/', back: 'until now; marks a contrast with a prior state of affairs', example: 'The findings challenge a consensus hitherto regarded as settled.', thai: 'จนกระทั่งบัดนี้ / แต่ก่อนนั้น' },
+      { id: 'dis-07', front: 'conversely', phonetic: '/ˈkɒnvɜːsli/', back: 'introducing a statement that reverses or opposes the preceding one', example: 'Demand may fall; conversely, a shortage could send prices soaring.', thai: 'ในทางกลับกัน' },
+      { id: 'dis-08', front: 'to wit', phonetic: '/tə wɪt/', back: 'that is to say; a formal marker introducing precise specification', example: 'Three conditions apply, to wit: consent, capacity, and consideration.', thai: 'กล่าวคือ / ได้แก่' }
+    ]
+  },
+  {
+    id: 'c2-metaphor-vocab',
+    lessonId: null,
+    title: 'Metaphor & Figurative Language',
+    level: 'C2',
+    icon: '🪞',
+    cards: [
+      { id: 'met-01', front: 'a lightning rod', phonetic: '/ə ˈlaɪtnɪŋ rɒd/', back: 'a person or thing that attracts and absorbs criticism or hostility', example: 'The new tax became a lightning rod for public discontent.', thai: 'สิ่งที่ดึงดูดคำวิจารณ์หรือความไม่พอใจ' },
+      { id: 'met-02', front: 'a watershed', phonetic: '/ə ˈwɔːtəʃed/', back: 'a turning point marking a decisive division between eras or states', example: 'The ruling proved a watershed in the law of privacy.', thai: 'จุดเปลี่ยนสำคัญ' },
+      { id: 'met-03', front: 'to weather the storm', phonetic: '/tə ˈweðə ðə stɔːm/', back: 'to survive a period of difficulty without lasting damage', example: 'The firm weathered the storm of recession and emerged leaner.', thai: 'ฝ่าฟันช่วงยากลำบากไปได้' },
+      { id: 'met-04', front: 'a double-edged sword', phonetic: '/ə ˌdʌbl edʒd ˈsɔːd/', back: 'something with both favourable and unfavourable consequences', example: 'Fame is a double-edged sword, granting access at the cost of privacy.', thai: 'ดาบสองคม' },
+      { id: 'met-05', front: 'to gain traction', phonetic: '/tə ɡeɪn ˈtrækʃn/', back: 'to begin to gather momentum, popularity, or acceptance', example: 'The idea gained traction once a respected journal endorsed it.', thai: 'เริ่มได้รับการยอมรับ / เริ่มติดตลาด' },
+      { id: 'met-06', front: 'the tip of the iceberg', phonetic: '/ðə tɪp əv ði ˈaɪsbɜːɡ/', back: 'a small, visible part of a much larger, hidden problem', example: 'The reported cases are merely the tip of the iceberg.', thai: 'ยอดภูเขาน้ำแข็ง / ส่วนที่เห็นเพียงเล็กน้อย' },
+      { id: 'met-07', front: 'a slippery slope', phonetic: '/ə ˈslɪpəri sləʊp/', back: 'a course of action likely to lead by degrees to something undesirable', example: 'Critics warned that the surveillance law was a slippery slope.', thai: 'ทางลาดลื่น / จุดเริ่มของการตกต่ำเป็นลำดับ' },
+      { id: 'met-08', front: 'to move the goalposts', phonetic: '/tə muːv ðə ˈɡəʊlpəʊsts/', back: "to unfairly alter the criteria of a process to one's own advantage", example: 'Every time we met a target, management moved the goalposts.', thai: 'เปลี่ยนเกณฑ์กลางคันอย่างไม่เป็นธรรม' }
+    ]
+  },
+  {
+    id: 'c2-precision-verbs-vocab',
+    lessonId: null,
+    title: 'Precision Verbs',
+    level: 'C2',
+    icon: '🎯',
+    cards: [
+      { id: 'prv-01', front: 'to broach', phonetic: '/brəʊtʃ/', back: 'to raise a delicate or difficult subject for discussion', example: 'She hesitated before broaching the question of his resignation.', thai: 'หยิบยกเรื่องละเอียดอ่อนขึ้นมาพูด' },
+      { id: 'prv-02', front: 'to galvanise', phonetic: '/ˈɡælvənaɪz/', back: 'to shock or spur into sudden, decisive action', example: 'The disaster galvanised the community into unprecedented cooperation.', thai: 'กระตุ้นให้ลงมือทันที' },
+      { id: 'prv-03', front: 'to precipitate', phonetic: '/prɪˈsɪpɪteɪt/', back: 'to cause an event to happen suddenly or prematurely', example: 'The default precipitated a crisis that rippled across the region.', thai: 'ทำให้เกิดขึ้นอย่างฉับพลัน' },
+      { id: 'prv-04', front: 'to underpin', phonetic: '/ˌʌndəˈpɪn/', back: 'to support, justify, or form the foundation of something', example: "A rigorous methodology underpins the study's conclusions.", thai: 'เป็นรากฐานค้ำจุน' },
+      { id: 'prv-05', front: 'to eschew', phonetic: '/ɪsˈtʃuː/', back: 'to deliberately abstain from or avoid something on principle', example: 'The author eschews ornament in favour of stark, plain prose.', thai: 'จงใจหลีกเลี่ยง / ละเว้น' },
+      { id: 'prv-06', front: 'to circumscribe', phonetic: '/ˈsɜːkəmskraɪb/', back: 'to restrict something within firm limits', example: "The court's powers are carefully circumscribed by statute.", thai: 'จำกัดขอบเขต' },
+      { id: 'prv-07', front: 'to countenance', phonetic: '/ˈkaʊntɪnəns/', back: 'to give approval to or tolerate a course of action', example: 'The board would not countenance any breach of protocol.', thai: 'ยินยอม / เห็นชอบให้กระทำ' },
+      { id: 'prv-08', front: 'to belie', phonetic: '/bɪˈlaɪ/', back: 'to give a false impression of, or to contradict', example: 'Her calm demeanour belied the turmoil beneath.', thai: 'ปกปิดความจริง / ขัดแย้งกับสิ่งที่ปรากฏ' }
+    ]
+  },
+  {
+    id: 'c2-synonym-distinctions-vocab',
+    lessonId: null,
+    title: 'Subtle Synonym Distinctions',
+    level: 'C2',
+    icon: '🔍',
+    cards: [
+      { id: 'syn-01', front: 'refute', phonetic: '/rɪˈfjuːt/', back: 'to prove a claim false with evidence (not merely to deny it)', example: 'The data refute the hypothesis; mere assertion could not.', thai: 'หักล้างด้วยหลักฐาน (ต่างจากแค่ปฏิเสธ)' },
+      { id: 'syn-02', front: 'rebut', phonetic: '/rɪˈbʌt/', back: 'to argue against a claim, without necessarily disproving it', example: 'Counsel rebutted the charge, though the jury remained unconvinced.', thai: 'โต้แย้ง (โดยยังไม่จำเป็นต้องพิสูจน์ว่าผิด)' },
+      { id: 'syn-03', front: 'nascent', phonetic: '/ˈnæsnt/', back: 'just beginning to develop, with connotations of promise', example: 'A nascent industry, it had yet to find its footing.', thai: 'ที่เพิ่งก่อตัว / อยู่ในระยะเริ่มต้น' },
+      { id: 'syn-04', front: 'incipient', phonetic: '/ɪnˈsɪpiənt/', back: 'in an initial stage, often of something latent or looming', example: 'They detected the incipient signs of decay before it spread.', thai: 'ที่เริ่มปรากฏ (มักแฝงลางบอกเหตุ)' },
+      { id: 'syn-05', front: 'diffident', phonetic: '/ˈdɪfɪdənt/', back: 'shy from lack of self-confidence (not the same as modest)', example: 'Too diffident to speak up, he let a lesser idea prevail.', thai: 'ขี้อาย / ไม่มั่นใจในตนเอง' },
+      { id: 'syn-06', front: 'reticent', phonetic: '/ˈretɪsnt/', back: 'reluctant to reveal one" thoughts or feelings; reserved in speech', example: 'She was reticent about her past, deflecting every question.', thai: 'สงวนท่าที / ไม่ค่อยเปิดเผยความคิด' },
+      { id: 'syn-07', front: 'fortuitous', phonetic: '/fɔːˈtjuːɪtəs/', back: 'happening by chance (strictly, not necessarily lucky)', example: 'Their meeting was fortuitous, an accident of scheduling.', thai: 'ที่เกิดโดยบังเอิญ' },
+      { id: 'syn-08', front: 'propitious', phonetic: '/prəˈpɪʃəs/', back: 'giving a favourable indication of success; auspicious', example: 'Conditions were propitious for launching the new venture.', thai: 'ที่เป็นมงคล / เอื้ออำนวย' }
+    ]
+  },
+  {
+    id: 'c2-persuasion-vocab',
+    lessonId: null,
+    title: 'Advanced Persuasion',
+    level: 'C2',
+    icon: '🗣️',
+    cards: [
+      { id: 'per-01', front: 'concede', phonetic: '/kənˈsiːd/', back: "to grant a point to strengthen one's overall persuasive position", example: 'I concede the cost is high, yet the returns amply justify it.', thai: 'ยอมรับบางประเด็นเพื่อเสริมน้ำหนักโดยรวม' },
+      { id: 'per-02', front: 'to appeal to reason', phonetic: '/tə əˈpiːl tə ˈriːzn/', back: 'to persuade by logical argument rather than emotion', example: 'Rather than inflame the crowd, she appealed to reason.', thai: 'โน้มน้าวด้วยเหตุผล' },
+      { id: 'per-03', front: 'rhetorical question', phonetic: '/rɪˈtɒrɪkl ˈkwestʃən/', back: 'a question posed for effect, not for an answer', example: 'Can we truly afford to wait? The rhetorical question hung in the air.', thai: 'คำถามเชิงวาทศิลป์ (ไม่ต้องการคำตอบ)' },
+      { id: 'per-04', front: 'to marshal evidence', phonetic: '/tə ˈmɑːʃl ˈevɪdəns/', back: 'to arrange facts in a compelling, orderly sequence', example: 'The prosecutor marshalled the evidence into an irresistible narrative.', thai: 'จัดเรียงหลักฐานอย่างเป็นระบบ' },
+      { id: 'per-05', front: 'to preempt an objection', phonetic: '/tə priˈempt ən əbˈdʒekʃn/', back: 'to answer a likely counterargument before it is raised', example: 'She preempted the objection by conceding its premise outright.', thai: 'ตอบข้อโต้แย้งล่วงหน้าก่อนถูกยกขึ้น' },
+      { id: 'per-06', front: 'to invoke', phonetic: '/ɪnˈvəʊk/', back: "to cite an authority or principle in support of one's case", example: 'He invoked precedent to lend his argument institutional weight.', thai: 'อ้างอิงหลักการหรือผู้มีอำนาจมาสนับสนุน' },
+      { id: 'per-07', front: 'to frame', phonetic: '/freɪm/', back: "to present an issue in terms that favour one's conclusion", example: 'By framing it as a matter of fairness, she won reluctant support.', thai: 'วางกรอบประเด็นให้เอื้อต่อข้อสรุปของตน' },
+      { id: 'per-08', front: 'a clincher', phonetic: '/ə ˈklɪntʃə/', back: 'a decisive argument or fact that settles a matter conclusively', example: "The whistle-blower's testimony was the clincher.", thai: 'ข้อโต้แย้งชี้ขาดที่ปิดเรื่อง' }
+    ]
+  },
+  {
+    id: 'c2-scientific-register-vocab',
+    lessonId: null,
+    title: 'Scientific Register',
+    level: 'C2',
+    icon: '🔬',
+    cards: [
+      { id: 'sci-01', front: 'empirical', phonetic: '/ɪmˈpɪrɪkl/', back: 'based on observation or experiment rather than theory alone', example: 'The claim awaits empirical corroboration before it can be accepted.', thai: 'ที่อาศัยการสังเกตหรือการทดลอง' },
+      { id: 'sci-02', front: 'to corroborate', phonetic: '/kəˈrɒbəreɪt/', back: 'to confirm or give support to a finding with further evidence', example: 'Independent trials corroborated the original results.', thai: 'ยืนยันสนับสนุนด้วยหลักฐานเพิ่มเติม' },
+      { id: 'sci-03', front: 'confounding variable', phonetic: '/kənˈfaʊndɪŋ ˈveəriəbl/', back: 'an extraneous factor that distorts the apparent relationship studied', example: 'The study controlled for age as a potential confounding variable.', thai: 'ตัวแปรกวนที่บิดเบือนผลการศึกษา' },
+      { id: 'sci-04', front: 'to extrapolate', phonetic: '/ɪkˈstræpəleɪt/', back: 'to infer beyond observed data by projecting a known trend', example: 'One must extrapolate cautiously from so small a sample.', thai: 'คาดการณ์เกินขอบเขตข้อมูลที่มี' },
+      { id: 'sci-05', front: 'salient', phonetic: '/ˈseɪliənt/', back: 'most noticeable or significant among a set of features', example: 'The most salient result was the abrupt threshold effect.', thai: 'ที่เด่นชัด / สำคัญที่สุด' },
+      { id: 'sci-06', front: 'parsimonious', phonetic: '/ˌpɑːsɪˈməʊniəs/', back: 'explaining phenomena with the fewest possible assumptions', example: "The more parsimonious model was preferred on Occam's grounds.", thai: 'ที่ใช้สมมติฐานน้อยที่สุด / ประหยัดสมมติฐาน' },
+      { id: 'sci-07', front: 'orthogonal', phonetic: '/ɔːˈθɒɡənl/', back: 'statistically independent; unrelated to another variable or issue', example: 'The two effects proved orthogonal, varying quite independently.', thai: 'ที่เป็นอิสระต่อกัน / ไม่เกี่ยวข้องกัน' },
+      { id: 'sci-08', front: 'a priori', phonetic: '/ˌeɪ praɪˈɔːraɪ/', back: 'reasoned from theoretical deduction rather than observation', example: 'There is no a priori reason to expect a linear relationship.', thai: 'โดยอาศัยเหตุผลก่อนประสบการณ์' }
+    ]
+  },
+  {
+    id: 'c2-philosophy-vocab',
+    lessonId: null,
+    title: 'Philosophical Terms',
+    level: 'C2',
+    icon: '🧠',
+    cards: [
+      { id: 'phi-01', front: 'epistemic', phonetic: '/ˌepɪˈstemɪk/', back: 'relating to knowledge or the conditions of knowing', example: 'Their disagreement was epistemic, about what can be known at all.', thai: 'เกี่ยวกับความรู้และการรู้' },
+      { id: 'phi-02', front: 'contingent', phonetic: '/kənˈtɪndʒənt/', back: 'true or existing only under certain conditions; not necessary', example: 'The outcome is contingent, dependent on choices we have yet to make.', thai: 'ที่ขึ้นอยู่กับเงื่อนไข / ไม่จำเป็นต้องเป็นเช่นนั้น' },
+      { id: 'phi-03', front: 'teleological', phonetic: '/ˌteliəˈlɒdʒɪkl/', back: 'explained by reference to purpose or ultimate end rather than cause', example: 'A teleological view holds that nature strives toward ends.', thai: 'ที่อธิบายด้วยจุดมุ่งหมายปลายทาง' },
+      { id: 'phi-04', front: 'immanent', phonetic: '/ˈɪmənənt/', back: 'existing or operating within, as opposed to transcendent', example: 'For the pantheist, the divine is immanent in all things.', thai: 'ที่ดำรงอยู่ภายใน (ตรงข้ามอุตตรภาวะ)' },
+      { id: 'phi-05', front: 'reify', phonetic: '/ˈriːɪfaɪ/', back: 'to treat an abstraction as if it were a concrete thing', example: 'To reify "the market" is to forget it is a web of human choices.', thai: 'ทำสิ่งนามธรรมให้เป็นเสมือนสิ่งรูปธรรม' },
+      { id: 'phi-06', front: 'dialectic', phonetic: '/ˌdaɪəˈlektɪk/', back: 'reasoning that advances through the tension of opposing ideas', example: 'Progress, on this view, unfolds through a dialectic of thesis and antithesis.', thai: 'วิภาษวิธี / การใช้เหตุผลผ่านความขัดแย้ง' },
+      { id: 'phi-07', front: 'solipsism', phonetic: '/ˈsɒlɪpsɪzəm/', back: "the view that only one's own mind is certain to exist", example: 'Taken to its limit, radical scepticism collapses into solipsism.', thai: 'อัตตนิยม / ทัศนะว่ามีเพียงจิตตนที่แน่นอน' },
+      { id: 'phi-08', front: 'axiomatic', phonetic: '/ˌæksiəˈmætɪk/', back: 'self-evidently true; taken as a foundational starting premise', example: 'That every person merits respect he held to be axiomatic.', thai: 'ที่เป็นความจริงในตัวเอง / เป็นสัจพจน์' }
+    ]
+  },
+  {
+    id: 'c2-critical-analysis-vocab',
+    lessonId: null,
+    title: 'Critical Analysis',
+    level: 'C2',
+    icon: '🧐',
+    cards: [
+      { id: 'cri-01', front: 'tenuous', phonetic: '/ˈtenjuəs/', back: 'weak, slight, or insubstantial, as of an argument or connection', example: 'The link between the two events is, at best, tenuous.', thai: 'บอบบาง / ไม่หนักแน่น' },
+      { id: 'cri-02', front: 'specious', phonetic: '/ˈspiːʃəs/', back: 'superficially plausible but actually flawed or misleading', example: 'His reasoning was specious, alluring until one examined the premises.', thai: 'ดูสมเหตุสมผลแต่แท้จริงผิดพลาด' },
+      { id: 'cri-03', front: 'reductive', phonetic: '/rɪˈdʌktɪv/', back: 'oversimplifying a complex matter to its detriment', example: 'To blame the collapse on greed alone is reductive.', thai: 'ที่ลดทอนจนง่ายเกินไป' },
+      { id: 'cri-04', front: 'nuanced', phonetic: '/ˈnjuːɑːnst/', back: 'characterised by subtle distinctions and shades of meaning', example: 'Her nuanced reading resisted the temptation of easy verdicts.', thai: 'ที่ละเอียดลออ / มีความแยกแยะ' },
+      { id: 'cri-05', front: 'to problematise', phonetic: '/ˈprɒbləmətaɪz/', back: 'to treat an assumption as questionable rather than given', example: 'The essay problematises the very notion of objective history.', thai: 'ทำให้สิ่งที่เคยยอมรับกลายเป็นข้อกังขา' },
+      { id: 'cri-06', front: 'cogent', phonetic: '/ˈkəʊdʒənt/', back: 'clear, logical, and convincing in argument', example: 'She made a cogent case that left little room for rejoinder.', thai: 'ที่มีเหตุผลหนักแน่นน่าเชื่อ' },
+      { id: 'cri-07', front: 'tendentious', phonetic: '/tenˈdenʃəs/', back: 'expressing a strong bias in favour of a particular viewpoint', example: 'The report was tendentious, marshalling only convenient facts.', thai: 'ที่ลำเอียง / มีอคติชัดเจน' },
+      { id: 'cri-08', front: 'to conflate', phonetic: '/kənˈfleɪt/', back: 'to merge two distinct things into one, often erroneously', example: 'Critics conflate correlation with causation at their peril.', thai: 'รวมสองสิ่งที่ต่างกันเข้าด้วยกันอย่างผิดพลาด' }
+    ]
+  },
+  {
+    id: 'c2-economics-vocab',
+    lessonId: null,
+    title: 'Economic Jargon',
+    level: 'C2',
+    icon: '📈',
+    cards: [
+      { id: 'eco-01', front: 'fungible', phonetic: '/ˈfʌndʒəbl/', back: 'interchangeable with other units of the same kind and value', example: 'Money is fungible; one banknote is as good as another.', thai: 'ที่ทดแทนกันได้อย่างเท่าเทียม' },
+      { id: 'eco-02', front: 'countercyclical', phonetic: '/ˌkaʊntəˈsaɪklɪkl/', back: 'moving against the prevailing economic cycle', example: 'Countercyclical spending is meant to cushion downturns.', thai: 'ที่สวนทางกับวัฏจักรเศรษฐกิจ' },
+      { id: 'eco-03', front: 'moral hazard', phonetic: '/ˈmɒrəl ˈhæzəd/', back: 'the tendency to take greater risks when shielded from the consequences', example: 'Bailouts risk moral hazard by rewarding reckless lending.', thai: 'ภัยทางศีลธรรม / การเสี่ยงเพราะไม่ต้องรับผล' },
+      { id: 'eco-04', front: 'liquidity', phonetic: '/lɪˈkwɪdɪti/', back: 'the ease with which an asset can be converted to cash', example: 'The fund faced a liquidity crunch despite being solvent on paper.', thai: 'สภาพคล่อง' },
+      { id: 'eco-05', front: 'arbitrage', phonetic: '/ˈɑːbɪtrɑːʒ/', back: 'profiting from price differences of the same asset across markets', example: 'Traders exploited the arbitrage before the gap closed.', thai: 'การทำกำไรจากส่วนต่างราคาระหว่างตลาด' },
+      { id: 'eco-06', front: 'externality', phonetic: '/ˌekstɜːˈnælɪti/', back: 'a cost or benefit affecting a third party outside the transaction', example: 'Pollution is a classic negative externality of production.', thai: 'ผลกระทบภายนอกต่อบุคคลที่สาม' },
+      { id: 'eco-07', front: 'headwind', phonetic: '/ˈhedwɪnd/', back: 'a factor that impedes economic growth or progress', example: 'Rising rates posed a headwind for the housing market.', thai: 'ปัจจัยลบที่ฉุดรั้งการเติบโต' },
+      { id: 'eco-08', front: 'crowding out', phonetic: '/ˈkraʊdɪŋ aʊt/', back: 'the displacement of private investment by public borrowing', example: 'Deficit spending may cause crowding out of private capital.', thai: 'การที่การกู้ภาครัฐเบียดการลงทุนเอกชน' }
+    ]
+  },
+  {
+    id: 'c2-political-discourse-vocab',
+    lessonId: null,
+    title: 'Political Discourse',
+    level: 'C2',
+    icon: '🏛️',
+    cards: [
+      { id: 'pol-01', front: 'partisan', phonetic: '/ˈpɑːtɪzən/', back: 'strongly and often blindly loyal to a party or faction', example: 'The debate degenerated into partisan point-scoring.', thai: 'ที่ลำเอียงเข้าข้างพรรคพวก' },
+      { id: 'pol-02', front: 'bipartisan', phonetic: '/baɪˈpɑːtɪzən/', back: 'supported by two opposing parties acting in cooperation', example: 'The bill passed with rare bipartisan backing.', thai: 'ที่ได้รับการสนับสนุนจากทั้งสองฝ่าย' },
+      { id: 'pol-03', front: 'realpolitik', phonetic: '/reɪˈɑːlpɒlɪtiːk/', back: 'politics based on practical power rather than ideals or morals', example: 'The alliance was pure realpolitik, born of necessity, not affection.', thai: 'การเมืองที่ยึดอำนาจจริงมากกว่าอุดมการณ์' },
+      { id: 'pol-04', front: 'demagogue', phonetic: '/ˈdeməɡɒɡ/', back: 'a leader who exploits popular fears and prejudices for power', example: 'The demagogue prospered on grievance rather than policy.', thai: 'ผู้นำที่ปลุกปั่นอารมณ์มวลชนเพื่ออำนาจ' },
+      { id: 'pol-05', front: 'incumbent', phonetic: '/ɪnˈkʌmbənt/', back: 'the current holder of an office, especially seeking re-election', example: 'The incumbent enjoyed the advantages of name recognition.', thai: 'ผู้ดำรงตำแหน่งอยู่' },
+      { id: 'pol-06', front: 'to filibuster', phonetic: '/ˈfɪlɪbʌstə/', back: 'to obstruct legislation by prolonging debate indefinitely', example: 'The minority filibustered to stall the vote for days.', thai: 'อภิปรายยืดเวลาเพื่อขัดขวางการลงมติ' },
+      { id: 'pol-07', front: 'mandate', phonetic: '/ˈmændeɪt/', back: 'the authority to govern, conferred by an electoral victory', example: 'The landslide gave the new government a clear mandate for reform.', thai: 'อาณัติ / อำนาจที่ได้จากการเลือกตั้ง' },
+      { id: 'pol-08', front: 'to triangulate', phonetic: '/traɪˈæŋɡjuleɪt/', back: "to adopt a middle position by co-opting opponents' positions", example: "The leader triangulated, blunting the opposition's best lines of attack.", thai: 'เดินสายกลางโดยฉวยจุดยืนของฝ่ายตรงข้าม' }
+    ]
+  },
+  {
+    id: 'c2-understatement-irony-vocab',
+    lessonId: null,
+    title: 'Understatement & Irony',
+    level: 'C2',
+    icon: '😏',
+    cards: [
+      { id: 'iro-01', front: 'a masterful understatement', phonetic: '/ə ˈmɑːstəfl ˌʌndəˈsteɪtmənt/', back: 'a description that deliberately downplays something significant', example: 'Calling the hurricane "a bit of weather" was a masterful understatement.', thai: 'การกล่าวลดทอนความสำคัญอย่างจงใจ' },
+      { id: 'iro-02', front: 'wry', phonetic: '/raɪ/', back: 'using dry, mocking humour, often with a twist of resignation', example: 'He greeted the setback with a wry smile and a shrug.', thai: 'ที่ตลกร้ายแบบแห้งๆ / เหน็บแนม' },
+      { id: 'iro-03', front: 'tongue-in-cheek', phonetic: '/ˌtʌŋ ɪn ˈtʃiːk/', back: 'meant humorously or ironically, not to be taken at face value', example: 'His praise was tongue-in-cheek; he plainly disapproved.', thai: 'ที่พูดเล่นเชิงเสียดสี / ไม่ได้จริงจัง' },
+      { id: 'iro-04', front: 'deadpan', phonetic: '/ˈdedpæn/', back: 'delivering humour with a deliberately blank, impassive expression', example: 'She delivered the absurd line deadpan, and the room erupted.', thai: 'ที่พูดตลกด้วยสีหน้าเรียบเฉย' },
+      { id: 'iro-05', front: 'faint praise', phonetic: '/feɪnt preɪz/', back: 'approval so lukewarm it implies criticism', example: 'To call it "competent" was faint praise indeed.', thai: 'คำชมจืดชืดที่แฝงการตำหนิ' },
+      { id: 'iro-06', front: 'no small feat', phonetic: '/nəʊ smɔːl fiːt/', back: 'an ironic litotes meaning a considerable achievement', example: 'Reconciling the two factions was no small feat.', thai: 'ไม่ใช่เรื่องเล็ก (สำนวนเน้นว่ายิ่งใหญ่)' },
+      { id: 'iro-07', front: 'to damn with faint praise', phonetic: '/tə dæm wɪð feɪnt preɪz/', back: 'to condemn by praising so mildly as to signal disapproval', example: 'The review damned the film with faint praise.', thai: 'ตำหนิด้วยการชมอย่างเสียไม่ได้' },
+      { id: 'iro-08', front: 'hardly a ringing endorsement', phonetic: '/ˈhɑːdli ə ˈrɪŋɪŋ ɪnˈdɔːsmənt/', back: 'an ironic phrase signalling notably weak or grudging support', example: '"It could be worse" is hardly a ringing endorsement.', thai: 'แทบไม่ใช่การสนับสนุนที่หนักแน่นเลย' }
+    ]
+  },
 ]
 
 export function getDeckById(id) {
