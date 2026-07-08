@@ -1,5 +1,7 @@
 import { navigate } from '../router.js'
 import { getProgress } from '../store.js'
+import { supabase } from '../lib/supabase.js'
+import { getProfile } from '../lib/auth.js'
 
 const THEME_KEY = 'elapp_theme'
 
@@ -79,13 +81,21 @@ const navItems = [
     label: 'Speed Round',
     hash: '/speed-round',
     icon: `<svg class="nav-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>`
-  }
+  },
 ]
 
-export function renderSidebar() {
+export async function renderSidebar() {
   const sidebar = document.getElementById('sidebar')
   const state = getProgress()
   const streak = state.streakDays || 0
+  const { data: { user } } = await supabase.auth.getUser()
+
+  // Toggle full-screen auth mode
+  document.body.classList.toggle('auth-mode', !user)
+  if (!user) { sidebar.innerHTML = ''; return }
+
+  const profile = user ? await getProfile() : null
+  const displayName = profile?.display_name || (user ? user.email.split('@')[0] : null)
 
   sidebar.innerHTML = `
     <a class="sidebar-logo" href="#/">
@@ -107,6 +117,10 @@ export function renderSidebar() {
           <span>${streak} day streak</span>
         </div>
       ` : ''}
+      <button class="nav-item" data-hash="/profile" onclick="window.location.hash='/profile'" style="width:100%;margin-bottom:var(--sp-2)">
+        <svg class="nav-icon" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+        <span style="flex:1;text-align:left">${displayName || 'Profile'}</span>
+      </button>
       <button class="btn btn-ghost btn-sm" id="theme-toggle" style="width:100%;justify-content:center">
         ${isDark() ? '☀️ Light mode' : '🌙 Dark mode'}
       </button>

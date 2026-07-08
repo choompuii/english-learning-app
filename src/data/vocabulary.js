@@ -3075,6 +3075,77 @@ export const decks = [
       { id: 'iro-08', front: 'hardly a ringing endorsement', phonetic: '/ˈhɑːdli ə ˈrɪŋɪŋ ɪnˈdɔːsmənt/', back: 'an ironic phrase signalling notably weak or grudging support', example: '"It could be worse" is hardly a ringing endorsement.', thai: 'แทบไม่ใช่การสนับสนุนที่หนักแน่นเลย' }
     ]
   },
+  {
+    id: 'b1-it-basics-vocab',
+    lessonId: null,
+    title: 'IT Basics',
+    level: 'B1',
+    icon: '🖥️',
+    cards: [
+      { id: 'it-01', front: 'login', phonetic: '/ˈlɒɡɪn/', back: 'to enter your username and password to access a system', example: 'Please login with your email and password.', thai: 'เข้าสู่ระบบ' },
+      { id: 'it-02', front: 'logout', phonetic: '/ˈlɒɡaʊt/', back: 'to sign out of an account or system', example: 'Always logout when using a shared computer.', thai: 'ออกจากระบบ' },
+      { id: 'it-03', front: 'bug', phonetic: '/bʌɡ/', back: 'an error or flaw in a computer program', example: 'There is a bug in the code that causes the app to crash.', thai: 'ข้อผิดพลาดในโปรแกรม' },
+      { id: 'it-04', front: 'debug', phonetic: '/ˌdiːˈbʌɡ/', back: 'to find and fix errors in a program', example: 'The developer spent hours trying to debug the software.', thai: 'แก้ไขข้อผิดพลาดในโปรแกรม' },
+      { id: 'it-05', front: 'server', phonetic: '/ˈsɜːvə/', back: 'a computer that provides data or services to other computers', example: 'The website is hosted on a cloud server.', thai: 'เซิร์ฟเวอร์' },
+      { id: 'it-06', front: 'client', phonetic: '/ˈklaɪənt/', back: 'a computer or program that requests services from a server', example: 'The client sends a request and the server responds.', thai: 'ไคลเอนต์ (ผู้ขอบริการ)' },
+      { id: 'it-07', front: 'crash', phonetic: '/kræʃ/', back: 'when a program or system suddenly stops working', example: 'My computer crashed and I lost all my work.', thai: 'ระบบล่ม / โปรแกรมหยุดทำงาน' },
+      { id: 'it-08', front: 'reboot', phonetic: '/ˌriːˈbuːt/', back: 'to restart a computer or device', example: 'Try rebooting the router to fix the connection.', thai: 'รีบูต / รีสตาร์ท' },
+      { id: 'it-09', front: 'install', phonetic: '/ɪnˈstɔːl/', back: 'to put software onto a computer so it can be used', example: 'You need to install the driver before using the printer.', thai: 'ติดตั้ง' },
+      { id: 'it-10', front: 'uninstall', phonetic: '/ˌʌnɪnˈstɔːl/', back: 'to remove software from a computer', example: 'I uninstalled the old version before installing the new one.', thai: 'ถอนการติดตั้ง' },
+      { id: 'it-11', front: 'folder', phonetic: '/ˈfəʊldə/', back: 'a container on a computer used to organise files', example: 'Save the document in the project folder.', thai: 'โฟลเดอร์ / แฟ้ม' },
+      { id: 'it-12', front: 'file', phonetic: '/faɪl/', back: 'a collection of data stored under one name on a computer', example: 'Please send me the PDF file by email.', thai: 'ไฟล์' },
+      { id: 'it-13', front: 'upload', phonetic: '/ˈʌpləʊd/', back: 'to send data from your device to the internet or a server', example: 'Upload your photo to the website.', thai: 'อัปโหลด' },
+      { id: 'it-14', front: 'storage', phonetic: '/ˈstɔːrɪdʒ/', back: 'the space on a device where data is kept', example: 'My phone has 128GB of storage.', thai: 'พื้นที่จัดเก็บข้อมูล' },
+      { id: 'it-15', front: 'network', phonetic: '/ˈnetwɜːk/', back: 'a group of computers connected together to share data', example: 'All office computers are connected to the same network.', thai: 'เครือข่าย' },
+      { id: 'it-16', front: 'bandwidth', phonetic: '/ˈbændwɪdθ/', back: 'the amount of data that can be transferred over a network at one time', example: 'Video streaming uses a lot of bandwidth.', thai: 'แบนด์วิดท์ / ความกว้างของช่องสัญญาณ' }
+    ]
+  },
+  {
+    id: 'b2-software-dev-vocab',
+    lessonId: null,
+    title: 'Software Development',
+    level: 'B2',
+    icon: '👨‍💻',
+    cards: [
+      { id: 'sd-01', front: 'API', phonetic: '/ˌeɪ piː ˈaɪ/', back: 'Application Programming Interface — a way for two programs to communicate', example: 'We use the Google Maps API to show locations in our app.', thai: 'อินเทอร์เฟซสำหรับโปรแกรม' },
+      { id: 'sd-02', front: 'repository', phonetic: '/rɪˈpɒzɪtri/', back: 'a storage location where code is kept and managed', example: 'Clone the repository from GitHub before you start.', thai: 'คลังโค้ด (repository)' },
+      { id: 'sd-03', front: 'commit', phonetic: '/kəˈmɪt/', back: 'to save a set of changes to a code repository', example: 'Remember to commit your changes with a clear message.', thai: 'บันทึกการเปลี่ยนแปลงโค้ด (commit)' },
+      { id: 'sd-04', front: 'deploy', phonetic: '/dɪˈplɔɪ/', back: 'to release and make software available for use', example: 'We will deploy the new feature to production on Friday.', thai: 'นำระบบขึ้น production / deploy' },
+      { id: 'sd-05', front: 'database', phonetic: '/ˈdeɪtəbeɪs/', back: 'an organised collection of structured data stored electronically', example: 'All user information is stored in the database.', thai: 'ฐานข้อมูล' },
+      { id: 'sd-06', front: 'query', phonetic: '/ˈkwɪəri/', back: 'a request for data from a database', example: 'Run a query to find all users who signed up last month.', thai: 'คำสั่งค้นหาข้อมูล (query)' },
+      { id: 'sd-07', front: 'framework', phonetic: '/ˈfreɪmwɜːk/', back: 'a platform of pre-written code that developers build on', example: 'React is a popular JavaScript framework for building UIs.', thai: 'เฟรมเวิร์ก' },
+      { id: 'sd-08', front: 'version control', phonetic: '/ˈvɜːʃən kənˈtrəʊl/', back: 'a system that tracks changes to code over time', example: 'Git is the most widely used version control system.', thai: 'ระบบควบคุมเวอร์ชัน' },
+      { id: 'sd-09', front: 'pull request', phonetic: '/pʊl rɪˈkwest/', back: 'a request to merge code changes into the main codebase', example: 'Submit a pull request when your feature is ready for review.', thai: 'คำขอรวมโค้ด (pull request)' },
+      { id: 'sd-10', front: 'refactor', phonetic: '/ˌriːˈfæktə/', back: 'to restructure existing code without changing its behaviour', example: 'We refactored the function to make it easier to read.', thai: 'ปรับปรุงโครงสร้างโค้ด (refactor)' },
+      { id: 'sd-11', front: 'dependency', phonetic: '/dɪˈpendənsi/', back: 'a library or package that your code relies on to work', example: 'Install all dependencies with npm install.', thai: 'ไลบรารีที่โปรแกรมต้องพึ่งพา' },
+      { id: 'sd-12', front: 'iteration', phonetic: '/ˌɪtəˈreɪʃən/', back: 'one cycle of development, often a two-week sprint', example: 'We release a new version at the end of each iteration.', thai: 'รอบการพัฒนา (iteration)' },
+      { id: 'sd-13', front: 'agile', phonetic: '/ˈædʒaɪl/', back: 'an iterative approach to software development focusing on flexibility', example: 'Our team follows agile methodology with weekly sprints.', thai: 'วิธีพัฒนาซอฟต์แวร์แบบ agile' },
+      { id: 'sd-14', front: 'sprint', phonetic: '/sprɪnt/', back: 'a short, fixed period of work in agile development, usually 1–2 weeks', example: 'We plan which tasks to complete at the start of each sprint.', thai: 'ช่วงเวลาทำงานสั้น (sprint)' },
+      { id: 'sd-15', front: 'endpoint', phonetic: '/ˈendpɔɪnt/', back: 'a specific URL where an API receives requests', example: 'Send a POST request to the /users endpoint to create an account.', thai: 'จุดปลายทางของ API (endpoint)' },
+      { id: 'sd-16', front: 'log', phonetic: '/lɒɡ/', back: 'a record of events or errors produced by a running program', example: 'Check the server logs to find the cause of the error.', thai: 'บันทึกเหตุการณ์ของระบบ (log)' }
+    ]
+  },
+  {
+    id: 'b2-cybersecurity-vocab',
+    lessonId: null,
+    title: 'Cybersecurity & Networks',
+    level: 'B2',
+    icon: '🔐',
+    cards: [
+      { id: 'cs-01', front: 'phishing', phonetic: '/ˈfɪʃɪŋ/', back: 'a fraudulent attempt to steal sensitive information by pretending to be trustworthy', example: 'The email was a phishing attack pretending to be from the bank.', thai: 'การหลอกลวงเพื่อขโมยข้อมูล (phishing)' },
+      { id: 'cs-02', front: 'malware', phonetic: '/ˈmælweə/', back: 'malicious software designed to damage or gain unauthorised access to systems', example: 'The malware encrypted all the files on the computer.', thai: 'ซอฟต์แวร์อันตราย (malware)' },
+      { id: 'cs-03', front: 'firewall', phonetic: '/ˈfaɪəwɔːl/', back: 'a security system that monitors and controls incoming and outgoing network traffic', example: 'The firewall blocked the suspicious connection.', thai: 'ไฟร์วอลล์ / กำแพงไฟ' },
+      { id: 'cs-04', front: 'encryption', phonetic: '/ɪnˈkrɪpʃən/', back: 'the process of converting data into a coded form to prevent unauthorised access', example: 'The app uses end-to-end encryption to protect your messages.', thai: 'การเข้ารหัสข้อมูล' },
+      { id: 'cs-05', front: 'authentication', phonetic: '/ɔːˌθentɪˈkeɪʃən/', back: 'the process of verifying the identity of a user or device', example: 'Two-factor authentication adds an extra layer of security.', thai: 'การยืนยันตัวตน (authentication)' },
+      { id: 'cs-06', front: 'vulnerability', phonetic: '/ˌvʌlnərəˈbɪlɪti/', back: 'a weakness in a system that can be exploited by attackers', example: 'The security team found a critical vulnerability in the login page.', thai: 'ช่องโหว่ด้านความปลอดภัย' },
+      { id: 'cs-07', front: 'patch', phonetic: '/pætʃ/', back: 'a software update that fixes a security flaw or bug', example: 'Install the latest security patch to protect your system.', thai: 'แพตช์ / การอัปเดตแก้ไขความปลอดภัย' },
+      { id: 'cs-08', front: 'VPN', phonetic: '/ˌviː piː ˈen/', back: 'Virtual Private Network — a secure connection that hides your internet activity', example: 'Use a VPN when connecting to public Wi-Fi.', thai: 'VPN / เครือข่ายส่วนตัวเสมือน' },
+      { id: 'cs-09', front: 'two-factor authentication', phonetic: '/tuː ˈfæktə ɔːˌθentɪˈkeɪʃən/', back: 'a security method requiring two forms of verification to access an account', example: 'Enable two-factor authentication to keep your account safe.', thai: 'การยืนยันตัวตนสองชั้น (2FA)' },
+      { id: 'cs-10', front: 'data breach', phonetic: '/ˈdeɪtə briːtʃ/', back: 'an incident where confidential data is accessed without permission', example: 'The company reported a data breach affecting millions of users.', thai: 'การรั่วไหลของข้อมูล' },
+      { id: 'cs-11', front: 'IP address', phonetic: '/ˌaɪ ˈpiː ˈædrəs/', back: 'a unique number assigned to each device on a network', example: 'The logs show that the request came from an unknown IP address.', thai: 'ที่อยู่ IP' },
+      { id: 'cs-12', front: 'protocol', phonetic: '/ˈprəʊtəkɒl/', back: 'a set of rules that define how data is transmitted over a network', example: 'HTTPS is a secure protocol for sending data over the web.', thai: 'โปรโตคอล / ชุดกฎการส่งข้อมูล' }
+    ]
+  },
 ]
 
 export function getDeckById(id) {

@@ -2,7 +2,7 @@ import { getDeckById } from '../data/vocabulary.js'
 import { getDueCards, updateFlashcard } from '../store.js'
 import { createFlashcardHTML, initFlashcardInteraction } from '../components/flashcard.js'
 
-export function renderFlashcardSession({ id }) {
+export function renderFlashcardSession({ id, forceAll = false }) {
   const main = document.getElementById('main-content')
   const deck = getDeckById(id)
 
@@ -13,7 +13,9 @@ export function renderFlashcardSession({ id }) {
 
   const allCardIds = deck.cards.map(c => c.id)
   const { due, newCards } = getDueCards(id, allCardIds)
-  const sessionCardIds = [...due, ...newCards.slice(0, Math.max(0, 10 - due.length))]
+  const sessionCardIds = forceAll
+    ? allCardIds
+    : [...due, ...newCards.slice(0, Math.max(0, 10 - due.length))]
 
   if (sessionCardIds.length === 0) {
     main.innerHTML = `
@@ -21,9 +23,15 @@ export function renderFlashcardSession({ id }) {
         <div style="font-size:4rem;margin-bottom:var(--sp-6)">🎉</div>
         <h2>All caught up!</h2>
         <p style="color:var(--text-muted);margin-bottom:var(--sp-8)">No cards due today for this deck. Come back tomorrow!</p>
-        <a href="#/flashcards" class="btn btn-primary">Back to Decks</a>
+        <div style="display:flex;gap:var(--sp-3);justify-content:center;flex-wrap:wrap">
+          <button class="btn btn-secondary" id="study-again-btn">Study Again</button>
+          <a href="#/flashcards" class="btn btn-primary">Back to Decks</a>
+        </div>
       </div>
     `
+    document.getElementById('study-again-btn').addEventListener('click', () => {
+      renderFlashcardSession({ id, forceAll: true })
+    })
     return
   }
 

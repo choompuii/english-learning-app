@@ -1,4 +1,39 @@
+import { supabase } from './lib/supabase.js'
+
 const KEY = 'elapp_progress'
+
+// ── Supabase sync ──
+
+let _syncTimer = null
+
+function scheduleSyncToCloud(state) {
+  clearTimeout(_syncTimer)
+  _syncTimer = setTimeout(() => syncToCloud(state), 2000)
+}
+
+async function syncToCloud(state) {
+  const { data: { user } } = await supabase.auth.getUser()
+  if (!user) return
+  await supabase.from('user_progress').upsert({ user_id: user.id, data: state, updated_at: new Date().toISOString() })
+}
+
+export async function pullFromCloud() {
+  const { data: { user } } = await supabase.auth.getUser()
+  if (!user) return null
+  const { data, error } = await supabase.from('user_progress').select('data').eq('user_id', user.id).single()
+  if (error || !data) return null
+  return data.data
+}
+
+export async function initCloudSync() {
+  const cloudState = await pullFromCloud()
+  if (cloudState) {
+    const localRaw = localStorage.getItem(KEY)
+    const local = localRaw ? JSON.parse(localRaw) : null
+    const merged = local && local.xp > (cloudState.xp || 0) ? local : cloudState
+    localStorage.setItem(KEY, JSON.stringify({ ...DEFAULT_STATE, ...merged }))
+  }
+}
 
 const DEFAULT_STATE = {
   selectedLevel: null,
@@ -35,6 +70,7 @@ function load() {
 
 function save(state) {
   localStorage.setItem(KEY, JSON.stringify(state))
+  scheduleSyncToCloud(state)
 }
 
 function todayStr() {

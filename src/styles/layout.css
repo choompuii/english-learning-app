@@ -4,6 +4,10 @@
   min-height: 100vh;
 }
 
+/* Auth mode — hide sidebar, full-width content */
+body.auth-mode #sidebar { display: none; }
+body.auth-mode #main-content { margin-left: 0; }
+
 /* Sidebar */
 #sidebar {
   width: var(--sidebar-width);

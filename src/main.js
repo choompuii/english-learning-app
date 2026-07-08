@@ -1,5 +1,7 @@
-import { route, initRouter } from './router.js'
+import { route, navigate, initRouter } from './router.js'
 import { renderSidebar } from './components/sidebar.js'
+import { onAuthChange, getUser } from './lib/auth.js'
+import { initCloudSync } from './store.js'
 import { renderHome } from './pages/home.js'
 import { renderLessons } from './pages/lessons.js'
 import { renderLessonReader } from './pages/lesson-reader.js'
@@ -14,25 +16,48 @@ import { renderDictationBrowser, renderDictation } from './pages/dictation.js'
 import { renderGrammarCheck } from './pages/grammar-check.js'
 import { renderSentenceBuilder } from './pages/sentence-builder.js'
 import { renderSpeedRound } from './pages/speed-round.js'
+import { renderAuth } from './pages/auth.js'
+import { renderOnboarding } from './pages/onboarding.js'
+import { renderProfile } from './pages/profile.js'
 
-// Register routes
-route('/', () => renderHome())
-route('/lessons', () => renderLessons())
-route('/lessons/:id', ({ id }) => renderLessonReader({ id }))
-route('/flashcards', () => renderFlashcards())
-route('/flashcards/:id', ({ id }) => renderFlashcardSession({ id }))
-route('/quiz', () => renderQuizBrowser())
-route('/quiz/:id', ({ id }) => renderQuiz({ id }))
-route('/progress', () => renderProgress())
-route('/search', () => renderSearch())
-route('/notebook', () => renderNotebook())
-route('/review-mistakes', () => renderReviewMistakes())
-route('/dictation', () => renderDictationBrowser())
-route('/dictation/:id', ({ id }) => renderDictation({ id }))
-route('/grammar', () => renderGrammarCheck())
-route('/sentence-builder', () => renderSentenceBuilder())
-route('/speed-round', () => renderSpeedRound())
+// Auth guard — wraps any handler that requires login
+function guard(fn) {
+  return async (params) => {
+    const user = await getUser()
+    if (!user) { navigate('/account'); return }
+    fn(params)
+  }
+}
+
+// Public routes (no login needed)
+route('/account',    () => renderAuth())
+route('/onboarding', () => renderOnboarding())
+route('/profile',    guard(() => renderProfile()))
+
+// Protected routes
+route('/',                guard(() => renderHome()))
+route('/lessons',         guard(() => renderLessons()))
+route('/lessons/:id',     guard(({ id }) => renderLessonReader({ id })))
+route('/flashcards',      guard(() => renderFlashcards()))
+route('/flashcards/:id',  guard(({ id }) => renderFlashcardSession({ id })))
+route('/quiz',            guard(() => renderQuizBrowser()))
+route('/quiz/:id',        guard(({ id }) => renderQuiz({ id })))
+route('/progress',        guard(() => renderProgress()))
+route('/search',          guard(() => renderSearch()))
+route('/notebook',        guard(() => renderNotebook()))
+route('/review-mistakes', guard(() => renderReviewMistakes()))
+route('/dictation',       guard(() => renderDictationBrowser()))
+route('/dictation/:id',   guard(({ id }) => renderDictation({ id })))
+route('/grammar',         guard(() => renderGrammarCheck()))
+route('/sentence-builder',guard(() => renderSentenceBuilder()))
+route('/speed-round',     guard(() => renderSpeedRound()))
 
 // Boot
 renderSidebar()
 initRouter()
+
+// Auth listener — re-render sidebar and pull cloud data when auth changes
+onAuthChange(async (user) => {
+  renderSidebar()
+  if (user) await initCloudSync()
+})
