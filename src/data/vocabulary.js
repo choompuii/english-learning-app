@@ -1410,6 +1410,124 @@ export const decks = [
       { id: 'id-10', front: 'pull your weight', phonetic: '/pʊl jɔː weɪt/', back: 'to do your fair share of work in a group or team', example: 'Everyone on the team needs to pull their weight — we can\'t afford freeloaders.', thai: 'ทำงานเต็มที่ / ช่วยเหลือทีมอย่างเต็มที่' }
     ]
   }
+  ,
+  {
+    id: 'b2-reported-speech-vocab',
+    lessonId: 'b2-reported-speech-01',
+    title: 'Reported Speech — Reporting Verbs',
+    level: 'B2',
+    icon: '💬',
+    cards: [
+      { id: 'rs-01', front: 'claim', phonetic: '/kleɪm/', back: 'to say that something is true, especially without proof', example: 'He claimed he had never seen the document before.', thai: 'อ้างว่า' },
+      { id: 'rs-02', front: 'assert', phonetic: '/əˈsɜːt/', back: 'to state something confidently and forcefully', example: 'She asserted that the figures were completely accurate.', thai: 'ยืนยันอย่างมั่นใจ' },
+      { id: 'rs-03', front: 'deny', phonetic: '/dɪˈnaɪ/', back: 'to say that something is not true; to refuse to admit something', example: 'He denied stealing the money.', thai: 'ปฏิเสธ' },
+      { id: 'rs-04', front: 'admit', phonetic: '/ədˈmɪt/', back: 'to agree that something is true, often something unpleasant', example: 'She admitted that she had made a mistake.', thai: 'ยอมรับ' },
+      { id: 'rs-05', front: 'warn', phonetic: '/wɔːn/', back: 'to tell someone about a possible danger or problem in advance', example: 'He warned us not to walk alone at night.', thai: 'เตือน' },
+      { id: 'rs-06', front: 'advise', phonetic: '/ədˈvaɪz/', back: 'to give someone a recommendation about what to do', example: 'The doctor advised her to rest for a week.', thai: 'แนะนำ / ให้คำแนะนำ' },
+      { id: 'rs-07', front: 'suggest', phonetic: '/səˈdʒest/', back: 'to put forward an idea or plan for consideration', example: 'She suggested taking a different route to avoid traffic.', thai: 'เสนอแนะ' },
+      { id: 'rs-08', front: 'insist', phonetic: '/ɪnˈsɪst/', back: 'to say firmly and repeatedly that something is true or must be done', example: 'He insisted that he had paid the bill already.', thai: 'ยืนกราน' },
+      { id: 'rs-09', front: 'confirm', phonetic: '/kənˈfɜːm/', back: 'to say that something is definitely true or correct', example: 'She confirmed that the flight had been delayed.', thai: 'ยืนยัน (สิ่งที่เป็นจริง)' },
+      { id: 'rs-10', front: 'emphasise', phonetic: '/ˈemfəsaɪz/', back: 'to give special importance or attention to something when speaking', example: 'The trainer emphasised that warm-up exercises were essential.', thai: 'เน้น / ให้ความสำคัญ' }
+    ]
+  },
+  {
+    id: 'b2-complaints-vocab',
+    lessonId: 'b2-complaints-01',
+    title: 'Complaints & Apologies Vocabulary',
+    level: 'B2',
+    icon: '🎤',
+    cards: [
+      { id: 'ca-01', front: 'complaint', phonetic: '/kəmˈpleɪnt/', back: 'a statement that something is wrong or not satisfactory', example: 'I would like to make a formal complaint about the service I received.', thai: 'การร้องเรียน / ข้อร้องเรียน' },
+      { id: 'ca-02', front: 'escalate', phonetic: '/ˈeskəleɪt/', back: 'to make a problem more serious by referring it to a higher authority', example: 'If this issue is not resolved by tomorrow, I will have to escalate it to senior management.', thai: 'ยกระดับ / เพิ่มความรุนแรง' },
+      { id: 'ca-03', front: 'resolve', phonetic: '/rɪˈzɒlv/', back: 'to find a solution to a problem or bring a dispute to a satisfactory end', example: 'We are committed to resolving your complaint within five working days.', thai: 'แก้ไข / คลี่คลาย' },
+      { id: 'ca-04', front: 'frustration', phonetic: '/frʌˈstreɪʃən/', back: 'the feeling of being upset or annoyed, especially when unable to change something', example: 'I understand your frustration — waiting three weeks for a repair is unacceptable.', thai: 'ความหงุดหงิด / ความคับข้องใจ' },
+      { id: 'ca-05', front: 'inconvenience', phonetic: '/ˌɪnkənˈviːniəns/', back: 'trouble or difficulty caused to someone; a disruption to normal comfort', example: 'We apologise for any inconvenience caused by the delay.', thai: 'ความไม่สะดวก / ความลำบาก' },
+      { id: 'ca-06', front: 'refund', phonetic: '/ˈriːfʌnd/', back: 'a sum of money returned to a customer when goods or services are unsatisfactory', example: 'As the product was faulty, we are happy to offer you a full refund.', thai: 'การคืนเงิน / เงินคืน' },
+      { id: 'ca-07', front: 'compensate', phonetic: '/ˈkɒmpenseɪt/', back: 'to give something to make up for loss, suffering, or inconvenience', example: 'The airline offered to compensate passengers with vouchers after the cancellation.', thai: 'ชดเชย / ชดใช้' },
+      { id: 'ca-08', front: 'acknowledge', phonetic: '/əkˈnɒlɪdʒ/', back: 'to accept or admit that something is true; to recognise a complaint officially', example: 'It is important to acknowledge the customer\'s feelings before offering a solution.', thai: 'ยอมรับ / รับรู้' },
+      { id: 'ca-09', front: 'rectify', phonetic: '/ˈrektɪfaɪ/', back: 'to correct a mistake or fix a problem; more formal than "fix"', example: 'We will do everything we can to rectify the situation as quickly as possible.', thai: 'แก้ไข / ทำให้ถูกต้อง' },
+      { id: 'ca-10', front: 'goodwill', phonetic: '/ˌɡʊdˈwɪl/', back: 'friendly intent; a voluntary gesture offered to maintain a positive relationship', example: 'As a gesture of goodwill, we would like to offer you a complimentary upgrade.', thai: 'ไมตรีจิต / น้ำใจ' }
+    ]
+  },
+  {
+    id: 'c2-register-vocab',
+    lessonId: 'c2-register-01',
+    title: 'Register & Formal Vocabulary',
+    level: 'C2',
+    icon: '🎭',
+    cards: [
+      { id: 'reg-01', front: 'obtain', phonetic: '/əbˈteɪn/', back: 'formal equivalent of "get" — to acquire or secure something', example: 'We need to obtain written permission before proceeding.', thai: 'ได้รับ / ได้มา (ทางการ)' },
+      { id: 'reg-02', front: 'utilise', phonetic: '/ˈjuːtɪlaɪz/', back: 'formal equivalent of "use" — to make practical use of something', example: 'The team will utilise available resources to complete the project.', thai: 'ใช้ประโยชน์จาก (ทางการ)' },
+      { id: 'reg-03', front: 'assist', phonetic: '/əˈsɪst/', back: 'formal equivalent of "help" — to give aid or support to someone', example: 'Our team is available to assist you with the transition process.', thai: 'ช่วยเหลือ (ทางการ)' },
+      { id: 'reg-04', front: 'enquire', phonetic: '/ɪnˈkwaɪə(r)/', back: 'formal equivalent of "ask" — to seek information by asking', example: 'I am writing to enquire about the availability of your conference rooms.', thai: 'สอบถาม (ทางการ)' },
+      { id: 'reg-05', front: 'demonstrate', phonetic: '/ˈdemənstreɪt/', back: 'formal equivalent of "show" — to prove or make evident', example: 'The data clearly demonstrate a correlation between the two variables.', thai: 'แสดงให้เห็น / พิสูจน์ (ทางการ)' },
+      { id: 'reg-06', front: 'terminate', phonetic: '/ˈtɜːmɪneɪt/', back: 'formal equivalent of "end" — to bring something to an end', example: 'The company has decided to terminate the contract with immediate effect.', thai: 'ยุติ / สิ้นสุด (ทางการ)' },
+      { id: 'reg-07', front: 'ascertain', phonetic: '/ˌæsəˈteɪn/', back: 'formal equivalent of "find out" — to discover something with certainty', example: 'We need to ascertain the exact cause of the equipment failure.', thai: 'ตรวจสอบ / หาข้อมูลแน่ชัด (ทางการ)' },
+      { id: 'reg-08', front: 'require', phonetic: '/rɪˈkwaɪə(r)/', back: 'formal equivalent of "need" — to have something as a necessity', example: 'All applicants are required to submit two forms of identification.', thai: 'ต้องการ / จำเป็นต้องมี (ทางการ)' },
+      { id: 'reg-09', front: 'concur', phonetic: '/kənˈkɜː(r)/', back: 'formal equivalent of "agree" — to have the same opinion', example: 'We concur with the committee\'s recommendation to postpone the vote.', thai: 'เห็นด้วย (ทางการ)' },
+      { id: 'reg-10', front: 'hedging', phonetic: '/ˈhedʒɪŋ/', back: 'using language to soften claims and express uncertainty — essential in academic writing', example: '"The data appear to suggest" is hedging — more cautious than "the data prove".', thai: 'การพูดแบบลดความแน่นอน — เช่น "อาจจะ" "ดูเหมือนว่า"' },
+      { id: 'reg-11', front: 'nominalisation', phonetic: '/ˌnɒmɪnəlaɪˈzeɪʃən/', back: 'converting a verb into a noun — "decide" → "decision" — typical in formal writing', example: 'Nominalisation makes writing denser: "A decision was made" instead of "We decided".', thai: 'การแปลงคำกริยาเป็นคำนาม (ลักษณะเด่นของภาษาทางการ)' },
+      { id: 'reg-12', front: 'code-switching', phonetic: '/koʊd ˈswɪtʃɪŋ/', back: 'alternating between registers, styles, or languages depending on context', example: 'The manager code-switched between Thai with staff and formal English in her investor calls.', thai: 'การสลับใช้ระดับภาษาตามสถานการณ์' }
+    ]
+  }
+  ,
+  {
+    id: 'c2-academic-writing-vocab',
+    lessonId: 'c2-academic-writing-01',
+    title: 'Academic Cohesion Devices',
+    level: 'C2',
+    icon: '🔗',
+    cards: [
+      { id: 'aw-01', front: 'furthermore', phonetic: '/ˌfɜːðəˈmɔː/', back: 'in addition; used to add a point of equal or greater weight', example: 'The methodology was rigorous; furthermore, the sample size exceeded standard requirements.', thai: 'นอกจากนี้ / ยิ่งกว่านั้น' },
+      { id: 'aw-02', front: 'notwithstanding', phonetic: '/ˌnɒtwɪθˈstændɪŋ/', back: 'despite; in spite of — used before a noun phrase or clause', example: 'Notwithstanding the preliminary findings, the implications for clinical practice are substantial.', thai: 'แม้จะมี / ทั้งๆ ที่ (ทางการสูง)' },
+      { id: 'aw-03', front: 'albeit', phonetic: '/ɔːlˈbiːɪt/', back: 'although; even though — used mid-sentence to introduce a qualifying clause', example: 'The intervention produced measurable improvements, albeit modest ones, across all groups.', thai: 'แม้ว่า — ใช้กลางประโยคเพื่อลดทอนความแข็งแกร่งเล็กน้อย' },
+      { id: 'aw-04', front: 'insofar as', phonetic: '/ˌɪnsəˈfɑː æz/', back: 'to the extent that; used to limit the scope of a claim', example: 'The model is valid insofar as the underlying assumptions about market rationality hold.', thai: 'ในขอบเขตที่ / เท่าที่ — ใช้จำกัดขอบเขตของข้อสรุป' },
+      { id: 'aw-05', front: 'henceforth', phonetic: '/ˌhensˈfɔːθ/', back: 'from this point in the text onwards — used when introducing a term that will be used throughout', example: 'The combined indicator will henceforth be referred to as the Composite Vulnerability Index (CVI).', thai: 'ต่อจากนี้ไป / นับแต่นี้เป็นต้นไป' },
+      { id: 'aw-06', front: 'whereby', phonetic: '/weəˈbaɪ/', back: 'by means of which; used to introduce a clause describing a mechanism or process', example: 'The researchers developed a protocol whereby participants could withdraw consent at any stage.', thai: 'ซึ่งโดยวิธีนั้น — ใช้อธิบายกลไกที่บางสิ่งเกิดขึ้น' },
+      { id: 'aw-07', front: 'thereof', phonetic: '/ðeəˈrɒv/', back: 'of the thing just mentioned — used in formal and legal prose to avoid repetition', example: 'The contract and all provisions thereof shall be governed by English law.', thai: 'ของสิ่งที่กล่าวถึง / แห่งนั้น (กฎหมาย/ทางการ)' },
+      { id: 'aw-08', front: 'aforementioned', phonetic: '/əˌfɔːˈmenʃənd/', back: 'previously mentioned in the same document — used as an adjective', example: 'The aforementioned studies collectively suggest the effect diminishes after twelve months.', thai: 'ที่กล่าวถึงก่อนหน้า / ดังกล่าวข้างต้น' },
+      { id: 'aw-09', front: 'pursuant to', phonetic: '/pəˈsjuːənt tuː/', back: 'in accordance with; following from — used in legal, policy, and formal academic writing', example: 'Pursuant to the panel\'s recommendations, the ethical guidelines were revised in their entirety.', thai: 'ตามที่ / สอดคล้องกับ (กฎหมาย/นโยบาย)' },
+      { id: 'aw-10', front: 'herein', phonetic: '/hɪəˈrɪn/', back: 'in this document or text — used to refer to content within the same work', example: 'The theoretical framework described herein draws on three decades of comparative analysis.', thai: 'ในที่นี้ / ในเอกสารนี้' }
+    ]
+  },
+  {
+    id: 'c2-cleft-vocab',
+    lessonId: 'c2-cleft-sentences-01',
+    title: 'Emphasis & Focus Language',
+    level: 'C2',
+    icon: '🎯',
+    cards: [
+      { id: 'cl-01', front: 'emphasise', phonetic: '/ˈemfəsaɪz/', back: 'to give special importance or prominence to something in speech or writing', example: 'The report emphasises the need for immediate structural reform.', thai: 'เน้น / ให้ความสำคัญเป็นพิเศษ' },
+      { id: 'cl-02', front: 'foreground', phonetic: '/ˈfɔːɡraʊnd/', back: '(verb) to make something the most noticeable element; to bring to the front of attention — used in linguistics and rhetoric', example: 'Cleft sentences are used to foreground a particular piece of information.', thai: 'นำมาไว้เบื้องหน้า / เน้นให้เด่นชัด' },
+      { id: 'cl-03', front: 'underscore', phonetic: '/ˌʌndəˈskɔːr/', back: 'to emphasise or confirm importance; more formal than "highlight"', example: 'The findings underscore the urgency of addressing climate change now.', thai: 'ย้ำ / เน้นย้ำ (ทางการ)' },
+      { id: 'cl-04', front: 'salience', phonetic: '/ˈseɪliəns/', back: 'the quality of being particularly noticeable or important — used in linguistics and rhetoric', example: 'The salience of this argument lies in its direct appeal to lived experience.', thai: 'ความโดดเด่น / ความสะดุดตา (ภาษาศาสตร์)' },
+      { id: 'cl-05', front: 'prominence', phonetic: '/ˈprɒmɪnəns/', back: 'the state of being important and noticeable; the quality of standing out', example: 'The issue gained prominence after the leaked documents were published.', thai: 'ความโดดเด่น / ความสำคัญ' },
+      { id: 'cl-06', front: 'topicalisation', phonetic: '/ˌtɒpɪkəlaɪˈzeɪʃən/', back: 'a grammatical process by which an element is moved to the front of a sentence to become the discourse topic', example: 'Topicalisation in "That book, I have already read" moves the object to sentence-initial position.', thai: 'การนำองค์ประกอบขึ้นต้นประโยคเพื่อให้เป็นหัวข้อ (ภาษาศาสตร์)' },
+      { id: 'cl-07', front: 'foregrounding', phonetic: '/ˈfɔːɡraʊndɪŋ/', back: '(noun) a technique in which language elements are made prominent by deviating from expected norms — through unusual syntax or cleft structures', example: "The author's use of cleft sentences is a form of syntactic foregrounding.", thai: 'การนำเสนอให้เด่นชัด (เทคนิคทางภาษาและวรรณกรรม)' },
+      { id: 'cl-08', front: 'accentuate', phonetic: '/əkˈsentʃueɪt/', back: 'to make a feature or quality more noticeable or prominent', example: 'The lighting in the photograph accentuates the lines of the subject\'s face.', thai: 'ทำให้เด่นชัดขึ้น / เน้นให้โดดเด่น' },
+      { id: 'cl-09', front: 'highlight', phonetic: '/ˈhaɪlaɪt/', back: 'to draw attention to something important; to mark as significant', example: 'The speaker highlighted the contradiction between the two policies.', thai: 'เน้น / ชี้ให้เห็น' },
+      { id: 'cl-10', front: 'stress', phonetic: '/stres/', back: '(noun) special emphasis placed on a word when speaking, or on a point in writing to convey importance', example: 'She placed particular stress on the word "never" to show she was serious.', thai: 'การเน้น (เสียงหรือความหมาย)' }
+    ]
+  },
+  {
+    id: 'c2-rhetoric-vocab',
+    lessonId: 'c2-rhetoric-01',
+    title: 'Rhetoric & Persuasion',
+    level: 'C2',
+    icon: '🗣️',
+    cards: [
+      { id: 'rh-01', front: 'rhetoric', phonetic: '/ˈretərɪk/', back: 'the art of using language effectively and persuasively; in a negative sense, language that sounds impressive but lacks substance', example: "The senator's speech was full of powerful rhetoric that rallied the crowd despite offering few concrete policies.", thai: 'วาทศาสตร์ / ศิลปะการพูดจูงใจ' },
+      { id: 'rh-02', front: 'ethos', phonetic: '/ˈiːθɒs/', back: 'a rhetorical appeal based on the speaker\'s character, credibility, or moral authority', example: 'Her ethos as a respected neurosurgeon gave her climate argument unexpected authority.', thai: 'อีธอส — การอุทธรณ์ต่อความน่าเชื่อถือของผู้พูด' },
+      { id: 'rh-03', front: 'pathos', phonetic: '/ˈpeɪθɒs/', back: 'a rhetorical appeal to the emotions of the audience', example: 'The documentary relied heavily on pathos, showing individual families affected by the flooding.', thai: 'พาธอส — การอุทธรณ์ต่ออารมณ์ความรู้สึกของผู้ฟัง' },
+      { id: 'rh-04', front: 'logos', phonetic: '/ˈloʊɡɒs/', back: 'a rhetorical appeal based on logic, reason, evidence, and structured argument', example: "The lawyer's case rested on logos: twelve independent witnesses and surveillance footage.", thai: 'โลกอส — การอุทธรณ์ต่อเหตุผลและหลักฐาน' },
+      { id: 'rh-05', front: 'anaphora', phonetic: '/əˈnæfərə/', back: 'the repetition of a word or phrase at the beginning of successive clauses, used for rhythm, emphasis, and emotional accumulation', example: '"We will not stop. We will not yield. We will not be silent." is a classic use of anaphora.', thai: 'อนาโฟรา — การซ้ำคำหรือวลีที่ต้นประโยคติดต่อกัน' },
+      { id: 'rh-06', front: 'tricolon', phonetic: '/traɪˈkoʊlɒn/', back: 'a rhetorical device using three parallel words, phrases, or clauses for rhythm and a sense of completeness', example: '"Reduce, reuse, recycle" is a tricolon whose rhythm has made it one of the most memorable slogans.', thai: 'ไทรโคลอน — การใช้สามองค์ประกอบคู่ขนาน' },
+      { id: 'rh-07', front: 'concession', phonetic: '/kənˈseʃən/', back: "the acknowledgement of an opposing argument's validity or partial validity before presenting a counter-argument", example: '"While the initial investment is high — and I concede that point freely — the long-term savings justify the cost."', thai: 'การยอมรับข้อโต้แย้งของฝ่ายตรงข้าม (ก่อนหักล้าง)' },
+      { id: 'rh-08', front: 'rebuttal', phonetic: '/rɪˈbʌtəl/', back: 'a counter-argument that directly addresses and refutes an opposing claim', example: "The defence lawyer's rebuttal dismantled the prosecution's key witness in under ten minutes.", thai: 'การโต้แย้ง / การหักล้างข้อกล่าวอ้าง' },
+      { id: 'rh-09', front: 'assertion', phonetic: '/əˈsɜːʃən/', back: 'a confident statement of a fact or belief presented without supporting evidence', example: 'Saying "this policy has failed" is a mere assertion unless backed by data.', thai: 'การยืนยัน / การกล่าวอ้าง (โดยไม่มีหลักฐาน)' },
+      { id: 'rh-10', front: 'rhetorical question', phonetic: '/rɪˈtɒrɪkəl ˈkwestʃən/', back: 'a question asked for effect rather than to receive an answer; the implied answer is shared by speaker and audience', example: '"Are we really prepared to stand by and do nothing?" implies "no" without stating it.', thai: 'คำถามเชิงวาทศาสตร์ — ถามเพื่อผลทางวาทศิลป์ ไม่ใช่เพื่อคำตอบ' }
+    ]
+  }
 ]
 
 export function getDeckById(id) {

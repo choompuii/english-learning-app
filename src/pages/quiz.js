@@ -168,6 +168,15 @@ export function renderQuiz({ id }) {
       if (next) unlockedLesson = next
     }
 
+    // Single primary action: on pass → next lesson (or progress if it was the last),
+    // on fail → retry the quiz.
+    let primaryHref = '#/progress'
+    let primaryLabel = 'ดูความคืบหน้า →'
+    if (pass && unlockedLesson) {
+      primaryHref = `#/lessons/${unlockedLesson.id}`
+      primaryLabel = 'ไปบทเรียนถัดไป →'
+    }
+
     main.querySelector('#q-progress').style.width = '100%'
     main.querySelector('#q-counter').textContent = `เสร็จแล้ว! ${total} / ${total}`
     main.querySelector('#question-slot').innerHTML = ''
@@ -182,16 +191,13 @@ export function renderQuiz({ id }) {
         </div>
 
         ${unlockedLesson ? `
-          <div style="background:var(--accent-soft);border:2px solid var(--accent-mid);border-radius:var(--r-lg);padding:var(--sp-4) var(--sp-5);margin-bottom:var(--sp-5);display:flex;align-items:center;justify-content:space-between;gap:var(--sp-4)">
-            <div>
-              <div style="font-size:var(--text-xs);font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:var(--accent);margin-bottom:var(--sp-1)">→ บทเรียนถัดไป</div>
-              <div style="font-weight:600">${unlockedLesson.title}</div>
-              <div style="font-size:var(--text-xs);color:var(--text-muted)">
-                <span class="level-badge level-${unlockedLesson.level}">${unlockedLesson.level}</span>
-                <span style="margin-left:var(--sp-2)">⏱ ${unlockedLesson.estimatedMinutes} min</span>
-              </div>
+          <div style="background:var(--accent-soft);border:2px solid var(--accent-mid);border-radius:var(--r-lg);padding:var(--sp-4) var(--sp-5);margin-bottom:var(--sp-5)">
+            <div style="font-size:var(--text-xs);font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:var(--accent);margin-bottom:var(--sp-1)">→ บทเรียนถัดไป</div>
+            <div style="font-weight:600">${unlockedLesson.title}</div>
+            <div style="font-size:var(--text-xs);color:var(--text-muted)">
+              <span class="level-badge level-${unlockedLesson.level}">${unlockedLesson.level}</span>
+              <span style="margin-left:var(--sp-2)">⏱ ${unlockedLesson.estimatedMinutes} min</span>
             </div>
-            <a href="#/lessons/${unlockedLesson.id}" class="btn btn-primary" style="white-space:nowrap">เริ่มเลย →</a>
           </div>
         ` : pass ? '' : `
           <div style="background:var(--gold-soft);border:1px solid var(--gold);border-radius:var(--r-lg);padding:var(--sp-4);margin-bottom:var(--sp-5);font-size:var(--text-sm)">
@@ -200,12 +206,18 @@ export function renderQuiz({ id }) {
         `}
 
         <div style="display:flex;gap:var(--sp-3);flex-wrap:wrap">
-          ${lesson ? `<a href="#/lessons/${lesson.id}" class="btn btn-secondary">← กลับ Lesson</a>` : ''}
-          <button class="btn ${pass ? 'btn-ghost' : 'btn-primary'}" onclick="window.location.reload()">ลองอีกครั้ง</button>
+          ${pass
+            ? `<a href="${primaryHref}" class="btn btn-primary">${primaryLabel}</a>
+               <button class="btn btn-ghost" id="retry-btn">ทำ Quiz อีกครั้ง</button>
+               ${lesson ? `<a href="#/lessons/${lesson.id}" class="btn btn-ghost">← กลับ Lesson</a>` : ''}`
+            : `<button class="btn btn-primary" id="retry-btn">↺ ลองอีกครั้ง</button>
+               ${lesson ? `<a href="#/lessons/${lesson.id}" class="btn btn-ghost">← กลับไปทบทวน Lesson</a>` : ''}`}
         </div>
       </div>
     `
     main.querySelector('#next-area').style.display = 'block'
+    const retryBtn = main.querySelector('#retry-btn')
+    if (retryBtn) retryBtn.addEventListener('click', () => renderQuiz({ id }))
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }
 
