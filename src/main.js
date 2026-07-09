@@ -5,6 +5,7 @@ import { initCloudSync } from './store.js'
 import { renderHome } from './pages/home.js'
 import { renderLessons } from './pages/lessons.js'
 import { renderLessonReader } from './pages/lesson-reader.js'
+import { renderSkillsHub, renderSkillBrowser, renderSkillDetail } from './pages/skills.js'
 import { renderFlashcards } from './pages/flashcards.js'
 import { renderFlashcardSession } from './pages/flashcard-session.js'
 import { renderQuizBrowser, renderQuiz } from './pages/quiz.js'
@@ -13,6 +14,7 @@ import { renderSearch } from './pages/search.js'
 import { renderNotebook } from './pages/notebook.js'
 import { renderReviewMistakes } from './pages/review-mistakes.js'
 import { renderDictationBrowser, renderDictation } from './pages/dictation.js'
+import { renderCourseHub, renderLevelBrowser, renderUnitBrowser, renderCourseSection } from './pages/course.js'
 import { renderGrammarCheck } from './pages/grammar-check.js'
 import { renderSentenceBuilder } from './pages/sentence-builder.js'
 import { renderSpeedRound } from './pages/speed-round.js'
@@ -36,8 +38,15 @@ route('/profile',    guard(() => renderProfile()))
 
 // Protected routes
 route('/',                guard(() => renderHome()))
+route('/course',                           guard(() => renderCourseHub()))
+route('/course/:levelId',                  guard(({ levelId }) => renderLevelBrowser({ levelId })))
+route('/course/:levelId/:unitId',          guard(({ levelId, unitId }) => renderUnitBrowser({ levelId, unitId })))
+route('/course/:levelId/:unitId/:section', guard(({ levelId, unitId, section }) => renderCourseSection({ levelId, unitId, section })))
 route('/lessons',         guard(() => renderLessons()))
 route('/lessons/:id',     guard(({ id }) => renderLessonReader({ id })))
+route('/skills',              guard(() => renderSkillsHub()))
+route('/skills/:skill',       guard(({ skill }) => renderSkillBrowser({ skill })))
+route('/skills/:skill/:id',   guard(({ skill, id }) => renderSkillDetail({ skill, id })))
 route('/flashcards',      guard(() => renderFlashcards()))
 route('/flashcards/:id',  guard(({ id }) => renderFlashcardSession({ id })))
 route('/quiz',            guard(() => renderQuizBrowser()))

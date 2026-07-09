@@ -59,7 +59,8 @@ body.auth-mode #main-content { margin-left: 0; }
   padding: var(--sp-4) var(--sp-3);
   display: flex;
   flex-direction: column;
-  gap: var(--sp-1);
+  gap: 2px;
+  overflow-y: auto;
 }
 
 .nav-item {
@@ -142,11 +143,37 @@ body.auth-mode #main-content { margin-left: 0; }
   padding: var(--sp-10) var(--sp-6);
 }
 
-/* Mobile */
+/* ── Tablet: sidebar collapses to icon-only ── */
+@media (max-width: 1024px) and (min-width: 769px) {
+  :root { --sidebar-width: var(--sidebar-collapsed); }
+
+  .sidebar-logo {
+    justify-content: center;
+    padding: var(--sp-5) var(--sp-3);
+  }
+  .sidebar-logo-text { display: none; }
+
+  .sidebar-footer { padding: var(--sp-3); }
+  .sidebar-footer .btn span { display: none; }
+
+  .nav-item {
+    justify-content: center;
+    padding: var(--sp-3);
+    gap: 0;
+  }
+  .nav-item span:not(.nav-icon) { display: none; }
+  .nav-item .nav-icon { margin: 0; }
+
+  .page, .page-wide {
+    padding: var(--sp-8) var(--sp-5);
+  }
+}
+
+/* ── Mobile: bottom tab bar ── */
 @media (max-width: 768px) {
   #sidebar {
     width: 100%;
-    height: 64px;
+    height: 60px;
     min-height: unset;
     top: auto;
     bottom: 0;
@@ -163,19 +190,25 @@ body.auth-mode #main-content { margin-left: 0; }
 
   .sidebar-nav {
     flex-direction: row;
-    padding: var(--sp-2) var(--sp-4);
+    padding: 0 var(--sp-2);
     justify-content: space-around;
     align-items: center;
     gap: 0;
+    overflow-x: hidden;
   }
+
+  /* Hide secondary nav items on mobile — keep 5 primary */
+  .nav-item[data-mobile-hide="true"] { display: none; }
 
   .nav-item {
     flex-direction: column;
-    gap: var(--sp-1);
-    padding: var(--sp-2) var(--sp-4);
-    font-size: 0.625rem;
+    gap: 2px;
+    padding: var(--sp-2) var(--sp-3);
+    font-size: 0.6rem;
     border-radius: var(--r-sm);
     box-shadow: none !important;
+    flex: 1;
+    max-width: 72px;
   }
 
   .nav-item.active {
@@ -183,15 +216,17 @@ body.auth-mode #main-content { margin-left: 0; }
     box-shadow: none !important;
   }
 
+  .nav-icon { width: 18px; height: 18px; }
+
   #main-content {
     margin-left: 0;
-    margin-bottom: 64px;
+    margin-bottom: 60px;
   }
 
   .page, .page-wide {
-    padding: var(--sp-6) var(--sp-4);
+    padding: var(--sp-5) var(--sp-4);
   }
 
-  h1 { font-size: var(--text-3xl); }
-  h2 { font-size: var(--text-2xl); }
+  h1 { font-size: var(--text-2xl); }
+  h2 { font-size: var(--text-xl); }
 }

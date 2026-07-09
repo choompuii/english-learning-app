@@ -1,7 +1,8 @@
-import { getProgress, setLevel, getDailyGoal, dismissTodayReminder, isReminderDismissedToday } from '../store.js'
+import { getProgress, setLevel, getDailyGoal, dismissTodayReminder, isReminderDismissedToday, getCourseProgress, isCourseUnitUnlocked } from '../store.js'
 import { navigate } from '../router.js'
 import { lessons } from '../data/lessons.js'
 import { decks } from '../data/vocabulary.js'
+import { getAllLevels } from '../data/courses/index.js'
 import { getOrderedLessons, isLessonPassed, getNextLesson } from '../utils/progression.js'
 import { ttsButton, attachTtsListeners } from '../utils/tts.js'
 import { getUser, getProfile } from '../lib/auth.js'
@@ -111,6 +112,7 @@ async function renderDashboard(main, state) {
   const primaryLesson = getNextLesson(ordered, state)
   const hasStarted = completedLessons > 0 || Object.values(state.lessons).some(l => l.status === 'in-progress')
 
+  const courseSnapshot = getCourseSnapshot()
   const wotd = getWordOfTheDay(state.selectedLevel)
   const activityLog = state.activityLog || {}
   const todayMinutes = Math.round((todayXp / 5) * 2) // rough estimate
@@ -138,8 +140,10 @@ async function renderDashboard(main, state) {
         </div>
       </div>
 
+      ${buildCourseCard(courseSnapshot)}
+
       <!-- Continue Learning + Daily Goal -->
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:20px">
+      <div class="dash-grid-2">
 
         <!-- Continue Learning -->
         <div style="background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:20px">
@@ -188,7 +192,7 @@ async function renderDashboard(main, state) {
       <!-- Daily Challenge -->
       <div style="margin-bottom:20px">
         <p style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--text-muted);margin:0 0 12px">Daily Challenge</p>
-        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px">
+        <div class="dash-grid-3">
           ${[
             { icon:'❓', label:'Quiz', sub:'Test your knowledge', link:'/quiz', border:'#e8d9b8', bg:'#fdf8ee' },
             { icon:'🃏', label:'Vocabulary', sub: dueCount>0?`${dueCount} cards due`:'Review words', link:'/flashcards', border:'#b8d4c0', bg:'#f0f7f2' },
@@ -206,7 +210,7 @@ async function renderDashboard(main, state) {
       </div>
 
       <!-- Today's Word + Streak side by side -->
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:20px">
+      <div class="dash-grid-2">
 
         <!-- Today's Word -->
         ${wotd ? `
@@ -243,7 +247,7 @@ async function renderDashboard(main, state) {
       <!-- Statistics -->
       <div>
         <p style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--text-muted);margin:0 0 12px">Statistics</p>
-        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px">
+        <div class="dash-grid-3">
           ${[
             { label:'Study Time', value: formatMinutes(state.xp || 0), icon:'⏱', sub:'estimated' },
             { label:'Lessons Done', value: completedLessons, icon:'📚', sub:`of ${totalLessons} total` },
@@ -274,6 +278,71 @@ async function renderDashboard(main, state) {
 }
 
 // ── Helpers ────────────────────────────────────────────────
+
+// Picks the level the learner is actively working through (first level with
+// content that isn't fully passed, else the last level with content) and the
+// next unlocked-but-unpassed unit inside it.
+function getCourseSnapshot() {
+  const prog = getCourseProgress()
+  const levels = getAllLevels().filter(l => l.units.length > 0)
+  if (!levels.length) return null
+
+  const level = levels.find(l => l.units.some(u => !prog[u.test.id]?.passed)) || levels[levels.length - 1]
+  const units = level.units
+  const passedCount = units.filter(u => prog[u.test.id]?.passed).length
+  const nextUnit = units.find(u => isCourseUnitUnlocked(u.id, units) && !prog[u.test.id]?.passed) || null
+
+  let sectionsDone = 0
+  if (nextUnit) {
+    sectionsDone = ['vocabulary', 'grammar', 'listening', 'reading']
+      .filter(s => prog[nextUnit[s].id]?.status === 'completed').length
+  }
+
+  return { level, passedCount, totalUnits: units.length, nextUnit, sectionsDone }
+}
+
+function buildCourseCard(snapshot) {
+  if (!snapshot) return ''
+  const { level, passedCount, totalUnits, nextUnit, sectionsDone } = snapshot
+  const pct = totalUnits > 0 ? Math.round((passedCount / totalUnits) * 100) : 0
+  const target = nextUnit ? `/course/${level.id}/${nextUnit.id}` : `/course/${level.id}`
+
+  return `
+    <div style="background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:20px 22px;margin-bottom:20px">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px">
+        <p style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--text-muted);margin:0">📚 English Course</p>
+        <a href="#/course" style="font-size:12px;color:var(--accent);text-decoration:none;font-weight:600">ดูทั้งหมด →</a>
+      </div>
+      <div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap">
+        <div style="font-size:2.2rem;flex-shrink:0">${level.emoji}</div>
+        <div style="flex:1;min-width:180px">
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px">
+            <span style="background:${level.color};color:#fff;font-size:12px;font-weight:700;padding:2px 10px;border-radius:99px">${level.label}</span>
+            <span style="font-weight:700;color:var(--text)">${level.title}</span>
+          </div>
+          <div style="height:6px;background:var(--border);border-radius:99px;overflow:hidden;margin:8px 0 4px">
+            <div style="height:100%;width:${pct}%;background:${level.color};border-radius:99px;transition:width .4s ease"></div>
+          </div>
+          <div style="font-size:11px;color:var(--text-muted)">${passedCount}/${totalUnits} units ผ่านแล้ว</div>
+        </div>
+        <a href="#${target}" style="padding:10px 18px;background:var(--accent);color:#fff;border-radius:10px;font-size:13px;font-weight:700;text-decoration:none;white-space:nowrap;flex-shrink:0">
+          ${nextUnit ? 'เรียนต่อ →' : 'ดูคอร์ส →'}
+        </a>
+      </div>
+      ${nextUnit ? `
+        <div style="margin-top:14px;padding-top:14px;border-top:1px solid var(--border)">
+          <div style="display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap">
+            <div style="min-width:0">
+              <div style="font-size:10px;font-weight:700;text-transform:uppercase;color:var(--accent);margin-bottom:2px">ถัดไป</div>
+              <div style="font-size:13px;font-weight:700;color:var(--text)">${nextUnit.title}</div>
+            </div>
+            <div style="font-size:11px;color:var(--text-muted)">${sectionsDone}/4 sections</div>
+          </div>
+        </div>
+      ` : ''}
+    </div>
+  `
+}
 
 function buildReminderBanner(todayXp) {
   if (todayXp > 0 || isReminderDismissedToday()) return ''
