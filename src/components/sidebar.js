@@ -21,65 +21,90 @@ export function toggleTheme() {
 
 applyTheme()
 
+// mobile: true = show in bottom tab bar (max 5), false = desktop only
 const navItems = [
   {
     id: 'home',
     label: 'Dashboard',
     hash: '/',
+    mobile: true,
     icon: `<svg class="nav-icon" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>`
+  },
+  {
+    id: 'course',
+    label: 'Course',
+    hash: '/course',
+    mobile: true,
+    icon: `<svg class="nav-icon" viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>`
   },
   {
     id: 'lessons',
     label: 'Lessons',
     hash: '/lessons',
+    mobile: false,
     icon: `<svg class="nav-icon" viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>`
+  },
+  {
+    id: 'skills',
+    label: 'Skills',
+    hash: '/skills',
+    mobile: true,
+    icon: `<svg class="nav-icon" viewBox="0 0 24 24"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>`
   },
   {
     id: 'flashcards',
     label: 'Flashcards',
     hash: '/flashcards',
+    mobile: true,
     icon: `<svg class="nav-icon" viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>`
   },
   {
     id: 'quiz',
     label: 'Quiz',
     hash: '/quiz',
+    mobile: false,
     icon: `<svg class="nav-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>`
   },
   {
     id: 'notebook',
     label: 'Notebook',
     hash: '/notebook',
+    mobile: false,
     icon: `<svg class="nav-icon" viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>`
   },
   {
     id: 'search',
     label: 'Search',
     hash: '/search',
+    mobile: false,
     icon: `<svg class="nav-icon" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>`
   },
   {
     id: 'progress',
     label: 'Progress',
     hash: '/progress',
+    mobile: true,
     icon: `<svg class="nav-icon" viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>`
   },
   {
     id: 'grammar',
     label: 'Grammar Check',
     hash: '/grammar',
+    mobile: false,
     icon: `<svg class="nav-icon" viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/><line x1="9" y1="10" x2="14" y2="15"/></svg>`
   },
   {
     id: 'sentence-builder',
     label: 'Sentence Builder',
     hash: '/sentence-builder',
+    mobile: false,
     icon: `<svg class="nav-icon" viewBox="0 0 24 24"><rect x="3" y="8" width="5" height="3" rx="1"/><rect x="10" y="8" width="5" height="3" rx="1"/><rect x="17" y="8" width="4" height="3" rx="1"/><rect x="3" y="13" width="7" height="3" rx="1"/><rect x="12" y="13" width="5" height="3" rx="1"/></svg>`
   },
   {
     id: 'speed-round',
     label: 'Speed Round',
     hash: '/speed-round',
+    mobile: false,
     icon: `<svg class="nav-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>`
   },
 ]
@@ -104,19 +129,14 @@ export async function renderSidebar() {
     </a>
     <nav class="sidebar-nav">
       ${navItems.map(item => `
-        <button class="nav-item" data-hash="${item.hash}" onclick="window.location.hash='${item.hash}'">
+        <button class="nav-item" data-hash="${item.hash}" onclick="window.location.hash='${item.hash}'"
+          ${item.mobile === false ? 'data-mobile-hide="true"' : ''}>
           ${item.icon}
           <span>${item.label}</span>
         </button>
       `).join('')}
     </nav>
     <div class="sidebar-footer">
-      ${streak > 0 ? `
-        <div class="streak-widget" style="margin-bottom:var(--sp-3)">
-          <span>🔥</span>
-          <span>${streak} day streak</span>
-        </div>
-      ` : ''}
       <button class="nav-item" data-hash="/profile" onclick="window.location.hash='/profile'" style="width:100%;margin-bottom:var(--sp-2)">
         <svg class="nav-icon" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
         <span style="flex:1;text-align:left">${displayName || 'Profile'}</span>

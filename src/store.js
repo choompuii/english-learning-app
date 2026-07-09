@@ -56,7 +56,9 @@ const DEFAULT_STATE = {
   goalStreakDays: 0,
   lastGoalDate: null,
   lessonNotes: {},
-  reminderDismissedDate: null
+  reminderDismissedDate: null,
+  skillProgress: {},
+  vocabProgress: {}
 }
 
 function load() {
@@ -232,6 +234,112 @@ export function getSpeedRoundBest(deckId) {
   return (s.speedRound || {})[deckId] || null
 }
 
+// ── Skills (Vocabulary / Grammar / Reading / Listening) ──
+// A skill "item" is a vocabulary category, grammar topic, reading passage, or
+// listening piece. Completion is tracked in a flat map keyed by the item id.
+
+export function getSkillProgress() {
+  const s = load()
+  return s.skillProgress || {}
+}
+
+export function getSkillItemProgress(itemId) {
+  const s = load()
+  return (s.skillProgress || {})[itemId] || { status: 'not-started' }
+}
+
+// Mark a skill item complete. `score`/`total` are optional (for graded activities);
+// `xp` is awarded through the same streak/goal/activity machinery as everything else.
+// Pass xp:0 when the XP was already granted elsewhere (e.g. a grammar quiz recorded
+// via recordQuizAttempt) to avoid double-counting.
+export function recordSkillCompletion(itemId, { score = null, total = null, xp = 20 } = {}) {
+  const s = load()
+  touchStreak(s)
+  if (!s.skillProgress) s.skillProgress = {}
+  const prev = s.skillProgress[itemId] || {}
+  s.skillProgress[itemId] = {
+    status: 'completed',
+    completedAt: new Date().toISOString(),
+    bestScore: score != null ? Math.max(score, prev.bestScore || 0) : (prev.bestScore ?? null),
+    bestTotal: total != null ? total : (prev.bestTotal ?? null),
+    plays: (prev.plays || 0) + 1
+  }
+  if (xp > 0) {
+    s.xp = (s.xp || 0) + xp
+    addTodayXp(s, xp)
+    touchActivityLog(s, xp)
+  }
+  touchGoalStreak(s)
+  const newBadges = checkBadges(s)
+  save(s)
+  return newBadges
+}
+
+// ── Course progress (Course > Level > Unit > Section) ──
+
+export function getCourseProgress() {
+  return load().courseProgress || {}
+}
+
+export function getCourseSection(sectionId) {
+  return (load().courseProgress || {})[sectionId] || { status: 'not-started' }
+}
+
+export function recordCourseSection(sectionId, { xp = 20 } = {}) {
+  const s = load()
+  touchStreak(s)
+  if (!s.courseProgress) s.courseProgress = {}
+  const prev = s.courseProgress[sectionId] || {}
+  s.courseProgress[sectionId] = {
+    status: 'completed',
+    completedAt: new Date().toISOString(),
+    plays: (prev.plays || 0) + 1
+  }
+  if (xp > 0) {
+    s.xp = (s.xp || 0) + xp
+    addTodayXp(s, xp)
+    touchActivityLog(s, xp)
+  }
+  touchGoalStreak(s)
+  const newBadges = checkBadges(s)
+  save(s)
+  return newBadges
+}
+
+export function recordCourseUnitTest(testId, score, total) {
+  const s = load()
+  touchStreak(s)
+  if (!s.courseProgress) s.courseProgress = {}
+  const prev = s.courseProgress[testId] || {}
+  const passed = score / total >= 0.70
+  const wasAlreadyPassed = prev.passed || false
+  s.courseProgress[testId] = {
+    status: 'completed',
+    completedAt: new Date().toISOString(),
+    bestScore: Math.max(score, prev.bestScore || 0),
+    bestTotal: total,
+    passed: passed || wasAlreadyPassed,
+    plays: (prev.plays || 0) + 1
+  }
+  const xp = passed && !wasAlreadyPassed ? 50 : score * 5
+  if (xp > 0) {
+    s.xp = (s.xp || 0) + xp
+    addTodayXp(s, xp)
+    touchActivityLog(s, xp)
+  }
+  touchGoalStreak(s)
+  const newBadges = checkBadges(s)
+  save(s)
+  return { newBadges, passed, xp }
+}
+
+export function isCourseUnitUnlocked(unitId, allUnits) {
+  const idx = allUnits.findIndex(u => u.id === unitId)
+  if (idx <= 0) return true
+  const prevTest = allUnits[idx - 1].test.id
+  return (load().courseProgress || {})[prevTest]?.passed === true
+}
+
 // SM-2 spaced repetition
 export function updateFlashcard(deckId, cardId, rating) {
   // rating: 0=Again 1=Hard 2=Good 3=Easy
@@ -349,6 +457,32 @@ export function getNotebook() {
 export function isInNotebook(word) {
   const s = load()
   return (s.notebook || []).some(e => e.word.toLowerCase() === word.toLowerCase())
+}
+
+// ── Vocabulary progress tracking ──
+
+export function recordVocabAnswer(word, isCorrect) {
+  const s = load()
+  if (!s.vocabProgress) s.vocabProgress = {}
+  const p = s.vocabProgress[word] || { correct: 0, incorrect: 0 }
+  if (isCorrect) p.correct++
+  else p.incorrect++
+  s.vocabProgress[word] = p
+  save(s)
+}
+
+export function getDifficultWords() {
+  const prog = load().vocabProgress || {}
+  return Object.entries(prog)
+    .filter(([, p]) => p.incorrect >= 2 && p.correct / (p.correct + p.incorrect) < 0.5)
+    .map(([word]) => word)
+}
+
+export function getLearnedWords() {
+  const prog = load().vocabProgress || {}
+  return Object.entries(prog)
+    .filter(([, p]) => p.correct >= 3 && p.correct / (p.correct + p.incorrect) >= 0.7)
+    .map(([word]) => word)
 }
 
 // ── TTS / Dictation tracking ──
