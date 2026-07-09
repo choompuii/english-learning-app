@@ -113,20 +113,27 @@ export function initFlashcardInteraction(onRate, card) {
     if (e.key === ' ' || e.key === 'Enter') { e.preventDefault(); flip() }
   })
 
-  ratingBtns.querySelectorAll('.rating-btn').forEach(btn => {
-    btn.addEventListener('click', (e) => {
-      e.stopPropagation()
-      onRate(parseInt(btn.dataset.rating))
-    })
-  })
-
-  // Keyboard shortcuts for ratings (after flip)
-  document.addEventListener('keydown', function handler(e) {
+  // Keyboard shortcuts for ratings (after flip) — defined first so mouse handler can remove it
+  let keydownHandler = null
+  keydownHandler = function(e) {
     if (!flipped) return
     const map = { '1': 0, '2': 1, '3': 2, '4': 3 }
     if (map[e.key] !== undefined) {
-      document.removeEventListener('keydown', handler)
+      document.removeEventListener('keydown', keydownHandler)
+      keydownHandler = null
       onRate(map[e.key])
     }
+  }
+  document.addEventListener('keydown', keydownHandler)
+
+  ratingBtns.querySelectorAll('.rating-btn').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation()
+      if (keydownHandler) {
+        document.removeEventListener('keydown', keydownHandler)
+        keydownHandler = null
+      }
+      onRate(parseInt(btn.dataset.rating))
+    })
   })
 }

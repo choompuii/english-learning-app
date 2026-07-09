@@ -237,6 +237,26 @@ export function renderQuestion(q, index, total, onAnswer) {
           wordBtn.classList.remove('matched-wrong')
           matchBtn.classList.remove('matched-wrong')
         }, 600)
+
+        // Show skip button after first wrong match so the quiz can never get stuck
+        if (!container.querySelector('#match-skip-btn')) {
+          const skipBtn = document.createElement('button')
+          skipBtn.id = 'match-skip-btn'
+          skipBtn.className = 'btn btn-ghost btn-sm'
+          skipBtn.style.marginTop = 'var(--sp-3)'
+          skipBtn.textContent = 'ข้ามข้อนี้'
+          skipBtn.addEventListener('click', () => {
+            if (container.dataset.answered) return
+            container.dataset.answered = '1'
+            container.querySelectorAll('.match-item').forEach(b => { b.disabled = true; b.classList.remove('selected') })
+            skipBtn.remove()
+            const exp = container.querySelector('.quiz-explanation')
+            exp.style.display = 'block'
+            exp.innerHTML = `<strong>✗ ยังจับคู่ไม่ครบ</strong> ${q.explanation}`
+            onAnswer({ qid: q.id, correct: false })
+          })
+          container.querySelector('.quiz-explanation').before(skipBtn)
+        }
       }
     }
 

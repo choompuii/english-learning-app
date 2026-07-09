@@ -73,7 +73,10 @@ export function renderSpeedRound() {
     })
   })
 
+  let autoAdvanceTimeout = null
+
   function startSession(deck) {
+    if (autoAdvanceTimeout) { clearTimeout(autoAdvanceTimeout); autoAdvanceTimeout = null }
     main.querySelector('#sr-deck-select').style.display = 'none'
     const sessionEl = main.querySelector('#sr-session')
     sessionEl.style.display = ''
@@ -187,7 +190,7 @@ export function renderSpeedRound() {
               <span style="margin-left:auto;font-size:var(--text-sm);font-weight:700;color:var(--accent)">+${XP_PER_CORRECT} XP</span>
             </div>
           `
-          setTimeout(() => { idx++; renderCard() }, 1200)
+          autoAdvanceTimeout = setTimeout(() => { autoAdvanceTimeout = null; idx++; renderCard() }, 1200)
         } else {
           input.style.borderColor = 'var(--danger)'
           feedback.innerHTML = `
