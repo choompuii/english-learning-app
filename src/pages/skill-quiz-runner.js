@@ -34,6 +34,10 @@ export function runQuiz(mount, questions, onComplete, { onAnswer } = {}) {
       if (res.correct) score++
       onAnswer?.(questions[idx], res.correct)
       mount.querySelector('#q-next').style.display = 'flex'
+      setTimeout(() => {
+        const btn = mount.querySelector('#next-btn')
+        if (btn) btn.click()
+      }, 2000)
     })
     slot.appendChild(card)
     attachTtsListeners(slot)
