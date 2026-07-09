@@ -28,6 +28,7 @@ export function runQuiz(mount, questions, onComplete, { onAnswer } = {}) {
 
     const slot = mount.querySelector('#q-slot')
     let answered = false
+    let advanced = false
     const card = renderQuestion(questions[idx], idx, total, (res) => {
       if (answered) return
       answered = true
@@ -43,6 +44,8 @@ export function runQuiz(mount, questions, onComplete, { onAnswer } = {}) {
     attachTtsListeners(slot)
 
     mount.querySelector('#next-btn').addEventListener('click', () => {
+      if (advanced) return
+      advanced = true
       idx++
       if (idx >= total) onComplete({ score, total })
       else show()

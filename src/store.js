@@ -2,6 +2,32 @@ import { supabase } from './lib/supabase.js'
 
 const KEY = 'elapp_progress'
 
+const DEFAULT_STATE = {
+  selectedLevel: null,
+  streakDays: 0,
+  lastStudyDate: null,
+  xp: 0,
+  lessons: {},
+  quizzes: {},
+  sentenceBuilder: {},
+  speedRound: {},
+  flashcards: {},
+  notebook: [],
+  dailyGoal: 50,
+  todayXp: 0,
+  todayDate: null,
+  activityLog: {},
+  badgesEarned: [],
+  ttsCount: 0,
+  dictationDone: [],
+  goalStreakDays: 0,
+  lastGoalDate: null,
+  lessonNotes: {},
+  reminderDismissedDate: null,
+  skillProgress: {},
+  vocabProgress: {}
+}
+
 // ── Supabase sync ──
 
 let _syncTimer = null
@@ -33,32 +59,6 @@ export async function initCloudSync() {
     const merged = local && local.xp > (cloudState.xp || 0) ? local : cloudState
     localStorage.setItem(KEY, JSON.stringify({ ...DEFAULT_STATE, ...merged }))
   }
-}
-
-const DEFAULT_STATE = {
-  selectedLevel: null,
-  streakDays: 0,
-  lastStudyDate: null,
-  xp: 0,
-  lessons: {},
-  quizzes: {},
-  sentenceBuilder: {},
-  speedRound: {},
-  flashcards: {},
-  notebook: [],
-  dailyGoal: 50,
-  todayXp: 0,
-  todayDate: null,
-  activityLog: {},
-  badgesEarned: [],
-  ttsCount: 0,
-  dictationDone: [],
-  goalStreakDays: 0,
-  lastGoalDate: null,
-  lessonNotes: {},
-  reminderDismissedDate: null,
-  skillProgress: {},
-  vocabProgress: {}
 }
 
 function load() {
