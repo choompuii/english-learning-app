@@ -697,24 +697,26 @@
 /* ── Deck grid ── */
 .deck-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-  gap: var(--sp-4);
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--sp-3);
 }
 
 .deck-card-icon {
-  font-size: 2.5rem;
-  margin-bottom: var(--sp-4);
+  font-size: 1.75rem;
+  margin-bottom: var(--sp-3);
 }
 
 .deck-card h3 {
-  font-size: var(--text-lg);
+  font-size: var(--text-base);
   margin-bottom: var(--sp-2);
 }
 
 .deck-card-stats {
   display: flex;
-  gap: var(--sp-4);
-  margin-top: var(--sp-4);
+  align-items: center;
+  gap: var(--sp-3);
+  margin-top: var(--sp-3);
+  flex-wrap: wrap;
 }
 
 .deck-stat {
@@ -875,6 +877,21 @@
   margin: 0 auto;
 }
 
+/* ── Progress rings grid ── */
+.progress-rings {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--sp-6);
+  margin-bottom: var(--sp-8);
+}
+
+/* ── Flashcard session progress bar ── */
+.session-header .progress-bar {
+  flex: 1;
+  min-width: 60px;
+  max-width: 200px;
+}
+
 /* ── Dashboard responsive grid helpers ── */
 .dash-grid-2 {
   display: grid;
@@ -893,7 +910,7 @@
   .stats-row { gap: var(--sp-3); }
   .rating-buttons { grid-template-columns: repeat(2, 1fr); }
   .lessons-grid { grid-template-columns: 1fr; }
-  .deck-grid { grid-template-columns: 1fr; }
+  .deck-grid { grid-template-columns: 1fr 1fr; }
 
   /* Dashboard grids stack on mobile */
   .dash-grid-2 { grid-template-columns: 1fr; }

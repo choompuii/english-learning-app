@@ -70,19 +70,18 @@ function deckCard(deck, state) {
   const pct = deck.cards.length > 0 ? Math.round((progress.studied / deck.cards.length) * 100) : 0
 
   return `
-    <div class="card card-hover deck-card" data-id="${deck.id}">
+    <div class="card card-hover deck-card" data-id="${deck.id}" style="padding:var(--sp-4)">
       <div class="deck-card-icon">${deck.icon}</div>
-      <div class="lesson-card-meta">
+      <div class="lesson-card-meta" style="margin-bottom:var(--sp-2)">
         <span class="level-badge level-${deck.level}">${deck.level}</span>
         ${deck.lessonId ? '' : '<span class="topic-badge">Standalone</span>'}
       </div>
       <h3>${deck.title}</h3>
       <div class="deck-card-stats">
-        <span class="deck-stat">${deck.cards.length} cards</span>
-        <span class="deck-stat">${progress.studied} studied</span>
+        <span class="deck-stat">${deck.cards.length} cards · ${progress.studied} studied</span>
         ${progress.due > 0 ? `<span class="deck-due-badge">⚡ ${progress.due} due</span>` : ''}
       </div>
-      <div class="progress-bar" style="margin-top:var(--sp-4)">
+      <div class="progress-bar" style="margin-top:var(--sp-3);height:4px">
         <div class="progress-fill" style="width:${pct}%"></div>
       </div>
     </div>
