@@ -153,7 +153,7 @@ export function renderDictation({ id }) {
   }
 
   function showSummary() {
-    const pct = Math.round((correct / cards.length) * 100)
+    const pct = cards.length > 0 ? Math.round((correct / cards.length) * 100) : 0
     main.innerHTML = `
       <div class="page" style="text-align:center">
         <div style="font-size:4rem;margin-bottom:var(--sp-4)">${pct >= 70 ? '🌟' : '💪'}</div>

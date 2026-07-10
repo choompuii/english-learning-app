@@ -43,14 +43,16 @@ export async function signInWithGoogle() {
 }
 
 export async function getProfile() {
-  const { data: { user } } = await supabase.auth.getUser()
+  const { data } = await supabase.auth.getUser()
+  const user = data?.user || null
   if (!user) return null
-  const { data } = await supabase.from('user_profiles').select('*').eq('user_id', user.id).single()
-  return data || { user_id: user.id, display_name: '', username: '', avatar_color: '#2d6a4f' }
+  const { data: profileData } = await supabase.from('user_profiles').select('*').eq('user_id', user.id).single()
+  return profileData || { user_id: user.id, display_name: '', username: '', avatar_color: '#2d6a4f' }
 }
 
 export async function saveProfile(fields) {
-  const { data: { user } } = await supabase.auth.getUser()
+  const { data } = await supabase.auth.getUser()
+  const user = data?.user || null
   if (!user) throw new Error('Not logged in')
   const { error } = await supabase.from('user_profiles').upsert({
     user_id: user.id, ...fields, updated_at: new Date().toISOString()

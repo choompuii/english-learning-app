@@ -29,7 +29,7 @@ export function renderFlashcardSession({ id, forceAll = false }) {
         </div>
       </div>
     `
-    document.getElementById('study-again-btn').addEventListener('click', () => {
+    main.querySelector('#study-again-btn').addEventListener('click', () => {
       renderFlashcardSession({ id, forceAll: true })
     })
     return

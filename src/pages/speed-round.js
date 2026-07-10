@@ -92,7 +92,10 @@ export function renderSpeedRound() {
 
     // Stop the countdown if the user navigates away mid-session (the interval would
     // otherwise keep firing into a detached DOM until it times out).
-    window.addEventListener('hashchange', () => { clearInterval(activeTimer); activeTimer = null }, { once: true })
+    window.addEventListener('hashchange', () => {
+      clearInterval(activeTimer); activeTimer = null
+      clearTimeout(autoAdvanceTimeout); autoAdvanceTimeout = null
+    }, { once: true })
 
     function renderCard() {
       if (idx >= cards.length) {

@@ -287,10 +287,10 @@ function getCourseSnapshot() {
   const levels = getAllLevels().filter(l => l.units.length > 0)
   if (!levels.length) return null
 
-  const level = levels.find(l => l.units.some(u => !prog[u.test.id]?.passed)) || levels[levels.length - 1]
+  const level = levels.find(l => l.units.some(u => u.test && !prog[u.test.id]?.passed)) || levels[levels.length - 1]
   const units = level.units
-  const passedCount = units.filter(u => prog[u.test.id]?.passed).length
-  const nextUnit = units.find(u => isCourseUnitUnlocked(u.id, units) && !prog[u.test.id]?.passed) || null
+  const passedCount = units.filter(u => u.test && prog[u.test.id]?.passed).length
+  const nextUnit = units.find(u => u.test && isCourseUnitUnlocked(u.id, units) && !prog[u.test.id]?.passed) || null
 
   let sectionsDone = 0
   if (nextUnit) {

@@ -129,7 +129,8 @@ async function _renderSidebarInner() {
   if (!sidebar) return
   const state = getProgress()
   const streak = state.streakDays || 0
-  const { data: { user } } = await supabase.auth.getUser()
+  const { data: authData } = await supabase.auth.getUser()
+  const user = authData?.user || null
 
   // Toggle full-screen auth mode
   document.body.classList.toggle('auth-mode', !user)
