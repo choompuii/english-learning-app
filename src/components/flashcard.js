@@ -1,5 +1,6 @@
 import { speak } from '../utils/tts.js'
 import { saveToNotebook, removeFromNotebook, isInNotebook } from '../store.js'
+import { ipaToThai } from '../utils/ipa-to-thai.js'
 
 export function createFlashcardHTML(card, index, total) {
   const frontText = card.front
@@ -9,7 +10,7 @@ export function createFlashcardHTML(card, index, total) {
   return `
     <div class="session-header">
       <div class="session-counter">Card ${index + 1} of ${total}</div>
-      <div class="progress-bar" style="width:200px">
+      <div class="progress-bar">
         <div class="progress-fill" style="width:${Math.round((index / total) * 100)}%"></div>
       </div>
     </div>
@@ -21,8 +22,8 @@ export function createFlashcardHTML(card, index, total) {
             <div class="card-word">${card.front}</div>
             <button class="tts-btn" data-speak="${frontText.replace(/"/g, '&quot;')}" title="ฟังเสียง">🔊</button>
           </div>
-          <div class="card-phonetic">${card.phonetic || ''}</div>
-          <div class="card-flip-hint">Click to reveal →</div>
+          <div class="card-phonetic">${card.phonetic ? ipaToThai(card.phonetic) : ''}</div>
+          <div class="card-flip-hint">Click to flip →</div>
         </div>
         <div class="flashcard-face flashcard-back">
           <div style="display:flex;align-items:center;justify-content:center;gap:8px">
@@ -35,6 +36,7 @@ export function createFlashcardHTML(card, index, total) {
           <button class="notebook-fc-btn" data-card-id="${card.id}" style="margin-top:var(--sp-3);background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.3);color:#fff;border-radius:var(--r-sm);padding:4px 10px;font-size:var(--text-xs);cursor:pointer;font-family:var(--font-body)">
             ${saved ? '✓ Saved' : '+ Notebook'}
           </button>
+          <div class="card-flip-hint" style="color:rgba(255,255,255,0.35);margin-top:var(--sp-3)">← Click to flip back</div>
         </div>
       </div>
     </div>
@@ -71,18 +73,21 @@ export function initFlashcardInteraction(onRate, card) {
   if (!scene || !inner) return
 
   let flipped = false
+  let revealed = false
 
   function flip() {
-    if (flipped) return
-    flipped = true
-    inner.classList.add('flipped')
-    ratingBtns.style.display = 'grid'
-    ratingBtns.style.animation = 'none'
-    ratingBtns.offsetHeight // reflow
-    ratingBtns.style.opacity = '0'
-    ratingBtns.style.transition = 'opacity 300ms'
-    ratingBtns.offsetHeight
-    ratingBtns.style.opacity = '1'
+    flipped = !flipped
+    inner.classList.toggle('flipped', flipped)
+    if (flipped && !revealed) {
+      revealed = true
+      ratingBtns.style.display = 'grid'
+      ratingBtns.style.animation = 'none'
+      ratingBtns.offsetHeight // reflow
+      ratingBtns.style.opacity = '0'
+      ratingBtns.style.transition = 'opacity 300ms'
+      ratingBtns.offsetHeight
+      ratingBtns.style.opacity = '1'
+    }
   }
 
   // TTS buttons — stop propagation so they don't flip the card
@@ -116,7 +121,7 @@ export function initFlashcardInteraction(onRate, card) {
   // Keyboard shortcuts for ratings (after flip) — defined first so mouse handler can remove it
   let keydownHandler = null
   keydownHandler = function(e) {
-    if (!flipped) return
+    if (!revealed) return
     const map = { '1': 0, '2': 1, '3': 2, '4': 3 }
     if (map[e.key] !== undefined) {
       document.removeEventListener('keydown', keydownHandler)
