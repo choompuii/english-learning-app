@@ -4,6 +4,7 @@ import { supabase } from '../lib/supabase.js'
 import { initCloudSync, getProgress } from '../store.js'
 import { renderSidebar } from '../components/sidebar.js'
 import { navigate } from '../router.js'
+import { esc } from '../utils/html.js'
 
 // ── Entry point ────────────────────────────────────────────
 
@@ -32,7 +33,7 @@ const EYE_C = `<svg viewBox="0 0 24 24" width="20" height="20" fill="none" strok
 const SPINNER = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" style="animation:auth-spin .7s linear infinite;flex-shrink:0"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>`
 
 function errBox(msg) {
-  return msg ? `<div style="background:#fef2f2;border:1px solid #fecaca;color:#dc2626;padding:10px 14px;border-radius:9px;margin-bottom:16px;font-size:13px;display:flex;gap:8px;align-items:center"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>${msg}</div>` : ''
+  return msg ? `<div style="background:#fef2f2;border:1px solid #fecaca;color:#dc2626;padding:10px 14px;border-radius:9px;margin-bottom:16px;font-size:13px;display:flex;gap:8px;align-items:center"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>${esc(msg)}</div>` : ''
 }
 
 function pwField(id, placeholder, autocomplete = 'current-password') {

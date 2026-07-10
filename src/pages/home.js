@@ -362,16 +362,22 @@ function buildReminderBanner(todayXp) {
 function buildCalendar(activityLog) {
   const today = new Date()
   const WEEKS = 15
-  const totalDays = WEEKS * 7
+  const todayDow = today.getDay() // 0=Sun … 6=Sat
+
+  // Start from Sunday of the oldest week so day labels (S M T W T F S) align
+  const startOffset = todayDow + (WEEKS - 1) * 7
   const days = []
 
-  for (let i = totalDays - 1; i >= 0; i--) {
+  for (let i = startOffset; i >= 0; i--) {
     const d = new Date(today)
     d.setDate(d.getDate() - i)
     const key = d.toISOString().split('T')[0]
     const xp = activityLog[key] || 0
     days.push({ key, xp, isToday: i === 0 })
   }
+
+  // Pad remaining days of current week with nulls
+  for (let i = 0; i < (6 - todayDow); i++) days.push(null)
 
   // Group into columns (weeks), each column = 7 days Sun→Sat
   const cols = []
@@ -394,7 +400,7 @@ function buildCalendar(activityLog) {
             <div style="font-size:8px;color:var(--text-muted);text-align:center;height:16px;line-height:16px;white-space:nowrap">
               ${week[0] && new Date(week[0].key).getDate() <= 7 ? new Date(week[0].key).toLocaleString('en',{month:'short'}) : ''}
             </div>
-            ${week.map(d => `
+            ${week.map(d => d ? `
               <div
                 title="${d.key} ${d.xp > 0 ? '· ' + d.xp + ' XP' : ''}"
                 style="
@@ -407,7 +413,7 @@ function buildCalendar(activityLog) {
                 "
                 onmouseover="this.style.transform='scale(1.4)'"
                 onmouseout="this.style.transform=''"
-              ></div>
+              ></div>` : `<div style="width:12px;height:12px"></div>`
             `).join('')}
           </div>
         `).join('')}

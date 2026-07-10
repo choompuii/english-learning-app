@@ -1,6 +1,7 @@
 import { getUser, getProfile, saveProfile } from '../lib/auth.js'
 import { getProgress, getBadges, BADGES } from '../store.js'
 import { navigate } from '../router.js'
+import { esc } from '../utils/html.js'
 
 const COUNTRIES = ['Thailand','United States','United Kingdom','Japan','China','South Korea','Singapore','Australia','Germany','France','Other']
 const TIMEZONES = ['Asia/Bangkok','Asia/Tokyo','Asia/Singapore','Asia/Seoul','Australia/Sydney','Europe/London','Europe/Paris','America/New_York','America/Los_Angeles']
@@ -140,7 +141,7 @@ function overviewTab(progress, profile, completedLessons, wordsLearned, quizzesD
 
   return `
     <div style="display:flex;flex-direction:column;gap:20px">
-      ${bio ? `<div style="background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:18px 20px"><p style="margin:0;font-size:14px;color:var(--text);line-height:1.6">${bio}</p></div>` : ''}
+      ${bio ? `<div style="background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:18px 20px"><p style="margin:0;font-size:14px;color:var(--text);line-height:1.6">${esc(bio)}</p></div>` : ''}
 
       <!-- Skill scores -->
       <div style="background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:20px">

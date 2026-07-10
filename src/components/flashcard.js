@@ -74,6 +74,7 @@ export function initFlashcardInteraction(onRate, card) {
 
   let flipped = false
   let revealed = false
+  let rated = false
 
   function flip() {
     flipped = !flipped
@@ -86,6 +87,13 @@ export function initFlashcardInteraction(onRate, card) {
       ratingBtns.style.opacity = '0'
       ratingBtns.style.transition = 'opacity 300ms'
       ratingBtns.offsetHeight
+      ratingBtns.style.opacity = '1'
+    } else if (!flipped && revealed) {
+      // Flipped back to front — hide rating buttons until back is shown again
+      ratingBtns.style.display = 'none'
+    } else if (flipped && revealed) {
+      // Re-flipped to back — show rating buttons again
+      ratingBtns.style.display = 'grid'
       ratingBtns.style.opacity = '1'
     }
   }
@@ -118,12 +126,13 @@ export function initFlashcardInteraction(onRate, card) {
     if (e.key === ' ' || e.key === 'Enter') { e.preventDefault(); flip() }
   })
 
-  // Keyboard shortcuts for ratings (after flip) — defined first so mouse handler can remove it
+  // Keyboard shortcuts for ratings — only when back face is visible
   let keydownHandler = null
   keydownHandler = function(e) {
-    if (!revealed) return
+    if (!flipped || !revealed || rated) return
     const map = { '1': 0, '2': 1, '3': 2, '4': 3 }
     if (map[e.key] !== undefined) {
+      rated = true
       document.removeEventListener('keydown', keydownHandler)
       keydownHandler = null
       onRate(map[e.key])
@@ -134,6 +143,8 @@ export function initFlashcardInteraction(onRate, card) {
   ratingBtns.querySelectorAll('.rating-btn').forEach(btn => {
     btn.addEventListener('click', (e) => {
       e.stopPropagation()
+      if (rated) return
+      rated = true
       if (keydownHandler) {
         document.removeEventListener('keydown', keydownHandler)
         keydownHandler = null
@@ -141,4 +152,11 @@ export function initFlashcardInteraction(onRate, card) {
       onRate(parseInt(btn.dataset.rating))
     })
   })
+
+  return function cleanup() {
+    if (keydownHandler) {
+      document.removeEventListener('keydown', keydownHandler)
+      keydownHandler = null
+    }
+  }
 }

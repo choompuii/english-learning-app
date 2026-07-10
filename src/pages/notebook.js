@@ -1,5 +1,6 @@
 import { getNotebook, removeFromNotebook } from '../store.js'
 import { speak } from '../utils/tts.js'
+import { esc, escAttr } from '../utils/html.js'
 
 export function renderNotebook() {
   const main = document.getElementById('main-content')
@@ -63,21 +64,22 @@ export function renderNotebook() {
 }
 
 function renderEntry(entry) {
+  const word = entry.word || ''
   const date = new Date(entry.savedAt).toLocaleDateString('th-TH', { day: 'numeric', month: 'short' })
   return `
-    <div class="card" data-entry="${entry.word.replace(/"/g, '&quot;')}" style="display:flex;gap:var(--sp-4);align-items:flex-start">
+    <div class="card" data-entry="${escAttr(word)}" style="display:flex;gap:var(--sp-4);align-items:flex-start">
       <div style="flex:1;min-width:0">
         <div style="display:flex;align-items:center;gap:var(--sp-2);flex-wrap:wrap;margin-bottom:var(--sp-2)">
-          <span style="font-size:var(--text-xl);font-weight:700;color:var(--text)">${entry.word}</span>
-          <button class="tts-btn" data-speak="${entry.word.replace(/"/g, '&quot;')}" title="ฟังเสียง">🔊</button>
-          ${entry.phonetic ? `<span style="font-family:var(--font-mono);font-size:var(--text-sm);color:var(--text-muted)">${entry.phonetic}</span>` : ''}
+          <span style="font-size:var(--text-xl);font-weight:700;color:var(--text)">${esc(word)}</span>
+          <button class="tts-btn" data-speak="${escAttr(word)}" title="ฟังเสียง">🔊</button>
+          ${entry.phonetic ? `<span style="font-family:var(--font-mono);font-size:var(--text-sm);color:var(--text-muted)">${esc(entry.phonetic)}</span>` : ''}
         </div>
-        <div style="color:var(--text);margin-bottom:var(--sp-1)">${entry.definition}</div>
-        ${entry.thai ? `<div style="color:var(--accent);font-size:var(--text-sm);font-weight:500">${entry.thai}</div>` : ''}
-        ${entry.example ? `<div style="font-family:var(--font-mono);font-size:var(--text-sm);color:var(--text-muted);font-style:italic;margin-top:var(--sp-2)">"${entry.example}"</div>` : ''}
+        <div style="color:var(--text);margin-bottom:var(--sp-1)">${esc(entry.definition || '')}</div>
+        ${entry.thai ? `<div style="color:var(--accent);font-size:var(--text-sm);font-weight:500">${esc(entry.thai)}</div>` : ''}
+        ${entry.example ? `<div style="font-family:var(--font-mono);font-size:var(--text-sm);color:var(--text-muted);font-style:italic;margin-top:var(--sp-2)">"${esc(entry.example)}"</div>` : ''}
         <div style="margin-top:var(--sp-2);font-size:var(--text-xs);color:var(--text-faint)">บันทึกเมื่อ ${date}</div>
       </div>
-      <button class="btn btn-sm btn-ghost remove-btn" data-word="${entry.word.replace(/"/g, '&quot;')}" title="ลบออก" style="flex-shrink:0;color:var(--danger)">✕</button>
+      <button class="btn btn-sm btn-ghost remove-btn" data-word="${escAttr(word)}" title="ลบออก" style="flex-shrink:0;color:var(--danger)">✕</button>
     </div>
   `
 }
