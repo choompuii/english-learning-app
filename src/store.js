@@ -81,13 +81,13 @@ function todayStr() {
 
 function yesterdayStr(dateStr) {
   const d = new Date(dateStr)
-  d.setDate(d.getDate() - 1)
+  d.setUTCDate(d.getUTCDate() - 1)
   return d.toISOString().split('T')[0]
 }
 
 function daysFromNow(n) {
   const d = new Date()
-  d.setDate(d.getDate() + n)
+  d.setUTCDate(d.getUTCDate() + n)
   return d.toISOString().split('T')[0]
 }
 
@@ -311,7 +311,7 @@ export function recordCourseUnitTest(testId, score, total) {
   touchStreak(s)
   if (!s.courseProgress) s.courseProgress = {}
   const prev = s.courseProgress[testId] || {}
-  const passed = score / total >= 0.70
+  const passed = total > 0 && score / total >= 0.70
   const wasAlreadyPassed = prev.passed || false
   s.courseProgress[testId] = {
     status: 'completed',

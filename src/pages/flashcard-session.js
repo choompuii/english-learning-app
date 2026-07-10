@@ -38,8 +38,11 @@ export function renderFlashcardSession({ id, forceAll = false }) {
   const queue = sessionCardIds.map(cid => deck.cards.find(c => c.id === cid)).filter(Boolean)
   let currentIndex = 0
   const results = []
+  let cleanupInteraction = null
 
   function showCard() {
+    if (cleanupInteraction) { cleanupInteraction(); cleanupInteraction = null }
+
     if (currentIndex >= queue.length) {
       showSummary()
       return
@@ -62,7 +65,7 @@ export function renderFlashcardSession({ id, forceAll = false }) {
       </div>
     `
 
-    initFlashcardInteraction((rating) => {
+    cleanupInteraction = initFlashcardInteraction((rating) => {
       updateFlashcard(id, card.id, rating)
       results.push({ card, rating })
       currentIndex++
@@ -73,7 +76,7 @@ export function renderFlashcardSession({ id, forceAll = false }) {
   function showSummary() {
     const good = results.filter(r => r.rating >= 2).length
     const again = results.filter(r => r.rating < 2).length
-    const pct = Math.round((good / results.length) * 100)
+    const pct = results.length > 0 ? Math.round((good / results.length) * 100) : 0
 
     main.innerHTML = `
       <div class="page" style="text-align:center">
