@@ -34,7 +34,7 @@ let _syncTimer = null
 
 function scheduleSyncToCloud(state) {
   clearTimeout(_syncTimer)
-  _syncTimer = setTimeout(() => syncToCloud(state), 2000)
+  _syncTimer = setTimeout(() => syncToCloud(JSON.parse(JSON.stringify(state))), 2000)
 }
 
 async function syncToCloud(state) {
@@ -52,12 +52,18 @@ export async function pullFromCloud() {
 }
 
 export async function initCloudSync() {
-  const cloudState = await pullFromCloud()
-  if (cloudState) {
-    const localRaw = localStorage.getItem(KEY)
-    const local = localRaw ? JSON.parse(localRaw) : null
-    const merged = local && local.xp > (cloudState.xp || 0) ? local : cloudState
-    localStorage.setItem(KEY, JSON.stringify({ ...DEFAULT_STATE, ...merged }))
+  try {
+    const cloudState = await pullFromCloud()
+    if (cloudState) {
+      const local = load()
+      const localNewer = local._savedAt && cloudState._savedAt
+        ? local._savedAt > cloudState._savedAt
+        : local.xp > (cloudState.xp || 0)
+      const merged = localNewer ? local : cloudState
+      localStorage.setItem(KEY, JSON.stringify({ ...DEFAULT_STATE, ...merged }))
+    }
+  } catch (e) {
+    console.error('Cloud sync failed', e)
   }
 }
 
@@ -71,6 +77,7 @@ function load() {
 }
 
 function save(state) {
+  state._savedAt = new Date().toISOString()
   localStorage.setItem(KEY, JSON.stringify(state))
   scheduleSyncToCloud(state)
 }
@@ -80,7 +87,7 @@ function todayStr() {
 }
 
 function yesterdayStr(dateStr) {
-  const d = new Date(dateStr)
+  const d = new Date(dateStr + 'T00:00:00Z')
   d.setUTCDate(d.getUTCDate() - 1)
   return d.toISOString().split('T')[0]
 }
@@ -142,9 +149,9 @@ export function startLesson(lessonId) {
   const s = load()
   if (!s.lessons[lessonId]) {
     s.lessons[lessonId] = { status: 'in-progress', startedAt: new Date().toISOString() }
-    touchStreak(s)
-    save(s)
   }
+  touchStreak(s)
+  save(s)
 }
 
 export function completeLesson(lessonId, timeSpentSeconds) {

@@ -131,6 +131,7 @@ export function renderDictation({ id }) {
       checkBtn.textContent = 'ถัดไป →'
       checkBtn.disabled = false
       skipBtn.style.display = 'none'
+      skipBtn.disabled = true
       checkBtn.removeEventListener('click', check)
       checkBtn.addEventListener('click', () => { idx++; showCard() })
       input.disabled = true
@@ -138,6 +139,8 @@ export function renderDictation({ id }) {
 
     checkBtn.addEventListener('click', check)
     skipBtn.addEventListener('click', () => {
+      if (answered) return
+      answered = true
       incorrect++
       feedback.innerHTML = `<div style="color:var(--text-muted)">ข้าม — คำที่ถูก: <strong style="font-family:var(--font-mono)">${card.front}</strong></div>`
       idx++
@@ -171,11 +174,12 @@ export function renderDictation({ id }) {
           </div>
         </div>
         <div style="display:flex;gap:var(--sp-3);justify-content:center;flex-wrap:wrap">
-          <button class="btn btn-primary" onclick="window.location.reload()">ลองอีกครั้ง</button>
+          <button class="btn btn-primary" id="retry-btn">ลองอีกครั้ง</button>
           <a href="#/dictation" class="btn btn-secondary">เปลี่ยน Deck</a>
         </div>
       </div>
     `
+    main.querySelector('#retry-btn').addEventListener('click', () => renderDictation({ id }))
   }
 
   showCard()

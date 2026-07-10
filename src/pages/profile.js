@@ -1,5 +1,5 @@
 import { getUser, getProfile, saveProfile } from '../lib/auth.js'
-import { getProgress, getBadges, BADGES } from '../store.js'
+import { getProgress, getBadges, BADGES, getDailyGoal, setDailyGoal } from '../store.js'
 import { navigate } from '../router.js'
 import { esc } from '../utils/html.js'
 
@@ -36,11 +36,11 @@ export async function renderProfile() {
   const [user, profile, progress] = await Promise.all([getUser(), getProfile(), Promise.resolve(getProgress())])
   if (!user) { navigate('/account'); return }
 
-  const displayName  = profile?.display_name || user.email.split('@')[0]
+  const displayName  = profile?.display_name || user.email?.split('@')[0] || 'User'
   const username     = profile?.username || ''
   const avatarColor  = profile?.avatar_color || '#2d6a4f'
   const coverColor   = profile?.cover_color || '#deeae3'
-  const initial      = displayName[0].toUpperCase()
+  const initial      = (displayName[0] || 'U').toUpperCase()
   const xp           = progress.xp || 0
   const rank         = getRank(xp)
   const badges       = getBadges(progress)
@@ -316,7 +316,7 @@ function achievementsTab(earnedBadges, allBadges, completedLessons, wordsLearned
 }
 
 function goalsTab(profile, progress) {
-  const { goal: dailyGoal, todayXp } = { goal: progress.dailyGoal || 50, todayXp: 0 }
+  const { goal: dailyGoal, todayXp } = getDailyGoal()
   const weeklyGoal  = profile?.weekly_goal  || 5
   const monthlyGoal = profile?.monthly_goal || 20
 
@@ -385,10 +385,17 @@ function wireCoverPicker(main, profile, currentCover) {
   main.querySelector('#close-cover-picker').addEventListener('click', () => { main.querySelector('#cover-picker').style.display='none' })
   main.querySelectorAll('.cover-opt').forEach(btn => {
     btn.addEventListener('click', async () => {
-      color = btn.dataset.color
-      main.querySelector('#cover-bar').style.background = color
-      main.querySelectorAll('.cover-opt').forEach(b => { b.style.borderColor = b.dataset.color===color?'var(--accent)':'transparent' })
-      await saveProfile({ ...(profile||{}), cover_color: color })
+      const newColor = btn.dataset.color
+      main.querySelector('#cover-bar').style.background = newColor
+      main.querySelectorAll('.cover-opt').forEach(b => { b.style.borderColor = b.dataset.color===newColor?'var(--accent)':'transparent' })
+      try {
+        await saveProfile({ ...(profile||{}), cover_color: newColor })
+        color = newColor
+      } catch {
+        main.querySelector('#cover-bar').style.background = color
+        main.querySelectorAll('.cover-opt').forEach(b => { b.style.borderColor = b.dataset.color===color?'var(--accent)':'transparent' })
+        return
+      }
       main.querySelector('#cover-picker').style.display='none'
     })
   })
@@ -434,9 +441,11 @@ function wireGoalsForm(main, profile) {
     e.preventDefault()
     const msg = main.querySelector('#goals-msg')
     try {
+      const dailyXp = +main.querySelector('#goal-daily')?.value || 50
+      setDailyGoal(dailyXp)
       await saveProfile({
         ...(profile||{}),
-        daily_minutes: +main.querySelector('#goal-daily')?.value || 50,
+        daily_minutes: Math.round((dailyXp / 5) * 2),
         weekly_goal:   +main.querySelector('#goal-weekly')?.value || 5,
         monthly_goal:  +main.querySelector('#goal-monthly')?.value || 20,
       })

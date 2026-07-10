@@ -64,7 +64,7 @@ function vocabCardHTML(w, i) {
           </div>
           <div style="font-family:var(--font-mono);font-size:var(--text-sm);color:var(--text-muted)">${esc(w.ipa)}</div>
         </div>
-        <button class="tts-btn nb-btn" data-idx="${i}" title="บันทึกลง Notebook"
+        <button class="nb-btn" data-idx="${i}" title="บันทึกลง Notebook"
           style="flex-shrink:0;font-size:1.05rem">${saved ? '✅' : '🔖'}</button>
       </div>
 
@@ -123,7 +123,7 @@ function startQuickCheck(cat, main, opts = {}) {
     return {
       id: `${cat.id}-qc-${qi}`,
       type: 'multiple-choice',
-      prompt: `${w.emoji} “${escAttr(w.thai)}” ตรงกับคำใด?`,
+      prompt: `${w.emoji} “${esc(w.thai)}” ตรงกับคำใด?`,
       options,
       correctIndex: options.indexOf(w.word),
       explanation: `${w.word} ${w.ipa} — ${w.thai}`
@@ -140,9 +140,9 @@ function startQuickCheck(cat, main, opts = {}) {
     opts.onComplete?.({ score, total })
     mount.innerHTML = resultsHTML({ score, total, href: opts.backHref ?? '#/skills/vocabulary', cta: opts.backCta ?? 'กลับหน้าคำศัพท์' })
     if (xp > 0) floatXP(xp, mount.querySelector('.btn-primary'))
-    if (score / total >= 0.8) confetti()
+    if (total > 0 && score / total >= 0.8) confetti()
     if (newBadges && newBadges.length) setTimeout(() => showNewBadges(newBadges), 500)
-    mount.querySelector('#retry-btn').addEventListener('click', () => renderVocabularyLesson(cat, main, opts))
+    mount.querySelector('#retry-btn')?.addEventListener('click', () => renderVocabularyLesson(cat, main, opts))
   }, {
     onAnswer: (q, isCorrect) => {
       const word = q.options[q.correctIndex]

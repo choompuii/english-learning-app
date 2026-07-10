@@ -2,9 +2,11 @@ import { speak } from '../utils/tts.js'
 import { saveToNotebook, removeFromNotebook, isInNotebook } from '../store.js'
 import { ipaToThai } from '../utils/ipa-to-thai.js'
 
+function esc(s) { return String(s ?? '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;') }
+
 export function createFlashcardHTML(card, index, total) {
   const frontText = card.front
-  const backText = `${card.front}. ${card.back}. ${card.example}`
+  const backText = [card.front, card.back, card.example].filter(Boolean).join('. ')
   const saved = isInNotebook(card.front)
 
   return `
@@ -30,9 +32,9 @@ export function createFlashcardHTML(card, index, total) {
             <div class="card-back-word">${card.front}</div>
             <button class="tts-btn" data-speak="${backText.replace(/"/g, '&quot;')}" title="ฟังเสียง">🔊</button>
           </div>
-          <div class="card-definition">${card.back}</div>
-          <div class="card-example">"${card.example}"</div>
-          <div class="card-thai">${card.thai}</div>
+          <div class="card-definition">${esc(card.back)}</div>
+          <div class="card-example">${card.example ? `"${esc(card.example)}"` : ''}</div>
+          <div class="card-thai">${esc(card.thai)}</div>
           <button class="notebook-fc-btn" data-card-id="${card.id}" style="margin-top:var(--sp-3);background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.3);color:#fff;border-radius:var(--r-sm);padding:4px 10px;font-size:var(--text-xs);cursor:pointer;font-family:var(--font-body)">
             ${saved ? '✓ Saved' : '+ Notebook'}
           </button>

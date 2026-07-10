@@ -180,6 +180,7 @@ export function renderSentenceBuilder() {
     const dropHint = content.querySelector('#drop-hint')
     const feedback = content.querySelector('#feedback')
     let placed = [] // words currently in drop zone
+    let sentenceChecked = false // prevent total++ on retries
 
     function updateDropHint() {
       if (dropHint) dropHint.style.display = placed.length === 0 ? '' : 'none'
@@ -201,8 +202,9 @@ export function renderSentenceBuilder() {
       tile.dataset.word = word
       tile.style.cssText = 'padding:var(--sp-2) var(--sp-3);background:var(--accent-soft);border:2px solid var(--accent-mid);border-radius:var(--r-md);font-size:var(--text-sm);font-family:var(--font-body);font-weight:600;cursor:pointer;color:var(--accent);transition:all 150ms'
       tile.addEventListener('click', () => {
-        const idx = placed.indexOf(word)
-        if (idx > -1) placed.splice(idx, 1)
+        const dropTiles = [...dropZone.querySelectorAll('.drop-tile')]
+        const tilePos = dropTiles.indexOf(tile)
+        if (tilePos > -1) placed.splice(tilePos, 1)
         tile.remove()
         btn.style.opacity = ''
         btn.style.pointerEvents = ''
@@ -243,10 +245,11 @@ export function renderSentenceBuilder() {
       const userAnswer = placed.join(' ')
       const correctAnswer = sentence.words.join(' ')
       const isCorrect = normalise(userAnswer) === normalise(correctAnswer)
-      total++
+      const firstAttempt = !sentenceChecked
+      if (!sentenceChecked) { total++; sentenceChecked = true }
 
       if (isCorrect) {
-        score++
+        if (firstAttempt) score++
         addBonusXP(5)
         speak(correctAnswer)
         feedback.innerHTML = `
@@ -292,7 +295,7 @@ export function renderSentenceBuilder() {
       currentSentenceIdx++
       renderSentence()
     } else {
-      const pct = Math.round((score / total) * 100)
+      const pct = total > 0 ? Math.round((score / total) * 100) : 0
       const result = recordSentenceBuilderResult(set.level, score, total)
       const content = main.querySelector('#sb-content')
       content.innerHTML = `

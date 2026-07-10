@@ -109,8 +109,24 @@ const navItems = [
   },
 ]
 
+let _sidebarRendering = false
+let _pendingRender = false
+
 export async function renderSidebar() {
+  if (_sidebarRendering) { _pendingRender = true; return }
+  _sidebarRendering = true
+  _pendingRender = false
+  try {
+    await _renderSidebarInner()
+  } finally {
+    _sidebarRendering = false
+    if (_pendingRender) renderSidebar()
+  }
+}
+
+async function _renderSidebarInner() {
   const sidebar = document.getElementById('sidebar')
+  if (!sidebar) return
   const state = getProgress()
   const streak = state.streakDays || 0
   const { data: { user } } = await supabase.auth.getUser()
@@ -129,7 +145,7 @@ export async function renderSidebar() {
     </a>
     <nav class="sidebar-nav">
       ${navItems.map(item => `
-        <button class="nav-item" data-hash="${item.hash}" onclick="window.location.hash='${item.hash}'"
+        <button class="nav-item" data-hash="${item.hash}"
           ${item.mobile === false ? 'data-mobile-hide="true"' : ''}>
           ${item.icon}
           <span>${item.label}</span>
@@ -141,7 +157,7 @@ export async function renderSidebar() {
       </button>
     </nav>
     <div class="sidebar-footer">
-      <button class="nav-item" data-hash="/profile" onclick="window.location.hash='/profile'" style="width:100%;margin-bottom:var(--sp-2)">
+      <button class="nav-item" data-hash="/profile" style="width:100%;margin-bottom:var(--sp-2)">
         <svg class="nav-icon" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
         <span style="flex:1;text-align:left">${displayName || 'Profile'}</span>
       </button>
@@ -162,7 +178,7 @@ export async function renderSidebar() {
       <div class="more-drawer-handle"></div>
       <div class="more-drawer-grid">
         ${hiddenItems.map(item => `
-          <button class="more-drawer-item" data-hash="${item.hash}" onclick="window.location.hash='${item.hash}'">
+          <button class="more-drawer-item" data-hash="${item.hash}">
             ${item.icon}
             <span>${item.label}</span>
           </button>
@@ -171,6 +187,11 @@ export async function renderSidebar() {
     </div>
   `
   document.body.appendChild(overlay)
+
+  // Wire nav item clicks
+  sidebar.querySelectorAll('.nav-item[data-hash]').forEach(btn => {
+    btn.addEventListener('click', () => { window.location.hash = btn.dataset.hash })
+  })
 
   // Wire More drawer open/close
   const moreBtn = sidebar.querySelector('#more-btn')
@@ -182,8 +203,8 @@ export async function renderSidebar() {
 
   moreBtn?.addEventListener('click', openDrawer)
   drawerOverlay?.addEventListener('click', (e) => { if (e.target === drawerOverlay) closeDrawer() })
-  drawerOverlay?.querySelectorAll('.more-drawer-item').forEach(btn => {
-    btn.addEventListener('click', closeDrawer)
+  drawerOverlay?.querySelectorAll('.more-drawer-item[data-hash]').forEach(btn => {
+    btn.addEventListener('click', () => { window.location.hash = btn.dataset.hash; closeDrawer() })
   })
 
   updateActiveNav()
