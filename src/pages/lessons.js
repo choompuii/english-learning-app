@@ -114,7 +114,7 @@ function renderPathNode(lesson, state, ordered, cfg, idx, total) {
 
       <div class="path-node path-node--active"
            data-id="${lesson.id}"
-           data-unlocked="true"
+           data-unlocked="${unlocked}"
            style="border:${borderStyle};border-radius:var(--r-lg);padding:var(--sp-4) var(--sp-5);background:var(--surface);cursor:${cursor};transition:all 200ms var(--ease)">
         <div style="display:flex;align-items:center;gap:var(--sp-3)">
           <!-- Status circle -->

@@ -1,7 +1,8 @@
 import { route, navigate, initRouter } from './router.js'
 import { renderSidebar } from './components/sidebar.js'
 import { onAuthChange, getUser } from './lib/auth.js'
-import { initCloudSync } from './store.js'
+import { initCloudSync, storeLessonsSnapshot } from './store.js'
+import { lessons } from './data/lessons.js'
 import { renderHome } from './pages/home.js'
 import { renderLessons } from './pages/lessons.js'
 import { renderLessonReader } from './pages/lesson-reader.js'
@@ -27,7 +28,7 @@ function guard(fn) {
   return async (params) => {
     const user = await getUser()
     if (!user) { navigate('/account'); return }
-    fn(params)
+    await fn(params)
   }
 }
 
@@ -62,6 +63,7 @@ route('/sentence-builder',guard(() => renderSentenceBuilder()))
 route('/speed-round',     guard(() => renderSpeedRound()))
 
 // Boot
+storeLessonsSnapshot(lessons)
 renderSidebar()
 initRouter()
 

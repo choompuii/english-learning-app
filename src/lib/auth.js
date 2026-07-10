@@ -29,7 +29,7 @@ export function onAuthChange(callback) {
 }
 
 export async function sendPasswordReset(email) {
-  const redirectTo = window.location.origin + window.location.pathname
+  const redirectTo = window.location.origin + window.location.pathname + '#/account'
   const { error } = await supabase.auth.resetPasswordForEmail(email, { redirectTo })
   if (error) throw error
 }
@@ -37,7 +37,7 @@ export async function sendPasswordReset(email) {
 export async function signInWithGoogle() {
   const { error } = await supabase.auth.signInWithOAuth({
     provider: 'google',
-    options: { redirectTo: window.location.origin + window.location.pathname }
+    options: { redirectTo: window.location.origin + window.location.pathname + '#/' }
   })
   if (error) throw error
 }

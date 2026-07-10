@@ -84,11 +84,15 @@ export function openWordModal(w) {
   document.body.appendChild(overlay)
   attachTtsListeners(overlay)
 
-  const close = () => overlay.remove()
+  let escHandler = null
+  const close = () => {
+    if (escHandler) { document.removeEventListener('keydown', escHandler); escHandler = null }
+    overlay.remove()
+  }
   overlay.querySelector('#wm-close').addEventListener('click', close)
   overlay.addEventListener('click', e => { if (e.target === overlay) close() })
 
-  const escHandler = e => { if (e.key === 'Escape') { close(); document.removeEventListener('keydown', escHandler) } }
+  escHandler = e => { if (e.key === 'Escape') close() }
   document.addEventListener('keydown', escHandler)
 
   const favBtn = overlay.querySelector('#wm-fav')

@@ -17,7 +17,7 @@ export function getOrderedLessons(allLessons) {
 export function isLessonPassed(lesson, state) {
   if (lesson.quizId) {
     const best = state.quizzes[lesson.quizId]
-    return !!(best && best.bestScore / best.bestTotal >= 0.7)
+    return !!(best && best.bestTotal > 0 && best.bestScore / best.bestTotal >= 0.7)
   }
   return state.lessons[lesson.id]?.status === 'completed'
 }
@@ -58,7 +58,7 @@ export function getNextAction(lesson, state, orderedLessons) {
   // results screen, which only unlocks the next lesson on a pass.
   if (lesson.quizId) {
     const qb = state.quizzes?.[lesson.quizId]
-    const passed = !!(qb && qb.bestTotal > 0 && qb.bestScore / qb.bestTotal >= 0.7)
+    const passed = !!(qb && qb.bestTotal > 0 && qb.bestScore / Math.max(1, qb.bestTotal) >= 0.7)
     if (!passed) {
       const quiz = getQuizById(lesson.quizId)
       const retry = !!qb

@@ -18,7 +18,7 @@ export function runQuiz(mount, questions, onComplete, { onAnswer } = {}) {
           <span>ข้อ ${idx + 1} / ${total}</span>
           <span>${score} ถูก</span>
         </div>
-        <div class="progress-bar" style="height:6px"><div class="progress-fill" style="width:${(idx / total) * 100}%;transition:width .4s var(--ease)"></div></div>
+        <div class="progress-bar" style="height:6px"><div class="progress-fill" style="width:${((idx + 1) / total) * 100}%;transition:width .4s var(--ease)"></div></div>
       </div>
       <div id="q-slot"></div>
       <div id="q-next" style="margin-top:var(--sp-5);display:none;justify-content:flex-end">
@@ -35,9 +35,9 @@ export function runQuiz(mount, questions, onComplete, { onAnswer } = {}) {
       if (res.correct) score++
       onAnswer?.(questions[idx], res.correct)
       mount.querySelector('#q-next').style.display = 'flex'
+      const nextBtn = mount.querySelector('#next-btn')
       setTimeout(() => {
-        const btn = mount.querySelector('#next-btn')
-        if (btn) btn.click()
+        if (!advanced && nextBtn && nextBtn.isConnected) nextBtn.click()
       }, 2000)
     })
     slot.appendChild(card)

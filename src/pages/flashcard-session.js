@@ -100,11 +100,12 @@ export function renderFlashcardSession({ id, forceAll = false }) {
         </div>
 
         <div style="display:flex;gap:var(--sp-3);justify-content:center;flex-wrap:wrap">
-          <button class="btn btn-primary" onclick="window.location.reload()">Study Again</button>
+          <button class="btn btn-primary" id="study-again-btn">Study Again</button>
           <a href="#/flashcards" class="btn btn-secondary">All Decks</a>
         </div>
       </div>
     `
+    main.querySelector('#study-again-btn').addEventListener('click', () => renderFlashcardSession({ id, forceAll: true }))
   }
 
   showCard()
