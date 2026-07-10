@@ -38,13 +38,15 @@ function scheduleSyncToCloud(state) {
 }
 
 async function syncToCloud(state) {
-  const { data: { user } } = await supabase.auth.getUser()
+  const { data } = await supabase.auth.getUser()
+  const user = data?.user || null
   if (!user) return
   await supabase.from('user_progress').upsert({ user_id: user.id, data: state, updated_at: new Date().toISOString() })
 }
 
 export async function pullFromCloud() {
-  const { data: { user } } = await supabase.auth.getUser()
+  const { data } = await supabase.auth.getUser()
+  const user = data?.user || null
   if (!user) return null
   const { data, error } = await supabase.from('user_progress').select('data').eq('user_id', user.id).single()
   if (error || !data) return null
@@ -218,6 +220,7 @@ function recordBestResult(namespace, key, score, total) {
   }
   s[namespace][key] = entry
   touchStreak(s)
+  touchGoalStreak(s)
   const newBadges = checkBadges(s)
   save(s)
   return { ...entry, isNewRecord, newBadges }
@@ -343,7 +346,9 @@ export function recordCourseUnitTest(testId, score, total) {
 export function isCourseUnitUnlocked(unitId, allUnits) {
   const idx = allUnits.findIndex(u => u.id === unitId)
   if (idx <= 0) return true
-  const prevTest = allUnits[idx - 1].test.id
+  const prevUnit = allUnits[idx - 1]
+  if (!prevUnit?.test) return true
+  const prevTest = prevUnit.test.id
   return (load().courseProgress || {})[prevTest]?.passed === true
 }
 
@@ -442,6 +447,7 @@ export function saveToNotebook(entry) {
   // entry: { word, definition, thai, example, phonetic, source }
   const s = load()
   if (!s.notebook) s.notebook = []
+  if (!entry?.word) return false
   const exists = s.notebook.find(e => e.word.toLowerCase() === entry.word.toLowerCase())
   if (exists) return false
   s.notebook.unshift({ ...entry, savedAt: new Date().toISOString() })

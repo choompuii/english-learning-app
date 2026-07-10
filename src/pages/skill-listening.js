@@ -125,6 +125,10 @@ export function renderListeningLesson(piece, main, opts = {}) {
   body.querySelector('#quiz-btn').addEventListener('click', () => startQuiz(piece, main, opts))
 
   // Stop any audio when the user navigates away.
+  if (renderListeningLesson._stopHandler) {
+    window.removeEventListener('hashchange', renderListeningLesson._stopHandler)
+  }
+  renderListeningLesson._stopHandler = stopSpeech
   window.addEventListener('hashchange', stopSpeech, { once: true })
 }
 

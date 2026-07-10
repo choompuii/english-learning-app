@@ -118,6 +118,8 @@ const GRAMMAR_RULES = [
       const re = /\b(he|she|it)\s+have\b/gi
       let m
       while ((m = re.exec(text)) !== null) {
+        const before = text.slice(0, m.index).trimEnd()
+        if (/\b(could|would|should|might|may|must|will|can|shall)$/i.test(before)) continue
         results.push({ found: m[0], fix: `${m[1]} has`, tip: 'เมื่อประธานเป็น he/she/it ต้องใช้ "has" ไม่ใช่ "have" (ยกเว้นตามหลัง modal verb เช่น "could he have")', index: m.index })
       }
       return results

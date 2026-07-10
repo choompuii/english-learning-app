@@ -34,7 +34,7 @@ export function renderCourseHub() {
 function levelCardHTML(level, prog) {
   const totalUnits = level.units.length
   const passedUnits = totalUnits > 0
-    ? level.units.filter(u => prog[u.test.id]?.passed).length
+    ? level.units.filter(u => u.test && prog[u.test.id]?.passed).length
     : 0
   const pct = totalUnits > 0 ? Math.round((passedUnits / totalUnits) * 100) : 0
   const hasContent = totalUnits > 0
@@ -114,11 +114,11 @@ export function renderLevelBrowser({ levelId }) {
 function unitRowHTML(unit, idx, allUnits, prog, levelId) {
   const unlocked = isCourseUnitUnlocked(unit.id, allUnits)
   const SECTIONS = ['vocabulary', 'grammar', 'listening', 'reading']
-  const sectionsDone = SECTIONS.filter(sec => prog[unit[sec].id]?.status === 'completed').length
-  const passed = prog[unit.test.id]?.passed === true
+  const sectionsDone = SECTIONS.filter(sec => unit[sec] && prog[unit[sec].id]?.status === 'completed').length
+  const passed = unit.test && prog[unit.test.id]?.passed === true
 
   const dots = SECTIONS.map(sec => {
-    const done = prog[unit[sec].id]?.status === 'completed'
+    const done = unit[sec] && prog[unit[sec].id]?.status === 'completed'
     const labels = { vocabulary: '📖', grammar: '📐', listening: '🎧', reading: '📚' }
     return `<span title="${sec}" style="font-size:0.8rem;opacity:${done ? 1 : 0.3}">${labels[sec]}</span>`
   }).join('')

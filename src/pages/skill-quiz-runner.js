@@ -7,6 +7,10 @@ import { attachTtsListeners } from '../utils/tts.js'
 // `onComplete({ score, total })` when the last question is answered and advanced.
 // onAnswer(question, isCorrect) — optional callback fired after each answer, used for vocab tracking
 export function runQuiz(mount, questions, onComplete, { onAnswer } = {}) {
+  if (!questions || questions.length === 0) {
+    onComplete({ score: 0, total: 0 })
+    return
+  }
   const total = questions.length
   let idx = 0
   let score = 0

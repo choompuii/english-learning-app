@@ -71,7 +71,7 @@ export function renderNotebook() {
 function renderEntry(entry) {
   const word = entry.word || ''
   const dateObj = entry.savedAt ? new Date(entry.savedAt) : new Date()
-  const date = isNaN(dateObj) ? '—' : dateObj.toLocaleDateString('th-TH', { day: 'numeric', month: 'short' })
+  const date = isNaN(dateObj.getTime()) ? '—' : dateObj.toLocaleDateString('th-TH', { day: 'numeric', month: 'short' })
   return `
     <div class="card" data-entry="${escAttr(word)}" style="display:flex;gap:var(--sp-4);align-items:flex-start">
       <div style="flex:1;min-width:0">

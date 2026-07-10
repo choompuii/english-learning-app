@@ -74,10 +74,10 @@ export function renderLessonReader({ id }) {
 
   const notesArea = main.querySelector('#lesson-notes')
   const notesStatus = main.querySelector('#notes-status')
+  let saveTimer
   if (notesArea) {
     notesArea.addEventListener('focus', () => { notesArea.style.borderColor = 'var(--accent)' })
     notesArea.addEventListener('blur', () => { notesArea.style.borderColor = 'var(--border)' })
-    let saveTimer
     notesArea.addEventListener('input', () => {
       notesStatus.textContent = 'กำลังพิมพ์...'
       clearTimeout(saveTimer)
@@ -104,6 +104,7 @@ export function renderLessonReader({ id }) {
       if (newBadges && newBadges.length) setTimeout(() => showNewBadges(newBadges), 800)
 
       // Give the celebration a beat, then guide the learner straight to the next step
+      clearTimeout(saveTimer)
       completeBtn.disabled = true
       completeBtn.textContent = 'เยี่ยม! กำลังพาไปต่อ…'
       setTimeout(() => { window.location.hash = freshAction.href.replace(/^#/, '') }, 900)

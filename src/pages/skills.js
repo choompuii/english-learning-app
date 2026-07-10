@@ -242,10 +242,10 @@ function itemCardHTML(skill, it) {
 
 function itemMeta(skill, it) {
   switch (skill) {
-    case 'vocabulary': return `${it.words.length} คำ`
-    case 'grammar':    return `${it.quiz.length} ข้อควิซ`
-    case 'reading':    return `${it.type} · ⏱ ${it.minutes} min · ${it.questions.length} คำถาม`
-    case 'listening':  return `${it.type} · ${it.segments.length} ประโยค · ${it.questions.length} คำถาม`
+    case 'vocabulary': return `${it.words?.length ?? 0} คำ`
+    case 'grammar':    return `${it.quiz?.length ?? 0} ข้อควิซ`
+    case 'reading':    return `${it.type} · ⏱ ${it.minutes ?? '?'} min · ${it.questions?.length ?? 0} คำถาม`
+    case 'listening':  return `${it.type} · ${it.segments?.length ?? 0} ประโยค · ${it.questions?.length ?? 0} คำถาม`
     default:           return ''
   }
 }
