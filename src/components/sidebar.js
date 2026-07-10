@@ -135,6 +135,10 @@ export async function renderSidebar() {
           <span>${item.label}</span>
         </button>
       `).join('')}
+      <button class="nav-item more-btn" id="more-btn">
+        <svg class="nav-icon" viewBox="0 0 24 24"><circle cx="5" cy="12" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="19" cy="12" r="1.5"/></svg>
+        <span>More</span>
+      </button>
     </nav>
     <div class="sidebar-footer">
       <button class="nav-item" data-hash="/profile" onclick="window.location.hash='/profile'" style="width:100%;margin-bottom:var(--sp-2)">
@@ -147,6 +151,41 @@ export async function renderSidebar() {
     </div>
   `
 
+  // Inject More drawer into body (removed on each re-render)
+  document.getElementById('more-drawer-overlay')?.remove()
+  const hiddenItems = navItems.filter(i => i.mobile === false)
+  const overlay = document.createElement('div')
+  overlay.id = 'more-drawer-overlay'
+  overlay.className = 'more-drawer-overlay'
+  overlay.innerHTML = `
+    <div id="more-drawer" class="more-drawer">
+      <div class="more-drawer-handle"></div>
+      <div class="more-drawer-grid">
+        ${hiddenItems.map(item => `
+          <button class="more-drawer-item" data-hash="${item.hash}" onclick="window.location.hash='${item.hash}'">
+            ${item.icon}
+            <span>${item.label}</span>
+          </button>
+        `).join('')}
+      </div>
+    </div>
+  `
+  document.body.appendChild(overlay)
+
+  // Wire More drawer open/close
+  const moreBtn = sidebar.querySelector('#more-btn')
+  const drawerOverlay = document.getElementById('more-drawer-overlay')
+  const drawer = document.getElementById('more-drawer')
+
+  function openDrawer() { drawerOverlay.classList.add('open'); drawer.classList.add('open') }
+  function closeDrawer() { drawerOverlay.classList.remove('open'); drawer.classList.remove('open') }
+
+  moreBtn?.addEventListener('click', openDrawer)
+  drawerOverlay?.addEventListener('click', (e) => { if (e.target === drawerOverlay) closeDrawer() })
+  drawerOverlay?.querySelectorAll('.more-drawer-item').forEach(btn => {
+    btn.addEventListener('click', closeDrawer)
+  })
+
   updateActiveNav()
 
   sidebar.querySelector('#theme-toggle').addEventListener('click', toggleTheme)
@@ -154,13 +193,29 @@ export async function renderSidebar() {
 
 export function updateActiveNav() {
   const currentHash = window.location.hash.slice(1) || '/'
-  document.querySelectorAll('.nav-item').forEach(btn => {
+
+  document.querySelectorAll('.nav-item[data-hash]').forEach(btn => {
     const hash = btn.dataset.hash
     const isActive = hash === '/'
       ? currentHash === '/'
       : currentHash.startsWith(hash)
     btn.classList.toggle('active', isActive)
   })
+
+  // Highlight drawer items
+  document.querySelectorAll('.more-drawer-item[data-hash]').forEach(btn => {
+    const hash = btn.dataset.hash
+    const isActive = hash === '/' ? currentHash === '/' : currentHash.startsWith(hash)
+    btn.classList.toggle('active', isActive)
+  })
+
+  // Highlight More button when on a hidden-nav page
+  const hiddenHashes = navItems.filter(i => !i.mobile).map(i => i.hash)
+  const moreBtn = document.querySelector('#more-btn')
+  if (moreBtn) {
+    const anyHiddenActive = hiddenHashes.some(h => currentHash.startsWith(h))
+    moreBtn.classList.toggle('active', anyHiddenActive)
+  }
 }
 
 window.addEventListener('hashchange', updateActiveNav)

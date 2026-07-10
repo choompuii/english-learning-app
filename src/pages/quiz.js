@@ -26,7 +26,7 @@ export function renderQuizBrowser() {
           return `
             <div class="card card-hover" onclick="window.location.hash='/quiz/${q.id}'" style="display:flex;align-items:center;gap:var(--sp-4)">
               <div style="width:44px;height:44px;background:var(--gold-soft);border-radius:var(--r-md);display:flex;align-items:center;justify-content:center;font-size:1.5rem;flex-shrink:0">❓</div>
-              <div style="flex:1">
+              <div style="flex:1;min-width:0">
                 <div style="font-weight:600;margin-bottom:2px">${q.title}</div>
                 <div style="font-size:var(--text-xs);color:var(--text-muted)">
                   <span class="level-badge level-${level}" style="margin-right:var(--sp-2)">${level}</span>

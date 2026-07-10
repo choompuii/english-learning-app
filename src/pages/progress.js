@@ -88,7 +88,7 @@ export function renderProgress() {
         </div>
       </div>
 
-      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:var(--sp-6);margin-bottom:var(--sp-8)">
+      <div class="progress-rings">
         <div style="text-align:center">
           <div id="ring-lessons" style="display:inline-block;margin-bottom:var(--sp-3)"></div>
           <div style="font-weight:600">Lessons</div>

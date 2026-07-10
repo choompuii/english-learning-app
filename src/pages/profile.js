@@ -50,22 +50,21 @@ export async function renderProfile() {
   const quizzesDone  = Object.keys(progress.quizzes || {}).length
 
   main.innerHTML = `
-    <div style="max-width:800px;margin:0 auto;padding-bottom:60px">
+    <div class="prof-wrapper">
 
       <!-- Cover + Avatar -->
-      <div style="position:relative;margin-bottom:64px">
-        <div id="cover-bar" style="height:180px;background:${coverColor};border-radius:0 0 20px 20px;cursor:pointer;display:flex;align-items:flex-end;justify-content:flex-end;padding:16px;transition:filter .15s"
-             onmouseover="this.style.filter='brightness(.95)'" onmouseout="this.style.filter=''">
-          <span style="font-size:12px;font-weight:600;color:rgba(0,0,0,.4);background:rgba(255,255,255,.5);padding:4px 10px;border-radius:99px">✏️ Change cover</span>
+      <div class="prof-hero">
+        <div id="cover-bar" class="prof-hero-cover" style="background:${coverColor}">
+          <span class="prof-cover-hint">✏️ Change cover</span>
         </div>
-        <div style="position:absolute;bottom:-48px;left:28px;display:flex;align-items:flex-end;gap:16px">
+        <div class="prof-avatar-group">
           <div style="width:88px;height:88px;border-radius:50%;background:${avatarColor};border:4px solid var(--bg);display:flex;align-items:center;justify-content:center;font-size:2rem;font-weight:700;color:#fff;flex-shrink:0">${initial}</div>
           <div style="padding-bottom:4px">
             <h2 style="margin:0 0 2px;font-size:1.2rem;font-weight:800;color:var(--text)">${displayName}</h2>
             <p style="margin:0;font-size:13px;color:var(--text-muted)">${username ? '@'+username : user.email}</p>
           </div>
         </div>
-        <div style="position:absolute;bottom:-40px;right:28px;display:flex;align-items:center;gap:8px">
+        <div class="prof-rank-group">
           <div style="background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:8px 14px;display:flex;align-items:center;gap:8px">
             <span style="font-size:1.1rem">${rank.icon}</span>
             <div>
@@ -78,7 +77,7 @@ export async function renderProfile() {
       </div>
 
       <!-- Stats bar -->
-      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;padding:0 20px;margin-bottom:24px">
+      <div class="prof-stats-grid">
         ${[
           { label:'Level', value: profile?.level || progress.selectedLevel || '—', icon:'📊' },
           { label:'Total XP', value: xp.toLocaleString(), icon:'✨' },
@@ -94,10 +93,10 @@ export async function renderProfile() {
       </div>
 
       <!-- Tabs -->
-      <div style="padding:0 20px">
-        <div style="display:flex;gap:2px;border-bottom:1px solid var(--border);margin-bottom:24px">
+      <div class="prof-tabs-wrap">
+        <div class="prof-tabs-bar">
           ${['Overview','Personal Info','Achievements','Goals'].map((t,i) => `
-            <button class="prof-tab" data-tab="${i}" style="padding:9px 16px;background:none;border:none;font-size:13px;font-weight:600;cursor:pointer;font-family:var(--font-body);color:${i===0?'var(--accent)':'var(--text-muted)'};border-bottom:2px solid ${i===0?'var(--accent)':'transparent'};margin-bottom:-1px">${t}</button>
+            <button class="prof-tab${i===0?' active':''}" data-tab="${i}">${t}</button>
           `).join('')}
         </div>
 
@@ -108,10 +107,10 @@ export async function renderProfile() {
       </div>
 
       <!-- Cover color picker -->
-      <div id="cover-picker" style="display:none;position:fixed;inset:0;z-index:200;background:rgba(0,0,0,.4);align-items:center;justify-content:center">
+      <div id="cover-picker" class="prof-cover-picker" style="display:none">
         <div style="background:var(--surface);border-radius:16px;padding:24px;width:280px">
           <p style="margin:0 0 14px;font-size:14px;font-weight:700;color:var(--text)">Choose cover color</p>
-          <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:18px">
+          <div class="prof-cover-grid">
             ${COVER_COLORS.map(c => `<button class="cover-opt" data-color="${c}" style="height:48px;border-radius:10px;background:${c};border:3px solid ${c===coverColor?'var(--accent)':'transparent'};cursor:pointer;transition:transform .1s" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform=''"></button>`).join('')}
           </div>
           <button id="close-cover-picker" style="${BTN};width:100%;background:none;border:1.5px solid var(--border);color:var(--text-muted)">Cancel</button>
@@ -163,7 +162,7 @@ function overviewTab(progress, profile, completedLessons, wordsLearned, quizzesD
       </div>
 
       <!-- Learning stats -->
-      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px">
+      <div class="prof-grid-3">
         ${[
           { icon:'📚', value: completedLessons, label:'Lessons Done' },
           { icon:'🎯', value: quizzesDone, label:'Quizzes Taken' },
@@ -201,7 +200,7 @@ function overviewTab(progress, profile, completedLessons, wordsLearned, quizzesD
 function personalInfoTab(profile, user) {
   return `
     <form id="personal-form" style="display:flex;flex-direction:column;gap:20px">
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+      <div class="prof-form-grid">
         <div>
           <label style="${LBL}">Display Name</label>
           <input id="pf-name" type="text" value="${profile?.display_name||''}" style="${INP}" placeholder="Your name" />
@@ -247,7 +246,7 @@ function personalInfoTab(profile, user) {
 
       <div style="border-top:1px solid var(--border);padding-top:20px">
         <h3 style="margin:0 0 14px;font-size:13px;font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:.05em">Skill Scores (Manual)</h3>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
+        <div class="prof-form-grid-2">
           ${[['speaking','🎤 Speaking'],['listening','👂 Listening'],['reading','📖 Reading'],['writing','✏️ Writing']].map(([k,l])=>`
             <div>
               <label style="${LBL}">${l}</label>
@@ -279,7 +278,7 @@ function achievementsTab(earnedBadges, allBadges, completedLessons, wordsLearned
           <h3 style="margin:0;font-size:13px;font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:.05em">Badges</h3>
           <span style="font-size:12px;color:var(--text-muted)">${earnedBadges.length} / ${allBadges.length} earned</span>
         </div>
-        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px">
+        <div class="prof-badges-grid">
           ${allBadges.map(b => `
             <div style="display:flex;flex-direction:column;align-items:center;gap:6px;text-align:center;opacity:${b.earned?'1':'.35'}">
               <div style="width:52px;height:52px;background:${b.earned?'#f0fdf4':'var(--border)'};border:2px solid ${b.earned?'#b8d4c0':'transparent'};border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.4rem">${b.icon}</div>
@@ -340,7 +339,7 @@ function goalsTab(profile, progress) {
         </div>
       </div>
 
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
+      <div class="prof-form-grid-2">
         <div style="background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:20px">
           <h3 style="margin:0 0 14px;font-size:13px;font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:.05em">Weekly Goal</h3>
           <label style="${LBL}">Lessons per week</label>
@@ -372,8 +371,8 @@ function goalsTab(profile, progress) {
 function wireTabs(main) {
   main.querySelectorAll('.prof-tab').forEach(btn => {
     btn.addEventListener('click', () => {
-      main.querySelectorAll('.prof-tab').forEach(b => { b.style.color='var(--text-muted)'; b.style.borderBottomColor='transparent' })
-      btn.style.color='var(--accent)'; btn.style.borderBottomColor='var(--accent)'
+      main.querySelectorAll('.prof-tab').forEach(b => b.classList.remove('active'))
+      btn.classList.add('active')
       for (let i = 0; i < 4; i++) main.querySelector(`#tab-${i}`).style.display = i===+btn.dataset.tab?'':'none'
     })
   })

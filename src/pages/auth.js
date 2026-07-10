@@ -58,7 +58,28 @@ const AUTH_CSS = `<style>
   @keyframes auth-float-a { 0%,100% { transform:translateY(0px); } 50% { transform:translateY(-7px); } }
   @keyframes auth-float-b { 0%,100% { transform:translateY(-4px); } 50% { transform:translateY(4px); } }
 
-  .auth-form-shell { animation:auth-fade-up .42s cubic-bezier(.22,.68,0,1.15) both; }
+  .auth-form-shell {
+    animation: auth-fade-up .42s cubic-bezier(.22,.68,0,1.15) both;
+    width: 100%;
+    max-width: 480px;
+    margin: 0 auto;
+    padding: 60px 32px 40px;
+    box-sizing: border-box;
+  }
+
+  .auth-right {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-width: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+
+  @media (max-width: 480px) {
+    .auth-form-shell { padding: 40px 20px 32px; }
+  }
 
   .auth-inp:focus {
     border-color:var(--accent) !important;
@@ -238,8 +259,8 @@ function shell(content) {
     ${AUTH_CSS}
     <div style="min-height:100vh;display:flex;background:var(--bg)">
       ${brandPanel()}
-      <div style="flex:0 0 55%;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:60px 32px 32px;overflow-y:auto">
-        <div class="auth-form-shell" style="width:100%;max-width:480px">
+      <div class="auth-right">
+        <div class="auth-form-shell">
           ${content}
         </div>
       </div>
