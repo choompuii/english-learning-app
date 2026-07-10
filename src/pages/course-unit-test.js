@@ -21,9 +21,9 @@ export function renderCourseUnitTest({ levelId, unitId }) {
 
   const prog = getCourseProgress()
   const SECTIONS = ['vocabulary', 'grammar', 'listening', 'reading']
-  const sectionsDone = SECTIONS.filter(sec => prog[unit[sec].id]?.status === 'completed').length
+  const sectionsDone = SECTIONS.filter(sec => unit[sec] && prog[unit[sec].id]?.status === 'completed').length
   const allDone = sectionsDone === SECTIONS.length
-  const prev = prog[unit.test.id] || {}
+  const prev = unit.test ? (prog[unit.test.id] || {}) : {}
   const alreadyPassed = prev.passed === true
   const breadcrumb = buildBreadcrumb(levelId, unitId, level, unit)
 
@@ -67,6 +67,7 @@ export function renderCourseUnitTest({ levelId, unitId }) {
   `
 
   const mount = main.querySelector('#test-mount')
+  if (!unit.test?.questions) { mount.innerHTML = '<p style="color:var(--text-muted)">ข้อมูลแบบทดสอบไม่พบ</p>'; return }
   runQuiz(mount, unit.test.questions, ({ score, total }) => {
     const { newBadges, passed, xp } = recordCourseUnitTest(unit.test.id, score, total)
 
@@ -85,7 +86,7 @@ export function renderCourseUnitTest({ levelId, unitId }) {
 }
 
 function testResultHTML({ score, total, passed, levelId, unitId, unit, nextUnit, xp }) {
-  const pct = Math.round((score / total) * 100)
+  const pct = total > 0 ? Math.round((score / total) * 100) : 0
   const emoji = passed ? '🎉' : pct >= 50 ? '👍' : '💪'
   const msg = passed ? 'ผ่านแล้ว! ยอดเยี่ยม' : pct >= 50 ? 'เกือบแล้ว ลองอีกครั้ง' : 'ลองทบทวนและทำใหม่นะ'
 

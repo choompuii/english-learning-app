@@ -1,4 +1,5 @@
 import { getLessonById, lessons } from '../data/lessons.js'
+import { esc } from '../utils/html.js'
 import { startLesson, completeLesson, getLessonStatus, getProgress, saveLessonNote, getLessonNote } from '../store.js'
 import { getOrderedLessons, getNextAction } from '../utils/progression.js'
 import { speak, attachTtsListeners } from '../utils/tts.js'
@@ -95,6 +96,7 @@ export function renderLessonReader({ id }) {
       const stateBefore = getProgress()
       const newBadges = completeLesson(id, elapsed)
       const stateAfter = getProgress()
+      const freshAction = getNextAction(lesson, stateAfter, ordered)
       floatXP(50, completeBtn)
       if (stateAfter.streakDays > stateBefore.streakDays) {
         setTimeout(() => streakPop(stateAfter.streakDays), 600)
@@ -104,7 +106,7 @@ export function renderLessonReader({ id }) {
       // Give the celebration a beat, then guide the learner straight to the next step
       completeBtn.disabled = true
       completeBtn.textContent = 'เยี่ยม! กำลังพาไปต่อ…'
-      setTimeout(() => { window.location.hash = nextAction.href }, 900)
+      setTimeout(() => { window.location.hash = freshAction.href.replace(/^#/, '') }, 900)
     })
   }
 }
@@ -146,15 +148,15 @@ function renderSection(s) {
     case 'intro':
       return `
         <div class="lesson-section">
-          <h2 style="margin-bottom:var(--sp-4)">${s.heading || ''}</h2>
-          <p>${s.body}</p>
+          <h2 style="margin-bottom:var(--sp-4)">${esc(s.heading || '')}</h2>
+          <p>${esc(s.body)}</p>
         </div>`
 
     case 'explanation':
       return `
         <div class="lesson-section lesson-explanation">
-          ${s.heading ? `<h3 style="margin-bottom:var(--sp-3);font-family:var(--font-body);font-weight:600">${s.heading}</h3>` : ''}
-          <p style="white-space:pre-line">${s.body}</p>
+          ${s.heading ? `<h3 style="margin-bottom:var(--sp-3);font-family:var(--font-body);font-weight:600">${esc(s.heading)}</h3>` : ''}
+          <p style="white-space:pre-line">${esc(s.body)}</p>
         </div>`
 
     case 'example':
@@ -166,10 +168,10 @@ function renderSection(s) {
               ${s.sentences.map(sent => `
                 <tr>
                   <td class="example-en">
-                    <span>${sent.en}</span>
+                    <span>${esc(sent.en)}</span>
                     <button class="tts-btn" data-speak="${sent.en.replace(/"/g, '&quot;')}" title="ฟังเสียง" style="margin-left:4px">🔊</button>
                   </td>
-                  <td class="example-th">${sent.th}</td>
+                  <td class="example-th">${esc(sent.th)}</td>
                 </tr>
               `).join('')}
             </tbody>
@@ -179,7 +181,7 @@ function renderSection(s) {
     case 'tip':
       return `
         <div class="lesson-section lesson-tip">
-          <p style="white-space:pre-line;font-size:var(--text-sm)">${s.body}</p>
+          <p style="white-space:pre-line;font-size:var(--text-sm)">${esc(s.body)}</p>
         </div>`
 
     case 'dialogue':
@@ -188,8 +190,8 @@ function renderSection(s) {
           <div class="lesson-dialogue-header">Dialogue</div>
           ${s.lines.map(line => `
             <div class="dialogue-line">
-              <span class="dialogue-speaker">${line.speaker}</span>
-              <span class="dialogue-text">${line.text}</span>
+              <span class="dialogue-speaker">${esc(line.speaker)}</span>
+              <span class="dialogue-text">${esc(line.text)}</span>
               <button class="tts-btn" data-speak="${line.text.replace(/"/g, '&quot;')}" title="ฟังเสียง" style="margin-left:auto;flex-shrink:0">🔊</button>
             </div>
           `).join('')}
