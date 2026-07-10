@@ -7,6 +7,7 @@ import { renderListeningLesson } from './skill-listening.js'
 import { renderCourseUnitTest } from './course-unit-test.js'
 import { showNewBadges } from '../utils/fx.js'
 import { esc } from '../utils/html.js'
+import { lessons } from '../data/lessons.js'
 
 // ── Course Hub ──────────────────────────────────────────────────────────────
 export function renderCourseHub() {
@@ -101,6 +102,8 @@ export function renderLevelBrowser({ levelId }) {
           ${level.units.map((unit, idx) => unitRowHTML(unit, idx, level.units, prog, levelId)).join('')}
         </div>
       `}
+
+      ${supplementaryLessonsHTML(level.label)}
     </div>
   `
 
@@ -260,6 +263,40 @@ export function renderCourseSection({ levelId, unitId, section }) {
     case 'listening':  renderListeningLesson(sectionData, main, opts); break
     default:           window.location.hash = `/course/${levelId}/${unitId}`
   }
+}
+
+// ── Supplementary Reading ────────────────────────────────────────────────────
+
+function supplementaryLessonsHTML(levelLabel) {
+  const levelLessons = lessons.filter(l => l.level === levelLabel)
+  if (!levelLessons.length) return ''
+
+  const topicEmoji = t => ({ grammar: '📝', vocabulary: '📚', speaking: '💬', business: '💼', culture: '🌏' }[t] || '📖')
+
+  const cards = levelLessons.map(lesson => `
+    <a href="#/lessons/${lesson.id}" style="display:flex;align-items:center;gap:var(--sp-3);padding:var(--sp-3) var(--sp-4);background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);text-decoration:none;transition:box-shadow 0.15s,border-color 0.15s"
+       onmouseover="this.style.borderColor='var(--accent-mid)';this.style.boxShadow='0 2px 8px rgba(0,0,0,.06)'"
+       onmouseout="this.style.borderColor='var(--border)';this.style.boxShadow=''">
+      <div style="width:36px;height:36px;background:var(--surface-2);border-radius:var(--r-md);display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0">${topicEmoji(lesson.topic)}</div>
+      <div style="flex:1;min-width:0">
+        <div style="font-size:var(--text-sm);font-weight:600;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${esc(lesson.title)}</div>
+        <div style="font-size:var(--text-xs);color:var(--text-muted)">${esc(lesson.topic)} · ⏱ ${lesson.estimatedMinutes} min</div>
+      </div>
+      <span style="color:var(--text-faint);font-size:1rem;flex-shrink:0">→</span>
+    </a>
+  `).join('')
+
+  return `
+    <div style="margin-top:var(--sp-8)">
+      <div style="display:flex;align-items:center;gap:var(--sp-3);margin-bottom:var(--sp-4)">
+        <h3 style="font-size:var(--text-base);font-weight:700;margin:0">📖 Supplementary Reading</h3>
+        <span style="font-size:var(--text-xs);color:var(--text-muted);padding:2px 8px;background:var(--surface-2);border-radius:var(--r-full)">ไม่บังคับ · ${levelLessons.length} บทความ</span>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:var(--sp-2)">
+        ${cards}
+      </div>
+    </div>
+  `
 }
 
 // ── Helpers ─────────────────────────────────────────────────────────────────

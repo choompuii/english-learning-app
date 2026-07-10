@@ -81,8 +81,8 @@ export function getNextAction(lesson, state, orderedLessons) {
     return {
       type: 'next-lesson',
       href: `#/lessons/${next.id}`,
-      cta: 'ไปบทเรียนถัดไป →',
-      emoji: '➡️',
+      cta: 'อ่านบทถัดไป →',
+      emoji: '📖',
       title: next.title,
       subtitle: `${next.level} · ⏱ ${next.estimatedMinutes} min`,
       tone: 'neutral',

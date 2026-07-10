@@ -1,6 +1,6 @@
 import { SKILLS, getSkill, getSkillItems, getSkillItem } from '../data/skills/index.js'
 import { vocabularyCategories } from '../data/skills/vocabulary.js'
-import { getSkillItemProgress, getNotebook, getDifficultWords, getLearnedWords } from '../store.js'
+import { getSkillItemProgress, getNotebook, getDifficultWords, getLearnedWords, getProgress } from '../store.js'
 import { esc, escAttr } from '../utils/html.js'
 import { ttsButton, attachTtsListeners } from '../utils/tts.js'
 import { openWordModal } from '../utils/word-modal.js'
@@ -26,7 +26,11 @@ export function renderSkillsHub() {
   `
 
   main.querySelectorAll('.skill-card[data-skill]').forEach(card => {
-    card.addEventListener('click', () => { window.location.hash = `/skills/${card.dataset.skill}` })
+    const skill = card.dataset.skill
+    window.location.hash
+    card.addEventListener('click', () => {
+      window.location.hash = skill === 'speaking' ? '/speaking' : `/skills/${skill}`
+    })
   })
 }
 
@@ -115,14 +119,23 @@ function findWordData(wordStr) {
   return null
 }
 
-function miniWordCard(w) {
+function miniWordCard(w, prog) {
   if (!w) return ''
+  let accuracyBadge = ''
+  if (prog) {
+    const total = (prog.correct || 0) + (prog.incorrect || 0)
+    if (total > 0) {
+      const pct = Math.round((prog.correct / total) * 100)
+      const color = pct >= 70 ? 'var(--success,#2d6a4f)' : pct >= 50 ? '#c9973a' : 'var(--danger)'
+      accuracyBadge = `<span style="font-size:var(--text-xs);padding:1px 6px;border-radius:var(--r-full);background:var(--surface-2);color:${color};font-weight:700">${pct}% (${prog.correct}/${total})</span>`
+    }
+  }
   return `
     <div class="vocab-card vocab-card--clickable" data-word="${escAttr(w.word)}" style="cursor:pointer">
       <div style="display:flex;align-items:center;gap:var(--sp-2)">
         <span style="font-size:1.6rem">${w.emoji || '📖'}</span>
-        <div>
-          <div style="font-weight:700">${esc(w.word)} ${ttsButton(w.word)}</div>
+        <div style="flex:1;min-width:0">
+          <div style="font-weight:700;display:flex;align-items:center;gap:var(--sp-2);flex-wrap:wrap">${esc(w.word)} ${ttsButton(w.word)} ${accuracyBadge}</div>
           <div style="font-size:var(--text-xs);font-family:var(--font-mono);color:var(--text-muted)">${esc(w.ipa || '')}</div>
         </div>
       </div>
@@ -180,6 +193,8 @@ function renderVocabularyBrowser(s, main) {
     }
 
     let words = []
+    const vocabProg = getProgress().vocabProgress || {}
+
     if (tabId === 'saved') {
       words = getNotebook()
         .filter(e => e.source === 'vocabulary')
@@ -199,7 +214,8 @@ function renderVocabularyBrowser(s, main) {
     if (words.length === 0) {
       content.innerHTML = emptyState(emptyMessages[tabId])
     } else {
-      content.innerHTML = `<div class="vocab-list">${words.map(miniWordCard).join('')}</div>`
+      const showStats = tabId === 'difficult' || tabId === 'learned'
+      content.innerHTML = `<div class="vocab-list">${words.map(w => miniWordCard(w, showStats ? vocabProg[w.word] : null)).join('')}</div>`
       attachTtsListeners(content)
       content.querySelectorAll('.vocab-card--clickable').forEach(card => {
         card.addEventListener('click', e => {

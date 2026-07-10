@@ -1,3 +1,5 @@
+import { incrementTtsCount } from '../store.js'
+
 let voices = []
 if (window.speechSynthesis) {
   window.speechSynthesis.onvoiceschanged = () => { voices = speechSynthesis.getVoices() }
@@ -70,6 +72,7 @@ export function attachTtsListeners(container) {
     btn.addEventListener('click', (e) => {
       e.stopPropagation()
       speak(btn.dataset.speak)
+      incrementTtsCount()
     })
   })
 }

@@ -1,4 +1,4 @@
-import { getNotebook, removeFromNotebook } from '../store.js'
+import { getNotebook, removeFromNotebook, updateNotebookNote } from '../store.js'
 import { speak } from '../utils/tts.js'
 import { esc, escAttr } from '../utils/html.js'
 
@@ -16,7 +16,7 @@ export function renderNotebook() {
         <div class="empty-state">
           <div class="empty-state-icon">📓</div>
           <h3>Notebook ยังว่างอยู่</h3>
-          <p>กด <strong>+ Notebook</strong> ในหน้า Flashcard หรือ Search เพื่อบันทึกคำ</p>
+          <p>กด <strong>+ Notebook</strong> ในหน้า Search เพื่อบันทึกคำ</p>
           <div style="display:flex;gap:var(--sp-3);justify-content:center;margin-top:var(--sp-6);flex-wrap:wrap">
             <a href="#/flashcards" class="btn btn-primary">ไปที่ Flashcards</a>
             <a href="#/search" class="btn btn-secondary">ค้นหาคำศัพท์</a>
@@ -66,6 +66,22 @@ export function renderNotebook() {
       }
     })
   })
+
+  main.querySelectorAll('.note-area').forEach(textarea => {
+    let noteTimer = null
+    const statusEl = textarea.nextElementSibling
+    textarea.addEventListener('input', () => {
+      if (statusEl) statusEl.textContent = 'กำลังพิมพ์...'
+      clearTimeout(noteTimer)
+      noteTimer = setTimeout(() => {
+        updateNotebookNote(textarea.dataset.word, textarea.value)
+        if (statusEl) {
+          statusEl.textContent = '✓ บันทึกแล้ว'
+          setTimeout(() => { statusEl.textContent = '' }, 2000)
+        }
+      }, 600)
+    })
+  })
 }
 
 function renderEntry(entry) {
@@ -73,19 +89,31 @@ function renderEntry(entry) {
   const dateObj = entry.savedAt ? new Date(entry.savedAt) : new Date()
   const date = isNaN(dateObj.getTime()) ? '—' : dateObj.toLocaleDateString('th-TH', { day: 'numeric', month: 'short' })
   return `
-    <div class="card" data-entry="${escAttr(word)}" style="display:flex;gap:var(--sp-4);align-items:flex-start">
-      <div style="flex:1;min-width:0">
-        <div style="display:flex;align-items:center;gap:var(--sp-2);flex-wrap:wrap;margin-bottom:var(--sp-2)">
-          <span style="font-size:var(--text-xl);font-weight:700;color:var(--text)">${esc(word)}</span>
-          <button class="tts-btn" data-speak="${escAttr(word)}" title="ฟังเสียง">🔊</button>
-          ${entry.phonetic ? `<span style="font-family:var(--font-mono);font-size:var(--text-sm);color:var(--text-muted)">${esc(entry.phonetic)}</span>` : ''}
+    <div class="card" data-entry="${escAttr(word)}">
+      <div style="display:flex;gap:var(--sp-4);align-items:flex-start">
+        <div style="flex:1;min-width:0">
+          <div style="display:flex;align-items:center;gap:var(--sp-2);flex-wrap:wrap;margin-bottom:var(--sp-2)">
+            <span style="font-size:var(--text-xl);font-weight:700;color:var(--text)">${esc(word)}</span>
+            <button class="tts-btn" data-speak="${escAttr(word)}" title="ฟังเสียง">🔊</button>
+            ${entry.phonetic ? `<span style="font-family:var(--font-mono);font-size:var(--text-sm);color:var(--text-muted)">${esc(entry.phonetic)}</span>` : ''}
+          </div>
+          <div style="color:var(--text);margin-bottom:var(--sp-1)">${esc(entry.definition || '')}</div>
+          ${entry.thai ? `<div style="color:var(--accent);font-size:var(--text-sm);font-weight:500">${esc(entry.thai)}</div>` : ''}
+          ${entry.example ? `<div style="font-family:var(--font-mono);font-size:var(--text-sm);color:var(--text-muted);font-style:italic;margin-top:var(--sp-2)">"${esc(entry.example)}"</div>` : ''}
+          <div style="margin-top:var(--sp-2);font-size:var(--text-xs);color:var(--text-faint)">บันทึกเมื่อ ${date}</div>
         </div>
-        <div style="color:var(--text);margin-bottom:var(--sp-1)">${esc(entry.definition || '')}</div>
-        ${entry.thai ? `<div style="color:var(--accent);font-size:var(--text-sm);font-weight:500">${esc(entry.thai)}</div>` : ''}
-        ${entry.example ? `<div style="font-family:var(--font-mono);font-size:var(--text-sm);color:var(--text-muted);font-style:italic;margin-top:var(--sp-2)">"${esc(entry.example)}"</div>` : ''}
-        <div style="margin-top:var(--sp-2);font-size:var(--text-xs);color:var(--text-faint)">บันทึกเมื่อ ${date}</div>
+        <button class="btn btn-sm btn-ghost remove-btn" data-word="${escAttr(word)}" title="ลบออก" style="flex-shrink:0;color:var(--danger)">✕</button>
       </div>
-      <button class="btn btn-sm btn-ghost remove-btn" data-word="${escAttr(word)}" title="ลบออก" style="flex-shrink:0;color:var(--danger)">✕</button>
+      <div style="margin-top:var(--sp-3);border-top:1px solid var(--border-soft);padding-top:var(--sp-3)">
+        <textarea
+          class="note-area"
+          data-word="${escAttr(word)}"
+          placeholder="📝 โน้ตส่วนตัว... (บันทึกอัตโนมัติ)"
+          rows="2"
+          style="width:100%;padding:var(--sp-2) var(--sp-3);border:1px solid var(--border);border-radius:var(--r-md);font-family:var(--font-body);font-size:var(--text-sm);resize:vertical;background:var(--surface-2);color:var(--text);line-height:1.5;transition:border-color 200ms;box-sizing:border-box"
+        >${esc(entry.note || '')}</textarea>
+        <div style="font-size:var(--text-xs);color:var(--text-faint);text-align:right;margin-top:2px"></div>
+      </div>
     </div>
   `
 }

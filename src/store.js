@@ -11,6 +11,7 @@ const DEFAULT_STATE = {
   quizzes: {},
   sentenceBuilder: {},
   speedRound: {},
+  speakingRound: {},
   flashcards: {},
   notebook: [],
   dailyGoal: 50,
@@ -45,12 +46,12 @@ async function syncToCloud(state) {
 }
 
 export async function pullFromCloud() {
-  const { data } = await supabase.auth.getUser()
-  const user = data?.user || null
+  const { data: authData } = await supabase.auth.getUser()
+  const user = authData?.user || null
   if (!user) return null
-  const { data, error } = await supabase.from('user_progress').select('data').eq('user_id', user.id).single()
-  if (error || !data) return null
-  return data.data
+  const { data: row, error } = await supabase.from('user_progress').select('data').eq('user_id', user.id).single()
+  if (error || !row) return null
+  return row.data
 }
 
 export async function initCloudSync() {
@@ -242,6 +243,15 @@ export function recordSpeedRoundResult(deckId, correct, total) {
 export function getSpeedRoundBest(deckId) {
   const s = load()
   return (s.speedRound || {})[deckId] || null
+}
+
+export function recordSpeakingResult(deckId, correct, total) {
+  return recordBestResult('speakingRound', deckId, correct, total)
+}
+
+export function getSpeakingBest(deckId) {
+  const s = load()
+  return (s.speakingRound || {})[deckId] || null
 }
 
 // ── Skills (Vocabulary / Grammar / Reading / Listening) ──
@@ -460,6 +470,16 @@ export function removeFromNotebook(word) {
   if (!s.notebook) return
   s.notebook = s.notebook.filter(e => e.word.toLowerCase() !== word.toLowerCase())
   save(s)
+}
+
+export function updateNotebookNote(word, note) {
+  const s = load()
+  if (!s.notebook) return
+  const entry = s.notebook.find(e => e.word.toLowerCase() === word.toLowerCase())
+  if (entry) {
+    entry.note = note
+    save(s)
+  }
 }
 
 export function getNotebook() {

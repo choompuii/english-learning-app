@@ -1,3 +1,6 @@
+import { addBonusXP } from '../store.js'
+import { floatXP } from '../utils/fx.js'
+
 const GRAMMAR_RULES = [
   {
     id: 'a-before-vowel-sound',
@@ -213,6 +216,7 @@ function escapeHtml(str) {
 
 export function renderGrammarCheck() {
   const main = document.getElementById('main-content')
+  let _lastCheckedText = null
 
   main.innerHTML = `
     <div class="page">
@@ -297,6 +301,11 @@ export function renderGrammarCheck() {
     if (!text) {
       results.innerHTML = `<p style="color:var(--text-muted);font-size:var(--text-sm)">กรุณาพิมพ์ประโยคก่อน</p>`
       return
+    }
+    if (text.length >= 20 && text !== _lastCheckedText) {
+      _lastCheckedText = text
+      addBonusXP(5)
+      floatXP(5, checkBtn)
     }
 
     const issues = []

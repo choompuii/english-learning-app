@@ -15,7 +15,7 @@ export const SKILLS = [
   { id: 'listening', name: 'Listening', thai: 'การฟัง', emoji: '👂', color: '#9B59B6',
     desc: 'ฝึกฟังพร้อมปรับความเร็ว เล่นซ้ำ ดู transcript และตอบคำถาม', active: true },
   { id: 'speaking', name: 'Speaking', thai: 'การพูด', emoji: '🗣️', color: '#F5C842',
-    desc: 'อ่านออกเสียง คุยกับ AI, shadowing และให้คะแนนการออกเสียง', active: false },
+    desc: 'ฝึกออกเสียงคำศัพท์ด้วย Speech Recognition — พูดแล้วระบบให้คะแนนทันที', active: true },
   { id: 'writing', name: 'Writing', thai: 'การเขียน', emoji: '✍️', color: '#E74C3C',
     desc: 'ฝึกเขียนประโยค–เรียงความ พร้อม AI ตรวจไวยากรณ์และความเป็นธรรมชาติ', active: false },
 ]

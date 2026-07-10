@@ -27,9 +27,9 @@ export function renderLessonReader({ id }) {
   main.innerHTML = `
     <div class="page">
       <div class="breadcrumb">
-        <a href="#/lessons">Lessons</a>
+        <a href="#/course">Course</a>
         <span class="breadcrumb-sep">›</span>
-        <span class="level-badge level-${lesson.level}">${lesson.level}</span>
+        <a href="#/course/${lesson.level.toLowerCase()}"><span class="level-badge level-${lesson.level}">${lesson.level}</span></a>
         <span class="breadcrumb-sep">›</span>
         <span>${lesson.topic}</span>
       </div>
@@ -58,7 +58,7 @@ export function renderLessonReader({ id }) {
         ${renderNextStepBlock(nextAction)}
 
         <div style="display:flex;justify-content:space-between;align-items:center;gap:var(--sp-3);flex-wrap:wrap;margin-top:var(--sp-2)">
-          <a href="#/lessons" class="btn btn-ghost">← All Lessons</a>
+          <a href="#/course/${lesson.level.toLowerCase()}" class="btn btn-ghost">← กลับ Course</a>
           ${status.status !== 'completed'
             ? `<button class="btn btn-primary" id="complete-btn" style="white-space:nowrap">เสร็จแล้ว — ${nextAction.cta}</button>`
             : `<div style="display:flex;align-items:center;gap:var(--sp-3);flex-wrap:wrap">
@@ -103,11 +103,11 @@ export function renderLessonReader({ id }) {
       }
       if (newBadges && newBadges.length) setTimeout(() => showNewBadges(newBadges), 800)
 
-      // Give the celebration a beat, then guide the learner straight to the next step
       clearTimeout(saveTimer)
       completeBtn.disabled = true
       completeBtn.textContent = 'เยี่ยม! กำลังพาไปต่อ…'
-      setTimeout(() => { window.location.hash = freshAction.href.replace(/^#/, '') }, 900)
+      const redirectTimer = setTimeout(() => { window.location.hash = freshAction.href.replace(/^#/, '') }, 900)
+      window.addEventListener('hashchange', () => clearTimeout(redirectTimer), { once: true })
     })
   }
 }
