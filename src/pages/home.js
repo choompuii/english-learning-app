@@ -145,15 +145,15 @@ async function renderDashboard(main, state) {
       <!-- Continue Learning + Daily Goal -->
       <div class="dash-grid-2">
 
-        <!-- Continue Learning -->
+        <!-- Supplementary Reading -->
         <div style="background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:20px">
-          <p style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--text-muted);margin:0 0 14px">Continue Learning</p>
+          <p style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--text-muted);margin:0 0 14px">📖 Supplementary Reading</p>
           ${primaryLesson ? `
             <div onclick="window.location.hash='/lessons/${primaryLesson.id}'" style="cursor:pointer">
               <div style="display:flex;align-items:center;gap:12px;margin-bottom:14px">
                 <div style="width:44px;height:44px;background:var(--accent-soft,#e8f5e9);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0">${topicEmoji(primaryLesson.topic)}</div>
                 <div style="flex:1;min-width:0">
-                  <div style="font-size:10px;font-weight:700;text-transform:uppercase;color:var(--accent);margin-bottom:2px">${state.lessons[primaryLesson.id]?.status === 'in-progress' ? '▶ In Progress' : 'Next Up'}</div>
+                  <div style="font-size:10px;font-weight:700;text-transform:uppercase;color:var(--text-muted);margin-bottom:2px">ไม่บังคับ · อ่านเสริม</div>
                   <div style="font-size:13px;font-weight:700;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${primaryLesson.title}</div>
                   <div style="font-size:11px;color:var(--text-muted)">${primaryLesson.estimatedMinutes} min · ${primaryLesson.level}</div>
                 </div>
@@ -164,10 +164,10 @@ async function renderDashboard(main, state) {
                 </div>
               </div>
               <div style="display:flex;justify-content:space-between;font-size:11px;color:var(--text-muted)">
-                <span>${completedLessons}/${totalLessons} lessons</span><span>${lessonPct}%</span>
+                <span>${completedLessons}/${totalLessons} บทอ่าน</span><span>${lessonPct}%</span>
               </div>
             </div>
-          ` : `<div style="text-align:center;padding:12px 0;color:var(--text-muted);font-size:13px">🏆 All lessons done!</div>`}
+          ` : `<div style="text-align:center;padding:12px 0;color:var(--text-muted);font-size:13px">🏆 อ่านครบทุกบทแล้ว!</div>`}
         </div>
 
         <!-- Daily Goal -->
@@ -353,7 +353,7 @@ function buildReminderBanner(todayXp) {
         <div style="font-weight:700;font-size:13px;color:#7a5c1a">ยังไม่ได้เรียนวันนี้เลย!</div>
         <div style="font-size:12px;color:#9e7530">ก้าวเล็กๆ ทุกวันสร้างความแตกต่างได้มาก</div>
       </div>
-      <a href="#/lessons" style="padding:8px 14px;background:#c9973a;color:#fff;border-radius:8px;font-size:12px;font-weight:700;text-decoration:none;white-space:nowrap">เรียนเลย →</a>
+      <a href="#/course" style="padding:8px 14px;background:#c9973a;color:#fff;border-radius:8px;font-size:12px;font-weight:700;text-decoration:none;white-space:nowrap">เรียนเลย →</a>
       <button id="dismiss-reminder" style="background:none;border:none;cursor:pointer;color:#9e7530;font-size:16px;padding:4px;line-height:1">✕</button>
     </div>
   `

@@ -82,7 +82,7 @@ function collectMistakes(state) {
 
     for (const qid of everWrong) {
       if (!everCorrect.has(qid) && !seen.has(qid)) {
-        const question = quiz.questions.find(q => q.id === qid)
+        const question = quiz.questions[parseInt(qid, 10)]
         if (question) {
           seen.add(qid)
           mistakes.push({ question, quiz, lesson })

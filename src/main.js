@@ -22,6 +22,7 @@ import { renderSpeedRound } from './pages/speed-round.js'
 import { renderAuth } from './pages/auth.js'
 import { renderOnboarding } from './pages/onboarding.js'
 import { renderProfile } from './pages/profile.js'
+import { renderSpeakingBrowser } from './pages/speaking.js'
 
 // Auth guard — wraps any handler that requires login
 function guard(fn) {
@@ -43,7 +44,7 @@ route('/course',                           guard(() => renderCourseHub()))
 route('/course/:levelId',                  guard(({ levelId }) => renderLevelBrowser({ levelId })))
 route('/course/:levelId/:unitId',          guard(({ levelId, unitId }) => renderUnitBrowser({ levelId, unitId })))
 route('/course/:levelId/:unitId/:section', guard(({ levelId, unitId, section }) => renderCourseSection({ levelId, unitId, section })))
-route('/lessons',         guard(() => renderLessons()))
+route('/lessons',         guard(() => navigate('/course')))
 route('/lessons/:id',     guard(({ id }) => renderLessonReader({ id })))
 route('/skills',              guard(() => renderSkillsHub()))
 route('/skills/:skill',       guard(({ skill }) => renderSkillBrowser({ skill })))
@@ -59,6 +60,7 @@ route('/review-mistakes', guard(() => renderReviewMistakes()))
 route('/dictation',       guard(() => renderDictationBrowser()))
 route('/dictation/:id',   guard(({ id }) => renderDictation({ id })))
 route('/grammar',         guard(() => renderGrammarCheck()))
+route('/speaking',        guard(() => renderSpeakingBrowser()))
 route('/sentence-builder',guard(() => renderSentenceBuilder()))
 route('/speed-round',     guard(() => renderSpeedRound()))
 

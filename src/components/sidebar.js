@@ -38,13 +38,6 @@ const navItems = [
     icon: `<svg class="nav-icon" viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>`
   },
   {
-    id: 'lessons',
-    label: 'Lessons',
-    hash: '/lessons',
-    mobile: false,
-    icon: `<svg class="nav-icon" viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>`
-  },
-  {
     id: 'skills',
     label: 'Skills',
     hash: '/skills',
@@ -85,6 +78,13 @@ const navItems = [
     hash: '/progress',
     mobile: true,
     icon: `<svg class="nav-icon" viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>`
+  },
+  {
+    id: 'speaking',
+    label: 'Speaking',
+    hash: '/speaking',
+    mobile: false,
+    icon: `<svg class="nav-icon" viewBox="0 0 24 24"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>`
   },
   {
     id: 'grammar',

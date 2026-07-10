@@ -35,10 +35,12 @@ export function renderSearch() {
   input.addEventListener('focus', () => { input.style.borderColor = 'var(--accent)' })
   input.addEventListener('blur', () => { input.style.borderColor = 'var(--border)' })
 
+  let _searchTimer = null
   input.addEventListener('input', () => {
+    clearTimeout(_searchTimer)
     const q = input.value.trim().toLowerCase()
     if (!q) { results.innerHTML = ''; return }
-    renderResults(q, results)
+    _searchTimer = setTimeout(() => renderResults(q, results), 250)
   })
 
   input.focus()

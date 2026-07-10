@@ -138,6 +138,8 @@ export function renderProgress() {
 
       ${renderStatSection('Sentence Builder', sbRows)}
       ${renderStatSection('Speed Round', srRows)}
+      ${renderVocabStats(state)}
+      ${renderDictationStats(state)}
 
       <!-- Badge Gallery -->
       <div style="margin-bottom:var(--sp-8)">
@@ -266,6 +268,60 @@ function renderHeatmap(log) {
           ${['var(--border-soft)','var(--accent-mid)','#2DA85E','#1F8A4C','var(--accent)'].map(c => `<div style="width:12px;height:12px;border-radius:3px;background:${c}"></div>`).join('')}
         </div>
         <span style="font-size:var(--text-xs);color:var(--text-muted)">มาก</span>
+      </div>
+    </div>
+  `
+}
+
+function renderVocabStats(state) {
+  const prog = state.vocabProgress || {}
+  const tracked = Object.keys(prog).length
+  if (!tracked) return ''
+
+  const difficult = Object.values(prog).filter(p => p.incorrect >= 2 && p.correct / (p.correct + p.incorrect) < 0.5).length
+  const mastered  = Object.values(prog).filter(p => p.correct >= 3 && p.correct / (p.correct + p.incorrect) >= 0.7).length
+  const totalCorrect = Object.values(prog).reduce((n, p) => n + (p.correct || 0), 0)
+  const totalAttempts = Object.values(prog).reduce((n, p) => n + (p.correct || 0) + (p.incorrect || 0), 0)
+  const overall = totalAttempts > 0 ? Math.round(totalCorrect / totalAttempts * 100) : 0
+
+  return `
+    <div style="margin-bottom:var(--sp-8)">
+      <h3 style="font-family:var(--font-body);font-weight:600;font-size:var(--text-lg);margin-bottom:var(--sp-4)">Vocabulary Progress</h3>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:var(--sp-3)">
+        ${[
+          { label: 'Tracked Words', value: tracked, icon: '📊', color: 'var(--accent)' },
+          { label: 'Overall Accuracy', value: overall + '%', icon: '🎯', color: overall >= 70 ? 'var(--accent)' : overall >= 50 ? '#c9973a' : 'var(--danger)' },
+          { label: 'คำยาก', value: difficult, icon: '⚡', color: 'var(--danger)' },
+          { label: 'Mastered', value: mastered, icon: '✓', color: 'var(--accent)' },
+        ].map(s => `
+          <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);padding:var(--sp-4) var(--sp-3);text-align:center">
+            <div style="font-size:1.3rem;margin-bottom:var(--sp-1)">${s.icon}</div>
+            <div style="font-size:var(--text-xl);font-weight:800;color:${s.color};line-height:1;margin-bottom:var(--sp-1)">${s.value}</div>
+            <div style="font-size:var(--text-xs);color:var(--text-muted)">${s.label}</div>
+          </div>
+        `).join('')}
+      </div>
+      ${difficult > 0 ? `<div style="margin-top:var(--sp-3)"><a href="#/skills/vocabulary" style="font-size:var(--text-sm);color:var(--accent)">ดู ${difficult} คำยาก →</a></div>` : ''}
+    </div>
+  `
+}
+
+function renderDictationStats(state) {
+  const done = (state.dictationDone || []).length
+  if (!done) return ''
+  const decksData = []
+  try {
+    // reference is available via import at top of file indirectly through decks
+  } catch {}
+  return `
+    <div style="margin-bottom:var(--sp-8)">
+      <h3 style="font-family:var(--font-body);font-weight:600;font-size:var(--text-lg);margin-bottom:var(--sp-4)">Dictation</h3>
+      <div style="display:flex;align-items:center;gap:var(--sp-4);padding:var(--sp-4) var(--sp-5);background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg)">
+        <span style="font-size:2rem">✍️</span>
+        <div>
+          <div style="font-weight:700;font-size:var(--text-lg);color:var(--accent)">${done} deck${done > 1 ? 's' : ''} เสร็จแล้ว</div>
+          <div style="font-size:var(--text-sm);color:var(--text-muted)"><a href="#/dictation" style="color:var(--accent)">ไปทำ Dictation →</a></div>
+        </div>
       </div>
     </div>
   `

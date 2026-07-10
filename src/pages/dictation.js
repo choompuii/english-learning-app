@@ -1,5 +1,7 @@
 import { decks, getDeckById } from '../data/vocabulary.js'
 import { speak, speakSlow } from '../utils/tts.js'
+import { markDictationDone, addBonusXP } from '../store.js'
+import { showNewBadges, floatXP } from '../utils/fx.js'
 
 export function renderDictationBrowser() {
   const main = document.getElementById('main-content')
@@ -154,11 +156,18 @@ export function renderDictation({ id }) {
 
   function showSummary() {
     const pct = cards.length > 0 ? Math.round((correct / cards.length) * 100) : 0
+    const xpGain = correct * 5
+    if (xpGain > 0) addBonusXP(xpGain)
+    const newBadges = markDictationDone(id)
+    if (xpGain > 0) setTimeout(() => floatXP(xpGain, main), 300)
+    if (newBadges && newBadges.length) setTimeout(() => showNewBadges(newBadges), 800)
+
     main.innerHTML = `
       <div class="page" style="text-align:center">
         <div style="font-size:4rem;margin-bottom:var(--sp-4)">${pct >= 70 ? '🌟' : '💪'}</div>
         <h2 style="margin-bottom:var(--sp-2)">เสร็จแล้ว!</h2>
-        <p style="color:var(--text-muted);margin-bottom:var(--sp-8)">${cards.length} คำ</p>
+        <p style="color:var(--text-muted);margin-bottom:var(--sp-4)">${cards.length} คำ</p>
+        ${xpGain > 0 ? `<p style="color:var(--accent);font-weight:600;margin-bottom:var(--sp-8)">+${xpGain} XP</p>` : `<p style="margin-bottom:var(--sp-8)"></p>`}
         <div style="display:flex;gap:var(--sp-4);justify-content:center;margin-bottom:var(--sp-8);flex-wrap:wrap">
           <div class="card" style="min-width:120px;text-align:center">
             <div style="font-size:2rem;color:var(--success);font-weight:700">${correct}</div>
