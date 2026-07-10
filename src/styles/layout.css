@@ -6,7 +6,7 @@
 
 /* Auth mode — hide sidebar, full-width content */
 body.auth-mode #sidebar { display: none; }
-body.auth-mode #main-content { margin-left: 0; }
+body.auth-mode #main-content { margin-left: 0; margin-bottom: 0; }
 
 /* Sidebar */
 #sidebar {
@@ -169,6 +169,77 @@ body.auth-mode #main-content { margin-left: 0; }
   }
 }
 
+/* ── More button — desktop hidden, mobile shown ── */
+.more-btn { display: none; }
+
+/* ── More drawer (mobile only) ── */
+.more-drawer-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 150;
+  background: rgba(0, 0, 0, .45);
+}
+
+.more-drawer-overlay.open { display: block; }
+
+.more-drawer {
+  position: fixed;
+  bottom: 60px;
+  left: 0;
+  right: 0;
+  z-index: 160;
+  background: var(--surface);
+  border-top: 1px solid var(--border);
+  border-radius: 20px 20px 0 0;
+  padding: var(--sp-4) var(--sp-4) var(--sp-6);
+  transform: translateY(110%);
+  transition: transform 280ms var(--ease);
+}
+
+.more-drawer.open { transform: translateY(0); }
+
+.more-drawer-handle {
+  width: 36px;
+  height: 4px;
+  background: var(--border);
+  border-radius: var(--r-full);
+  margin: 0 auto var(--sp-4);
+}
+
+.more-drawer-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--sp-2);
+}
+
+.more-drawer-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: var(--sp-3) var(--sp-2);
+  border-radius: var(--r-md);
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  font-size: 0.65rem;
+  font-weight: 500;
+  font-family: var(--font-body);
+  cursor: pointer;
+  text-align: center;
+  width: 100%;
+  transition: background var(--duration) var(--ease), color var(--duration) var(--ease);
+}
+
+.more-drawer-item:hover,
+.more-drawer-item.active {
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+
+.more-drawer-item .nav-icon { width: 22px; height: 22px; }
+
 /* ── Mobile: bottom tab bar ── */
 @media (max-width: 768px) {
   #sidebar {
@@ -197,8 +268,9 @@ body.auth-mode #main-content { margin-left: 0; }
     overflow-x: hidden;
   }
 
-  /* Hide secondary nav items on mobile — keep 5 primary */
+  /* Hide secondary nav items on mobile — keep 5 primary + More button */
   .nav-item[data-mobile-hide="true"] { display: none; }
+  .more-btn { display: flex; }
 
   .nav-item {
     flex-direction: column;
