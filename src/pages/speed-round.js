@@ -74,9 +74,11 @@ export function renderSpeedRound() {
   })
 
   let autoAdvanceTimeout = null
+  let activeTimer = null
 
   function startSession(deck) {
     if (autoAdvanceTimeout) { clearTimeout(autoAdvanceTimeout); autoAdvanceTimeout = null }
+    if (activeTimer) { clearInterval(activeTimer); activeTimer = null }
     main.querySelector('#sr-deck-select').style.display = 'none'
     const sessionEl = main.querySelector('#sr-session')
     sessionEl.style.display = ''
@@ -85,13 +87,12 @@ export function renderSpeedRound() {
     let idx = 0
     let correct = 0
     let total = 0
-    let timer = null
     let timeLeft = TIMER_SECONDS
     let answered = false
 
     // Stop the countdown if the user navigates away mid-session (the interval would
     // otherwise keep firing into a detached DOM until it times out).
-    window.addEventListener('hashchange', () => clearInterval(timer), { once: true })
+    window.addEventListener('hashchange', () => { clearInterval(activeTimer); activeTimer = null }, { once: true })
 
     function renderCard() {
       if (idx >= cards.length) {
@@ -146,7 +147,7 @@ export function renderSpeedRound() {
 
       // Start countdown
       let ticksDone = 0
-      timer = setInterval(() => {
+      activeTimer = setInterval(() => {
         if (answered) return
         ticksDone++
         timeLeft = TIMER_SECONDS - ticksDone
@@ -155,7 +156,8 @@ export function renderSpeedRound() {
         timerBar.style.background = pct > 40 ? 'var(--accent)' : pct > 20 ? 'var(--gold)' : 'var(--danger)'
 
         if (timeLeft <= 0) {
-          clearInterval(timer)
+          clearInterval(activeTimer)
+          activeTimer = null
           handleAnswer(null)
         }
       }, 1000)
@@ -163,7 +165,8 @@ export function renderSpeedRound() {
       function handleAnswer(userAnswer) {
         if (answered) return
         answered = true
-        clearInterval(timer)
+        clearInterval(activeTimer)
+        activeTimer = null
         total++
 
         const isCorrect = userAnswer !== null &&
@@ -233,6 +236,8 @@ export function renderSpeedRound() {
       if (result.newBadges?.length) setTimeout(() => showNewBadges(result.newBadges), 500)
       sessionEl.querySelector('#sr-retry-btn').addEventListener('click', () => startSession(deck))
       sessionEl.querySelector('#sr-back-btn').addEventListener('click', () => {
+        if (activeTimer) { clearInterval(activeTimer); activeTimer = null }
+        if (autoAdvanceTimeout) { clearTimeout(autoAdvanceTimeout); autoAdvanceTimeout = null }
         main.querySelector('#sr-deck-select').style.display = ''
         sessionEl.style.display = 'none'
         sessionEl.innerHTML = ''

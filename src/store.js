@@ -174,12 +174,12 @@ export function completeLesson(lessonId, timeSpentSeconds) {
 export function recordQuizAttempt(quizId, score, total, answers) {
   const s = load()
   touchStreak(s)
-  if (!s.quizzes[quizId]) s.quizzes[quizId] = { attempts: [], bestScore: 0, bestTotal: total }
+  if (!s.quizzes[quizId]) s.quizzes[quizId] = { attempts: [], bestScore: 0, bestTotal: 0 }
   const attempt = { date: new Date().toISOString(), score, total, answers: answers || {} }
   s.quizzes[quizId].attempts.push(attempt)
+  s.quizzes[quizId].bestTotal = total
   if (score > s.quizzes[quizId].bestScore) {
     s.quizzes[quizId].bestScore = score
-    s.quizzes[quizId].bestTotal = total
   }
   const quizXp = score * 10
   s.xp = (s.xp || 0) + quizXp

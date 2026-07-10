@@ -91,15 +91,15 @@ export function renderQuiz({ id }) {
     const progressFill = main.querySelector('#q-progress')
 
     counter.textContent = `ข้อ ${index + 1} / ${total}`
-    progressFill.style.width = `${(index / total) * 100}%`
+    progressFill.style.width = `${((index + 1) / total) * 100}%`
 
     nextArea.style.display = 'none'
     nextArea.innerHTML = ''
     slot.innerHTML = ''
 
-    const el = renderQuestion(q, index, total, ({ qid, correct }) => {
-      if (answers[qid] !== undefined) return
-      answers[qid] = correct
+    const el = renderQuestion(q, index, total, ({ correct }) => {
+      if (answers[index] !== undefined) return
+      answers[index] = correct
 
       const isLast = index === total - 1
       nextArea.style.display = 'block'
