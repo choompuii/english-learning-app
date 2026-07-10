@@ -57,7 +57,12 @@ export function renderNotebook() {
         card.style.transition = 'opacity 0.2s, transform 0.2s'
         card.style.opacity = '0'
         card.style.transform = 'translateX(8px)'
-        setTimeout(() => { card.remove() }, 220)
+        setTimeout(() => {
+          card.remove()
+          const remaining = main.querySelectorAll('[data-entry]').length
+          const countEl = main.querySelector('.page-header p')
+          if (countEl) countEl.textContent = `${remaining} คำที่บันทึกไว้`
+        }, 220)
       }
     })
   })
@@ -65,7 +70,8 @@ export function renderNotebook() {
 
 function renderEntry(entry) {
   const word = entry.word || ''
-  const date = new Date(entry.savedAt).toLocaleDateString('th-TH', { day: 'numeric', month: 'short' })
+  const dateObj = entry.savedAt ? new Date(entry.savedAt) : new Date()
+  const date = isNaN(dateObj) ? '—' : dateObj.toLocaleDateString('th-TH', { day: 'numeric', month: 'short' })
   return `
     <div class="card" data-entry="${escAttr(word)}" style="display:flex;gap:var(--sp-4);align-items:flex-start">
       <div style="flex:1;min-width:0">

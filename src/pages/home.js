@@ -15,7 +15,7 @@ function getWordOfTheDay(level) {
     ? allCards.filter(c => c.level === level) : allCards
   if (!pool.length) return null
   const today = new Date()
-  const dayOfYear = Math.floor((today - new Date(today.getFullYear(), 0, 0)) / 86400000)
+  const dayOfYear = Math.floor((today - new Date(today.getFullYear(), 0, 1)) / 86400000)
   return pool[(dayOfYear + today.getFullYear()) % pool.length]
 }
 
@@ -73,10 +73,10 @@ function renderLevelSelect(main, state) {
       main.querySelector('#level-hint').style.display = 'none'
     })
   })
-  startBtn.addEventListener('click', () => {
+  startBtn.addEventListener('click', async () => {
     if (!chosen) return
     setLevel(chosen)
-    renderDashboard(main, { ...getProgress(), selectedLevel: chosen })
+    await renderDashboard(main, { ...getProgress(), selectedLevel: chosen })
   })
 }
 
@@ -295,7 +295,7 @@ function getCourseSnapshot() {
   let sectionsDone = 0
   if (nextUnit) {
     sectionsDone = ['vocabulary', 'grammar', 'listening', 'reading']
-      .filter(s => prog[nextUnit[s].id]?.status === 'completed').length
+      .filter(s => nextUnit[s] && prog[nextUnit[s].id]?.status === 'completed').length
   }
 
   return { level, passedCount, totalUnits: units.length, nextUnit, sectionsDone }
@@ -385,44 +385,39 @@ function buildCalendar(activityLog) {
 
   const DOW = ['S','M','T','W','T','F','S']
 
+  const dowLabels = DOW.map((d, i) =>
+    '<div style="width:10px;height:12px;font-size:9px;color:var(--text-muted);display:flex;align-items:center;justify-content:center;' + (i % 2 === 0 ? 'opacity:0' : '') + '">' + d + '</div>'
+  ).join('')
+
+  const colsHTML = cols.map(week => {
+    const monthLabel = week[0] && new Date(week[0].key).getDate() <= 7
+      ? new Date(week[0].key).toLocaleString('en', { month: 'short' })
+      : ''
+    const cells = week.map(d => {
+      if (!d) return '<div style="width:12px;height:12px"></div>'
+      const bg = d.xp > 0
+        ? 'rgba(45,106,79,' + Math.min(0.95, 0.25 + d.xp / 80) + ')'
+        : 'var(--border)'
+      const outline = d.isToday ? '2px solid var(--accent)' : 'none'
+      const title = d.key + (d.xp > 0 ? ' · ' + d.xp + ' XP' : '')
+      return '<div title="' + title + '" style="width:12px;height:12px;border-radius:3px;background:' + bg + ';outline:' + outline + ';outline-offset:1px;cursor:default;transition:transform .1s" onmouseover="this.style.transform=\'scale(1.4)\'" onmouseout="this.style.transform=\'\'"></div>'
+    }).join('')
+    return '<div style="display:flex;flex-direction:column;gap:3px"><div style="font-size:8px;color:var(--text-muted);text-align:center;height:16px;line-height:16px;white-space:nowrap">' + monthLabel + '</div>' + cells + '</div>'
+  }).join('')
+
+  const legendDots = [0.12, 0.3, 0.5, 0.7, 0.92].map(o =>
+    '<div style="width:11px;height:11px;border-radius:3px;background:rgba(45,106,79,' + o + ')"></div>'
+  ).join('')
+
   return `
     <div style="overflow-x:auto;-webkit-overflow-scrolling:touch">
       <div style="display:flex;gap:3px;align-items:flex-start;min-width:max-content">
-
-        <!-- Day labels -->
-        <div style="display:flex;flex-direction:column;gap:3px;margin-right:4px;padding-top:20px">
-          ${DOW.map((d,i)=>`<div style="width:10px;height:12px;font-size:9px;color:var(--text-muted);display:flex;align-items:center;justify-content:center;${i%2===0?'opacity:0':''}">${d}</div>`).join('')}
-        </div>
-
-        <!-- Week columns -->
-        ${cols.map((week, wi) => `
-          <div style="display:flex;flex-direction:column;gap:3px">
-            <div style="font-size:8px;color:var(--text-muted);text-align:center;height:16px;line-height:16px;white-space:nowrap">
-              ${week[0] && new Date(week[0].key).getDate() <= 7 ? new Date(week[0].key).toLocaleString('en',{month:'short'}) : ''}
-            </div>
-            ${week.map(d => d ? `
-              <div
-                title="${d.key} ${d.xp > 0 ? '· ' + d.xp + ' XP' : ''}"
-                style="
-                  width:12px;height:12px;border-radius:3px;
-                  background:${d.xp > 0 ? `rgba(45,106,79,${Math.min(.95, .25 + d.xp / 80)})` : 'var(--border)'};
-                  outline:${d.isToday ? '2px solid var(--accent)' : 'none'};
-                  outline-offset:1px;
-                  cursor:default;
-                  transition:transform .1s;
-                "
-                onmouseover="this.style.transform='scale(1.4)'"
-                onmouseout="this.style.transform=''"
-              ></div>` : `<div style="width:12px;height:12px"></div>`
-            `).join('')}
-          </div>
-        `).join('')}
+        <div style="display:flex;flex-direction:column;gap:3px;margin-right:4px;padding-top:20px">${dowLabels}</div>
+        ${colsHTML}
       </div>
-
-      <!-- Legend -->
       <div style="display:flex;align-items:center;gap:5px;margin-top:10px">
         <span style="font-size:10px;color:var(--text-muted)">Less</span>
-        ${[0.12, 0.3, 0.5, 0.7, 0.92].map(o => `<div style="width:11px;height:11px;border-radius:3px;background:rgba(45,106,79,${o})"></div>`).join('')}
+        ${legendDots}
         <span style="font-size:10px;color:var(--text-muted)">More</span>
       </div>
     </div>

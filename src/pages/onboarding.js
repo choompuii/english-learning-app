@@ -43,6 +43,7 @@ const state = { level: null, goals: [], minutes: 10, interests: [] }
 const TOTAL_STEPS = 4
 
 export async function renderOnboarding() {
+  Object.assign(state, { level: null, goals: [], minutes: 10, interests: [] })
   const main = document.getElementById('main-content')
   const profile = await getProfile()
   if (profile?.onboarding_done) { navigate('/'); return }
@@ -55,13 +56,13 @@ function showStep(main, step) {
 }
 
 function progressBar(step) {
-  const pct = Math.round(((step) / TOTAL_STEPS) * 100)
+  const pct = Math.round(((step + 1) / TOTAL_STEPS) * 100)
   return `
     <div style="display:flex;align-items:center;gap:12px;margin-bottom:32px">
       <div style="flex:1;height:4px;background:var(--border);border-radius:99px;overflow:hidden">
         <div style="height:100%;width:${pct}%;background:var(--accent);border-radius:99px;transition:width .4s ease"></div>
       </div>
-      <span style="font-size:12px;color:var(--text-muted);white-space:nowrap">${step}/${TOTAL_STEPS}</span>
+      <span style="font-size:12px;color:var(--text-muted);white-space:nowrap">${step + 1}/${TOTAL_STEPS}</span>
     </div>
   `
 }
@@ -268,6 +269,7 @@ function summaryRow(label, value, last = false) {
 }
 
 async function finishOnboarding() {
+  if (!state.level) return
   setLevel(state.level)
   const profile = await getProfile()
   await saveProfile({

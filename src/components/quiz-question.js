@@ -1,3 +1,12 @@
+function fisherYates(arr) {
+  const a = [...arr]
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]]
+  }
+  return a
+}
+
 export function renderQuestion(q, index, total, onAnswer) {
   const container = document.createElement('div')
   container.className = 'quiz-question-card'
@@ -90,7 +99,7 @@ export function renderQuestion(q, index, total, onAnswer) {
 
   } else if (q.type === 'sentence-scramble') {
     // Shuffle words for display (keep correct order in q.words)
-    const shuffled = [...q.words].sort(() => Math.random() - 0.5)
+    const shuffled = fisherYates(q.words)
 
     container.innerHTML = header + `
       <div class="scramble-slots" id="scramble-slots"></div>
@@ -186,7 +195,7 @@ export function renderQuestion(q, index, total, onAnswer) {
       word: p.word ?? p.left,
       match: p.match ?? p.right
     }))
-    const shuffledMatches = [...pairs.map(p => p.match)].sort(() => Math.random() - 0.5)
+    const shuffledMatches = fisherYates(pairs.map(p => p.match))
 
     container.innerHTML = header + `
       <p style="font-size:var(--text-sm);color:var(--text-muted);margin-bottom:var(--sp-3)">คลิกคำ แล้วคลิกความหมายเพื่อจับคู่</p>

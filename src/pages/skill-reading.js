@@ -94,6 +94,7 @@ function renderPassage(piece) {
       </div>
     `
   }
+  if (!Array.isArray(piece.paragraphs)) return ''
   return piece.paragraphs.map(p => `
     <p style="margin-bottom:var(--sp-4);display:flex;gap:8px;align-items:flex-start">
       <span>${esc(p)}</span>${ttsButton(p, 'ฟังย่อหน้านี้')}
@@ -112,8 +113,8 @@ function startQuiz(piece, main, opts = {}) {
     opts.onComplete?.({ score, total })
     mount.innerHTML = resultsHTML({ score, total, href: opts.backHref ?? '#/skills/reading', cta: opts.backCta ?? 'กลับหน้าการอ่าน' })
     if (xp > 0) floatXP(xp, mount.querySelector('.btn-primary'))
-    if (score / total >= 0.8) confetti()
+    if (total > 0 && score / total >= 0.8) confetti()
     if (newBadges && newBadges.length) setTimeout(() => showNewBadges(newBadges), 500)
-    mount.querySelector('#retry-btn').addEventListener('click', () => renderReadingLesson(piece, main, opts))
+    mount.querySelector('#retry-btn')?.addEventListener('click', () => renderReadingLesson(piece, main, opts))
   })
 }

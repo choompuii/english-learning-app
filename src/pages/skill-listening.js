@@ -88,6 +88,7 @@ export function renderListeningLesson(piece, main, opts = {}) {
   })
 
   body.querySelector('#repeat-btn').addEventListener('click', () => {
+    stopSpeech()
     speakTracked(fullText, rate, { onstart: () => setPlaying(true), onend: () => setPlaying(false) })
   })
 
@@ -95,6 +96,10 @@ export function renderListeningLesson(piece, main, opts = {}) {
     btn.addEventListener('click', () => {
       rate = parseFloat(btn.dataset.rate)
       body.querySelectorAll('.speed-btn').forEach(b => b.classList.toggle('active', b === btn))
+      if (playing) {
+        stopSpeech()
+        speakTracked(fullText, rate, { onstart: () => setPlaying(true), onend: () => setPlaying(false) })
+      }
     })
   })
 
@@ -151,8 +156,8 @@ function startQuiz(piece, main, opts = {}) {
     opts.onComplete?.({ score, total })
     mount.innerHTML = resultsHTML({ score, total, href: opts.backHref ?? '#/skills/listening', cta: opts.backCta ?? 'กลับหน้าการฟัง' })
     if (xp > 0) floatXP(xp, mount.querySelector('.btn-primary'))
-    if (score / total >= 0.8) confetti()
+    if (total > 0 && score / total >= 0.8) confetti()
     if (newBadges && newBadges.length) setTimeout(() => showNewBadges(newBadges), 500)
-    mount.querySelector('#retry-btn').addEventListener('click', () => renderListeningLesson(piece, main, opts))
+    mount.querySelector('#retry-btn')?.addEventListener('click', () => renderListeningLesson(piece, main, opts))
   })
 }
