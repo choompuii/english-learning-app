@@ -126,9 +126,9 @@ async function renderDashboard(main, state) {
       <!-- Welcome Card -->
       <div style="background:linear-gradient(135deg,#eef4f0 0%,#deeae3 100%);border:1px solid #c8ddd0;border-radius:20px;padding:24px 28px;margin-bottom:20px;display:flex;align-items:center;gap:20px;flex-wrap:wrap">
         <div style="width:56px;height:56px;border-radius:50%;background:${avatarColor};border:3px solid #fff;display:flex;align-items:center;justify-content:center;font-size:1.4rem;font-weight:700;color:#fff;flex-shrink:0">${initial}</div>
-        <div style="flex:1;min-width:0">
+        <div style="flex:1;min-width:140px">
           <p style="margin:0 0 2px;font-size:13px;color:#6b8a76">${greeting()},</p>
-          <h2 style="margin:0 0 6px;font-size:1.3rem;font-weight:800;color:#1e3a2a">${displayName}</h2>
+          <h2 style="margin:0 0 6px;font-size:1.3rem;font-weight:800;color:#1e3a2a;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${displayName}</h2>
           <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
             <span style="background:#fff;color:#2d6a4f;font-size:12px;font-weight:700;padding:3px 10px;border-radius:99px;border:1px solid #c8ddd0">${state.selectedLevel}</span>
             <span style="font-size:13px;color:#6b8a76">·</span>
@@ -146,7 +146,7 @@ async function renderDashboard(main, state) {
       <div class="dash-grid-2">
 
         <!-- Supplementary Reading -->
-        <div style="background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:20px">
+        <div style="background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:20px;overflow:hidden">
           <p style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--text-muted);margin:0 0 14px">📖 Supplementary Reading</p>
           ${primaryLesson ? `
             <div onclick="window.location.hash='/lessons/${primaryLesson.id}'" style="cursor:pointer">
@@ -171,14 +171,14 @@ async function renderDashboard(main, state) {
         </div>
 
         <!-- Daily Goal -->
-        <div style="background:var(--surface);border:1px solid ${goalReached ? 'var(--accent)' : 'var(--border)'};border-radius:16px;padding:20px">
+        <div style="background:var(--surface);border:1px solid ${goalReached ? 'var(--accent)' : 'var(--border)'};border-radius:16px;padding:20px;overflow:hidden">
           <p style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--text-muted);margin:0 0 14px">Daily Goal</p>
-          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
-            <div>
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;gap:8px;overflow:hidden">
+            <div style="min-width:0">
               <div style="font-size:1.6rem;font-weight:800;color:${goalReached?'var(--accent)':'var(--text)'};line-height:1">${goalPct}%</div>
               <div style="font-size:12px;color:var(--text-muted);margin-top:2px">${todayXp} / ${dailyGoal} XP</div>
             </div>
-            <div style="font-size:2rem">${goalReached ? '🎯' : '💪'}</div>
+            <div style="font-size:2rem;flex-shrink:0">${goalReached ? '🎯' : '💪'}</div>
           </div>
           <div style="height:8px;background:var(--border);border-radius:99px;overflow:hidden;margin-bottom:10px">
             <div style="height:100%;width:${goalPct}%;background:${goalReached?'var(--accent)':'var(--accent)'};border-radius:99px;transition:width .4s ease"></div>
@@ -315,7 +315,7 @@ function buildCourseCard(snapshot) {
       </div>
       <div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap">
         <div style="font-size:2.2rem;flex-shrink:0">${level.emoji}</div>
-        <div style="flex:1;min-width:180px">
+        <div style="flex:1;min-width:0">
           <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px">
             <span style="background:${level.color};color:#fff;font-size:12px;font-weight:700;padding:2px 10px;border-radius:99px">${level.label}</span>
             <span style="font-weight:700;color:var(--text)">${level.title}</span>
@@ -410,7 +410,7 @@ function buildCalendar(activityLog) {
   ).join('')
 
   return `
-    <div style="overflow-x:auto;-webkit-overflow-scrolling:touch">
+    <div style="overflow-x:auto;-webkit-overflow-scrolling:touch;max-width:100%">
       <div style="display:flex;gap:3px;align-items:flex-start;min-width:max-content">
         <div style="display:flex;flex-direction:column;gap:3px;margin-right:4px;padding-top:20px">${dowLabels}</div>
         ${colsHTML}

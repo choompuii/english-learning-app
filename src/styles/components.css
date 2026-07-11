@@ -905,6 +905,12 @@
   gap: 12px;
 }
 
+@media (max-width: 1024px) {
+  /* Dashboard grids stack on tablet/mobile */
+  .dash-grid-2 { grid-template-columns: 1fr; }
+  .dash-grid-3 { grid-template-columns: 1fr 1fr; }
+}
+
 @media (max-width: 768px) {
   .level-grid { grid-template-columns: repeat(3, 1fr); }
   .stats-row { gap: var(--sp-3); }
@@ -912,8 +918,6 @@
   .lessons-grid { grid-template-columns: 1fr; }
   .deck-grid { grid-template-columns: 1fr 1fr; }
 
-  /* Dashboard grids stack on mobile */
-  .dash-grid-2 { grid-template-columns: 1fr; }
   .dash-grid-3 { grid-template-columns: 1fr 1fr; }
 }
 
