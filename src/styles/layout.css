@@ -2,6 +2,8 @@
 #app {
   display: flex;
   min-height: 100vh;
+  overflow-x: hidden;
+  max-width: 100%;
 }
 
 /* Auth mode — hide sidebar, full-width content */
@@ -11,7 +13,7 @@ body.auth-mode #main-content { margin-left: 0; margin-bottom: 0; }
 /* Sidebar */
 #sidebar {
   width: var(--sidebar-width);
-  min-height: 100vh;
+  height: 100vh;
   background: var(--surface);
   border-right: 1px solid var(--border);
   display: flex;
@@ -21,6 +23,7 @@ body.auth-mode #main-content { margin-left: 0; margin-bottom: 0; }
   left: 0;
   z-index: 100;
   transition: width var(--duration) var(--ease);
+  overflow: hidden;
 }
 
 .sidebar-logo {
@@ -61,6 +64,35 @@ body.auth-mode #main-content { margin-left: 0; margin-bottom: 0; }
   flex-direction: column;
   gap: 2px;
   overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) var(--surface-2);
+}
+
+.sidebar-nav::-webkit-scrollbar {
+  width: 4px;
+}
+.sidebar-nav::-webkit-scrollbar-track {
+  background: var(--surface-2);
+  border-radius: 2px;
+}
+.sidebar-nav::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 2px;
+}
+.sidebar-nav::-webkit-scrollbar-thumb:hover {
+  background: var(--text-faint);
+}
+
+.nav-group-label {
+  display: block;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  opacity: 0.6;
+  padding: var(--sp-4) var(--sp-3) var(--sp-1);
+  pointer-events: none;
 }
 
 .nav-item {
@@ -143,32 +175,6 @@ body.auth-mode #main-content { margin-left: 0; margin-bottom: 0; }
   padding: var(--sp-10) var(--sp-6);
 }
 
-/* ── Tablet: sidebar collapses to icon-only ── */
-@media (max-width: 1024px) and (min-width: 769px) {
-  :root { --sidebar-width: var(--sidebar-collapsed); }
-
-  .sidebar-logo {
-    justify-content: center;
-    padding: var(--sp-5) var(--sp-3);
-  }
-  .sidebar-logo-text { display: none; }
-
-  .sidebar-footer { padding: var(--sp-3); }
-  .sidebar-footer .btn span { display: none; }
-
-  .nav-item {
-    justify-content: center;
-    padding: var(--sp-3);
-    gap: 0;
-  }
-  .nav-item span:not(.nav-icon) { display: none; }
-  .nav-item .nav-icon { margin: 0; }
-
-  .page, .page-wide {
-    padding: var(--sp-8) var(--sp-5);
-  }
-}
-
 /* ── More button — desktop hidden, mobile shown ── */
 .more-btn { display: none; }
 
@@ -240,8 +246,22 @@ body.auth-mode #main-content { margin-left: 0; margin-bottom: 0; }
 
 .more-drawer-item .nav-icon { width: 22px; height: 22px; }
 
-/* ── Mobile: bottom tab bar ── */
-@media (max-width: 768px) {
+.more-drawer-section { margin-bottom: var(--sp-4); }
+.more-drawer-section:last-child { margin-bottom: 0; }
+
+.more-drawer-section-label {
+  display: block;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  opacity: 0.6;
+  padding: 0 var(--sp-2) var(--sp-2);
+}
+
+/* ── Mobile / tablet: bottom tab bar ── */
+@media (max-width: 1024px) {
   #sidebar {
     width: 100%;
     height: 60px;
@@ -261,12 +281,15 @@ body.auth-mode #main-content { margin-left: 0; margin-bottom: 0; }
 
   .sidebar-nav {
     flex-direction: row;
-    padding: 0 var(--sp-2);
-    justify-content: space-around;
+    padding: 0;
+    justify-content: space-evenly;
     align-items: center;
     gap: 0;
     overflow-x: hidden;
   }
+
+  /* Group labels break row layout on mobile — hide them */
+  .nav-group-label { display: none; }
 
   /* Hide secondary nav items on mobile — keep 5 primary + More button */
   .nav-item[data-mobile-hide="true"] { display: none; }
@@ -275,12 +298,13 @@ body.auth-mode #main-content { margin-left: 0; margin-bottom: 0; }
   .nav-item {
     flex-direction: column;
     gap: 2px;
-    padding: var(--sp-2) var(--sp-3);
+    padding: var(--sp-2) var(--sp-1);
     font-size: 0.6rem;
     border-radius: var(--r-sm);
     box-shadow: none !important;
     flex: 1;
-    max-width: 72px;
+    max-width: 64px;
+    min-width: 0;
   }
 
   .nav-item.active {
@@ -293,6 +317,7 @@ body.auth-mode #main-content { margin-left: 0; margin-bottom: 0; }
   #main-content {
     margin-left: 0;
     margin-bottom: 60px;
+    overflow-x: hidden;
   }
 
   .page, .page-wide {

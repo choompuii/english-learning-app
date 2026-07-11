@@ -8,6 +8,7 @@ html {
   font-size: 16px;
   scroll-behavior: smooth;
   transition: background-color 200ms, color 200ms;
+  overflow-x: hidden;
 }
 
 body {
@@ -17,6 +18,8 @@ body {
   background: var(--ground);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  max-width: 100%;
 }
 
 h1, h2, h3, h4 {
