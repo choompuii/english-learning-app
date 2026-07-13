@@ -98,16 +98,8 @@ export function renderSentenceBuilder() {
         <h1>Sentence Builder</h1>
         <p>เรียงคำให้เป็นประโยคที่ถูกต้อง — ฝึกลำดับคำในภาษาอังกฤษ</p>
       </div>
-
-      <div style="display:flex;gap:var(--sp-2);flex-wrap:wrap;margin-bottom:var(--sp-6)" id="level-tabs">
-        ${SENTENCE_SETS.map((s, i) => `
-          <button class="btn ${i === 0 ? 'btn-primary' : 'btn-ghost'} btn-sm level-tab" data-idx="${i}">
-            <span class="level-badge level-${s.level}" style="margin-right:4px">${s.level}</span>${s.label}
-          </button>
-        `).join('')}
-      </div>
-
-      <div id="sb-content"></div>
+      <div id="sb-level-select"></div>
+      <div id="sb-content" style="display:none"></div>
     </div>
   `
 
@@ -116,18 +108,48 @@ export function renderSentenceBuilder() {
   let score = 0
   let total = 0
 
-  const tabs = main.querySelectorAll('.level-tab')
-  tabs.forEach(tab => {
-    tab.addEventListener('click', () => {
-      tabs.forEach(t => { t.className = 'btn btn-ghost btn-sm level-tab' })
-      tab.className = 'btn btn-primary btn-sm level-tab'
-      currentLevel = parseInt(tab.dataset.idx)
-      currentSentenceIdx = 0
-      score = 0
-      total = 0
-      renderSentence()
+  function renderLevelSelect() {
+    const levelSelect = main.querySelector('#sb-level-select')
+    const contentEl = main.querySelector('#sb-content')
+    levelSelect.style.display = ''
+    contentEl.style.display = 'none'
+
+    levelSelect.innerHTML = `
+      <div style="font-size:var(--text-xs);font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--text-muted);margin-bottom:var(--sp-5)">เลือกระดับ</div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:var(--sp-4)">
+        ${SENTENCE_SETS.map((s, i) => {
+          const best = getSentenceBuilderBest(s.level)
+          return `
+            <button class="sb-level-card" data-idx="${i}"
+              style="background:var(--surface);border:1.5px solid var(--border);border-radius:var(--r-lg);padding:var(--sp-5) var(--sp-5);text-align:left;cursor:pointer;transition:all 200ms var(--ease)"
+              onmouseover="this.style.borderColor='var(--accent)';this.style.background='var(--accent-soft)'"
+              onmouseout="this.style.borderColor='var(--border)';this.style.background='var(--surface)'">
+              <div style="display:flex;align-items:center;gap:var(--sp-3);margin-bottom:var(--sp-3)">
+                <span class="level-badge level-${s.level}">${s.level}</span>
+                <span style="font-weight:600;font-size:var(--text-sm)">${s.label}</span>
+              </div>
+              <div style="font-size:var(--text-xs);color:var(--text-muted);margin-bottom:var(--sp-2)">${s.sentences.length} ประโยค</div>
+              ${best ? `<div style="font-size:var(--text-xs);color:var(--accent);font-weight:700">🏆 Best ${best.bestScore}/${best.bestTotal}</div>` : '<div style="font-size:var(--text-xs);color:var(--text-faint)">ยังไม่เคยเล่น</div>'}
+            </button>
+          `
+        }).join('')}
+      </div>
+    `
+
+    levelSelect.querySelectorAll('.sb-level-card').forEach(btn => {
+      btn.addEventListener('click', () => {
+        currentLevel = parseInt(btn.dataset.idx)
+        currentSentenceIdx = 0
+        score = 0
+        total = 0
+        levelSelect.style.display = 'none'
+        contentEl.style.display = ''
+        renderSentence()
+      })
     })
-  })
+  }
+
+  renderLevelSelect()
 
   function renderSentence() {
     const set = SENTENCE_SETS[currentLevel]
@@ -137,10 +159,16 @@ export function renderSentenceBuilder() {
     const best = getSentenceBuilderBest(set.level)
 
     content.innerHTML = `
+      <div style="margin-bottom:var(--sp-4)">
+        <button id="sb-back-btn" class="btn btn-ghost btn-sm">← เลือกระดับ</button>
+      </div>
       <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--r-xl);padding:var(--sp-6);animation:pop-in 0.25s ease">
         <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:var(--sp-5);flex-wrap:wrap;gap:var(--sp-3)">
           <div>
-            <div style="font-size:var(--text-xs);font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--text-muted);margin-bottom:var(--sp-1)">ประโยคที่ ${currentSentenceIdx + 1} / ${set.sentences.length}</div>
+            <div style="display:flex;align-items:center;gap:var(--sp-2);margin-bottom:var(--sp-1)">
+              <span class="level-badge level-${set.level}">${set.level}</span>
+              <span style="font-size:var(--text-xs);font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--text-muted)">ประโยคที่ ${currentSentenceIdx + 1} / ${set.sentences.length}</span>
+            </div>
             <div style="font-size:var(--text-xl);font-weight:700;color:var(--text)">${sentence.thai}</div>
           </div>
           <div style="background:var(--accent-soft);border:1px solid var(--accent-mid);border-radius:var(--r-lg);padding:var(--sp-2) var(--sp-4);text-align:center;min-width:80px">
@@ -174,6 +202,8 @@ export function renderSentenceBuilder() {
         <div id="feedback" style="margin-top:var(--sp-4)"></div>
       </div>
     `
+
+    content.querySelector('#sb-back-btn').addEventListener('click', () => renderLevelSelect())
 
     const dropZone = content.querySelector('#drop-zone')
     const wordBank = content.querySelector('#word-bank')
@@ -309,6 +339,7 @@ export function renderSentenceBuilder() {
           <div style="display:flex;gap:var(--sp-3);justify-content:center;flex-wrap:wrap">
             <button class="btn btn-primary" id="restart-btn">↺ ทำอีกครั้ง</button>
             ${currentLevel < SENTENCE_SETS.length - 1 ? `<button class="btn btn-secondary" id="next-level-btn">ระดับถัดไป →</button>` : ''}
+            <button class="btn btn-ghost" id="back-select-btn">← เลือกระดับ</button>
           </div>
         </div>
       `
@@ -320,11 +351,10 @@ export function renderSentenceBuilder() {
         total = 0
         renderSentence()
       })
+      content.querySelector('#back-select-btn').addEventListener('click', () => renderLevelSelect())
       const nextLvlBtn = content.querySelector('#next-level-btn')
       if (nextLvlBtn) {
         nextLvlBtn.addEventListener('click', () => {
-          tabs.forEach(t => { t.className = 'btn btn-ghost btn-sm level-tab' })
-          tabs[currentLevel + 1].className = 'btn btn-primary btn-sm level-tab'
           currentLevel++
           currentSentenceIdx = 0
           score = 0
@@ -334,6 +364,4 @@ export function renderSentenceBuilder() {
       }
     }
   }
-
-  renderSentence()
 }
