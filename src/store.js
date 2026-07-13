@@ -26,7 +26,8 @@ const DEFAULT_STATE = {
   lessonNotes: {},
   reminderDismissedDate: null,
   skillProgress: {},
-  vocabProgress: {}
+  vocabProgress: {},
+  practiceWords: []
 }
 
 // ── Supabase sync ──
@@ -590,6 +591,38 @@ export function checkBadges(state) {
     }
   }
   return newlyEarned
+}
+
+// ── Practice Words (Speed Round) ──
+
+export function addToPracticeList(card) {
+  const s = load()
+  if (!s.practiceWords) s.practiceWords = []
+  if (s.practiceWords.some(c => c.front.toLowerCase() === card.front.toLowerCase())) return false
+  s.practiceWords.push({
+    front: card.front,
+    back: card.back,
+    thai: card.thai,
+    phonetic: card.phonetic || '',
+    acceptedVariants: card.acceptedVariants || []
+  })
+  save(s)
+  return true
+}
+
+export function removeFromPracticeList(word) {
+  const s = load()
+  if (!s.practiceWords) return
+  s.practiceWords = s.practiceWords.filter(c => c.front.toLowerCase() !== word.toLowerCase())
+  save(s)
+}
+
+export function getPracticeList() {
+  return load().practiceWords || []
+}
+
+export function isInPracticeList(word) {
+  return (load().practiceWords || []).some(c => c.front.toLowerCase() === word.toLowerCase())
 }
 
 // ── Bonus XP (Speed Round etc.) ──

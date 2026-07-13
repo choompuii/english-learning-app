@@ -1,9 +1,10 @@
 import { decks } from '../data/vocabulary.js'
 import { speak } from '../utils/tts.js'
-import { addBonusXP, recordSpeedRoundResult, getSpeedRoundBest } from '../store.js'
+import { addBonusXP, recordSpeedRoundResult, getSpeedRoundBest, addToPracticeList, removeFromPracticeList, getPracticeList, isInPracticeList } from '../store.js'
 import { floatXP, showNewBadges } from '../utils/fx.js'
 
 const TIMER_SECONDS = 10
+const PRACTICE_TIMER_SECONDS = 20
 const XP_PER_CORRECT = 10
 
 function shuffle(arr) {
@@ -17,6 +18,12 @@ function shuffle(arr) {
 
 function normalise(s) {
   return s.toLowerCase().trim().replace(/[.,!?;:()]/g, '').replace(/\s+/g, ' ')
+}
+
+function makeHint(word) {
+  return word.split(' ')
+    .map(w => w.split('').map((c, i) => i % 2 === 0 ? c.toUpperCase() : '_').join(''))
+    .join('  ')
 }
 
 export function renderSpeedRound() {
@@ -37,6 +44,8 @@ export function renderSpeedRound() {
       </div>
 
       <div id="sr-deck-select">
+        <div id="sr-practice-section"></div>
+
         <div style="font-size:var(--text-xs);font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--text-muted);margin-bottom:var(--sp-5)">เลือก deck</div>
         ${levels.map(lvl => `
           <div style="margin-bottom:var(--sp-5)">
@@ -73,6 +82,66 @@ export function renderSpeedRound() {
     })
   })
 
+  function renderPracticeSection() {
+    const practiceList = getPracticeList()
+    const section = main.querySelector('#sr-practice-section')
+    if (!section) return
+    if (practiceList.length === 0) { section.innerHTML = ''; return }
+
+    section.innerHTML = `
+      <div style="margin-bottom:var(--sp-6)">
+        <div style="font-size:var(--text-xs);font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--text-muted);margin-bottom:var(--sp-3)">คำที่ต้องฝึก</div>
+        <div style="display:flex;gap:var(--sp-3);align-items:stretch;flex-wrap:wrap">
+          <button id="sr-practice-start-btn"
+            style="background:var(--surface);border:2px solid var(--accent);border-radius:var(--r-lg);padding:var(--sp-4) var(--sp-5);text-align:left;cursor:pointer;transition:all 200ms var(--ease);min-width:220px"
+            onmouseover="this.style.background='var(--accent-soft)'"
+            onmouseout="this.style.background='var(--surface)'">
+            <div style="font-size:1.4rem;margin-bottom:var(--sp-2)">🎯</div>
+            <div style="font-weight:600;font-size:var(--text-sm);margin-bottom:4px">คำที่ต้องฝึก</div>
+            <div style="font-size:var(--text-xs);color:var(--text-muted)">${practiceList.length} คำ · มีคำใบ้</div>
+          </button>
+          <button id="sr-practice-manage-toggle"
+            style="background:transparent;border:1.5px dashed var(--border);border-radius:var(--r-lg);padding:var(--sp-3) var(--sp-4);font-size:var(--text-xs);color:var(--text-muted);cursor:pointer;align-self:flex-start;margin-top:var(--sp-2)">
+            จัดการ ›
+          </button>
+        </div>
+        <div id="sr-practice-manage-panel" style="display:none;margin-top:var(--sp-3);background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);padding:var(--sp-4)">
+          <div style="font-size:var(--text-xs);color:var(--text-muted);margin-bottom:var(--sp-3)">กดเอาออกเมื่อคล่องแล้ว</div>
+          <div style="display:flex;flex-wrap:wrap;gap:var(--sp-2)">
+            ${practiceList.map(c => `
+              <div style="display:flex;align-items:center;gap:var(--sp-2);background:var(--accent-soft);border:1px solid var(--accent-mid);border-radius:var(--r-full);padding:var(--sp-1) var(--sp-3);font-size:var(--text-sm)">
+                <span style="font-weight:600">${c.front}</span>
+                <button data-remove-word="${c.front}"
+                  style="background:none;border:none;cursor:pointer;color:var(--text-muted);font-size:1rem;line-height:1;padding:0"
+                  title="เอาออก">×</button>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+      </div>
+    `
+
+    section.querySelector('#sr-practice-start-btn').addEventListener('click', () => {
+      const cards = getPracticeList()
+      if (cards.length === 0) return
+      startSession({ id: '__practice__', title: 'คำที่ต้องฝึก', icon: '🎯', cards, isPractice: true })
+    })
+
+    section.querySelector('#sr-practice-manage-toggle').addEventListener('click', () => {
+      const panel = section.querySelector('#sr-practice-manage-panel')
+      panel.style.display = panel.style.display === 'none' ? '' : 'none'
+    })
+
+    section.querySelectorAll('[data-remove-word]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        removeFromPracticeList(btn.dataset.removeWord)
+        renderPracticeSection()
+      })
+    })
+  }
+
+  renderPracticeSection()
+
   let autoAdvanceTimeout = null
   let activeTimer = null
 
@@ -87,7 +156,8 @@ export function renderSpeedRound() {
     let idx = 0
     let correct = 0
     let total = 0
-    let timeLeft = TIMER_SECONDS
+    const cardTimer = deck.isPractice ? PRACTICE_TIMER_SECONDS : TIMER_SECONDS
+    let timeLeft = cardTimer
     let answered = false
 
     // Stop the countdown if the user navigates away mid-session (the interval would
@@ -104,7 +174,7 @@ export function renderSpeedRound() {
       }
       const card = cards[idx]
       answered = false
-      timeLeft = TIMER_SECONDS
+      timeLeft = cardTimer
 
       sessionEl.innerHTML = `
         <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--r-xl);padding:var(--sp-6);animation:pop-in 0.2s ease">
@@ -126,6 +196,7 @@ export function renderSpeedRound() {
           <div style="text-align:center;margin-bottom:var(--sp-6)">
             <div style="font-size:var(--text-2xl);font-weight:800;color:var(--text);margin-bottom:var(--sp-2)">${card.thai}</div>
             <div style="font-size:var(--text-sm);color:var(--text-muted)">${card.back}</div>
+            ${deck.isPractice ? `<div style="margin-top:var(--sp-3);font-family:monospace;font-size:var(--text-base);letter-spacing:0.15em;color:var(--accent);font-weight:600">${makeHint(card.front)}</div>` : ''}
           </div>
 
           <!-- Input -->
@@ -153,8 +224,8 @@ export function renderSpeedRound() {
       activeTimer = setInterval(() => {
         if (answered) return
         ticksDone++
-        timeLeft = TIMER_SECONDS - ticksDone
-        const pct = (timeLeft / TIMER_SECONDS) * 100
+        timeLeft = cardTimer - ticksDone
+        const pct = (timeLeft / cardTimer) * 100
         timerBar.style.width = pct + '%'
         timerBar.style.background = pct > 40 ? 'var(--accent)' : pct > 20 ? 'var(--gold)' : 'var(--danger)'
 
@@ -186,6 +257,7 @@ export function renderSpeedRound() {
           const newBadges = addBonusXP(XP_PER_CORRECT)
           floatXP(XP_PER_CORRECT, submitBtn)
           if (newBadges?.length) setTimeout(() => showNewBadges(newBadges), 500)
+          const alreadyInPractice = deck.isPractice
           feedback.innerHTML = `
             <div style="background:var(--accent-soft);border:1px solid var(--accent-mid);border-radius:var(--r-lg);padding:var(--sp-3) var(--sp-4);display:flex;align-items:center;gap:var(--sp-3);animation:pop-in 0.2s ease">
               <span style="font-size:1.3rem">✓</span>
@@ -194,21 +266,48 @@ export function renderSpeedRound() {
                 <span style="font-size:var(--text-xs);color:var(--text-muted);margin-left:var(--sp-2)">${card.phonetic || ''}</span>
               </div>
               <span style="margin-left:auto;font-size:var(--text-sm);font-weight:700;color:var(--accent)">+${XP_PER_CORRECT} XP</span>
+              ${alreadyInPractice ? `<button class="btn btn-ghost btn-sm" id="sr-remove-practice-btn" style="font-size:var(--text-xs)">คล่องแล้ว เอาออก ✓</button>` : ''}
             </div>
           `
+          if (alreadyInPractice) {
+            sessionEl.querySelector('#sr-remove-practice-btn')?.addEventListener('click', () => {
+              removeFromPracticeList(card.front)
+              if (autoAdvanceTimeout) { clearTimeout(autoAdvanceTimeout); autoAdvanceTimeout = null }
+              idx++; renderCard()
+            })
+          }
           autoAdvanceTimeout = setTimeout(() => { autoAdvanceTimeout = null; idx++; renderCard() }, 1200)
         } else {
           input.style.borderColor = 'var(--danger)'
+          const alreadyAdded = isInPracticeList(card.front)
           feedback.innerHTML = `
             <div style="background:var(--danger-soft);border:1px solid var(--danger);border-radius:var(--r-lg);padding:var(--sp-3) var(--sp-4);animation:pop-in 0.2s ease">
-              <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:var(--sp-2)">
+              <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:var(--sp-2);gap:var(--sp-2);flex-wrap:wrap">
                 <span style="font-weight:700;color:var(--danger)">${userAnswer === null ? '⏰ หมดเวลา' : '✗ ยังไม่ถูก'}</span>
-                <button class="btn btn-ghost btn-sm" id="sr-next-btn">ถัดไป →</button>
+                <div style="display:flex;gap:var(--sp-2)">
+                  ${!deck.isPractice ? `<button class="btn btn-ghost btn-sm" id="sr-add-practice-btn" ${alreadyAdded ? 'disabled' : ''} style="font-size:var(--text-xs)">${alreadyAdded ? '✓ เพิ่มแล้ว' : '+ ฝึกเพิ่ม'}</button>` : ''}
+                  <button class="btn btn-ghost btn-sm" id="sr-next-btn">ถัดไป →</button>
+                </div>
               </div>
               <div style="font-size:var(--text-sm)">คำตอบ: <strong style="color:var(--accent)">${card.front}</strong> <span style="color:var(--text-muted)">${card.phonetic || ''}</span></div>
             </div>
           `
-          sessionEl.querySelector('#sr-next-btn').addEventListener('click', () => { idx++; renderCard() })
+          if (!deck.isPractice && !alreadyAdded) {
+            sessionEl.querySelector('#sr-add-practice-btn')?.addEventListener('click', (e) => {
+              addToPracticeList(card)
+              e.target.textContent = '✓ เพิ่มแล้ว'
+              e.target.disabled = true
+            })
+          }
+          const nextBtn = sessionEl.querySelector('#sr-next-btn')
+          function advance() {
+            nextBtn.removeEventListener('click', advance)
+            document.removeEventListener('keyup', onEnterNext)
+            idx++; renderCard()
+          }
+          function onEnterNext(e) { if (e.key === 'Enter') advance() }
+          nextBtn.addEventListener('click', advance)
+          setTimeout(() => document.addEventListener('keyup', onEnterNext), 1000)
         }
       }
 
