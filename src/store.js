@@ -12,6 +12,9 @@ const DEFAULT_STATE = {
   sentenceBuilder: {},
   speedRound: {},
   speakingRound: {},
+  games: {},
+  conversations: {},
+  idioms: {},
   flashcards: {},
   notebook: [],
   dailyGoal: 50,
@@ -65,19 +68,28 @@ export async function initCloudSync() {
         ? local._savedAt > cloudState._savedAt
         : local.xp > (cloudState.xp || 0)
       const merged = localNewer ? local : cloudState
-      localStorage.setItem(KEY, JSON.stringify({ ...DEFAULT_STATE, ...merged }))
+      localStorage.setItem(KEY, JSON.stringify({ ...freshState(), ...merged }))
     }
   } catch (e) {
     console.error('Cloud sync failed', e)
   }
 }
 
+// A fresh, deeply-independent copy of the defaults. DEFAULT_STATE must never be
+// mutated: load() hands its result to callers that write into nested objects
+// (s.games[k] = ..., s.notebook.push(...)), so a shallow spread would share those
+// nested references with DEFAULT_STATE and permanently pollute the defaults —
+// which resurfaces stale data after resetProgress().
+function freshState() {
+  return structuredClone(DEFAULT_STATE)
+}
+
 function load() {
   try {
     const raw = localStorage.getItem(KEY)
-    return raw ? { ...DEFAULT_STATE, ...JSON.parse(raw) } : { ...DEFAULT_STATE }
+    return raw ? { ...freshState(), ...JSON.parse(raw) } : freshState()
   } catch {
-    return { ...DEFAULT_STATE }
+    return freshState()
   }
 }
 
@@ -254,6 +266,36 @@ export function recordSpeakingResult(deckId, correct, total) {
 export function getSpeakingBest(deckId) {
   const s = load()
   return (s.speakingRound || {})[deckId] || null
+}
+
+// Word games (Hangman / Word Match / Scramble). Keyed by "<game>:<deckId>".
+export function recordGameResult(gameKey, score, total) {
+  return recordBestResult('games', gameKey, score, total)
+}
+
+export function getGameBest(gameKey) {
+  const s = load()
+  return (s.games || {})[gameKey] || null
+}
+
+// Role-play conversations. Keyed by conversation id.
+export function recordConversationResult(convId, score, total) {
+  return recordBestResult('conversations', convId, score, total)
+}
+
+export function getConversationBest(convId) {
+  const s = load()
+  return (s.conversations || {})[convId] || null
+}
+
+// Idioms & phrasal-verb quizzes. Keyed by category id.
+export function recordIdiomResult(catId, score, total) {
+  return recordBestResult('idioms', catId, score, total)
+}
+
+export function getIdiomBest(catId) {
+  const s = load()
+  return (s.idioms || {})[catId] || null
 }
 
 // ── Skills (Vocabulary / Grammar / Reading / Listening) ──
