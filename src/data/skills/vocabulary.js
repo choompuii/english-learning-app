@@ -93,6 +93,94 @@ export const vocabularyCategories = [
         example: 'These cakes are too sweet for me.',
         synonym: 'sugary',
         antonym: 'sour'
+      },
+      {
+        word: 'bread',
+        pos: 'noun',
+        ipa: '/bred/',
+        emoji: '🍞',
+        thai: 'ขนมปัง',
+        def: 'a common food made from flour and baked in an oven',
+        example: 'I like to eat bread with butter in the morning.',
+        synonym: 'loaf',
+        antonym: null
+      },
+      {
+        word: 'egg',
+        pos: 'noun',
+        ipa: '/eɡ/',
+        emoji: '🥚',
+        thai: 'ไข่',
+        def: 'a round food from a bird, often eaten for breakfast',
+        example: 'She cooked an egg for her son.',
+        synonym: null,
+        antonym: null
+      },
+      {
+        word: 'milk',
+        pos: 'noun',
+        ipa: '/mɪlk/',
+        emoji: '🥛',
+        thai: 'นม',
+        def: 'a white drink that comes from cows',
+        example: 'Children should drink milk to grow strong.',
+        synonym: null,
+        antonym: null
+      },
+      {
+        word: 'chicken',
+        pos: 'noun',
+        ipa: '/ˈtʃɪk.ɪn/',
+        emoji: '🍗',
+        thai: 'ไก่',
+        def: 'the meat of a chicken that people cook and eat',
+        example: 'We had fried chicken for dinner.',
+        synonym: null,
+        antonym: null
+      },
+      {
+        word: 'vegetable',
+        pos: 'noun',
+        ipa: '/ˈvedʒ.tə.bəl/',
+        emoji: '🥦',
+        thai: 'ผัก',
+        def: 'a plant that people eat, like carrots or beans',
+        example: 'Eat more vegetables to stay healthy.',
+        synonym: null,
+        antonym: null
+      },
+      {
+        word: 'hungry',
+        pos: 'adjective',
+        ipa: '/ˈhʌŋ.ɡri/',
+        emoji: '😋',
+        thai: 'หิว',
+        def: 'wanting or needing to eat food',
+        example: 'I am very hungry after school.',
+        synonym: null,
+        antonym: 'full'
+      },
+      {
+        word: 'drink',
+        pos: 'verb',
+        ipa: '/drɪŋk/',
+        emoji: '🥤',
+        thai: 'ดื่ม',
+        def: 'to take liquid into your mouth and swallow it',
+        example: 'Please drink some water when it is hot.',
+        synonym: null,
+        antonym: null
+      },
+      {
+        word: 'spicy',
+        pos: 'adjective',
+        ipa: '/ˈspaɪ.si/',
+        emoji: '🌶️',
+        thai: 'เผ็ด',
+        def: 'having a strong, hot taste from spices or chili',
+        example: 'Thai food is often very spicy.',
+        synonym: 'hot',
+        antonym: 'mild'
       }
     ]
   },
@@ -190,6 +278,94 @@ export const vocabularyCategories = [
         example: 'A monkey took the banana from the tourist.',
         synonym: null,
         antonym: null
+      },
+      {
+        word: 'cow',
+        pos: 'noun',
+        ipa: '/kaʊ/',
+        emoji: '🐄',
+        thai: 'วัว',
+        def: 'a large farm animal that gives us milk',
+        example: 'The cow is eating grass in the field.',
+        synonym: null,
+        antonym: null
+      },
+      {
+        word: 'pig',
+        pos: 'noun',
+        ipa: '/pɪɡ/',
+        emoji: '🐷',
+        thai: 'หมู',
+        def: 'a farm animal with a fat body and a short tail',
+        example: 'The pig is sleeping in the mud.',
+        synonym: null,
+        antonym: null
+      },
+      {
+        word: 'horse',
+        pos: 'noun',
+        ipa: '/hɔːs/',
+        emoji: '🐴',
+        thai: 'ม้า',
+        def: 'a large animal that people can ride',
+        example: 'She rides a horse every weekend.',
+        synonym: null,
+        antonym: null
+      },
+      {
+        word: 'duck',
+        pos: 'noun',
+        ipa: '/dʌk/',
+        emoji: '🦆',
+        thai: 'เป็ด',
+        def: 'a bird that swims and lives near water',
+        example: 'The duck swims across the pond.',
+        synonym: null,
+        antonym: null
+      },
+      {
+        word: 'rabbit',
+        pos: 'noun',
+        ipa: '/ˈræb.ɪt/',
+        emoji: '🐰',
+        thai: 'กระต่าย',
+        def: 'a small animal with long ears that can jump',
+        example: 'The rabbit ate a carrot in the garden.',
+        synonym: 'bunny',
+        antonym: null
+      },
+      {
+        word: 'lion',
+        pos: 'noun',
+        ipa: '/ˈlaɪ.ən/',
+        emoji: '🦁',
+        thai: 'สิงโต',
+        def: 'a big wild cat that lives in Africa',
+        example: 'The lion is the king of the animals.',
+        synonym: null,
+        antonym: null
+      },
+      {
+        word: 'bear',
+        pos: 'noun',
+        ipa: '/beər/',
+        emoji: '🐻',
+        thai: 'หมี',
+        def: 'a large, strong animal with thick fur',
+        example: 'A bear lives in the forest.',
+        synonym: null,
+        antonym: null
+      },
+      {
+        word: 'wild',
+        pos: 'adjective',
+        ipa: '/waɪld/',
+        emoji: '🐾',
+        thai: 'ป่า',
+        def: 'living in nature and not kept by people',
+        example: 'Tigers are wild animals.',
+        synonym: null,
+        antonym: 'tame'
       }
     ]
   },
@@ -287,6 +463,94 @@ export const vocabularyCategories = [
         example: 'They have been married for ten years.',
         synonym: 'wed',
         antonym: 'single'
+      },
+      {
+        word: 'parents',
+        pos: 'noun',
+        ipa: '/ˈpeə.rənts/',
+        emoji: '👪',
+        thai: 'พ่อแม่',
+        def: "a person's mother and father",
+        example: 'My parents live in Bangkok.',
+        synonym: null,
+        antonym: 'children'
+      },
+      {
+        word: 'grandmother',
+        pos: 'noun',
+        ipa: '/ˈɡræn.mʌð.ər/',
+        emoji: '👵',
+        thai: 'ยาย',
+        def: 'the mother of your mother or father',
+        example: 'My grandmother tells us old stories.',
+        synonym: 'grandma',
+        antonym: 'grandfather'
+      },
+      {
+        word: 'grandfather',
+        pos: 'noun',
+        ipa: '/ˈɡræn.fɑː.ðər/',
+        emoji: '👴',
+        thai: 'ปู่',
+        def: 'the father of your mother or father',
+        example: 'My grandfather likes to work in the garden.',
+        synonym: 'grandpa',
+        antonym: 'grandmother'
+      },
+      {
+        word: 'son',
+        pos: 'noun',
+        ipa: '/sʌn/',
+        emoji: '👦',
+        thai: 'ลูกชาย',
+        def: 'a male child of a parent',
+        example: 'Their son is ten years old.',
+        synonym: null,
+        antonym: 'daughter'
+      },
+      {
+        word: 'daughter',
+        pos: 'noun',
+        ipa: '/ˈdɔː.tər/',
+        emoji: '👧',
+        thai: 'ลูกสาว',
+        def: 'a female child of a parent',
+        example: 'His daughter goes to school near the house.',
+        synonym: null,
+        antonym: 'son'
+      },
+      {
+        word: 'aunt',
+        pos: 'noun',
+        ipa: '/ɑːnt/',
+        emoji: '👩',
+        thai: 'ป้า',
+        def: 'the sister of your mother or father',
+        example: 'My aunt cooks very good food.',
+        synonym: null,
+        antonym: 'uncle'
+      },
+      {
+        word: 'uncle',
+        pos: 'noun',
+        ipa: '/ˈʌŋ.kəl/',
+        emoji: '🧔',
+        thai: 'ลุง',
+        def: 'the brother of your mother or father',
+        example: 'My uncle drives a big truck.',
+        synonym: null,
+        antonym: 'aunt'
+      },
+      {
+        word: 'child',
+        pos: 'noun',
+        ipa: '/tʃaɪld/',
+        emoji: '🧒',
+        thai: 'เด็ก',
+        def: 'a young boy or girl',
+        example: 'The child is playing in the park.',
+        synonym: 'kid',
+        antonym: 'adult'
       }
     ]
   },
@@ -383,6 +647,94 @@ export const vocabularyCategories = [
         def: 'the act of travelling from one place to another',
         example: 'The journey to Bangkok took six hours.',
         synonym: 'trip',
+        antonym: null
+      },
+      {
+        word: 'flight',
+        pos: 'noun',
+        ipa: '/flaɪt/',
+        emoji: '✈️',
+        thai: 'เที่ยวบิน',
+        def: 'a journey made by plane',
+        example: 'Our flight to Tokyo leaves at noon.',
+        synonym: null,
+        antonym: null
+      },
+      {
+        word: 'depart',
+        pos: 'verb',
+        ipa: '/dɪˈpɑːt/',
+        emoji: '🛫',
+        thai: 'ออกเดินทาง',
+        def: 'to leave a place, usually to start a journey',
+        example: 'The train will depart in five minutes.',
+        synonym: 'leave',
+        antonym: 'arrive'
+      },
+      {
+        word: 'tourist',
+        pos: 'noun',
+        ipa: '/ˈtʊə.rɪst/',
+        emoji: '📸',
+        thai: 'นักท่องเที่ยว',
+        def: 'a person who travels to visit places for fun',
+        example: 'Many tourists visit the temples in Chiang Mai.',
+        synonym: 'traveller',
+        antonym: 'local'
+      },
+      {
+        word: 'suitcase',
+        pos: 'noun',
+        ipa: '/ˈsuːt.keɪs/',
+        emoji: '🧳',
+        thai: 'กระเป๋าเดินทาง',
+        def: 'a large bag with a handle for carrying clothes when you travel',
+        example: 'I packed my clothes in a big suitcase.',
+        synonym: null,
+        antonym: null
+      },
+      {
+        word: 'book',
+        pos: 'verb',
+        ipa: '/bʊk/',
+        emoji: '📝',
+        thai: 'จอง',
+        def: 'to arrange to have something, like a room or seat, in advance',
+        example: 'We need to book a hotel before we go.',
+        synonym: 'reserve',
+        antonym: 'cancel'
+      },
+      {
+        word: 'abroad',
+        pos: 'adverb',
+        ipa: '/əˈbrɔːd/',
+        emoji: '🌍',
+        thai: 'ต่างประเทศ',
+        def: 'in or to a foreign country',
+        example: 'She wants to study abroad next year.',
+        synonym: 'overseas',
+        antonym: null
+      },
+      {
+        word: 'delay',
+        pos: 'noun',
+        ipa: '/dɪˈleɪ/',
+        emoji: '⏰',
+        thai: 'ความล่าช้า',
+        def: 'a time when something happens later than planned',
+        example: 'There was a long delay at the airport.',
+        synonym: null,
+        antonym: null
+      },
+      {
+        word: 'destination',
+        pos: 'noun',
+        ipa: '/ˌdes.tɪˈneɪ.ʃən/',
+        emoji: '📍',
+        thai: 'จุดหมายปลายทาง',
+        def: 'the place where someone or something is going',
+        example: 'Phuket is a popular holiday destination.',
+        synonym: null,
         antonym: null
       }
     ]
@@ -481,6 +833,94 @@ export const vocabularyCategories = [
         example: 'They gave me a ten percent discount.',
         synonym: 'reduction',
         antonym: null
+      },
+      {
+        word: 'market',
+        pos: 'noun',
+        ipa: '/ˈmɑː.kɪt/',
+        emoji: '🏪',
+        thai: 'ตลาด',
+        def: 'a place where people buy and sell things, often outside',
+        example: 'We buy fresh fruit at the market every morning.',
+        synonym: null,
+        antonym: null
+      },
+      {
+        word: 'sell',
+        pos: 'verb',
+        ipa: '/sel/',
+        emoji: '🤝',
+        thai: 'ขาย',
+        def: 'to give something to someone for money',
+        example: 'That shop sells shoes and bags.',
+        synonym: null,
+        antonym: 'buy'
+      },
+      {
+        word: 'cash',
+        pos: 'noun',
+        ipa: '/kæʃ/',
+        emoji: '💵',
+        thai: 'เงินสด',
+        def: 'money in the form of coins and notes',
+        example: 'I want to pay in cash, not by card.',
+        synonym: null,
+        antonym: null
+      },
+      {
+        word: 'receipt',
+        pos: 'noun',
+        ipa: '/rɪˈsiːt/',
+        emoji: '🧾',
+        thai: 'ใบเสร็จ',
+        def: 'a piece of paper that shows you paid for something',
+        example: 'Keep the receipt in case you return the shirt.',
+        synonym: null,
+        antonym: null
+      },
+      {
+        word: 'pay',
+        pos: 'verb',
+        ipa: '/peɪ/',
+        emoji: '💳',
+        thai: 'จ่ายเงิน',
+        def: 'to give money for something you buy',
+        example: 'You can pay at the counter over there.',
+        synonym: null,
+        antonym: null
+      },
+      {
+        word: 'sale',
+        pos: 'noun',
+        ipa: '/seɪl/',
+        emoji: '🏷️',
+        thai: 'การลดราคา',
+        def: 'a time when a shop sells things for less money',
+        example: 'These jeans are cheaper because they are on sale.',
+        synonym: null,
+        antonym: null
+      },
+      {
+        word: 'change',
+        pos: 'noun',
+        ipa: '/tʃeɪndʒ/',
+        emoji: '🪙',
+        thai: 'เงินทอน',
+        def: 'the money you get back when you pay too much',
+        example: 'The cashier gave me my change.',
+        synonym: null,
+        antonym: null
+      },
+      {
+        word: 'refund',
+        pos: 'noun',
+        ipa: '/ˈriː.fʌnd/',
+        emoji: '↩️',
+        thai: 'การคืนเงิน',
+        def: 'money given back to you when you return something',
+        example: 'I got a refund for the broken phone.',
+        synonym: null,
+        antonym: null
       }
     ]
   },
@@ -578,6 +1018,94 @@ export const vocabularyCategories = [
         example: 'The teacher wrote the answer on the board.',
         synonym: 'reply',
         antonym: 'question'
+      },
+      {
+        word: 'classroom',
+        pos: 'noun',
+        ipa: '/ˈklɑːs.ruːm/',
+        emoji: '🏫',
+        thai: 'ห้องเรียน',
+        def: 'a room in a school where lessons are taught',
+        example: 'The teacher waited for us in the classroom.',
+        synonym: 'schoolroom',
+        antonym: null
+      },
+      {
+        word: 'notebook',
+        pos: 'noun',
+        ipa: '/ˈnəʊt.bʊk/',
+        emoji: '📓',
+        thai: 'สมุด',
+        def: 'a book with empty pages for writing notes',
+        example: 'I wrote the new words in my notebook.',
+        synonym: 'jotter',
+        antonym: null
+      },
+      {
+        word: 'subject',
+        pos: 'noun',
+        ipa: '/ˈsʌb.dʒɪkt/',
+        emoji: '📚',
+        thai: 'วิชา',
+        def: 'an area of knowledge that you study at school',
+        example: 'Maths is my favourite subject.',
+        synonym: 'course',
+        antonym: null
+      },
+      {
+        word: 'grade',
+        pos: 'noun',
+        ipa: '/ɡreɪd/',
+        emoji: '🅰️',
+        thai: 'เกรด',
+        def: 'a mark that shows how good your work is',
+        example: 'She got a good grade on her test.',
+        synonym: 'mark',
+        antonym: null
+      },
+      {
+        word: 'study',
+        pos: 'verb',
+        ipa: '/ˈstʌd.i/',
+        emoji: '📖',
+        thai: 'เรียน',
+        def: 'to spend time learning about something',
+        example: 'I need to study for the exam tonight.',
+        synonym: 'revise',
+        antonym: null
+      },
+      {
+        word: 'explain',
+        pos: 'verb',
+        ipa: '/ɪkˈspleɪn/',
+        emoji: '🗣️',
+        thai: 'อธิบาย',
+        def: 'to make something clear or easy to understand',
+        example: 'Can you explain this question to me?',
+        synonym: 'clarify',
+        antonym: 'confuse'
+      },
+      {
+        word: 'difficult',
+        pos: 'adjective',
+        ipa: '/ˈdɪf.ɪ.kəlt/',
+        emoji: '😣',
+        thai: 'ยาก',
+        def: 'not easy to do or understand',
+        example: 'The last question was very difficult.',
+        synonym: 'hard',
+        antonym: 'easy'
+      },
+      {
+        word: 'absent',
+        pos: 'adjective',
+        ipa: '/ˈæb.sənt/',
+        emoji: '🚪',
+        thai: 'ขาดเรียน',
+        def: 'not present at school or a place',
+        example: 'Two students were absent yesterday.',
+        synonym: 'away',
+        antonym: 'present'
       }
     ]
   },
@@ -674,6 +1202,94 @@ export const vocabularyCategories = [
         def: 'a sign that shows you have an illness',
         example: 'A high fever is a common symptom of the flu.',
         synonym: 'sign',
+        antonym: null
+      },
+      {
+        word: 'nurse',
+        pos: 'noun',
+        ipa: '/nɜːs/',
+        emoji: '👩‍⚕️',
+        thai: 'พยาบาล',
+        def: 'a person trained to care for sick people',
+        example: 'The nurse checked my temperature.',
+        synonym: 'caregiver',
+        antonym: null
+      },
+      {
+        word: 'diet',
+        pos: 'noun',
+        ipa: '/ˈdaɪ.ət/',
+        emoji: '🥗',
+        thai: 'อาหารการกิน',
+        def: 'the kind of food a person usually eats',
+        example: 'A balanced diet keeps you strong.',
+        synonym: 'nutrition',
+        antonym: null
+      },
+      {
+        word: 'prescription',
+        pos: 'noun',
+        ipa: '/prɪˈskrɪp.ʃən/',
+        emoji: '📝',
+        thai: 'ใบสั่งยา',
+        def: 'a note from a doctor telling you which medicine to take',
+        example: 'The doctor gave me a prescription for antibiotics.',
+        synonym: null,
+        antonym: null
+      },
+      {
+        word: 'fever',
+        pos: 'noun',
+        ipa: '/ˈfiː.vər/',
+        emoji: '🤒',
+        thai: 'ไข้',
+        def: 'a body temperature that is higher than normal',
+        example: 'He stayed home because he had a fever.',
+        synonym: 'temperature',
+        antonym: null
+      },
+      {
+        word: 'breathe',
+        pos: 'verb',
+        ipa: '/briːð/',
+        emoji: '🫁',
+        thai: 'หายใจ',
+        def: 'to take air into your body and let it out',
+        example: 'Try to breathe slowly and relax.',
+        synonym: 'inhale',
+        antonym: null
+      },
+      {
+        word: 'exercise',
+        pos: 'verb',
+        ipa: '/ˈek.sə.saɪz/',
+        emoji: '🏃',
+        thai: 'ออกกำลังกาย',
+        def: 'to move your body to stay fit and healthy',
+        example: 'She exercises every morning before work.',
+        synonym: 'work out',
+        antonym: null
+      },
+      {
+        word: 'painful',
+        pos: 'adjective',
+        ipa: '/ˈpeɪn.fəl/',
+        emoji: '😖',
+        thai: 'เจ็บปวด',
+        def: 'causing physical pain',
+        example: 'My injured knee is still painful.',
+        synonym: 'sore',
+        antonym: 'painless'
+      },
+      {
+        word: 'contagious',
+        pos: 'adjective',
+        ipa: '/kənˈteɪ.dʒəs/',
+        emoji: '🦠',
+        thai: 'ติดต่อได้',
+        def: 'able to be spread from one person to another',
+        example: 'The flu is very contagious in winter.',
+        synonym: 'infectious',
         antonym: null
       }
     ]
@@ -772,6 +1388,94 @@ export const vocabularyCategories = [
         example: 'My father plans to retire at sixty.',
         synonym: null,
         antonym: null
+      },
+      {
+        word: 'promotion',
+        pos: 'noun',
+        ipa: '/prəˈməʊ.ʃən/',
+        emoji: '📈',
+        thai: 'การเลื่อนตำแหน่ง',
+        def: 'a move to a higher or more important job',
+        example: 'She got a promotion after five years.',
+        synonym: 'advancement',
+        antonym: 'demotion'
+      },
+      {
+        word: 'shift',
+        pos: 'noun',
+        ipa: '/ʃɪft/',
+        emoji: '🕒',
+        thai: 'กะทำงาน',
+        def: 'a set period of time that you work',
+        example: 'I work the night shift this week.',
+        synonym: 'stint',
+        antonym: null
+      },
+      {
+        word: 'task',
+        pos: 'noun',
+        ipa: '/tɑːsk/',
+        emoji: '✅',
+        thai: 'งานที่ต้องทำ',
+        def: 'a piece of work that must be done',
+        example: 'My first task today is to answer emails.',
+        synonym: 'job',
+        antonym: null
+      },
+      {
+        word: 'overtime',
+        pos: 'noun',
+        ipa: '/ˈəʊ.və.taɪm/',
+        emoji: '⏰',
+        thai: 'การทำงานล่วงเวลา',
+        def: 'extra time worked beyond normal working hours',
+        example: 'He earned more money by working overtime.',
+        synonym: null,
+        antonym: null
+      },
+      {
+        word: 'apply',
+        pos: 'verb',
+        ipa: '/əˈplaɪ/',
+        emoji: '📩',
+        thai: 'สมัคร',
+        def: 'to ask formally for a job or position',
+        example: 'I want to apply for the marketing job.',
+        synonym: null,
+        antonym: null
+      },
+      {
+        word: 'resign',
+        pos: 'verb',
+        ipa: '/rɪˈzaɪn/',
+        emoji: '🚪',
+        thai: 'ลาออก',
+        def: 'to officially leave your job',
+        example: 'She decided to resign and start her own business.',
+        synonym: 'quit',
+        antonym: null
+      },
+      {
+        word: 'skilled',
+        pos: 'adjective',
+        ipa: '/skɪld/',
+        emoji: '🛠️',
+        thai: 'มีทักษะ',
+        def: 'having the ability to do something well',
+        example: 'We need a skilled worker for this job.',
+        synonym: 'expert',
+        antonym: 'unskilled'
+      },
+      {
+        word: 'busy',
+        pos: 'adjective',
+        ipa: '/ˈbɪz.i/',
+        emoji: '😰',
+        thai: 'ยุ่ง',
+        def: 'having a lot of things to do',
+        example: 'I am too busy to take a break today.',
+        synonym: 'occupied',
+        antonym: 'free'
       }
     ]
   },
@@ -869,6 +1573,94 @@ export const vocabularyCategories = [
         example: 'The project went over budget.',
         synonym: null,
         antonym: null
+      },
+      {
+        word: 'revenue',
+        pos: 'noun',
+        ipa: '/ˈrev.ə.njuː/',
+        emoji: '💵',
+        thai: 'รายได้',
+        def: 'the total money a company earns from sales',
+        example: 'The shop increased its revenue last year.',
+        synonym: 'income',
+        antonym: 'expense'
+      },
+      {
+        word: 'brand',
+        pos: 'noun',
+        ipa: '/brænd/',
+        emoji: '™️',
+        thai: 'แบรนด์',
+        def: 'the name or image that a company uses for its products',
+        example: 'People trust this brand of coffee.',
+        synonym: 'label',
+        antonym: null
+      },
+      {
+        word: 'supplier',
+        pos: 'noun',
+        ipa: '/səˈplaɪ.ər/',
+        emoji: '🚚',
+        thai: 'ซัพพลายเออร์',
+        def: 'a company that provides goods to another business',
+        example: 'Our supplier delivers fresh vegetables daily.',
+        synonym: 'vendor',
+        antonym: null
+      },
+      {
+        word: 'competitor',
+        pos: 'noun',
+        ipa: '/kəmˈpet.ɪ.tər/',
+        emoji: '🥊',
+        thai: 'คู่แข่ง',
+        def: 'a company that sells the same things as another',
+        example: 'Our main competitor lowered its prices.',
+        synonym: 'rival',
+        antonym: 'partner'
+      },
+      {
+        word: 'negotiate',
+        pos: 'verb',
+        ipa: '/nɪˈɡəʊ.ʃi.eɪt/',
+        emoji: '🤝',
+        thai: 'เจรจาต่อรอง',
+        def: 'to talk in order to reach an agreement',
+        example: 'They will negotiate the price of the deal.',
+        synonym: 'bargain',
+        antonym: null
+      },
+      {
+        word: 'launch',
+        pos: 'verb',
+        ipa: '/lɔːntʃ/',
+        emoji: '🚀',
+        thai: 'เปิดตัว',
+        def: 'to make a new product available for the first time',
+        example: 'The company will launch a new phone in May.',
+        synonym: 'introduce',
+        antonym: null
+      },
+      {
+        word: 'profitable',
+        pos: 'adjective',
+        ipa: '/ˈprɒf.ɪ.tə.bəl/',
+        emoji: '📊',
+        thai: 'ทำกำไรได้',
+        def: 'making a profit or money',
+        example: 'The new store became profitable quickly.',
+        synonym: 'lucrative',
+        antonym: 'unprofitable'
+      },
+      {
+        word: 'wholesale',
+        pos: 'adjective',
+        ipa: '/ˈhəʊl.seɪl/',
+        emoji: '📦',
+        thai: 'ขายส่ง',
+        def: 'sold in large amounts at a lower price',
+        example: 'We buy these goods at wholesale prices.',
+        synonym: 'bulk',
+        antonym: 'retail'
       }
     ]
   },
@@ -966,6 +1758,1222 @@ export const vocabularyCategories = [
         example: 'Remember to update your phone regularly.',
         synonym: 'upgrade',
         antonym: null
+      },
+      {
+        word: 'keyboard',
+        pos: 'noun',
+        ipa: '/ˈkiː.bɔːd/',
+        emoji: '⌨️',
+        thai: 'แป้นพิมพ์',
+        def: 'the set of keys you use to type on a computer',
+        example: 'My keyboard is dirty and needs cleaning.',
+        synonym: null,
+        antonym: null
+      },
+      {
+        word: 'browser',
+        pos: 'noun',
+        ipa: '/ˈbraʊ.zər/',
+        emoji: '🌐',
+        thai: 'เบราว์เซอร์',
+        def: 'a program used to look at websites on the internet',
+        example: 'Open your browser and search for the answer.',
+        synonym: null,
+        antonym: null
+      },
+      {
+        word: 'file',
+        pos: 'noun',
+        ipa: '/faɪl/',
+        emoji: '📁',
+        thai: 'ไฟล์',
+        def: 'a collection of data stored on a computer',
+        example: 'Please save the file before you close it.',
+        synonym: 'document',
+        antonym: null
+      },
+      {
+        word: 'network',
+        pos: 'noun',
+        ipa: '/ˈnet.wɜːk/',
+        emoji: '📶',
+        thai: 'เครือข่าย',
+        def: 'a group of computers connected to share information',
+        example: 'All the office computers are on the same network.',
+        synonym: null,
+        antonym: null
+      },
+      {
+        word: 'install',
+        pos: 'verb',
+        ipa: '/ɪnˈstɔːl/',
+        emoji: '💾',
+        thai: 'ติดตั้ง',
+        def: 'to put a program onto a computer so it can be used',
+        example: 'You need to install the app before you use it.',
+        synonym: 'set up',
+        antonym: 'uninstall'
+      },
+      {
+        word: 'connect',
+        pos: 'verb',
+        ipa: '/kəˈnekt/',
+        emoji: '🔌',
+        thai: 'เชื่อมต่อ',
+        def: 'to join two things so they work together',
+        example: 'Connect your phone to the wifi first.',
+        synonym: 'link',
+        antonym: 'disconnect'
+      },
+      {
+        word: 'wireless',
+        pos: 'adjective',
+        ipa: '/ˈwaɪə.ləs/',
+        emoji: '📡',
+        thai: 'ไร้สาย',
+        def: 'working without wires or cables',
+        example: 'I bought a wireless mouse for my laptop.',
+        synonym: 'cordless',
+        antonym: 'wired'
+      },
+      {
+        word: 'digital',
+        pos: 'adjective',
+        ipa: '/ˈdɪdʒ.ɪ.təl/',
+        emoji: '💻',
+        thai: 'ดิจิทัล',
+        def: 'using or storing information as electronic data',
+        example: 'We keep all our photos in digital form.',
+        synonym: 'electronic',
+        antonym: 'analogue'
+      }
+    ]
+  },
+  {
+    id: 'vocab-home',
+    title: 'Home & Furniture',
+    thai: 'บ้านและเฟอร์นิเจอร์',
+    emoji: '🏠',
+    level: 'A1',
+    words: [
+      {
+        word: 'chair',
+        pos: 'noun',
+        ipa: '/tʃeə/',
+        emoji: '🪑',
+        thai: 'เก้าอี้',
+        def: 'a seat with a back for one person to sit on',
+        example: 'Please sit down on the chair.',
+        synonym: 'seat',
+        antonym: null
+      },
+      {
+        word: 'table',
+        pos: 'noun',
+        ipa: '/ˈteɪ.bəl/',
+        emoji: '🪑',
+        thai: 'โต๊ะ',
+        def: 'a piece of furniture with a flat top and legs',
+        example: 'We eat dinner at the table every night.',
+        synonym: 'desk',
+        antonym: null
+      },
+      {
+        word: 'bed',
+        pos: 'noun',
+        ipa: '/bed/',
+        emoji: '🛏️',
+        thai: 'เตียง',
+        def: 'a piece of furniture that you sleep on',
+        example: "I go to bed at ten o'clock.",
+        synonym: null,
+        antonym: null
+      },
+      {
+        word: 'sofa',
+        pos: 'noun',
+        ipa: '/ˈsəʊ.fə/',
+        emoji: '🛋️',
+        thai: 'โซฟา',
+        def: 'a long soft seat for two or more people',
+        example: 'They watched a film on the sofa.',
+        synonym: 'couch',
+        antonym: null
+      },
+      {
+        word: 'door',
+        pos: 'noun',
+        ipa: '/dɔː/',
+        emoji: '🚪',
+        thai: 'ประตู',
+        def: 'the part you open to go in or out of a room',
+        example: 'Please close the door when you leave.',
+        synonym: null,
+        antonym: null
+      },
+      {
+        word: 'window',
+        pos: 'noun',
+        ipa: '/ˈwɪn.dəʊ/',
+        emoji: '🪟',
+        thai: 'หน้าต่าง',
+        def: 'an opening in a wall with glass that lets in light',
+        example: 'Open the window to let in fresh air.',
+        synonym: null,
+        antonym: null
+      },
+      {
+        word: 'lamp',
+        pos: 'noun',
+        ipa: '/læmp/',
+        emoji: '💡',
+        thai: 'โคมไฟ',
+        def: 'a device that gives light',
+        example: 'She turned on the lamp to read her book.',
+        synonym: 'light',
+        antonym: null
+      },
+      {
+        word: 'kitchen',
+        pos: 'noun',
+        ipa: '/ˈkɪtʃ.ɪn/',
+        emoji: '🍳',
+        thai: 'ห้องครัว',
+        def: 'the room where you cook food',
+        example: 'My mother is cooking in the kitchen.',
+        synonym: null,
+        antonym: null
+      },
+      {
+        word: 'bathroom',
+        pos: 'noun',
+        ipa: '/ˈbɑːθ.ruːm/',
+        emoji: '🛁',
+        thai: 'ห้องน้ำ',
+        def: 'a room with a bath, shower, or toilet',
+        example: 'The bathroom is at the end of the hall.',
+        synonym: 'toilet',
+        antonym: null
+      },
+      {
+        word: 'wall',
+        pos: 'noun',
+        ipa: '/wɔːl/',
+        emoji: '🧱',
+        thai: 'กำแพง',
+        def: 'the side of a room or building',
+        example: 'There is a big picture on the wall.',
+        synonym: null,
+        antonym: null
+      },
+      {
+        word: 'clean',
+        pos: 'verb',
+        ipa: '/kliːn/',
+        emoji: '🧹',
+        thai: 'ทำความสะอาด',
+        def: 'to remove dirt from something',
+        example: 'I clean my room every weekend.',
+        synonym: 'wash',
+        antonym: 'dirty'
+      },
+      {
+        word: 'comfortable',
+        pos: 'adjective',
+        ipa: '/ˈkʌm.fə.tə.bəl/',
+        emoji: '😌',
+        thai: 'สบาย',
+        def: 'making you feel relaxed and nice',
+        example: 'This new bed is very comfortable.',
+        synonym: 'cosy',
+        antonym: 'uncomfortable'
+      }
+    ]
+  },
+  {
+    id: 'vocab-weather',
+    title: 'Weather & Nature',
+    thai: 'สภาพอากาศและธรรมชาติ',
+    emoji: '🌦️',
+    level: 'A1',
+    words: [
+      {
+        word: 'sun',
+        pos: 'noun',
+        ipa: '/sʌn/',
+        emoji: '☀️',
+        thai: 'ดวงอาทิตย์',
+        def: 'the bright star that gives us light and heat',
+        example: 'The sun is very bright today.',
+        synonym: null,
+        antonym: null
+      },
+      {
+        word: 'rain',
+        pos: 'noun',
+        ipa: '/reɪn/',
+        emoji: '🌧️',
+        thai: 'ฝน',
+        def: 'water that falls from the sky in drops',
+        example: 'We stayed inside because of the rain.',
+        synonym: null,
+        antonym: null
+      },
+      {
+        word: 'wind',
+        pos: 'noun',
+        ipa: '/wɪnd/',
+        emoji: '💨',
+        thai: 'ลม',
+        def: 'moving air outside',
+        example: 'The wind blew my hat away.',
+        synonym: 'breeze',
+        antonym: null
+      },
+      {
+        word: 'cloud',
+        pos: 'noun',
+        ipa: '/klaʊd/',
+        emoji: '☁️',
+        thai: 'เมฆ',
+        def: 'a white or grey shape in the sky made of water',
+        example: 'There is not a single cloud in the sky.',
+        synonym: null,
+        antonym: null
+      },
+      {
+        word: 'snow',
+        pos: 'noun',
+        ipa: '/snəʊ/',
+        emoji: '❄️',
+        thai: 'หิมะ',
+        def: 'soft white pieces of frozen water that fall from the sky',
+        example: 'The children played in the snow.',
+        synonym: null,
+        antonym: null
+      },
+      {
+        word: 'storm',
+        pos: 'noun',
+        ipa: '/stɔːm/',
+        emoji: '⛈️',
+        thai: 'พายุ',
+        def: 'very bad weather with strong wind and rain',
+        example: 'A big storm is coming tonight.',
+        synonym: null,
+        antonym: null
+      },
+      {
+        word: 'sky',
+        pos: 'noun',
+        ipa: '/skaɪ/',
+        emoji: '🌌',
+        thai: 'ท้องฟ้า',
+        def: 'the space above the earth where you see clouds and the sun',
+        example: 'The sky turned orange at sunset.',
+        synonym: null,
+        antonym: null
+      },
+      {
+        word: 'river',
+        pos: 'noun',
+        ipa: '/ˈrɪv.ə/',
+        emoji: '🏞️',
+        thai: 'แม่น้ำ',
+        def: 'a long line of water that flows to the sea',
+        example: 'We swam in the cool river.',
+        synonym: null,
+        antonym: null
+      },
+      {
+        word: 'mountain',
+        pos: 'noun',
+        ipa: '/ˈmaʊn.tɪn/',
+        emoji: '⛰️',
+        thai: 'ภูเขา',
+        def: 'a very high hill made of rock',
+        example: 'They climbed to the top of the mountain.',
+        synonym: null,
+        antonym: 'valley'
+      },
+      {
+        word: 'tree',
+        pos: 'noun',
+        ipa: '/triː/',
+        emoji: '🌳',
+        thai: 'ต้นไม้',
+        def: 'a tall plant with a trunk, branches, and leaves',
+        example: 'A bird is sitting in the tree.',
+        synonym: null,
+        antonym: null
+      },
+      {
+        word: 'hot',
+        pos: 'adjective',
+        ipa: '/hɒt/',
+        emoji: '🥵',
+        thai: 'ร้อน',
+        def: 'having a high temperature',
+        example: 'It is very hot in the summer.',
+        synonym: 'warm',
+        antonym: 'cold'
+      },
+      {
+        word: 'cold',
+        pos: 'adjective',
+        ipa: '/kəʊld/',
+        emoji: '🥶',
+        thai: 'หนาว',
+        def: 'having a low temperature',
+        example: 'Wear a coat because it is cold outside.',
+        synonym: 'chilly',
+        antonym: 'hot'
+      }
+    ]
+  },
+  {
+    id: 'vocab-sports',
+    title: 'Sports & Hobbies',
+    thai: 'กีฬาและงานอดิเรก',
+    emoji: '⚽',
+    level: 'A2',
+    words: [
+      {
+        word: 'football',
+        pos: 'noun',
+        ipa: '/ˈfʊt.bɔːl/',
+        emoji: '⚽',
+        thai: 'ฟุตบอล',
+        def: 'a game where two teams try to kick a ball into a goal',
+        example: 'They play football in the park on Sundays.',
+        synonym: 'soccer',
+        antonym: null
+      },
+      {
+        word: 'swimming',
+        pos: 'noun',
+        ipa: '/ˈswɪm.ɪŋ/',
+        emoji: '🏊',
+        thai: 'ว่ายน้ำ',
+        def: 'the activity of moving through water using your body',
+        example: 'Swimming is good exercise for your whole body.',
+        synonym: null,
+        antonym: null
+      },
+      {
+        word: 'running',
+        pos: 'noun',
+        ipa: '/ˈrʌn.ɪŋ/',
+        emoji: '🏃',
+        thai: 'การวิ่ง',
+        def: 'the activity of moving fast on your feet',
+        example: 'She goes running every morning before work.',
+        synonym: 'jogging',
+        antonym: null
+      },
+      {
+        word: 'cycling',
+        pos: 'noun',
+        ipa: '/ˈsaɪ.klɪŋ/',
+        emoji: '🚴',
+        thai: 'การขี่จักรยาน',
+        def: 'the activity of riding a bicycle',
+        example: 'Cycling to work saves money and keeps you fit.',
+        synonym: null,
+        antonym: null
+      },
+      {
+        word: 'painting',
+        pos: 'noun',
+        ipa: '/ˈpeɪn.tɪŋ/',
+        emoji: '🎨',
+        thai: 'การวาดภาพ',
+        def: 'the hobby of making pictures with paint',
+        example: 'Painting helps me relax after a long day.',
+        synonym: null,
+        antonym: null
+      },
+      {
+        word: 'reading',
+        pos: 'noun',
+        ipa: '/ˈriː.dɪŋ/',
+        emoji: '📖',
+        thai: 'การอ่านหนังสือ',
+        def: 'the activity of looking at and understanding words',
+        example: 'Reading before bed helps me sleep better.',
+        synonym: null,
+        antonym: null
+      },
+      {
+        word: 'dancing',
+        pos: 'noun',
+        ipa: '/ˈdɑːn.sɪŋ/',
+        emoji: '💃',
+        thai: 'การเต้นรำ',
+        def: 'moving your body to music',
+        example: 'Dancing is a fun way to stay active.',
+        synonym: null,
+        antonym: null
+      },
+      {
+        word: 'team',
+        pos: 'noun',
+        ipa: '/tiːm/',
+        emoji: '👥',
+        thai: 'ทีม',
+        def: 'a group of people who play or work together',
+        example: 'Our team won the match last weekend.',
+        synonym: 'group',
+        antonym: null
+      },
+      {
+        word: 'win',
+        pos: 'verb',
+        ipa: '/wɪn/',
+        emoji: '🏆',
+        thai: 'ชนะ',
+        def: 'to be the best or first in a game or race',
+        example: 'I hope our team will win the game.',
+        synonym: null,
+        antonym: 'lose'
+      },
+      {
+        word: 'practise',
+        pos: 'verb',
+        ipa: '/ˈpræk.tɪs/',
+        emoji: '🔁',
+        thai: 'ฝึกซ้อม',
+        def: 'to do something many times to get better at it',
+        example: 'You must practise every day to improve.',
+        synonym: 'train',
+        antonym: null
+      },
+      {
+        word: 'exciting',
+        pos: 'adjective',
+        ipa: '/ɪkˈsaɪ.tɪŋ/',
+        emoji: '🤩',
+        thai: 'น่าตื่นเต้น',
+        def: 'making you feel happy and full of energy',
+        example: 'The final match was really exciting to watch.',
+        synonym: 'thrilling',
+        antonym: 'boring'
+      },
+      {
+        word: 'fit',
+        pos: 'adjective',
+        ipa: '/fɪt/',
+        emoji: '💪',
+        thai: 'แข็งแรง',
+        def: 'healthy and strong because of exercise',
+        example: 'Playing sports keeps you fit and healthy.',
+        synonym: 'healthy',
+        antonym: 'unfit'
+      }
+    ]
+  },
+  {
+    id: 'vocab-emotions',
+    title: 'Emotions & Feelings',
+    thai: 'อารมณ์และความรู้สึก',
+    emoji: '😊',
+    level: 'A2',
+    words: [
+      {
+        word: 'happy',
+        pos: 'adjective',
+        ipa: '/ˈhæp.i/',
+        emoji: '😊',
+        thai: 'มีความสุข',
+        def: 'feeling good and pleased',
+        example: 'She was very happy to see her old friend.',
+        synonym: 'glad',
+        antonym: 'sad'
+      },
+      {
+        word: 'sad',
+        pos: 'adjective',
+        ipa: '/sæd/',
+        emoji: '😢',
+        thai: 'เศร้า',
+        def: 'feeling unhappy',
+        example: 'He felt sad when his dog got lost.',
+        synonym: 'unhappy',
+        antonym: 'happy'
+      },
+      {
+        word: 'angry',
+        pos: 'adjective',
+        ipa: '/ˈæŋ.ɡri/',
+        emoji: '😠',
+        thai: 'โกรธ',
+        def: 'feeling strong bad emotion because something is wrong',
+        example: 'My father was angry when I came home late.',
+        synonym: 'mad',
+        antonym: 'calm'
+      },
+      {
+        word: 'scared',
+        pos: 'adjective',
+        ipa: '/skeəd/',
+        emoji: '😨',
+        thai: 'กลัว',
+        def: 'feeling afraid',
+        example: 'The little boy was scared of the dark.',
+        synonym: 'afraid',
+        antonym: 'brave'
+      },
+      {
+        word: 'tired',
+        pos: 'adjective',
+        ipa: '/ˈtaɪəd/',
+        emoji: '😴',
+        thai: 'เหนื่อย',
+        def: 'needing rest or sleep',
+        example: 'I am very tired after the long walk.',
+        synonym: 'sleepy',
+        antonym: 'energetic'
+      },
+      {
+        word: 'excited',
+        pos: 'adjective',
+        ipa: '/ɪkˈsaɪ.tɪd/',
+        emoji: '🤗',
+        thai: 'ตื่นเต้น',
+        def: 'feeling very happy and interested in something',
+        example: 'The kids are excited about the school trip.',
+        synonym: 'thrilled',
+        antonym: 'bored'
+      },
+      {
+        word: 'bored',
+        pos: 'adjective',
+        ipa: '/bɔːd/',
+        emoji: '😑',
+        thai: 'เบื่อ',
+        def: 'feeling tired because something is not interesting',
+        example: 'The students were bored during the long lesson.',
+        synonym: null,
+        antonym: 'excited'
+      },
+      {
+        word: 'nervous',
+        pos: 'adjective',
+        ipa: '/ˈnɜː.vəs/',
+        emoji: '😰',
+        thai: 'ประหม่า',
+        def: 'feeling worried about something that will happen',
+        example: 'She felt nervous before the big exam.',
+        synonym: 'anxious',
+        antonym: 'relaxed'
+      },
+      {
+        word: 'proud',
+        pos: 'adjective',
+        ipa: '/praʊd/',
+        emoji: '😌',
+        thai: 'ภูมิใจ',
+        def: 'feeling happy about something good you did',
+        example: 'His parents were proud of his good grades.',
+        synonym: null,
+        antonym: 'ashamed'
+      },
+      {
+        word: 'surprised',
+        pos: 'adjective',
+        ipa: '/səˈpraɪzd/',
+        emoji: '😲',
+        thai: 'ประหลาดใจ',
+        def: 'feeling a sudden emotion because of something you did not expect',
+        example: 'I was surprised by the birthday party.',
+        synonym: 'amazed',
+        antonym: null
+      },
+      {
+        word: 'worry',
+        pos: 'verb',
+        ipa: '/ˈwʌr.i/',
+        emoji: '😟',
+        thai: 'กังวล',
+        def: 'to think about problems and feel unhappy',
+        example: 'Do not worry, everything will be fine.',
+        synonym: null,
+        antonym: 'relax'
+      },
+      {
+        word: 'smile',
+        pos: 'verb',
+        ipa: '/smaɪl/',
+        emoji: '🙂',
+        thai: 'ยิ้ม',
+        def: 'to make a happy face with your mouth',
+        example: 'She smiled when she opened the gift.',
+        synonym: null,
+        antonym: 'frown'
+      }
+    ]
+  },
+  {
+    id: 'vocab-money',
+    title: 'Money & Finance',
+    thai: 'เงินและการเงิน',
+    emoji: '💰',
+    level: 'B2',
+    words: [
+      {
+        word: 'inflation',
+        pos: 'noun',
+        ipa: '/ɪnˈfleɪ.ʃən/',
+        emoji: '📈',
+        thai: 'ภาวะเงินเฟ้อ',
+        def: 'a general increase in prices and fall in the purchasing value of money',
+        example: 'Rising inflation has made everyday groceries noticeably more expensive this year.',
+        synonym: 'price rise',
+        antonym: 'deflation'
+      },
+      {
+        word: 'budget',
+        pos: 'noun',
+        ipa: '/ˈbʌdʒ.ɪt/',
+        emoji: '🧾',
+        thai: 'งบประมาณ',
+        def: 'a plan showing how much money you have and how you will spend it',
+        example: 'They set a strict monthly budget to help pay off their debts faster.',
+        synonym: 'financial plan',
+        antonym: null
+      },
+      {
+        word: 'invest',
+        pos: 'verb',
+        ipa: '/ɪnˈvest/',
+        emoji: '📊',
+        thai: 'ลงทุน',
+        def: 'to put money into something in order to make a profit',
+        example: 'She decided to invest part of her savings in an index fund.',
+        synonym: 'fund',
+        antonym: 'withdraw'
+      },
+      {
+        word: 'mortgage',
+        pos: 'noun',
+        ipa: '/ˈmɔː.ɡɪdʒ/',
+        emoji: '🏠',
+        thai: 'สินเชื่อบ้าน',
+        def: 'a loan from a bank used to buy property, repaid over many years',
+        example: 'It took them thirty years to finally pay off the mortgage on their house.',
+        synonym: 'home loan',
+        antonym: null
+      },
+      {
+        word: 'interest rate',
+        pos: 'noun',
+        ipa: '/ˈɪn.trəst ˌreɪt/',
+        emoji: '🏦',
+        thai: 'อัตราดอกเบี้ย',
+        def: 'the percentage charged on a loan or paid on savings',
+        example: 'The central bank raised the interest rate to slow down borrowing.',
+        synonym: null,
+        antonym: null
+      },
+      {
+        word: 'debt',
+        pos: 'noun',
+        ipa: '/det/',
+        emoji: '💳',
+        thai: 'หนี้',
+        def: 'money that is owed to someone else',
+        example: 'He worked two jobs for a year to clear his credit card debt.',
+        synonym: 'liability',
+        antonym: 'asset'
+      },
+      {
+        word: 'currency',
+        pos: 'noun',
+        ipa: '/ˈkʌr.ən.si/',
+        emoji: '💱',
+        thai: 'สกุลเงิน',
+        def: 'the system of money used in a particular country',
+        example: 'The local currency lost a lot of its value against the dollar.',
+        synonym: 'money',
+        antonym: null
+      },
+      {
+        word: 'profitable',
+        pos: 'adjective',
+        ipa: '/ˈprɒf.ɪ.tə.bəl/',
+        emoji: '💹',
+        thai: 'ที่ทำกำไร',
+        def: 'producing a financial gain or benefit',
+        example: 'The bakery became profitable within its first two years of trading.',
+        synonym: 'lucrative',
+        antonym: 'unprofitable'
+      },
+      {
+        word: 'expenditure',
+        pos: 'noun',
+        ipa: '/ɪkˈspen.dɪ.tʃər/',
+        emoji: '🛒',
+        thai: 'รายจ่าย',
+        def: 'the total amount of money that is spent',
+        example: 'The company reduced its expenditure by cutting travel costs.',
+        synonym: 'spending',
+        antonym: 'income'
+      },
+      {
+        word: 'wealthy',
+        pos: 'adjective',
+        ipa: '/ˈwel.θi/',
+        emoji: '🤑',
+        thai: 'ร่ำรวย',
+        def: 'having a large amount of money, property, or valuable possessions',
+        example: 'Only a small number of wealthy investors could afford the property.',
+        synonym: 'rich',
+        antonym: 'poor'
+      },
+      {
+        word: 'bankrupt',
+        pos: 'adjective',
+        ipa: '/ˈbæŋ.krʌpt/',
+        emoji: '📉',
+        thai: 'ล้มละลาย',
+        def: 'unable to pay debts and officially declared insolvent',
+        example: 'The airline went bankrupt after months of falling ticket sales.',
+        synonym: 'insolvent',
+        antonym: 'solvent'
+      },
+      {
+        word: 'afford',
+        pos: 'verb',
+        ipa: '/əˈfɔːd/',
+        emoji: '💵',
+        thai: 'มีเงินพอที่จะซื้อ',
+        def: 'to have enough money to pay for something',
+        example: 'We simply cannot afford a new car until next year.',
+        synonym: null,
+        antonym: null
+      }
+    ]
+  },
+  {
+    id: 'vocab-environment',
+    title: 'Environment & Climate',
+    thai: 'สิ่งแวดล้อมและภูมิอากาศ',
+    emoji: '🌍',
+    level: 'B2',
+    words: [
+      {
+        word: 'sustainability',
+        pos: 'noun',
+        ipa: '/səˌsteɪ.nəˈbɪl.ə.ti/',
+        emoji: '♻️',
+        thai: 'ความยั่งยืน',
+        def: 'the ability to continue over time without damaging the environment',
+        example: 'The company built its brand around sustainability and low-waste packaging.',
+        synonym: 'durability',
+        antonym: null
+      },
+      {
+        word: 'emissions',
+        pos: 'noun',
+        ipa: '/iˈmɪʃ.ənz/',
+        emoji: '🏭',
+        thai: 'การปล่อยมลพิษ',
+        def: 'gases or substances released into the air, especially harmful ones',
+        example: 'New rules aim to cut carbon emissions from factories by half.',
+        synonym: 'discharge',
+        antonym: null
+      },
+      {
+        word: 'renewable',
+        pos: 'adjective',
+        ipa: '/rɪˈnjuː.ə.bəl/',
+        emoji: '🌬️',
+        thai: 'ที่หมุนเวียนได้',
+        def: 'able to be replaced naturally and not used up, such as wind or solar power',
+        example: 'The country now generates most of its electricity from renewable sources.',
+        synonym: 'sustainable',
+        antonym: 'nonrenewable'
+      },
+      {
+        word: 'pollution',
+        pos: 'noun',
+        ipa: '/pəˈluː.ʃən/',
+        emoji: '💨',
+        thai: 'มลพิษ',
+        def: 'the presence of harmful substances in the air, water, or soil',
+        example: 'Air pollution in the city often reaches dangerous levels in winter.',
+        synonym: 'contamination',
+        antonym: null
+      },
+      {
+        word: 'deforestation',
+        pos: 'noun',
+        ipa: '/diːˌfɒr.ɪˈsteɪ.ʃən/',
+        emoji: '🪓',
+        thai: 'การตัดไม้ทำลายป่า',
+        def: 'the clearing or cutting down of forests on a large scale',
+        example: 'Deforestation threatens the survival of countless animal species.',
+        synonym: null,
+        antonym: 'reforestation'
+      },
+      {
+        word: 'conserve',
+        pos: 'verb',
+        ipa: '/kənˈsɜːv/',
+        emoji: '🌱',
+        thai: 'อนุรักษ์',
+        def: 'to protect and avoid wasting a natural resource',
+        example: 'Simple habits at home can help conserve both water and energy.',
+        synonym: 'preserve',
+        antonym: 'waste'
+      },
+      {
+        word: 'biodiversity',
+        pos: 'noun',
+        ipa: '/ˌbaɪ.əʊ.daɪˈvɜː.sə.ti/',
+        emoji: '🦋',
+        thai: 'ความหลากหลายทางชีวภาพ',
+        def: 'the variety of plant and animal life in a particular habitat',
+        example: 'Coral reefs support an extraordinary level of biodiversity.',
+        synonym: null,
+        antonym: null
+      },
+      {
+        word: 'drought',
+        pos: 'noun',
+        ipa: '/draʊt/',
+        emoji: '🏜️',
+        thai: 'ภัยแล้ง',
+        def: 'a long period of unusually low rainfall causing a shortage of water',
+        example: 'The prolonged drought destroyed most of the region’s crops.',
+        synonym: null,
+        antonym: 'flood'
+      },
+      {
+        word: 'recycle',
+        pos: 'verb',
+        ipa: '/ˌriːˈsaɪ.kəl/',
+        emoji: '🗑️',
+        thai: 'รีไซเคิล',
+        def: 'to treat used materials so they can be used again',
+        example: 'Residents are encouraged to recycle glass, paper, and plastic separately.',
+        synonym: 'reuse',
+        antonym: null
+      },
+      {
+        word: 'endangered',
+        pos: 'adjective',
+        ipa: '/ɪnˈdeɪn.dʒəd/',
+        emoji: '🐼',
+        thai: 'ที่ใกล้สูญพันธุ์',
+        def: 'at serious risk of no longer existing as a species',
+        example: 'Tigers remain an endangered species despite conservation efforts.',
+        synonym: 'threatened',
+        antonym: null
+      },
+      {
+        word: 'greenhouse gas',
+        pos: 'noun',
+        ipa: '/ˈɡriːn.haʊs ˌɡæs/',
+        emoji: '🌫️',
+        thai: 'ก๊าซเรือนกระจก',
+        def: 'a gas that traps heat in the atmosphere and contributes to warming',
+        example: 'Methane is a greenhouse gas far more potent than carbon dioxide.',
+        synonym: null,
+        antonym: null
+      },
+      {
+        word: 'ecosystem',
+        pos: 'noun',
+        ipa: '/ˈiː.kəʊˌsɪs.təm/',
+        emoji: '🌿',
+        thai: 'ระบบนิเวศ',
+        def: 'all the living things in an area and the way they affect each other',
+        example: 'Introducing a foreign fish disrupted the entire river ecosystem.',
+        synonym: null,
+        antonym: null
+      }
+    ]
+  },
+  {
+    id: 'vocab-science',
+    title: 'Science & Innovation',
+    thai: 'วิทยาศาสตร์และนวัตกรรม',
+    emoji: '🔬',
+    level: 'C1',
+    words: [
+      {
+        word: 'hypothesis',
+        pos: 'noun',
+        ipa: '/haɪˈpɒθ.ə.sɪs/',
+        emoji: '💡',
+        thai: 'สมมติฐาน',
+        def: 'a proposed explanation made on limited evidence as a starting point for investigation',
+        example: 'The researchers designed an experiment to test their hypothesis.',
+        synonym: 'theory',
+        antonym: null
+      },
+      {
+        word: 'empirical',
+        pos: 'adjective',
+        ipa: '/ɪmˈpɪr.ɪ.kəl/',
+        emoji: '🧪',
+        thai: 'ที่อิงจากการทดลอง',
+        def: 'based on observation or experiment rather than theory alone',
+        example: 'The claim was rejected because it lacked any empirical support.',
+        synonym: 'observational',
+        antonym: 'theoretical'
+      },
+      {
+        word: 'breakthrough',
+        pos: 'noun',
+        ipa: '/ˈbreɪk.θruː/',
+        emoji: '🚀',
+        thai: 'ความก้าวหน้าครั้งสำคัญ',
+        def: 'an important discovery or development that solves a difficult problem',
+        example: 'The vaccine represented a major breakthrough in modern medicine.',
+        synonym: 'advance',
+        antonym: 'setback'
+      },
+      {
+        word: 'replicate',
+        pos: 'verb',
+        ipa: '/ˈrep.lɪ.keɪt/',
+        emoji: '🔁',
+        thai: 'ทำซ้ำ',
+        def: 'to repeat a study or experiment to check its results',
+        example: 'Other labs failed to replicate the surprising findings.',
+        synonym: 'reproduce',
+        antonym: null
+      },
+      {
+        word: 'catalyst',
+        pos: 'noun',
+        ipa: '/ˈkæt.ə.lɪst/',
+        emoji: '⚗️',
+        thai: 'ตัวเร่งปฏิกิริยา',
+        def: 'a substance that speeds up a reaction, or an event that causes change',
+        example: 'The new funding acted as a catalyst for rapid innovation.',
+        synonym: 'stimulus',
+        antonym: 'inhibitor'
+      },
+      {
+        word: 'sophisticated',
+        pos: 'adjective',
+        ipa: '/səˈfɪs.tɪ.keɪ.tɪd/',
+        emoji: '🤖',
+        thai: 'ที่ซับซ้อนและก้าวหน้า',
+        def: 'highly developed and complex in design or method',
+        example: 'The lab uses sophisticated software to model climate patterns.',
+        synonym: 'advanced',
+        antonym: 'primitive'
+      },
+      {
+        word: 'quantify',
+        pos: 'verb',
+        ipa: '/ˈkwɒn.tɪ.faɪ/',
+        emoji: '📐',
+        thai: 'วัดเป็นปริมาณ',
+        def: 'to measure or express something as an amount or number',
+        example: 'It is difficult to quantify the exact impact of the treatment.',
+        synonym: 'measure',
+        antonym: null
+      },
+      {
+        word: 'innovation',
+        pos: 'noun',
+        ipa: '/ˌɪn.əˈveɪ.ʃən/',
+        emoji: '⚙️',
+        thai: 'นวัตกรรม',
+        def: 'a new method, idea, or product that introduces meaningful change',
+        example: 'Constant innovation keeps the technology company ahead of its rivals.',
+        synonym: 'invention',
+        antonym: 'stagnation'
+      },
+      {
+        word: 'prototype',
+        pos: 'noun',
+        ipa: '/ˈprəʊ.tə.taɪp/',
+        emoji: '🛠️',
+        thai: 'ต้นแบบ',
+        def: 'an early model of a product built to test a concept',
+        example: 'Engineers unveiled a working prototype of the electric aircraft.',
+        synonym: 'model',
+        antonym: null
+      },
+      {
+        word: 'phenomenon',
+        pos: 'noun',
+        ipa: '/fəˈnɒm.ɪ.nən/',
+        emoji: '🌀',
+        thai: 'ปรากฏการณ์',
+        def: 'a fact or event that can be observed, especially one not fully understood',
+        example: 'Scientists still cannot fully explain the strange magnetic phenomenon.',
+        synonym: 'occurrence',
+        antonym: null
+      },
+      {
+        word: 'obsolete',
+        pos: 'adjective',
+        ipa: '/ˈɒb.sə.liːt/',
+        emoji: '📼',
+        thai: 'ล้าสมัย',
+        def: 'no longer used or useful because something newer exists',
+        example: 'Streaming services quickly made physical discs obsolete.',
+        synonym: 'outdated',
+        antonym: 'current'
+      },
+      {
+        word: 'automation',
+        pos: 'noun',
+        ipa: '/ˌɔː.təˈmeɪ.ʃən/',
+        emoji: '🦾',
+        thai: 'ระบบอัตโนมัติ',
+        def: 'the use of machines or technology to perform tasks without human effort',
+        example: 'Automation has transformed how modern factories operate.',
+        synonym: 'mechanization',
+        antonym: null
+      }
+    ]
+  },
+  {
+    id: 'vocab-society',
+    title: 'Politics & Society',
+    thai: 'การเมืองและสังคม',
+    emoji: '🏛️',
+    level: 'C2',
+    words: [
+      {
+        word: 'democracy',
+        pos: 'noun',
+        ipa: '/dɪˈmɒk.rə.si/',
+        emoji: '🗳️',
+        thai: 'ประชาธิปไตย',
+        def: 'a system of government in which citizens vote to elect their leaders',
+        example: 'A functioning democracy depends on a free and independent press.',
+        synonym: null,
+        antonym: 'dictatorship'
+      },
+      {
+        word: 'legislation',
+        pos: 'noun',
+        ipa: '/ˌledʒ.ɪˈsleɪ.ʃən/',
+        emoji: '📜',
+        thai: 'กฎหมาย',
+        def: 'a law or set of laws formally created by a governing body',
+        example: 'Parliament passed sweeping legislation to protect workers’ rights.',
+        synonym: 'law',
+        antonym: null
+      },
+      {
+        word: 'inequality',
+        pos: 'noun',
+        ipa: '/ˌɪn.ɪˈkwɒl.ə.ti/',
+        emoji: '⚖️',
+        thai: 'ความเหลื่อมล้ำ',
+        def: 'an unfair difference in wealth, rights, or opportunity between groups',
+        example: 'Widening income inequality has become a central political issue.',
+        synonym: 'disparity',
+        antonym: 'equality'
+      },
+      {
+        word: 'accountability',
+        pos: 'noun',
+        ipa: '/əˌkaʊn.təˈbɪl.ə.ti/',
+        emoji: '🔍',
+        thai: 'ความรับผิดชอบที่ตรวจสอบได้',
+        def: 'the obligation to explain and take responsibility for one’s actions',
+        example: 'Voters demanded greater accountability from their elected officials.',
+        synonym: 'responsibility',
+        antonym: null
+      },
+      {
+        word: 'partisan',
+        pos: 'adjective',
+        ipa: '/ˈpɑː.tɪ.zæn/',
+        emoji: '🎭',
+        thai: 'ที่ลำเอียงเข้าข้างฝ่ายตน',
+        def: 'strongly and often blindly loyal to a particular party or cause',
+        example: 'The debate collapsed into bitter partisan point-scoring.',
+        synonym: 'biased',
+        antonym: 'impartial'
+      },
+      {
+        word: 'sovereignty',
+        pos: 'noun',
+        ipa: '/ˈsɒv.rɪn.ti/',
+        emoji: '🏴',
+        thai: 'อำนาจอธิปไตย',
+        def: 'the full right and power of a state to govern itself',
+        example: 'The treaty was criticised as a threat to national sovereignty.',
+        synonym: 'autonomy',
+        antonym: null
+      },
+      {
+        word: 'marginalise',
+        pos: 'verb',
+        ipa: '/ˈmɑː.dʒɪ.nə.laɪz/',
+        emoji: '🚷',
+        thai: 'ทำให้ถูกกีดกัน',
+        def: 'to treat a person or group as unimportant or push them to the edges of society',
+        example: 'Reforms aimed to include communities that policy had long marginalised.',
+        synonym: 'exclude',
+        antonym: 'include'
+      },
+      {
+        word: 'referendum',
+        pos: 'noun',
+        ipa: '/ˌref.əˈren.dəm/',
+        emoji: '🗒️',
+        thai: 'การลงประชามติ',
+        def: 'a vote in which all citizens decide a single important question',
+        example: 'The government held a referendum on whether to change the constitution.',
+        synonym: 'plebiscite',
+        antonym: null
+      },
+      {
+        word: 'authoritarian',
+        pos: 'adjective',
+        ipa: '/ɔːˌθɒr.ɪˈteə.ri.ən/',
+        emoji: '👑',
+        thai: 'แบบเผด็จการ',
+        def: 'demanding strict obedience and allowing little personal freedom',
+        example: 'The regime grew increasingly authoritarian after silencing the opposition.',
+        synonym: 'dictatorial',
+        antonym: 'democratic'
+      },
+      {
+        word: 'disenfranchise',
+        pos: 'verb',
+        ipa: '/ˌdɪs.ɪnˈfræn.tʃaɪz/',
+        emoji: '🚫',
+        thai: 'ตัดสิทธิเลือกตั้ง',
+        def: 'to deprive someone of the right to vote or of other rights',
+        example: 'Strict identification laws effectively disenfranchise many poorer voters.',
+        synonym: null,
+        antonym: 'enfranchise'
+      },
+      {
+        word: 'polarisation',
+        pos: 'noun',
+        ipa: '/ˌpəʊ.lər.aɪˈzeɪ.ʃən/',
+        emoji: '↔️',
+        thai: 'การแบ่งขั้ว',
+        def: 'the division of a society into two sharply opposed groups or opinions',
+        example: 'Social media has intensified the political polarisation of the country.',
+        synonym: 'division',
+        antonym: 'unity'
+      },
+      {
+        word: 'advocate',
+        pos: 'verb',
+        ipa: '/ˈæd.və.keɪt/',
+        emoji: '📢',
+        thai: 'สนับสนุนอย่างเปิดเผย',
+        def: 'to publicly support or recommend a particular cause or policy',
+        example: 'The senator continued to advocate for universal healthcare.',
+        synonym: 'support',
+        antonym: 'oppose'
       }
     ]
   }
