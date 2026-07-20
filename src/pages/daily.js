@@ -230,14 +230,18 @@ function startSession(main, cards) {
             <div style="font-size:var(--text-sm)">คำตอบ: <strong style="color:var(--accent)">${esc(card.front)}</strong> <span style="color:var(--text-muted)">${esc(card.phonetic || '')}</span></div>
           </div>`
         const nextBtn = sessionEl.querySelector('#daily-next-btn')
+        let advanced = false
+        const enterTimer = setTimeout(() => document.addEventListener('keyup', onEnterNext), 1000)
         function advance() {
+          if (advanced) return
+          advanced = true
+          clearTimeout(enterTimer)
           nextBtn.removeEventListener('click', advance)
           document.removeEventListener('keyup', onEnterNext)
           idx++; renderCard()
         }
         function onEnterNext(e) { if (e.key === 'Enter') advance() }
         nextBtn.addEventListener('click', advance)
-        setTimeout(() => document.addEventListener('keyup', onEnterNext), 1000)
       }
     }
 

@@ -300,14 +300,18 @@ export function renderSpeedRound() {
             })
           }
           const nextBtn = sessionEl.querySelector('#sr-next-btn')
+          let advanced = false
+          const enterTimer = setTimeout(() => document.addEventListener('keyup', onEnterNext), 1000)
           function advance() {
+            if (advanced) return
+            advanced = true
+            clearTimeout(enterTimer)
             nextBtn.removeEventListener('click', advance)
             document.removeEventListener('keyup', onEnterNext)
             idx++; renderCard()
           }
           function onEnterNext(e) { if (e.key === 'Enter') advance() }
           nextBtn.addEventListener('click', advance)
-          setTimeout(() => document.addEventListener('keyup', onEnterNext), 1000)
         }
       }
 
