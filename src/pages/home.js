@@ -194,13 +194,15 @@ async function renderDashboard(main, state) {
       <!-- Daily Challenge -->
       <div style="margin-bottom:20px">
         <p style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--text-muted);margin:0 0 12px">Daily Challenge</p>
-        <a href="#/daily" style="display:flex;align-items:center;gap:14px;background:linear-gradient(135deg,var(--cta-grad-a) 0%,var(--cta-grad-b) 100%);border-radius:16px;padding:18px 22px;text-decoration:none;margin-bottom:12px;box-shadow:0 4px 16px var(--cta-shadow)">
+        <a href="#/daily" style="display:flex;align-items:center;gap:14px;background:var(--accent-soft);border:1.5px solid var(--accent-mid);border-radius:16px;padding:18px 22px;text-decoration:none;margin-bottom:12px;transition:transform .15s,box-shadow .15s"
+           onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 4px 16px rgba(0,0,0,.06)'"
+           onmouseout="this.style.transform='';this.style.boxShadow=''">
           <div style="font-size:2rem;flex-shrink:0">🗓️</div>
           <div style="flex:1;min-width:0">
-            <div style="font-size:14px;font-weight:800;color:#fff;margin-bottom:2px">Daily Challenge</div>
-            <div style="font-size:12px;color:#d5e8dd">ทบทวน ${dailyDone ? 'อีกครั้ง — วันนี้ทำแล้ว ✓' : 'คำที่ต้องฝึกวันนี้'}${dailyStreak > 0 ? ` · 🔥 ${dailyStreak} วันติด` : ''}</div>
+            <div style="font-size:14px;font-weight:800;color:var(--text);margin-bottom:2px">Daily Challenge</div>
+            <div style="font-size:12px;color:var(--text-muted)">ทบทวน ${dailyDone ? 'อีกครั้ง — วันนี้ทำแล้ว ✓' : 'คำที่ต้องฝึกวันนี้'}${dailyStreak > 0 ? ` · 🔥 ${dailyStreak} วันติด` : ''}</div>
           </div>
-          <span style="background:rgba(255,255,255,.2);color:#fff;font-size:13px;font-weight:700;padding:8px 14px;border-radius:10px;white-space:nowrap">${dailyDone ? 'เล่นซ้ำ' : 'เริ่มเลย'} →</span>
+          <span style="background:var(--accent);color:#fff;font-size:13px;font-weight:700;padding:8px 14px;border-radius:10px;white-space:nowrap">${dailyDone ? 'เล่นซ้ำ' : 'เริ่มเลย'} →</span>
         </a>
         <div class="dash-grid-3">
           ${[
