@@ -27,7 +27,8 @@ const DEFAULT_STATE = {
   reminderDismissedDate: null,
   skillProgress: {},
   vocabProgress: {},
-  practiceWords: []
+  practiceWords: [],
+  dailyChallenge: {}
 }
 
 // ── Supabase sync ──
@@ -551,6 +552,7 @@ export const BADGES = [
   { id: 'scholar',       icon: '📓',  name: 'Scholar',       desc: 'บันทึกคำใน notebook 20 คำ', check: s => (s.notebook || []).length >= 20 },
   { id: 'listener',      icon: '🔊',  name: 'Listener',      desc: 'ฟัง TTS 50 ครั้ง', check: s => (s.ttsCount || 0) >= 50 },
   { id: 'typist',        icon: '✍️',  name: 'Typist',        desc: 'ทำ dictation ครบ 1 deck', check: s => (s.dictationDone || []).length >= 1 },
+  { id: 'daily-devotee', icon: '🗓️',  name: 'Daily Devotee', desc: 'ทำ Daily Challenge ครบ 7 วัน', check: s => Object.keys(s.dailyChallenge || {}).length >= 7 },
   { id: 'legend',        icon: '👑',  name: 'Legend',        desc: 'สะสม XP ถึง 1,000', check: s => (s.xp || 0) >= 1000 },
   { id: 'completionist', icon: '🎓',  name: 'Completionist', desc: 'ผ่านทุก lesson ใน 1 level', check: s => hasCompletedLevel(s) },
 ]
@@ -623,6 +625,58 @@ export function getPracticeList() {
 
 export function isInPracticeList(word) {
   return (load().practiceWords || []).some(c => c.front.toLowerCase() === word.toLowerCase())
+}
+
+// ── Daily Challenge ──
+// A mixed daily review drawn from the learner's weak/due words. Completion is
+// logged per day (YYYY-MM-DD); the number of distinct logged days both drives
+// the Daily Devotee badge and lets us derive a "days in a row" streak.
+
+export function getDailyChallengeToday() {
+  const s = load()
+  return (s.dailyChallenge || {})[todayStr()] || null
+}
+
+// Consecutive days (ending today or yesterday) with a completed daily challenge.
+export function getDailyChallengeStreak() {
+  const log = load().dailyChallenge || {}
+  let streak = 0
+  let cursor = todayStr()
+  // Allow the streak to still "count" if today isn't done yet but yesterday was.
+  if (!log[cursor]) cursor = yesterdayStr(cursor)
+  while (log[cursor]) {
+    streak++
+    cursor = yesterdayStr(cursor)
+  }
+  return streak
+}
+
+export function recordDailyChallenge(score, total) {
+  const s = load()
+  touchStreak(s)
+  if (!s.dailyChallenge) s.dailyChallenge = {}
+  const today = todayStr()
+  const prev = s.dailyChallenge[today]
+  const isFirst = !prev
+  s.dailyChallenge[today] = {
+    score: Math.max(score, prev?.score || 0),
+    total,
+    completedAt: new Date().toISOString(),
+    plays: (prev?.plays || 0) + 1
+  }
+  // Completion bonus awarded only the first time each day (per-question XP is
+  // granted live via addBonusXP during the run).
+  let bonus = 0
+  if (isFirst) {
+    bonus = 15
+    s.xp = (s.xp || 0) + bonus
+    addTodayXp(s, bonus)
+    touchActivityLog(s, bonus)
+  }
+  touchGoalStreak(s)
+  const newBadges = checkBadges(s)
+  save(s)
+  return { newBadges, isFirst, bonus, best: s.dailyChallenge[today].score }
 }
 
 // ── Bonus XP (Speed Round etc.) ──

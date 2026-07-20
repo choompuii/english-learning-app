@@ -14,10 +14,19 @@
   --accent-mid:   #C5DFD0;
   --gold:         #F5C842;
   --gold-soft:    #FEF7DC;
+  --gold-border:  #E8D9B8;
+  --gold-text:    #9E7530;
+  --gold-strong:  #7A5C1A;
+  --violet-soft:   #F5F2FB;
+  --violet-border: #CCC3E0;
   --danger:       #C84B31;
   --danger-soft:  #FAEAE6;
   --success:      #1F6B47;
   --success-soft: #E8F2EC;
+  --heat-rgb:     45,106,79;
+  --cta-grad-a:   #2D6A4F;
+  --cta-grad-b:   #3D8B64;
+  --cta-shadow:   rgba(45,106,79,.18);
 
   /* Typography */
   --font-display: 'Poppins', 'Sarabun', sans-serif;
@@ -83,10 +92,19 @@
   --accent-mid:   #254D38;
   --gold:         #F5C842;
   --gold-soft:    #2A2210;
+  --gold-border:  #4A3D18;
+  --gold-text:    #C99A3A;
+  --gold-strong:  #E0B84A;
+  --violet-soft:   #221D33;
+  --violet-border: #3D3355;
   --danger:       #F07060;
   --danger-soft:  #2E1818;
   --success:      #3FBF74;
   --success-soft: #1A3327;
+  --heat-rgb:     63,191,116;
+  --cta-grad-a:   #1E4130;
+  --cta-grad-b:   #295A42;
+  --cta-shadow:   rgba(0,0,0,.3);
 }
 
 /* Dark mode overrides for hardcoded colours in components */
