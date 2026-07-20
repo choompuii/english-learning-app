@@ -25,6 +25,9 @@ import { renderProfile } from './pages/profile.js'
 import { renderSpeakingBrowser } from './pages/speaking.js'
 import { renderDaily } from './pages/daily.js'
 import { renderInsights } from './pages/insights.js'
+import { renderGamesHub, renderGame } from './pages/games.js'
+import { renderConversationHub, renderConversation } from './pages/conversation.js'
+import { renderIdiomsHub, renderIdiomCategory } from './pages/idioms.js'
 
 // Auth guard — wraps any handler that requires login
 function guard(fn) {
@@ -67,6 +70,12 @@ route('/sentence-builder',guard(() => renderSentenceBuilder()))
 route('/speed-round',     guard(() => renderSpeedRound()))
 route('/daily',           guard(() => renderDaily()))
 route('/insights',        guard(() => renderInsights()))
+route('/games',           guard(() => renderGamesHub()))
+route('/games/:game',     guard(({ game }) => renderGame({ game })))
+route('/conversation',      guard(() => renderConversationHub()))
+route('/conversation/:id',  guard(({ id }) => renderConversation({ id })))
+route('/idioms',          guard(() => renderIdiomsHub()))
+route('/idioms/:id',      guard(({ id }) => renderIdiomCategory({ id })))
 
 // Boot
 storeLessonsSnapshot(lessons)
