@@ -1,6 +1,7 @@
 import { decks } from '../data/vocabulary.js'
 import { getProgress, addBonusXP, recordSpeakingResult } from '../store.js'
-import { speak } from '../utils/tts.js'
+import { speak, speakSlow } from '../utils/tts.js'
+import { ipaToThai } from '../utils/ipa-to-thai.js'
 import { floatXP, showNewBadges } from '../utils/fx.js'
 
 const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition
@@ -79,13 +80,40 @@ function normalize(str) {
   return str.toLowerCase().replace(/[^a-z\s]/g, '').trim()
 }
 
+// Word-level comparison of the expected phrase against what was heard. Each
+// expected word is marked hit/miss depending on whether it appeared in the
+// recognised transcript — this is honest word-level feedback (the browser's
+// speech API returns whole words, not phonemes), not an AI guess.
+function diffHighlight(expected, heard) {
+  const heardWords = new Set(normalize(heard).split(/\s+/).filter(Boolean))
+  return expected.split(/\s+/).map(w => {
+    const hit = heardWords.has(normalize(w))
+    return `<span style="padding:1px 6px;border-radius:var(--r-sm);font-family:var(--font-mono);font-weight:700;${hit
+      ? 'background:var(--accent-soft);color:var(--accent)'
+      : 'background:var(--danger-soft);color:var(--danger);text-decoration:underline'}">${w}</span>`
+  }).join(' ')
+}
+
+// Pronunciation guide: IPA + a Thai-readable approximation (from ipa-to-thai).
+function pronunciationGuide(card) {
+  const thaiRead = card.phonetic ? ipaToThai(card.phonetic) : ''
+  if (!card.phonetic && !thaiRead) return ''
+  return `
+    <div style="display:inline-flex;flex-direction:column;gap:2px;align-items:center;margin-bottom:var(--sp-4)">
+      ${card.phonetic ? `<span style="font-family:var(--font-mono);color:var(--text-muted)">${card.phonetic}</span>` : ''}
+      ${thaiRead ? `<span style="font-size:var(--text-sm);color:var(--accent);font-weight:600">🗣️ ${thaiRead}</span>` : ''}
+    </div>`
+}
+
 function renderSession(area, deckId) {
   const deck = decks.find(d => d.id === deckId)
   if (!deck) return
 
   const cards = shuffle(deck.cards)
   let idx = 0
-  let correct = 0
+  // Track correct answers by card index so a "retry this word" that later
+  // succeeds can't double-count the same card.
+  const correctSet = new Set()
   let recognizer = null
 
   function showCard() {
@@ -134,7 +162,7 @@ function renderSession(area, deckId) {
       if (answered) return
       answered = true
       stopRecognizer()
-      if (isCorrect) correct++
+      if (isCorrect) correctSet.add(idx)
 
       const xpGain = isCorrect ? 10 : 0
       if (xpGain > 0) {
@@ -145,18 +173,33 @@ function renderSession(area, deckId) {
       area.innerHTML = `
         <div style="text-align:center">
           <div style="font-size:3rem;margin-bottom:var(--sp-4)">${isCorrect ? '✅' : '❌'}</div>
-          <div style="font-size:var(--text-2xl);font-weight:800;margin-bottom:var(--sp-2);color:${isCorrect ? 'var(--accent)' : 'var(--danger)'}">
+          <div style="font-size:var(--text-2xl);font-weight:800;margin-bottom:var(--sp-4);color:${isCorrect ? 'var(--accent)' : 'var(--danger)'}">
             ${isCorrect ? 'ถูกต้อง!' : 'ลองใหม่'}
           </div>
-          ${!isCorrect ? `<div style="color:var(--text-muted);margin-bottom:var(--sp-2)">ได้ยิน: <em>"${heard || '—'}"</em></div>` : ''}
-          <div style="font-size:var(--text-2xl);font-weight:700;font-family:var(--font-mono);color:var(--text);margin-bottom:4px">${card.front}</div>
-          ${card.phonetic ? `<div style="font-family:var(--font-mono);color:var(--text-muted);margin-bottom:var(--sp-4)">${card.phonetic}</div>` : ''}
-          <button class="btn btn-ghost btn-sm" id="listen-btn" style="margin-bottom:var(--sp-6)">🔊 ฟังเสียง</button>
-          <br>
+
+          <div style="font-size:var(--text-2xl);font-weight:700;font-family:var(--font-mono);color:var(--text);margin-bottom:var(--sp-2)">${card.front}</div>
+          ${pronunciationGuide(card)}
+
+          ${!isCorrect ? `
+            <div style="background:var(--surface-2);border:1px solid var(--border);border-radius:var(--r-lg);padding:var(--sp-4);margin:0 auto var(--sp-5);max-width:420px">
+              <div style="font-size:var(--text-xs);font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:var(--text-muted);margin-bottom:var(--sp-3)">เทียบทีละคำ</div>
+              <div style="margin-bottom:var(--sp-3);line-height:2">${diffHighlight(card.front, heard)}</div>
+              <div style="font-size:var(--text-sm);color:var(--text-muted)">ได้ยินว่า: <em>"${heard || '—'}"</em></div>
+            </div>
+          ` : ''}
+
+          <div style="display:flex;gap:var(--sp-2);justify-content:center;flex-wrap:wrap;margin-bottom:var(--sp-6)">
+            <button class="btn btn-ghost btn-sm" id="listen-btn">🔊 ฟังปกติ</button>
+            <button class="btn btn-ghost btn-sm" id="listen-slow-btn">🐢 ฟังช้าๆ</button>
+            ${!isCorrect ? `<button class="btn btn-ghost btn-sm" id="retry-word-btn">🎤 พูดคำนี้ใหม่</button>` : ''}
+          </div>
+
           <button id="next-btn" class="btn btn-primary btn-lg">ถัดไป →</button>
         </div>
       `
       area.querySelector('#listen-btn').addEventListener('click', () => speak(card.front))
+      area.querySelector('#listen-slow-btn').addEventListener('click', () => speakSlow(card.front))
+      area.querySelector('#retry-word-btn')?.addEventListener('click', () => { showCard() })
       area.querySelector('#next-btn').addEventListener('click', () => { idx++; showCard() })
     }
 
@@ -215,6 +258,7 @@ function renderSession(area, deckId) {
   }
 
   function showSummary() {
+    const correct = correctSet.size
     const pct = cards.length > 0 ? Math.round((correct / cards.length) * 100) : 0
     const { newBadges } = recordSpeakingResult(deckId, correct, cards.length)
     if (newBadges?.length) setTimeout(() => showNewBadges(newBadges), 500)

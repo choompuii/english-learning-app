@@ -2,9 +2,10 @@ import { vocabularyCategories } from './vocabulary.js'
 import { grammarTopics } from './grammar.js'
 import { readingPieces } from './reading.js'
 import { listeningPieces } from './listening.js'
+import { writingPrompts } from './writing.js'
 
-// The six skills. Speaking & Writing are placeholders (active:false) until their
-// AI-backed features are built — the hub shows them as "coming soon".
+// The six skills, all active. Writing is a guided free-writing task checked
+// client-side (word/sentence count + rule-based grammar checker) — no AI.
 export const SKILLS = [
   { id: 'vocabulary', name: 'Vocabulary', thai: 'คำศัพท์', emoji: '📖', color: '#3FBF74',
     desc: 'เรียนคำศัพท์เป็นหมวดหมู่ พร้อมเสียง รูป ตัวอย่าง คำเหมือน–คำตรงข้าม', active: true },
@@ -17,7 +18,7 @@ export const SKILLS = [
   { id: 'speaking', name: 'Speaking', thai: 'การพูด', emoji: '🗣️', color: '#F5C842',
     desc: 'ฝึกออกเสียงคำศัพท์ด้วย Speech Recognition — พูดแล้วระบบให้คะแนนทันที', active: true },
   { id: 'writing', name: 'Writing', thai: 'การเขียน', emoji: '✍️', color: '#E74C3C',
-    desc: 'ฝึกเขียนประโยค–เรียงความ พร้อม AI ตรวจไวยากรณ์และความเป็นธรรมชาติ', active: false },
+    desc: 'ฝึกเขียนประโยค–เรียงความ พร้อมตรวจไวยากรณ์และนับคำอัตโนมัติ', active: true },
 ]
 
 const ITEMS = {
@@ -25,6 +26,7 @@ const ITEMS = {
   grammar: grammarTopics,
   reading: readingPieces,
   listening: listeningPieces,
+  writing: writingPrompts,
 }
 
 export function getSkill(id) {

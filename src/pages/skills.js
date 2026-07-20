@@ -8,6 +8,7 @@ import { renderVocabularyLesson } from './skill-vocabulary.js'
 import { renderGrammarLesson } from './skill-grammar.js'
 import { renderReadingLesson } from './skill-reading.js'
 import { renderListeningLesson } from './skill-listening.js'
+import { renderWritingLesson } from './skill-writing.js'
 
 // ── Hub: all six skills ──
 export function renderSkillsHub() {
@@ -262,6 +263,7 @@ function itemMeta(skill, it) {
     case 'grammar':    return `${it.quiz?.length ?? 0} ข้อควิซ`
     case 'reading':    return `${it.type} · ⏱ ${it.minutes ?? '?'} min · ${it.questions?.length ?? 0} คำถาม`
     case 'listening':  return `${it.type} · ${it.segments?.length ?? 0} ประโยค · ${it.questions?.length ?? 0} คำถาม`
+    case 'writing':    return `✍️ อย่างน้อย ${it.minWords} คำ`
     default:           return ''
   }
 }
@@ -281,6 +283,7 @@ export function renderSkillDetail({ skill, id }) {
     case 'grammar':    return renderGrammarLesson(item, main)
     case 'reading':    return renderReadingLesson(item, main)
     case 'listening':  return renderListeningLesson(item, main)
+    case 'writing':    return renderWritingLesson(item, main)
     default:           main.innerHTML = notFound('ไม่พบทักษะนี้')
   }
 }

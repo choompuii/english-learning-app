@@ -10,7 +10,16 @@
       "Bash(curl -s \"http://localhost:3000/src/pages/dictation.js\")",
       "Bash(curl -s \"http://localhost:3000/src/pages/review-mistakes.js\")",
       "Bash(curl -s \"http://localhost:3000/src/components/flashcard.js\")",
-      "Bash(node --input-type=module)"
+      "Bash(node --input-type=module)",
+      "Bash(node --check src/data/vocabulary.js)",
+      "Bash(node --check src/pages/flashcards.js)",
+      "Bash(xargs kill)",
+      "Bash(echo \"exit: $?\")",
+      "Bash(npm install *)",
+      "Bash(curl -s http://localhost:5174/)",
+      "Skill(code-review)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:5173)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:3000)"
     ]
   },
   "enabledMcpjsonServers": [

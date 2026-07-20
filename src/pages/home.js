@@ -1,4 +1,4 @@
-import { getProgress, setLevel, getDailyGoal, dismissTodayReminder, isReminderDismissedToday, getCourseProgress, isCourseUnitUnlocked } from '../store.js'
+import { getProgress, setLevel, getDailyGoal, dismissTodayReminder, isReminderDismissedToday, getCourseProgress, isCourseUnitUnlocked, getDailyChallengeToday, getDailyChallengeStreak } from '../store.js'
 import { navigate } from '../router.js'
 import { lessons } from '../data/lessons.js'
 import { decks } from '../data/vocabulary.js'
@@ -113,6 +113,8 @@ async function renderDashboard(main, state) {
   const hasStarted = completedLessons > 0 || Object.values(state.lessons).some(l => l.status === 'in-progress')
 
   const courseSnapshot = getCourseSnapshot()
+  const dailyDone = !!getDailyChallengeToday()
+  const dailyStreak = getDailyChallengeStreak()
   const wotd = getWordOfTheDay(state.selectedLevel)
   const activityLog = state.activityLog || {}
   const todayMinutes = Math.round((todayXp / 5) * 2) // rough estimate
@@ -124,19 +126,19 @@ async function renderDashboard(main, state) {
       ${buildReminderBanner(todayXp)}
 
       <!-- Welcome Card -->
-      <div style="background:linear-gradient(135deg,#eef4f0 0%,#deeae3 100%);border:1px solid #c8ddd0;border-radius:20px;padding:24px 28px;margin-bottom:20px;display:flex;align-items:center;gap:20px;flex-wrap:wrap">
-        <div style="width:56px;height:56px;border-radius:50%;background:${avatarColor};border:3px solid #fff;display:flex;align-items:center;justify-content:center;font-size:1.4rem;font-weight:700;color:#fff;flex-shrink:0">${initial}</div>
+      <div style="background:linear-gradient(135deg,var(--accent-soft) 0%,var(--surface-2) 100%);border:1px solid var(--accent-mid);border-radius:20px;padding:24px 28px;margin-bottom:20px;display:flex;align-items:center;gap:20px;flex-wrap:wrap">
+        <div style="width:56px;height:56px;border-radius:50%;background:${avatarColor};border:3px solid var(--surface);display:flex;align-items:center;justify-content:center;font-size:1.4rem;font-weight:700;color:#fff;flex-shrink:0">${initial}</div>
         <div style="flex:1;min-width:140px">
-          <p style="margin:0 0 2px;font-size:13px;color:#6b8a76">${greeting()},</p>
-          <h2 style="margin:0 0 6px;font-size:1.3rem;font-weight:800;color:#1e3a2a;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${displayName}</h2>
+          <p style="margin:0 0 2px;font-size:13px;color:var(--text-muted)">${greeting()},</p>
+          <h2 style="margin:0 0 6px;font-size:1.3rem;font-weight:800;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${displayName}</h2>
           <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
-            <span style="background:#fff;color:#2d6a4f;font-size:12px;font-weight:700;padding:3px 10px;border-radius:99px;border:1px solid #c8ddd0">${state.selectedLevel}</span>
-            <span style="font-size:13px;color:#6b8a76">·</span>
-            <span style="font-size:13px;color:#3d6b52;font-weight:600">✨ ${xp.toLocaleString()} XP</span>
+            <span style="background:var(--surface);color:var(--accent);font-size:12px;font-weight:700;padding:3px 10px;border-radius:99px;border:1px solid var(--border)">${state.selectedLevel}</span>
+            <span style="font-size:13px;color:var(--text-muted)">·</span>
+            <span style="font-size:13px;color:var(--accent);font-weight:600">✨ ${xp.toLocaleString()} XP</span>
           </div>
         </div>
         <div style="text-align:right;flex-shrink:0">
-          ${streak > 0 ? `<div style="background:#fff;border:1px solid #c8ddd0;border-radius:12px;padding:10px 16px;text-align:center"><div style="font-size:1.5rem">🔥</div><div style="font-size:1.3rem;font-weight:800;color:#2d6a4f;line-height:1">${streak}</div><div style="font-size:11px;color:#6b8a76;margin-top:2px">day streak</div></div>` : ''}
+          ${streak > 0 ? `<div style="background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:10px 16px;text-align:center"><div style="font-size:1.5rem">🔥</div><div style="font-size:1.3rem;font-weight:800;color:var(--accent);line-height:1">${streak}</div><div style="font-size:11px;color:var(--text-muted);margin-top:2px">day streak</div></div>` : ''}
         </div>
       </div>
 
@@ -192,11 +194,19 @@ async function renderDashboard(main, state) {
       <!-- Daily Challenge -->
       <div style="margin-bottom:20px">
         <p style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--text-muted);margin:0 0 12px">Daily Challenge</p>
+        <a href="#/daily" style="display:flex;align-items:center;gap:14px;background:linear-gradient(135deg,var(--cta-grad-a) 0%,var(--cta-grad-b) 100%);border-radius:16px;padding:18px 22px;text-decoration:none;margin-bottom:12px;box-shadow:0 4px 16px var(--cta-shadow)">
+          <div style="font-size:2rem;flex-shrink:0">🗓️</div>
+          <div style="flex:1;min-width:0">
+            <div style="font-size:14px;font-weight:800;color:#fff;margin-bottom:2px">Daily Challenge</div>
+            <div style="font-size:12px;color:#d5e8dd">ทบทวน ${dailyDone ? 'อีกครั้ง — วันนี้ทำแล้ว ✓' : 'คำที่ต้องฝึกวันนี้'}${dailyStreak > 0 ? ` · 🔥 ${dailyStreak} วันติด` : ''}</div>
+          </div>
+          <span style="background:rgba(255,255,255,.2);color:#fff;font-size:13px;font-weight:700;padding:8px 14px;border-radius:10px;white-space:nowrap">${dailyDone ? 'เล่นซ้ำ' : 'เริ่มเลย'} →</span>
+        </a>
         <div class="dash-grid-3">
           ${[
-            { icon:'❓', label:'Quiz', sub:'Test your knowledge', link:'/quiz', border:'#e8d9b8', bg:'#fdf8ee' },
-            { icon:'🃏', label:'Vocabulary', sub: dueCount>0?`${dueCount} cards due`:'Review words', link:'/flashcards', border:'#b8d4c0', bg:'#f0f7f2' },
-            { icon:'✍️', label:'Dictation', sub:'Listen & type', link:'/dictation', border:'#ccc3e0', bg:'#f5f2fb' },
+            { icon:'❓', label:'Quiz', sub:'Test your knowledge', link:'/quiz', border:'var(--gold-border)', bg:'var(--gold-soft)' },
+            { icon:'🃏', label:'Vocabulary', sub: dueCount>0?`${dueCount} cards due`:'Review words', link:'/flashcards', border:'var(--accent-mid)', bg:'var(--accent-soft)' },
+            { icon:'✍️', label:'Dictation', sub:'Listen & type', link:'/dictation', border:'var(--violet-border)', bg:'var(--violet-soft)' },
           ].map(c => `
             <a href="#${c.link}" style="background:${c.bg};border:1.5px solid ${c.border};border-radius:14px;padding:16px 14px;text-decoration:none;display:block;transition:transform .15s,box-shadow .15s"
                onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 4px 16px rgba(0,0,0,.06)'"
@@ -347,14 +357,14 @@ function buildCourseCard(snapshot) {
 function buildReminderBanner(todayXp) {
   if (todayXp > 0 || isReminderDismissedToday()) return ''
   return `
-    <div id="reminder-banner" style="background:#fdf8ee;border:1.5px solid #e8d9b8;border-radius:14px;padding:14px 18px;margin-bottom:18px;display:flex;align-items:center;gap:14px">
+    <div id="reminder-banner" style="background:var(--gold-soft);border:1.5px solid var(--gold-border);border-radius:14px;padding:14px 18px;margin-bottom:18px;display:flex;align-items:center;gap:14px">
       <span style="font-size:1.3rem">⏰</span>
       <div style="flex:1">
-        <div style="font-weight:700;font-size:13px;color:#7a5c1a">ยังไม่ได้เรียนวันนี้เลย!</div>
-        <div style="font-size:12px;color:#9e7530">ก้าวเล็กๆ ทุกวันสร้างความแตกต่างได้มาก</div>
+        <div style="font-weight:700;font-size:13px;color:var(--gold-strong)">ยังไม่ได้เรียนวันนี้เลย!</div>
+        <div style="font-size:12px;color:var(--gold-text)">ก้าวเล็กๆ ทุกวันสร้างความแตกต่างได้มาก</div>
       </div>
       <a href="#/course" style="padding:8px 14px;background:#c9973a;color:#fff;border-radius:8px;font-size:12px;font-weight:700;text-decoration:none;white-space:nowrap">เรียนเลย →</a>
-      <button id="dismiss-reminder" style="background:none;border:none;cursor:pointer;color:#9e7530;font-size:16px;padding:4px;line-height:1">✕</button>
+      <button id="dismiss-reminder" style="background:none;border:none;cursor:pointer;color:var(--gold-text);font-size:16px;padding:4px;line-height:1">✕</button>
     </div>
   `
 }
@@ -396,7 +406,7 @@ function buildCalendar(activityLog) {
     const cells = week.map(d => {
       if (!d) return '<div style="width:12px;height:12px"></div>'
       const bg = d.xp > 0
-        ? 'rgba(45,106,79,' + Math.min(0.95, 0.25 + d.xp / 80) + ')'
+        ? 'rgba(var(--heat-rgb),' + Math.min(0.95, 0.25 + d.xp / 80) + ')'
         : 'var(--border)'
       const outline = d.isToday ? '2px solid var(--accent)' : 'none'
       const title = d.key + (d.xp > 0 ? ' · ' + d.xp + ' XP' : '')
@@ -406,7 +416,7 @@ function buildCalendar(activityLog) {
   }).join('')
 
   const legendDots = [0.12, 0.3, 0.5, 0.7, 0.92].map(o =>
-    '<div style="width:11px;height:11px;border-radius:3px;background:rgba(45,106,79,' + o + ')"></div>'
+    '<div style="width:11px;height:11px;border-radius:3px;background:rgba(var(--heat-rgb),' + o + ')"></div>'
   ).join('')
 
   return `
