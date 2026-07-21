@@ -122,17 +122,47 @@ function renderLearn(body, cat) {
   attachTtsListeners(body)
 }
 
+// Distractors are pulled from other items at the same CEFR level (across
+// categories, so they're not just the phrases already visible in the Learn tab),
+// falling back to the wider pool if a level is thin. `key` is 'phrase' for the
+// original direction or 'thai' for the reverse direction.
+function buildDistractors(cat, item, key) {
+  const uniq = arr => [...new Set(arr)]
+  const sameLevel = idiomCategories.filter(c => c.level === cat.level).flatMap(c => c.items)
+  let pool = uniq(sameLevel.filter(i => i[key] !== item[key]).map(i => i[key]))
+  if (pool.length < 3) {
+    const wider = idiomCategories.flatMap(c => c.items)
+    pool = uniq([...pool, ...wider.filter(i => i[key] !== item[key]).map(i => i[key])])
+  }
+  return shuffle(pool).slice(0, 3)
+}
+
 function renderQuiz(body, cat) {
-  const questions = shuffle(cat.items).slice(0, Math.min(8, cat.items.length))
+  // Mix two directions: "meaning → phrase" (original) and "phrase → meaning" (reverse).
+  const picks = shuffle(cat.items).slice(0, Math.min(8, cat.items.length))
+  // Alternate direction so every session mixes both; randomise which one starts.
+  const startReverse = Math.random() < 0.5
+  const questions = picks.map((item, i) => ({ item, reverse: (i + startReverse) % 2 === 1 }))
   let idx = 0, correct = 0
 
   function renderQ() {
     if (idx >= questions.length) return finish()
-    const item = questions[idx]
-    // Distractors: other phrases from the same category.
-    const distractors = shuffle(cat.items.filter(i => i.id !== item.id)).slice(0, 3).map(i => i.phrase)
-    const options = shuffle([item.phrase, ...distractors])
+    const { item, reverse } = questions[idx]
+    // Reverse: show the phrase, choose its Thai meaning. Original: show the meaning,
+    // choose the phrase.
+    const answer = reverse ? item.thai : item.phrase
+    const options = shuffle([answer, ...buildDistractors(cat, item, reverse ? 'thai' : 'phrase')])
     let answered = false
+
+    const promptBlock = reverse ? `
+          <div style="font-size:var(--text-sm);color:var(--text-muted);margin-bottom:var(--sp-2)">วลี/สำนวนนี้มีความหมายว่าอะไร</div>
+          <div style="display:flex;align-items:center;justify-content:center;gap:var(--sp-2)">
+            <span style="font-size:var(--text-xl);font-weight:800;color:var(--accent)">${item.phrase}</span>
+            ${ttsButton(item.phrase, 'ฟังเสียง')}
+          </div>` : `
+          <div style="font-size:var(--text-sm);color:var(--text-muted);margin-bottom:var(--sp-2)">เลือกสำนวน/วลีที่มีความหมายว่า</div>
+          <div style="font-size:var(--text-xl);font-weight:800;color:var(--accent)">${item.thai}</div>
+          <div style="font-size:var(--text-sm);color:var(--text-muted);margin-top:var(--sp-1)">${item.meaning}</div>`
 
     body.innerHTML = `
       <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--r-xl);padding:var(--sp-6);animation:pop-in 0.2s ease">
@@ -140,17 +170,14 @@ function renderQuiz(body, cat) {
           <div style="font-size:var(--text-xs);font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--text-muted)">คำถาม ${idx + 1}/${questions.length}</div>
           <div style="background:var(--accent-soft);border:1px solid var(--accent-mid);border-radius:var(--r-full);padding:var(--sp-1) var(--sp-4);font-size:var(--text-sm);font-weight:700;color:var(--accent)">${correct} ✓</div>
         </div>
-        <div style="text-align:center;margin-bottom:var(--sp-5)">
-          <div style="font-size:var(--text-sm);color:var(--text-muted);margin-bottom:var(--sp-2)">เลือกสำนวน/วลีที่มีความหมายว่า</div>
-          <div style="font-size:var(--text-xl);font-weight:800;color:var(--accent)">${item.thai}</div>
-          <div style="font-size:var(--text-sm);color:var(--text-muted);margin-top:var(--sp-1)">${item.meaning}</div>
-        </div>
+        <div style="text-align:center;margin-bottom:var(--sp-5)">${promptBlock}</div>
         <div id="idiom-q-options" style="display:flex;flex-direction:column;gap:var(--sp-2)"></div>
         <div id="idiom-q-feedback" style="margin-top:var(--sp-4)"></div>
       </div>
     `
     const optsEl = body.querySelector('#idiom-q-options')
     const feedback = body.querySelector('#idiom-q-feedback')
+    if (reverse) attachTtsListeners(body)
     options.forEach(opt => {
       const b = document.createElement('button')
       b.textContent = opt
@@ -163,10 +190,10 @@ function renderQuiz(body, cat) {
     function pick(opt, btn) {
       if (answered) return
       answered = true
-      const isCorrect = opt === item.phrase
+      const isCorrect = opt === answer
       optsEl.querySelectorAll('button').forEach(x => {
         x.disabled = true
-        if (x.textContent === item.phrase) { x.style.borderColor = 'var(--accent)'; x.style.background = 'var(--accent-soft)' }
+        if (x.textContent === answer) { x.style.borderColor = 'var(--accent)'; x.style.background = 'var(--accent-soft)' }
       })
       if (isCorrect) {
         correct++
@@ -185,6 +212,7 @@ function renderQuiz(body, cat) {
             <span style="font-weight:700;color:${isCorrect ? 'var(--accent)' : 'var(--danger)'}">${isCorrect ? '✓ ถูกต้อง!' : '✗ ยังไม่ถูก'}</span>
             <button class="btn btn-primary btn-sm" id="idiom-next">ถัดไป →</button>
           </div>
+          <div style="font-size:var(--text-sm);color:var(--text);margin-bottom:2px"><strong>${item.phrase}</strong> — ${item.thai}</div>
           <div style="font-size:var(--text-sm);font-style:italic;color:var(--text-muted)">“${item.example}”</div>
         </div>
       `
@@ -200,6 +228,11 @@ function renderQuiz(body, cat) {
         idx++; renderQ()
       }
       next.addEventListener('click', advance)
+      // Don't leak the global keyup listener if the user navigates away before advancing.
+      window.addEventListener('hashchange', () => {
+        clearTimeout(enterTimer)
+        document.removeEventListener('keyup', onEnter)
+      }, { once: true })
     }
   }
 
@@ -215,13 +248,16 @@ function renderQuiz(body, cat) {
         <div style="font-size:var(--text-2xl);font-weight:800;color:var(--accent);margin-bottom:var(--sp-2)">${correct}/${total} ถูก</div>
         <div style="font-size:var(--text-sm);color:var(--text-muted);margin-bottom:var(--sp-2)">XP ที่ได้รับ: +${correct * XP_PER_CORRECT}</div>
         ${result.isNewRecord ? `<div style="display:inline-block;background:var(--gold-soft);border:1px solid var(--gold);color:var(--gold-strong);font-weight:700;font-size:var(--text-sm);border-radius:var(--r-lg);padding:var(--sp-1) var(--sp-4);margin-bottom:var(--sp-4)">🎉 สถิติใหม่!</div>` : ''}
+        <div style="font-size:var(--text-sm);color:var(--text-muted);margin-bottom:var(--sp-4)">🏆 คะแนนสูงสุด: ${result.bestScore}/${result.bestTotal}</div>
         <div style="display:flex;gap:var(--sp-3);justify-content:center;flex-wrap:wrap;margin-top:var(--sp-4)">
           <button class="btn btn-primary" id="idiom-retry">↺ ทำอีกครั้ง</button>
+          <button class="btn btn-ghost" id="idiom-hub">← กลับ hub</button>
         </div>
       </div>
     `
     if (result.newBadges?.length) setTimeout(() => showNewBadges(result.newBadges), 500)
     body.querySelector('#idiom-retry').addEventListener('click', () => renderQuiz(body, cat))
+    body.querySelector('#idiom-hub').addEventListener('click', () => navigate('/idioms'))
   }
 
   renderQ()

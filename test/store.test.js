@@ -30,6 +30,8 @@ import {
   getLearnedWords,
   recordDailyChallenge,
   getDailyChallengeStreak,
+  recordDictationResult,
+  getDictationBest,
 } from '../src/store.js'
 
 const DAY = 'T08:00:00Z'
@@ -212,6 +214,25 @@ describe('difficult / learned words', () => {
     recordVocabAnswer('easy', true)
     recordVocabAnswer('easy', true)
     expect(getLearnedWords()).toContain('easy')
+  })
+})
+
+// ── Dictation best-score + Typist badge ─────────────────────────────
+describe('recordDictationResult', () => {
+  it('tracks a best score per deck (via recordBestResult)', () => {
+    expect(getDictationBest('animals')).toBeNull()
+    const first = recordDictationResult('animals', 3, 5)
+    expect(first.isNewRecord).toBe(false)
+    expect(getDictationBest('animals')).toMatchObject({ bestScore: 3, bestTotal: 5 })
+    const better = recordDictationResult('animals', 5, 5)
+    expect(better.isNewRecord).toBe(true)
+    expect(getDictationBest('animals').bestScore).toBe(5)
+  })
+
+  it('marks the deck done so the Typist badge is awarded', () => {
+    const result = recordDictationResult('food', 4, 6)
+    expect(getProgress().dictationDone).toContain('food')
+    expect(result.newBadges.map(b => b.id)).toContain('typist')
   })
 })
 
