@@ -257,7 +257,7 @@ function renderStep4(main, step) {
 
   main.querySelector('#btn-placement').addEventListener('click', async () => {
     await finishOnboarding()
-    navigate('/quiz')
+    navigate('/placement')
   })
 }
 

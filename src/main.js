@@ -22,6 +22,9 @@ import { renderSpeedRound } from './pages/speed-round.js'
 import { renderAuth } from './pages/auth.js'
 import { renderOnboarding } from './pages/onboarding.js'
 import { renderProfile } from './pages/profile.js'
+import { renderPlacement } from './pages/placement.js'
+import { renderAdaptive } from './pages/adaptive.js'
+import { renderLeaderboard } from './pages/leaderboard.js'
 import { renderSpeakingBrowser } from './pages/speaking.js'
 import { renderDaily } from './pages/daily.js'
 import { renderInsights } from './pages/insights.js'
@@ -71,6 +74,9 @@ route('/speaking',        guard(() => renderSpeakingBrowser()))
 route('/sentence-builder',guard(() => renderSentenceBuilder()))
 route('/speed-round',     guard(() => renderSpeedRound()))
 route('/daily',           guard(() => renderDaily()))
+route('/placement',       guard(() => renderPlacement()))
+route('/adaptive',        guard(() => renderAdaptive()))
+route('/leaderboard',     guard(() => renderLeaderboard()))
 route('/insights',        guard(() => renderInsights()))
 route('/games',           guard(() => renderGamesHub()))
 route('/games/:game',     guard(({ game }) => renderGame({ game })))

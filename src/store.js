@@ -33,8 +33,11 @@ const DEFAULT_STATE = {
   skillProgress: {},
   vocabProgress: {},
   practiceWords: [],
-  dailyChallenge: {}
+  dailyChallenge: {},
+  adaptive: {}
 }
+
+export const CEFR_LEVELS = ['A1', 'A2', 'B1', 'B2', 'C1', 'C2']
 
 // ── Supabase sync ──
 
@@ -50,6 +53,44 @@ async function syncToCloud(state) {
   const user = data?.user || null
   if (!user) return
   await supabase.from('user_progress').upsert({ user_id: user.id, data: state, updated_at: new Date().toISOString() })
+  syncLeaderboard(user, state)
+}
+
+// Publish the signed-in learner's public stats to the shared leaderboard table.
+// Best-effort: the `leaderboard` table is optional (see supabase/leaderboard.sql).
+// If it doesn't exist yet, or the network is down, we silently skip — the rest of
+// the app keeps working with local-only progress.
+async function syncLeaderboard(user, state) {
+  try {
+    const { data: profile } = await supabase
+      .from('user_profiles').select('display_name, username, avatar_color').eq('user_id', user.id).single()
+    const name = profile?.display_name || profile?.username || (user.email ? user.email.split('@')[0] : 'Learner')
+    await supabase.from('leaderboard').upsert({
+      user_id: user.id,
+      display_name: name,
+      avatar_color: profile?.avatar_color || '#2d6a4f',
+      xp: state.xp || 0,
+      streak: state.streakDays || 0,
+      level: state.selectedLevel || null,
+      updated_at: new Date().toISOString(),
+    })
+  } catch { /* leaderboard table not provisioned — ignore */ }
+}
+
+// Fetch the top learners by XP. Returns [] if the table isn't provisioned or the
+// request fails, so the page can show a friendly setup notice instead of breaking.
+export async function fetchLeaderboard(limit = 100) {
+  try {
+    const { data, error } = await supabase
+      .from('leaderboard')
+      .select('user_id, display_name, avatar_color, xp, streak, level')
+      .order('xp', { ascending: false })
+      .limit(limit)
+    if (error) return { ok: false, rows: [] }
+    return { ok: true, rows: data || [] }
+  } catch {
+    return { ok: false, rows: [] }
+  }
 }
 
 export async function pullFromCloud() {
@@ -298,6 +339,23 @@ export function recordIdiomResult(catId, score, total) {
 export function getIdiomBest(catId) {
   const s = load()
   return (s.idioms || {})[catId] || null
+}
+
+// Adaptive Practice. A single rolling best (accuracy) is kept — the mode has no
+// fixed deck, difficulty floats with the learner's performance during the run.
+export function recordAdaptiveResult(correct, total) {
+  return recordBestResult('adaptive', 'session', correct, total)
+}
+
+export function getAdaptiveBest() {
+  const s = load()
+  return (s.adaptive || {}).session || null
+}
+
+// Suggest a CEFR level from a peak difficulty reached during an adaptive/placement
+// run, clamped to the valid range. Used to offer "update your level" prompts.
+export function clampLevel(level) {
+  return CEFR_LEVELS.includes(level) ? level : 'A1'
 }
 
 // ── Skills (Vocabulary / Grammar / Reading / Listening) ──

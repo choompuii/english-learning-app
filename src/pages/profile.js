@@ -325,8 +325,21 @@ function goalsTab(profile, progress) {
   const completedThisWeek  = countCompletedSince(progress, 7)
   const completedThisMonth = countCompletedSince(progress, 30)
 
+  const level = profile?.level || progress.selectedLevel || '—'
+
   return `
     <form id="goals-form" style="display:flex;flex-direction:column;gap:16px">
+
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:20px;display:flex;align-items:center;gap:14px;flex-wrap:wrap">
+        <div style="flex:1;min-width:160px">
+          <h3 style="margin:0 0 6px;font-size:13px;font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:.05em">ระดับปัจจุบัน</h3>
+          <div style="display:flex;align-items:center;gap:8px">
+            <span class="level-badge level-${level}">${level}</span>
+            <span style="font-size:13px;color:var(--text-muted)">ไม่แน่ใจ? ทำแบบทดสอบวัดระดับ</span>
+          </div>
+        </div>
+        <a href="#/placement" style="${BTN};text-decoration:none;display:inline-block">📋 วัดระดับใหม่</a>
+      </div>
 
       <div style="background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:20px">
         <h3 style="margin:0 0 16px;font-size:13px;font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:.05em">Daily Goal</h3>

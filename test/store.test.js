@@ -36,6 +36,11 @@ import {
   setReminderSettings,
   markReminderNotified,
   shouldRemindNow,
+  recordAdaptiveResult,
+  getAdaptiveBest,
+  clampLevel,
+  fetchLeaderboard,
+  CEFR_LEVELS,
 } from '../src/store.js'
 
 const DAY = 'T08:00:00Z'
@@ -317,5 +322,51 @@ describe('reminder settings', () => {
     // A new day clears the guard.
     setDay('2026-07-21')
     expect(shouldRemindNow(new Date('2026-07-21T20:00:00'))).toBe(true)
+  })
+})
+
+// ── Adaptive Practice ─────────────────────────────────────────────────
+describe('recordAdaptiveResult / getAdaptiveBest', () => {
+  it('stores the first session and keeps the best accuracy afterwards', () => {
+    expect(getAdaptiveBest()).toBe(null)
+
+    recordAdaptiveResult(9, 15)
+    let best = getAdaptiveBest()
+    expect(best.bestScore).toBe(9)
+    expect(best.bestTotal).toBe(15)
+    expect(best.plays).toBe(1)
+
+    // Higher accuracy replaces the record.
+    const res = recordAdaptiveResult(12, 15)
+    expect(res.isNewRecord).toBe(true)
+    expect(getAdaptiveBest().bestScore).toBe(12)
+
+    // A weaker result does not overwrite the best but still counts as a play.
+    recordAdaptiveResult(4, 15)
+    best = getAdaptiveBest()
+    expect(best.bestScore).toBe(12)
+    expect(best.plays).toBe(3)
+  })
+
+  it('awards XP through addBonusXP independently of the best tracker', () => {
+    const before = getProgress().xp || 0
+    addBonusXP(7)
+    expect(getProgress().xp).toBe(before + 7)
+  })
+})
+
+describe('clampLevel', () => {
+  it('passes valid CEFR levels through and defaults invalid ones to A1', () => {
+    for (const l of CEFR_LEVELS) expect(clampLevel(l)).toBe(l)
+    expect(clampLevel('Z9')).toBe('A1')
+    expect(clampLevel(null)).toBe('A1')
+  })
+})
+
+describe('fetchLeaderboard', () => {
+  it('degrades gracefully to ok:false when the table is unavailable', async () => {
+    const res = await fetchLeaderboard(10)
+    expect(res.ok).toBe(false)
+    expect(res.rows).toEqual([])
   })
 })
