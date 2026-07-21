@@ -28,6 +28,8 @@ import { renderInsights } from './pages/insights.js'
 import { renderGamesHub, renderGame } from './pages/games.js'
 import { renderConversationHub, renderConversation } from './pages/conversation.js'
 import { renderIdiomsHub, renderIdiomCategory } from './pages/idioms.js'
+import { registerServiceWorker } from './utils/pwa.js'
+import { initReminders } from './utils/reminders.js'
 
 // Auth guard — wraps any handler that requires login
 function guard(fn) {
@@ -81,6 +83,8 @@ route('/idioms/:id',      guard(({ id }) => renderIdiomCategory({ id })))
 storeLessonsSnapshot(lessons)
 renderSidebar()
 initRouter()
+registerServiceWorker()
+initReminders()
 
 // Auth listener — re-render sidebar and pull cloud data when auth changes
 onAuthChange(async (user) => {

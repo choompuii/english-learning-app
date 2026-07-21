@@ -4,6 +4,14 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>LearnEN — เรียนภาษาอังกฤษ</title>
+  <meta name="description" content="แอปเรียนภาษาอังกฤษสำหรับคนไทย — บทเรียน คำศัพท์ ควิซ เกม และการฝึกทักษะ ตั้งแต่ระดับ A1 ถึง C2" />
+  <link rel="manifest" href="/manifest.webmanifest" />
+  <meta name="theme-color" content="#1F6B47" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#12261B" media="(prefers-color-scheme: dark)" />
+  <link rel="icon" type="image/svg+xml" href="/icon.svg" />
+  <link rel="apple-touch-icon" href="/icon.svg" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-title" content="LearnEN" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Sarabun:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
@@ -16,9 +24,10 @@
   <link rel="stylesheet" href="/src/styles/profile.css" />
 </head>
 <body>
+  <a class="skip-link" href="#main-content">ข้ามไปยังเนื้อหาหลัก</a>
   <div id="app">
-    <nav id="sidebar"></nav>
-    <main id="main-content"></main>
+    <nav id="sidebar" aria-label="เมนูหลัก"></nav>
+    <main id="main-content" tabindex="-1"></main>
   </div>
   <script type="module" src="/src/main.js"></script>
 </body>

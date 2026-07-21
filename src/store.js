@@ -29,6 +29,7 @@ const DEFAULT_STATE = {
   lastGoalDate: null,
   lessonNotes: {},
   reminderDismissedDate: null,
+  reminder: { enabled: false, time: '19:00', lastNotifiedDate: null },
   skillProgress: {},
   vocabProgress: {},
   practiceWords: [],
@@ -782,6 +783,53 @@ export function isReminderDismissedToday() {
 export function getBadges() {
   const s = load()
   return BADGES.map(b => ({ ...b, earned: (s.badgesEarned || []).includes(b.id) }))
+}
+
+// ── Daily study reminder settings ──
+// A local, in-app reminder: when enabled, the app fires a browser notification
+// at the chosen time on any day the learner hasn't studied yet. Requires the tab
+// to be open (no push server — the app is fully free/serverless on this front).
+
+const DEFAULT_REMINDER = { enabled: false, time: '19:00', lastNotifiedDate: null }
+
+export function getReminderSettings() {
+  const s = load()
+  return { ...DEFAULT_REMINDER, ...(s.reminder || {}) }
+}
+
+export function setReminderSettings({ enabled, time } = {}) {
+  const s = load()
+  const cur = { ...DEFAULT_REMINDER, ...(s.reminder || {}) }
+  if (typeof enabled === 'boolean') cur.enabled = enabled
+  if (typeof time === 'string' && /^\d{2}:\d{2}$/.test(time)) cur.time = time
+  s.reminder = cur
+  save(s)
+  return cur
+}
+
+// Records that today's reminder notification has fired, so it isn't repeated.
+export function markReminderNotified() {
+  const s = load()
+  const cur = { ...DEFAULT_REMINDER, ...(s.reminder || {}) }
+  cur.lastNotifiedDate = todayStr()
+  s.reminder = cur
+  save(s)
+}
+
+// Whether a reminder should fire right now: enabled, past the chosen time today,
+// the learner hasn't earned XP today, and we haven't already notified today.
+export function shouldRemindNow(now = new Date()) {
+  const s = load()
+  const r = { ...DEFAULT_REMINDER, ...(s.reminder || {}) }
+  if (!r.enabled) return false
+  const today = todayStr()
+  if (r.lastNotifiedDate === today) return false
+  const studiedToday = s.todayDate === today && (s.todayXp || 0) > 0
+  if (studiedToday) return false
+  const [h, m] = r.time.split(':').map(Number)
+  const target = h * 60 + m
+  const cur = now.getHours() * 60 + now.getMinutes()
+  return cur >= target
 }
 
 export function getActivityLog() {

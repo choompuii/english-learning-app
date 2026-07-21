@@ -45,8 +45,14 @@ export function initRouter() {
 // Intercept hash links
 document.addEventListener('click', (e) => {
   const a = e.target.closest('a[href^="#"]')
-  if (a) {
+  if (!a) return
+  // The skip link targets the <main> element for keyboard/AT users — move focus
+  // there instead of treating "#main-content" as a route.
+  if (a.classList.contains('skip-link')) {
     e.preventDefault()
-    navigate(a.getAttribute('href').slice(1))
+    document.getElementById('main-content')?.focus()
+    return
   }
+  e.preventDefault()
+  navigate(a.getAttribute('href').slice(1))
 })

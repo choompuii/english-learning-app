@@ -243,9 +243,9 @@ async function _renderSidebarInner() {
       <div class="sidebar-logo-mark">EN</div>
       <span class="sidebar-logo-text">LearnEN</span>
     </a>
-    <nav class="sidebar-nav">
+    <nav class="sidebar-nav" aria-label="รายการหน้าทั้งหมด">
       ${renderNavGroups(navItems)}
-      <button class="nav-item more-btn" id="more-btn">
+      <button class="nav-item more-btn" id="more-btn" aria-haspopup="true" aria-expanded="false" aria-controls="more-drawer">
         <svg class="nav-icon" viewBox="0 0 24 24"><circle cx="5" cy="12" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="19" cy="12" r="1.5"/></svg>
         <span>More</span>
       </button>
@@ -255,8 +255,8 @@ async function _renderSidebarInner() {
         <svg class="nav-icon" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
         <span style="flex:1;text-align:left">${displayName || 'Profile'}</span>
       </button>
-      <button class="btn btn-ghost btn-sm" id="theme-toggle" style="width:100%;justify-content:center">
-        ${isDark() ? '☀️' : '🌙'}<span class="theme-label">&nbsp;${isDark() ? 'Light mode' : 'Dark mode'}</span>
+      <button class="btn btn-ghost btn-sm" id="theme-toggle" style="width:100%;justify-content:center" aria-label="${isDark() ? 'สลับเป็นโหมดสว่าง' : 'สลับเป็นโหมดมืด'}">
+        <span aria-hidden="true">${isDark() ? '☀️' : '🌙'}</span><span class="theme-label">&nbsp;${isDark() ? 'Light mode' : 'Dark mode'}</span>
       </button>
     </div>
   `
@@ -268,12 +268,22 @@ async function _renderSidebarInner() {
   overlay.id = 'more-drawer-overlay'
   overlay.className = 'more-drawer-overlay'
   overlay.innerHTML = `
-    <div id="more-drawer" class="more-drawer">
-      <div class="more-drawer-handle"></div>
+    <div id="more-drawer" class="more-drawer" role="dialog" aria-modal="true" aria-label="เมนูเพิ่มเติม">
+      <div class="more-drawer-handle" aria-hidden="true"></div>
       ${renderDrawerGroups(hiddenItems)}
     </div>
   `
   document.body.appendChild(overlay)
+
+  // Decorative icons carry no meaning beyond their button label — hide from AT.
+  sidebar.querySelectorAll('svg.nav-icon').forEach(svg => {
+    svg.setAttribute('aria-hidden', 'true')
+    svg.setAttribute('focusable', 'false')
+  })
+  overlay.querySelectorAll('svg.nav-icon').forEach(svg => {
+    svg.setAttribute('aria-hidden', 'true')
+    svg.setAttribute('focusable', 'false')
+  })
 
   // Wire nav item clicks
   sidebar.querySelectorAll('.nav-item[data-hash]').forEach(btn => {
@@ -285,11 +295,18 @@ async function _renderSidebarInner() {
   const drawerOverlay = document.getElementById('more-drawer-overlay')
   const drawer = document.getElementById('more-drawer')
 
-  function openDrawer() { drawerOverlay.classList.add('open'); drawer.classList.add('open') }
-  function closeDrawer() { drawerOverlay.classList.remove('open'); drawer.classList.remove('open') }
+  function openDrawer() {
+    drawerOverlay.classList.add('open'); drawer.classList.add('open')
+    moreBtn?.setAttribute('aria-expanded', 'true')
+  }
+  function closeDrawer() {
+    drawerOverlay.classList.remove('open'); drawer.classList.remove('open')
+    moreBtn?.setAttribute('aria-expanded', 'false')
+  }
 
   moreBtn?.addEventListener('click', openDrawer)
   drawerOverlay?.addEventListener('click', (e) => { if (e.target === drawerOverlay) closeDrawer() })
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeDrawer() })
   drawerOverlay?.querySelectorAll('.more-drawer-item[data-hash]').forEach(btn => {
     btn.addEventListener('click', () => { window.location.hash = btn.dataset.hash; closeDrawer() })
   })
@@ -308,6 +325,8 @@ export function updateActiveNav() {
       ? currentHash === '/'
       : currentHash.startsWith(hash)
     btn.classList.toggle('active', isActive)
+    if (isActive) btn.setAttribute('aria-current', 'page')
+    else btn.removeAttribute('aria-current')
   })
 
   // Highlight drawer items
@@ -315,6 +334,8 @@ export function updateActiveNav() {
     const hash = btn.dataset.hash
     const isActive = hash === '/' ? currentHash === '/' : currentHash.startsWith(hash)
     btn.classList.toggle('active', isActive)
+    if (isActive) btn.setAttribute('aria-current', 'page')
+    else btn.removeAttribute('aria-current')
   })
 
   // Highlight More button when on a hidden-nav page

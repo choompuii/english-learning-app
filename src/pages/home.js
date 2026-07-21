@@ -359,14 +359,14 @@ function buildCourseCard(snapshot) {
 function buildReminderBanner(todayXp) {
   if (todayXp > 0 || isReminderDismissedToday()) return ''
   return `
-    <div id="reminder-banner" style="background:var(--gold-soft);border:1.5px solid var(--gold-border);border-radius:14px;padding:14px 18px;margin-bottom:18px;display:flex;align-items:center;gap:14px">
-      <span style="font-size:1.3rem">⏰</span>
+    <div id="reminder-banner" role="status" style="background:var(--gold-soft);border:1.5px solid var(--gold-border);border-radius:14px;padding:14px 18px;margin-bottom:18px;display:flex;align-items:center;gap:14px">
+      <span style="font-size:1.3rem" aria-hidden="true">⏰</span>
       <div style="flex:1">
         <div style="font-weight:700;font-size:13px;color:var(--gold-strong)">ยังไม่ได้เรียนวันนี้เลย!</div>
         <div style="font-size:12px;color:var(--gold-text)">ก้าวเล็กๆ ทุกวันสร้างความแตกต่างได้มาก</div>
       </div>
       <a href="#/course" style="padding:8px 14px;background:#c9973a;color:#fff;border-radius:8px;font-size:12px;font-weight:700;text-decoration:none;white-space:nowrap">เรียนเลย →</a>
-      <button id="dismiss-reminder" style="background:none;border:none;cursor:pointer;color:var(--gold-text);font-size:16px;padding:4px;line-height:1">✕</button>
+      <button id="dismiss-reminder" aria-label="ปิดการแจ้งเตือน" style="background:none;border:none;cursor:pointer;color:var(--gold-text);font-size:16px;padding:4px;line-height:1">✕</button>
     </div>
   `
 }

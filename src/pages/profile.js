@@ -1,7 +1,8 @@
 import { getUser, getProfile, saveProfile } from '../lib/auth.js'
-import { getProgress, getBadges, BADGES, getDailyGoal, setDailyGoal } from '../store.js'
+import { getProgress, getBadges, BADGES, getDailyGoal, setDailyGoal, getReminderSettings, setReminderSettings } from '../store.js'
 import { navigate } from '../router.js'
 import { esc } from '../utils/html.js'
+import { notificationsSupported, notificationPermission, requestNotificationPermission } from '../utils/reminders.js'
 
 const COUNTRIES = ['Thailand','United States','United Kingdom','Japan','China','South Korea','Singapore','Australia','Germany','France','Other']
 const TIMEZONES = ['Asia/Bangkok','Asia/Tokyo','Asia/Singapore','Asia/Seoul','Australia/Sydney','Europe/London','Europe/Paris','America/New_York','America/Los_Angeles']
@@ -126,6 +127,7 @@ export async function renderProfile() {
   wireCoverPicker(main, profile, coverColor)
   wirePersonalForm(main, profile, user)
   wireGoalsForm(main, profile)
+  wireReminder(main)
 }
 
 // ── Tabs ───────────────────────────────────────────────────
@@ -340,6 +342,8 @@ function goalsTab(profile, progress) {
         </div>
       </div>
 
+      ${reminderCard()}
+
       <div class="prof-form-grid-2">
         <div style="background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:20px">
           <h3 style="margin:0 0 14px;font-size:13px;font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:.05em">Weekly Goal</h3>
@@ -367,7 +371,81 @@ function goalsTab(profile, progress) {
   `
 }
 
+function reminderCard() {
+  const { enabled, time } = getReminderSettings()
+  const supported = notificationsSupported()
+  const perm = notificationPermission()
+
+  let statusNote = ''
+  if (!supported) {
+    statusNote = 'เบราว์เซอร์นี้ไม่รองรับการแจ้งเตือน'
+  } else if (perm === 'denied') {
+    statusNote = 'การแจ้งเตือนถูกบล็อก — เปิดสิทธิ์ในตั้งค่าเบราว์เซอร์'
+  } else if (enabled && perm === 'granted') {
+    statusNote = `จะแจ้งเตือนเวลา ${time} ในวันที่ยังไม่ได้เรียน (ต้องเปิดแอปค้างไว้)`
+  } else {
+    statusNote = 'เปิดเพื่อรับการแจ้งเตือนกันลืมเรียนในแต่ละวัน'
+  }
+
+  return `
+    <div style="background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:20px">
+      <h3 style="margin:0 0 16px;font-size:13px;font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:.05em">แจ้งเตือนให้เรียน</h3>
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap">
+        <label for="rem-enabled" style="display:flex;align-items:center;gap:10px;cursor:pointer;font-size:14px;color:var(--text)">
+          <input id="rem-enabled" type="checkbox" ${enabled ? 'checked' : ''} ${supported ? '' : 'disabled'} style="width:18px;height:18px;accent-color:var(--accent);cursor:pointer" />
+          เปิดการแจ้งเตือนรายวัน
+        </label>
+        <div style="display:flex;align-items:center;gap:8px">
+          <label for="rem-time" style="font-size:13px;color:var(--text-muted)">เวลา</label>
+          <input id="rem-time" type="time" value="${time}" ${supported ? '' : 'disabled'} style="${INP};width:auto;padding:8px 12px" />
+        </div>
+      </div>
+      <p id="rem-status" style="font-size:12px;color:var(--text-muted);margin:12px 0 0">${statusNote}</p>
+    </div>
+  `
+}
+
 // ── Wiring ─────────────────────────────────────────────────
+
+function wireReminder(main) {
+  const toggle = main.querySelector('#rem-enabled')
+  const timeInp = main.querySelector('#rem-time')
+  const status = main.querySelector('#rem-status')
+  if (!toggle) return
+
+  const refresh = () => {
+    const { enabled, time } = getReminderSettings()
+    const perm = notificationPermission()
+    if (perm === 'denied') {
+      status.textContent = 'การแจ้งเตือนถูกบล็อก — เปิดสิทธิ์ในตั้งค่าเบราว์เซอร์'
+    } else if (enabled && perm === 'granted') {
+      status.textContent = `จะแจ้งเตือนเวลา ${time} ในวันที่ยังไม่ได้เรียน (ต้องเปิดแอปค้างไว้)`
+    } else {
+      status.textContent = 'เปิดเพื่อรับการแจ้งเตือนกันลืมเรียนในแต่ละวัน'
+    }
+  }
+
+  toggle.addEventListener('change', async () => {
+    if (toggle.checked) {
+      const perm = await requestNotificationPermission()
+      if (perm !== 'granted') {
+        toggle.checked = false
+        setReminderSettings({ enabled: false })
+        status.textContent = 'ต้องอนุญาตการแจ้งเตือนก่อนจึงจะเปิดใช้งานได้'
+        return
+      }
+    }
+    setReminderSettings({ enabled: toggle.checked })
+    refresh()
+  })
+
+  timeInp.addEventListener('change', () => {
+    if (/^\d{2}:\d{2}$/.test(timeInp.value)) {
+      setReminderSettings({ time: timeInp.value })
+      refresh()
+    }
+  })
+}
 
 function wireTabs(main) {
   main.querySelectorAll('.prof-tab').forEach(btn => {

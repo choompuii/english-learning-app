@@ -32,6 +32,10 @@ import {
   getDailyChallengeStreak,
   recordDictationResult,
   getDictationBest,
+  getReminderSettings,
+  setReminderSettings,
+  markReminderNotified,
+  shouldRemindNow,
 } from '../src/store.js'
 
 const DAY = 'T08:00:00Z'
@@ -261,5 +265,57 @@ describe('daily challenge streak', () => {
     expect(second.isFirst).toBe(false)
     expect(second.bonus).toBe(0)
     expect(second.best).toBe(4) // best score kept across plays
+  })
+})
+
+// ── Daily reminder settings ──────────────────────────────────────────
+describe('reminder settings', () => {
+  it('defaults to disabled at 19:00', () => {
+    const r = getReminderSettings()
+    expect(r.enabled).toBe(false)
+    expect(r.time).toBe('19:00')
+    expect(r.lastNotifiedDate).toBe(null)
+  })
+
+  it('persists enabled + time and validates time format', () => {
+    setReminderSettings({ enabled: true, time: '08:30' })
+    let r = getReminderSettings()
+    expect(r.enabled).toBe(true)
+    expect(r.time).toBe('08:30')
+
+    // Malformed time is ignored, keeping the previous value.
+    setReminderSettings({ time: '25-99' })
+    r = getReminderSettings()
+    expect(r.time).toBe('08:30')
+  })
+
+  it('shouldRemindNow: true when enabled, past time, and not studied today', () => {
+    setReminderSettings({ enabled: true, time: '19:00' })
+    expect(shouldRemindNow(new Date('2026-07-20T20:00:00'))).toBe(true)
+  })
+
+  it('shouldRemindNow: false before the chosen time', () => {
+    setReminderSettings({ enabled: true, time: '19:00' })
+    expect(shouldRemindNow(new Date('2026-07-20T18:00:00'))).toBe(false)
+  })
+
+  it('shouldRemindNow: false when reminders are disabled', () => {
+    expect(shouldRemindNow(new Date('2026-07-20T20:00:00'))).toBe(false)
+  })
+
+  it('shouldRemindNow: false once the learner has earned XP today', () => {
+    setReminderSettings({ enabled: true, time: '19:00' })
+    addBonusXP(10)
+    expect(shouldRemindNow(new Date('2026-07-20T20:00:00'))).toBe(false)
+  })
+
+  it('markReminderNotified stops it firing again the same day', () => {
+    setReminderSettings({ enabled: true, time: '19:00' })
+    expect(shouldRemindNow(new Date('2026-07-20T20:00:00'))).toBe(true)
+    markReminderNotified()
+    expect(shouldRemindNow(new Date('2026-07-20T20:00:00'))).toBe(false)
+    // A new day clears the guard.
+    setDay('2026-07-21')
+    expect(shouldRemindNow(new Date('2026-07-21T20:00:00'))).toBe(true)
   })
 })

@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="LearnEN">
+  <rect width="512" height="512" rx="112" fill="#1F6B47"/>
+  <path d="M256 132c-38-26-92-30-132-18a12 12 0 0 0-9 12v208a12 12 0 0 0 16 11c38-12 88-8 125 16 37-24 87-28 125-16a12 12 0 0 0 16-11V126a12 12 0 0 0-9-12c-40-12-94-8-132 18z" fill="#FEF7DC"/>
+  <path d="M256 132v249" stroke="#1F6B47" stroke-width="14" stroke-linecap="round"/>
+  <text x="256" y="308" font-family="Poppins, Arial, sans-serif" font-size="150" font-weight="700" fill="#1F6B47" text-anchor="middle">EN</text>
+</svg>
