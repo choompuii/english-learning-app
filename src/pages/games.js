@@ -179,9 +179,13 @@ function playHangman(el, deck, onBack) {
 
     function letters() {
       return word.split('').map(ch => {
-        if (!/[a-zA-Z]/.test(ch)) return `<span style="width:1.4ch;text-align:center">${ch}</span>`
+        // Non-letter characters (spaces, hyphens) act as visual separators.
+        if (!/[a-zA-Z]/.test(ch)) {
+          const label = ch.trim() === '' ? '' : ch
+          return `<span style="display:inline-flex;align-items:center;justify-content:center;width:0.8em;height:2.6rem;color:var(--text-muted);font-weight:700">${label}</span>`
+        }
         const shown = guessed.has(ch.toLowerCase())
-        return `<span style="width:1.6ch;text-align:center;border-bottom:3px solid var(--border);font-weight:800;text-transform:uppercase;color:${shown ? 'var(--text)' : 'transparent'}">${shown ? ch : '_'}</span>`
+        return `<span style="display:inline-flex;align-items:center;justify-content:center;width:2rem;height:2.6rem;border-radius:var(--r-sm);border:2px solid ${shown ? 'var(--accent-mid)' : 'var(--border-soft)'};border-bottom:3px solid ${shown ? 'var(--accent)' : 'var(--border)'};background:${shown ? 'var(--accent-soft)' : 'var(--surface-2)'};font-weight:800;text-transform:uppercase;line-height:1;color:${shown ? 'var(--text)' : 'transparent'};transition:all 0.15s var(--ease)">${shown ? ch : ''}</span>`
       }).join('')
     }
 
@@ -197,7 +201,7 @@ function playHangman(el, deck, onBack) {
             <div style="font-size:var(--text-2xl);font-weight:800;margin-bottom:var(--sp-1)">${card.thai}</div>
             <div style="font-size:var(--text-sm);color:var(--text-muted)">${card.back || ''}</div>
           </div>
-          <div id="hm-word" style="display:flex;justify-content:center;gap:6px;font-size:var(--text-2xl);margin-bottom:var(--sp-4);flex-wrap:wrap">${letters()}</div>
+          <div id="hm-word" style="display:flex;align-items:center;justify-content:center;gap:8px;font-size:var(--text-xl);margin-bottom:var(--sp-5);flex-wrap:wrap">${letters()}</div>
           <div style="display:flex;justify-content:center;gap:6px;margin-bottom:var(--sp-5)">
             ${Array.from({ length: MAX_WRONG }, (_, i) => `<span style="font-size:1.1rem">${i < wrong ? '💔' : '❤️'}</span>`).join('')}
           </div>
@@ -210,7 +214,7 @@ function playHangman(el, deck, onBack) {
         const b = document.createElement('button')
         b.textContent = ch.toUpperCase()
         b.className = 'btn btn-ghost btn-sm'
-        b.style.cssText = 'padding:var(--sp-2) 0;min-width:0;font-weight:700'
+        b.style.cssText = 'justify-content:center;padding:0;min-width:0;height:2.6rem;font-size:var(--text-sm);font-weight:700'
         if (guessed.has(ch)) {
           b.disabled = true
           b.style.opacity = '0.4'
