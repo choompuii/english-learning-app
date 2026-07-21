@@ -24,6 +24,7 @@ const DEFAULT_STATE = {
   badgesEarned: [],
   ttsCount: 0,
   dictationDone: [],
+  dictation: {},
   goalStreakDays: 0,
   lastGoalDate: null,
   lessonNotes: {},
@@ -579,6 +580,22 @@ export function markDictationDone(deckId) {
   const newBadges = checkBadges(s)
   save(s)
   return newBadges
+}
+
+// Dictation sessions now record a best score per deck (like Speed Round). We also
+// keep marking the deck "done" so the Typist badge (which checks dictationDone)
+// still fires — recordBestResult loads fresh state, so the flag must be saved first.
+export function recordDictationResult(deckId, correct, total) {
+  const s = load()
+  if (!s.dictationDone) s.dictationDone = []
+  if (!s.dictationDone.includes(deckId)) s.dictationDone.push(deckId)
+  save(s)
+  return recordBestResult('dictation', deckId, correct, total)
+}
+
+export function getDictationBest(deckId) {
+  const s = load()
+  return (s.dictation || {})[deckId] || null
 }
 
 // ── Badge definitions ──

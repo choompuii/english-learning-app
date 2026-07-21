@@ -73,9 +73,14 @@ export function renderConversation({ id }) {
   let idx = 0
   let correct = 0
   const transcript = []   // { speaker, en, thai }
+  let advanceTimer = null // pending turn auto-advance
 
-  // Stop any in-flight TTS when the user leaves mid-conversation.
-  window.addEventListener('hashchange', () => stopSpeech(), { once: true })
+  // Stop in-flight TTS and cancel any pending auto-advance when the user leaves
+  // mid-conversation (otherwise step() would run into a detached DOM).
+  window.addEventListener('hashchange', () => {
+    stopSpeech()
+    if (advanceTimer) { clearTimeout(advanceTimer); advanceTimer = null }
+  }, { once: true })
 
   main.innerHTML = `
     <div class="page" style="max-width:720px">
@@ -149,7 +154,7 @@ export function renderConversation({ id }) {
       b.textContent = opt
       b.className = 'btn btn-ghost'
       b.style.cssText = 'text-align:left;justify-content:flex-start;width:100%;white-space:normal;height:auto;padding:var(--sp-3) var(--sp-4)'
-      b.addEventListener('click', () => pick(opt, b, line))
+      b.addEventListener('click', () => pick(opt, b))
       optsEl.appendChild(b)
     })
 
@@ -172,7 +177,7 @@ export function renderConversation({ id }) {
           if (hit) {
             const correctBtn = Array.from(optsEl.querySelectorAll('button')).find(x => x.textContent === line.en)
             micStatus.innerHTML = `<span style="color:var(--accent)">✓ ได้ยิน: “${alts[0]}”</span>`
-            pick(line.en, correctBtn || micBtn, line)
+            pick(line.en, correctBtn || micBtn)
           } else {
             micStatus.innerHTML = `<span style="color:var(--danger)">ได้ยิน: “${alts[0]}” — ลองอีกครั้ง หรือแตะเลือกคำตอบ</span>`
           }
@@ -183,32 +188,45 @@ export function renderConversation({ id }) {
       })
     }
 
-    function pick(opt, btn, line) {
+    function pick(opt, btn) {
       if (answered) return
+      answered = true
       const isCorrect = opt === line.en
+      const correctBtn = Array.from(optsEl.querySelectorAll('button')).find(x => x.textContent === line.en)
+      // First pick commits the turn — lock every option (and the mic).
+      optsEl.querySelectorAll('button').forEach(x => { x.disabled = true })
+      if (micBtn) micBtn.disabled = true
+
       if (isCorrect) {
-        answered = true
         correct++
+        btn.style.borderColor = 'var(--accent)'
+        btn.style.background = 'var(--accent-soft)'
         transcript.push({ speaker: 'user', en: line.en, thai: line.thai })
         renderTranscript()
         speak(line.en)
         const nb = addBonusXP(XP_PER_LINE)
         floatXP(XP_PER_LINE, btn)
         if (nb?.length) setTimeout(() => showNewBadges(nb), 400)
-        actionEl.innerHTML = ''
-        setTimeout(() => { idx++; step() }, 700)
+        advanceTimer = setTimeout(() => { advanceTimer = null; idx++; step() }, 700)
       } else {
-        btn.disabled = true
+        // Hard mode: a wrong first pick reveals the correct line (highlighted +
+        // added to the transcript so the dialogue stays coherent) and scores 0.
         btn.style.borderColor = 'var(--danger)'
         btn.style.background = 'var(--danger-soft)'
         btn.style.color = 'var(--danger)'
+        if (correctBtn) { correctBtn.style.borderColor = 'var(--accent)'; correctBtn.style.background = 'var(--accent-soft)' }
+        micStatus.innerHTML = `<span style="color:var(--text-muted)">เฉลย: “${line.en}”</span>`
+        transcript.push({ speaker: 'user', en: line.en, thai: line.thai })
+        renderTranscript()
+        speak(line.en)
+        advanceTimer = setTimeout(() => { advanceTimer = null; idx++; step() }, 1800)
       }
     }
   }
 
   function finish() {
     const total = userLineCount
-    const pct = total > 0 ? Math.round((correct / total) * 100) : 100
+    const pct = total > 0 ? Math.round((correct / total) * 100) : 0
     const result = recordConversationResult(conv.id, correct, total)
     if (pct >= 80) confetti(60)
     actionEl.innerHTML = `
@@ -218,6 +236,7 @@ export function renderConversation({ id }) {
         <div style="font-size:var(--text-2xl);font-weight:800;color:var(--accent);margin-bottom:var(--sp-2)">${correct}/${total} ถูก</div>
         <div style="font-size:var(--text-sm);color:var(--text-muted);margin-bottom:var(--sp-2)">XP ที่ได้รับ: +${correct * XP_PER_LINE}</div>
         ${result.isNewRecord ? `<div style="display:inline-block;background:var(--gold-soft);border:1px solid var(--gold);color:var(--gold-strong);font-weight:700;font-size:var(--text-sm);border-radius:var(--r-lg);padding:var(--sp-1) var(--sp-4);margin-bottom:var(--sp-4)">🎉 สถิติใหม่!</div>` : ''}
+        <div style="font-size:var(--text-sm);color:var(--text-muted);margin-bottom:var(--sp-4)">🏆 คะแนนสูงสุด: ${result.bestScore}/${result.bestTotal}</div>
         <div style="display:flex;gap:var(--sp-3);justify-content:center;flex-wrap:wrap;margin-top:var(--sp-4)">
           <button class="btn btn-primary" id="conv-retry">↺ ฝึกอีกครั้ง</button>
           <button class="btn btn-ghost" id="conv-back">← บทสนทนาอื่น</button>

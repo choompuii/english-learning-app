@@ -1,7 +1,22 @@
 import { decks, getDeckById } from '../data/vocabulary.js'
-import { speak, speakSlow } from '../utils/tts.js'
-import { markDictationDone, addBonusXP } from '../store.js'
-import { showNewBadges, floatXP } from '../utils/fx.js'
+import { speak, speakSlow, stopSpeech } from '../utils/tts.js'
+import { recordDictationResult, getDictationBest, addBonusXP } from '../store.js'
+import { showNewBadges, floatXP, confetti } from '../utils/fx.js'
+
+function shuffle(arr) {
+  const a = [...arr]
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]]
+  }
+  return a
+}
+
+// Lenient matching (mirrors Speed Round): case-insensitive, punctuation-stripped,
+// whitespace-collapsed, and accepts any authored alternate spelling.
+function normalise(s) {
+  return s.toLowerCase().trim().replace(/[.,!?;:()]/g, '').replace(/\s+/g, ' ')
+}
 
 export function renderDictationBrowser() {
   const main = document.getElementById('main-content')
@@ -12,17 +27,22 @@ export function renderDictationBrowser() {
         <p>ฟังแล้วพิมพ์คำที่ได้ยิน — ฝึก listening + spelling พร้อมกัน</p>
       </div>
       <div class="deck-grid">
-        ${decks.map(deck => `
-          <div class="card card-hover" onclick="window.location.hash='/dictation/${deck.id}'">
+        ${decks.map(deck => {
+          const best = getDictationBest(deck.id)
+          return `
+          <button class="card card-hover" data-deck-id="${deck.id}" style="text-align:left;cursor:pointer;font-family:var(--font-body)">
             <div class="deck-card-icon">${deck.icon}</div>
             <span class="level-badge level-${deck.level}" style="margin-bottom:var(--sp-3)">${deck.level}</span>
             <h3 class="deck-card" style="font-size:var(--text-lg);margin-bottom:var(--sp-2)">${deck.title}</h3>
             <p style="font-size:var(--text-sm);color:var(--text-muted)">${deck.cards.length} คำ</p>
-          </div>
-        `).join('')}
+            ${best ? `<div style="font-size:var(--text-xs);color:var(--accent);font-weight:700;margin-top:var(--sp-2)">🏆 Best ${best.bestScore}/${best.bestTotal}</div>` : ''}
+          </button>
+        `}).join('')}
       </div>
     </div>
   `
+  main.querySelectorAll('.card[data-deck-id]').forEach(btn =>
+    btn.addEventListener('click', () => { window.location.hash = '/dictation/' + btn.dataset.deckId }))
 }
 
 export function renderDictation({ id }) {
@@ -38,7 +58,19 @@ export function renderDictation({ id }) {
   let correct = 0
   let incorrect = 0
 
+  // The word auto-plays 300ms after each card renders. If the user navigates away
+  // inside that window the timer would speak into a detached page — clear it (and
+  // stop any in-flight speech) when they leave.
+  let autoPlayTimer = null
+  window.addEventListener('hashchange', () => {
+    if (autoPlayTimer) { clearTimeout(autoPlayTimer); autoPlayTimer = null }
+    stopSpeech()
+  }, { once: true })
+
   function showCard() {
+    // Cancel any pending auto-play from the previous card so a fast "next" can't
+    // fire a stale speak() for the word we just left.
+    if (autoPlayTimer) { clearTimeout(autoPlayTimer); autoPlayTimer = null }
     if (idx >= cards.length) { showSummary(); return }
     const card = cards[idx]
 
@@ -104,8 +136,9 @@ export function renderDictation({ id }) {
 
     function check() {
       answered = true
-      const userAnswer = input.value.trim().toLowerCase()
-      const isCorrect = userAnswer === card.front.toLowerCase()
+      const userAnswer = input.value.trim()
+      const isCorrect = normalise(userAnswer) === normalise(card.front) ||
+        (card.acceptedVariants || []).some(v => normalise(userAnswer) === normalise(v))
 
       if (isCorrect) {
         correct++
@@ -146,28 +179,34 @@ export function renderDictation({ id }) {
       incorrect++
       feedback.innerHTML = `<div style="color:var(--text-muted)">ข้าม — คำที่ถูก: <strong style="font-family:var(--font-mono)">${card.front}</strong></div>`
       idx++
-      setTimeout(showCard, 800)
+      autoPlayTimer = setTimeout(() => { autoPlayTimer = null; showCard() }, 800)
     })
 
     // Auto-play on load
-    setTimeout(() => speak(card.front), 300)
+    autoPlayTimer = setTimeout(() => { autoPlayTimer = null; speak(card.front) }, 300)
     input.focus()
   }
 
   function showSummary() {
     const pct = cards.length > 0 ? Math.round((correct / cards.length) * 100) : 0
     const xpGain = correct * 5
-    if (xpGain > 0) addBonusXP(xpGain)
-    const newBadges = markDictationDone(id)
+    // Capture badges from both the XP grant and the best-score record — the XP bump
+    // may be what crosses a threshold, and recordDictationResult won't re-report it.
+    const bonusBadges = xpGain > 0 ? addBonusXP(xpGain) : []
+    const result = recordDictationResult(id, correct, cards.length)
+    const newBadges = [...(bonusBadges || []), ...(result.newBadges || [])]
     if (xpGain > 0) setTimeout(() => floatXP(xpGain, main), 300)
-    if (newBadges && newBadges.length) setTimeout(() => showNewBadges(newBadges), 800)
+    if (pct >= 80) confetti(60)
+    if (newBadges.length) setTimeout(() => showNewBadges(newBadges), 800)
 
     main.innerHTML = `
       <div class="page" style="text-align:center">
-        <div style="font-size:4rem;margin-bottom:var(--sp-4)">${pct >= 70 ? '🌟' : '💪'}</div>
+        <div style="font-size:4rem;margin-bottom:var(--sp-4)">${pct >= 80 ? '🏆' : pct >= 60 ? '⭐' : '💪'}</div>
         <h2 style="margin-bottom:var(--sp-2)">เสร็จแล้ว!</h2>
         <p style="color:var(--text-muted);margin-bottom:var(--sp-4)">${cards.length} คำ</p>
-        ${xpGain > 0 ? `<p style="color:var(--accent);font-weight:600;margin-bottom:var(--sp-8)">+${xpGain} XP</p>` : `<p style="margin-bottom:var(--sp-8)"></p>`}
+        ${xpGain > 0 ? `<p style="color:var(--accent);font-weight:600;margin-bottom:var(--sp-3)">+${xpGain} XP</p>` : `<p style="margin-bottom:var(--sp-3)"></p>`}
+        ${result.isNewRecord ? `<div style="display:inline-block;background:var(--gold-soft);border:1px solid var(--gold);color:var(--gold-strong);font-weight:700;font-size:var(--text-sm);border-radius:var(--r-lg);padding:var(--sp-1) var(--sp-4);margin-bottom:var(--sp-4)">🎉 สถิติใหม่!</div>` : ''}
+        <div style="font-size:var(--text-sm);color:var(--text-muted);margin-bottom:var(--sp-8)">🏆 คะแนนสูงสุด: ${result.bestScore}/${result.bestTotal}</div>
         <div style="display:flex;gap:var(--sp-4);justify-content:center;margin-bottom:var(--sp-8);flex-wrap:wrap">
           <div class="card" style="min-width:120px;text-align:center">
             <div style="font-size:2rem;color:var(--success);font-weight:700">${correct}</div>
@@ -192,12 +231,4 @@ export function renderDictation({ id }) {
   }
 
   showCard()
-}
-
-function shuffle(arr) {
-  for (let i = arr.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [arr[i], arr[j]] = [arr[j], arr[i]]
-  }
-  return arr
 }
