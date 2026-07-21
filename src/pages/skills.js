@@ -100,6 +100,7 @@ export function renderSkillBrowser({ skill }) {
       </div>
 
       <div class="item-grid">
+        ${skill === 'writing' ? grammarToolCardHTML() : ''}
         ${items.map(it => itemCardHTML(skill, it)).join('')}
       </div>
     </div>
@@ -108,6 +109,24 @@ export function renderSkillBrowser({ skill }) {
   main.querySelectorAll('.item-card[data-id]').forEach(card => {
     card.addEventListener('click', () => { window.location.hash = `/skills/${skill}/${card.dataset.id}` })
   })
+  main.querySelectorAll('.item-card[data-nav]').forEach(card => {
+    card.addEventListener('click', () => { window.location.hash = card.dataset.nav })
+  })
+}
+
+// Grammar Checker is a free-form writing tool, surfaced inside the Writing skill.
+function grammarToolCardHTML() {
+  return `
+    <div class="item-card" data-nav="/grammar" style="border-top:3px solid var(--accent)">
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:var(--sp-2)">
+        <span style="font-size:1.6rem">🔍</span>
+        <span class="chip" style="background:var(--accent-soft);color:var(--accent);font-weight:700">เครื่องมือ</span>
+      </div>
+      <div style="font-weight:700;margin-top:2px">Grammar Checker</div>
+      <div style="font-size:var(--text-sm);color:var(--text-muted)">ตรวจไวยากรณ์อิสระ</div>
+      <div style="font-size:var(--text-xs);color:var(--text-faint);margin-top:4px">วางข้อความแล้วตรวจข้อผิดพลาดที่พบบ่อย</div>
+    </div>
+  `
 }
 
 // ── Vocabulary browser with tabs ──

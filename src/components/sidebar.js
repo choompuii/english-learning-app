@@ -113,14 +113,6 @@ const navItems = [
     icon: `<svg class="nav-icon" viewBox="0 0 24 24"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>`
   },
   {
-    id: 'grammar',
-    label: 'Grammar Check',
-    hash: '/grammar',
-    group: 'Practice',
-    mobile: false,
-    icon: `<svg class="nav-icon" viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/><line x1="9" y1="10" x2="14" y2="15"/></svg>`
-  },
-  {
     id: 'sentence-builder',
     label: 'Sentence Builder',
     hash: '/sentence-builder',
@@ -129,20 +121,12 @@ const navItems = [
     icon: `<svg class="nav-icon" viewBox="0 0 24 24"><rect x="3" y="8" width="5" height="3" rx="1"/><rect x="10" y="8" width="5" height="3" rx="1"/><rect x="17" y="8" width="4" height="3" rx="1"/><rect x="3" y="13" width="7" height="3" rx="1"/><rect x="12" y="13" width="5" height="3" rx="1"/></svg>`
   },
   {
-    id: 'speed-round',
-    label: 'Speed Round',
-    hash: '/speed-round',
+    id: 'practice',
+    label: 'Practice',
+    hash: '/practice',
     group: 'Practice',
     mobile: false,
     icon: `<svg class="nav-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>`
-  },
-  {
-    id: 'adaptive',
-    label: 'Adaptive Practice',
-    hash: '/adaptive',
-    group: 'Practice',
-    mobile: false,
-    icon: `<svg class="nav-icon" viewBox="0 0 24 24"><line x1="4" y1="21" x2="4" y2="14"/><line x1="4" y1="10" x2="4" y2="3"/><line x1="12" y1="21" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="3"/><line x1="20" y1="21" x2="20" y2="16"/><line x1="20" y1="12" x2="20" y2="3"/><line x1="1" y1="14" x2="7" y2="14"/><line x1="9" y1="8" x2="15" y2="8"/><line x1="17" y1="16" x2="23" y2="16"/></svg>`
   },
   {
     id: 'leaderboard',
@@ -159,14 +143,6 @@ const navItems = [
     group: 'Track',
     mobile: true,
     icon: `<svg class="nav-icon" viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>`
-  },
-  {
-    id: 'insights',
-    label: 'Insights',
-    hash: '/insights',
-    group: 'Track',
-    mobile: false,
-    icon: `<svg class="nav-icon" viewBox="0 0 24 24"><path d="M21 21H4a1 1 0 0 1-1-1V3"/><path d="M7 14l4-4 3 3 5-6"/></svg>`
   },
   {
     id: 'search',
@@ -287,6 +263,15 @@ async function _renderSidebarInner() {
     <div id="more-drawer" class="more-drawer" role="dialog" aria-modal="true" aria-label="เมนูเพิ่มเติม">
       <div class="more-drawer-handle" aria-hidden="true"></div>
       ${renderDrawerGroups(hiddenItems)}
+      <div class="more-drawer-footer">
+        <button class="more-drawer-profile" id="more-profile-btn">
+          <span class="more-drawer-avatar"><svg class="nav-icon" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg></span>
+          <span class="more-drawer-name">${displayName || 'Profile'}</span>
+        </button>
+        <button class="btn btn-ghost btn-sm" id="more-theme-toggle" aria-label="${isDark() ? 'สลับเป็นโหมดสว่าง' : 'สลับเป็นโหมดมืด'}">
+          <span aria-hidden="true">${isDark() ? '☀️' : '🌙'}</span>&nbsp;${isDark() ? 'Light' : 'Dark'}
+        </button>
+      </div>
     </div>
   `
   document.body.appendChild(overlay)
@@ -326,6 +311,11 @@ async function _renderSidebarInner() {
   drawerOverlay?.querySelectorAll('.more-drawer-item[data-hash]').forEach(btn => {
     btn.addEventListener('click', () => { window.location.hash = btn.dataset.hash; closeDrawer() })
   })
+  drawerOverlay?.querySelector('#more-profile-btn')?.addEventListener('click', () => {
+    window.location.hash = '/profile'; closeDrawer()
+  })
+  // Theme toggle re-renders the sidebar (and rebuilds this drawer) — no extra close needed.
+  drawerOverlay?.querySelector('#more-theme-toggle')?.addEventListener('click', toggleTheme)
 
   updateActiveNav()
 

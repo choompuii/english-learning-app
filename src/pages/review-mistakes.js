@@ -29,6 +29,11 @@ export function renderReviewMistakes() {
 
   main.innerHTML = `
     <div class="page">
+      <div class="breadcrumb">
+        <a href="#/quiz">Quizzes</a>
+        <span class="breadcrumb-sep">›</span>
+        <span>ทบทวนข้อที่ตอบผิด</span>
+      </div>
       <div class="page-header">
         <h1>Review Mistakes</h1>
         <p>${mistakes.length} ข้อที่ตอบผิดจากทุก quiz</p>
@@ -59,7 +64,7 @@ export function renderReviewMistakes() {
   })
 }
 
-function collectMistakes(state) {
+export function collectMistakes(state) {
   const mistakes = []
   const seen = new Set()
 

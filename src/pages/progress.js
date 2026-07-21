@@ -3,6 +3,7 @@ import { lessons } from '../data/lessons.js'
 import { decks } from '../data/vocabulary.js'
 import { quizzes } from '../data/quizzes.js'
 import { createProgressRing } from '../components/progress-ring.js'
+import { insightsContentHTML } from './insights.js'
 
 export function renderProgress() {
   const main = document.getElementById('main-content')
@@ -61,6 +62,12 @@ export function renderProgress() {
         <p>Level: <span class="level-badge level-${level}">${level}</span></p>
       </div>
 
+      <div class="vocab-tabs" style="margin-bottom:var(--sp-6)">
+        <button class="vocab-tab active" data-ptab="overview">ภาพรวม</button>
+        <button class="vocab-tab" data-ptab="insights">📈 เชิงลึก</button>
+      </div>
+
+      <div id="tab-overview">
       <div class="card" style="margin-bottom:var(--sp-6);background:var(--accent-soft);border-color:var(--accent-mid)">
         <p style="line-height:1.8;color:var(--text)">${letter}</p>
       </div>
@@ -169,6 +176,11 @@ export function renderProgress() {
         <p style="font-size:var(--text-sm);color:var(--text-muted);margin-bottom:var(--sp-4)">Clears all progress, streaks, and XP from this device.</p>
         <button class="btn btn-danger btn-sm" id="reset-btn">Reset Everything</button>
       </div>
+      </div><!-- /tab-overview -->
+
+      <div id="tab-insights" style="display:none">
+        ${insightsContentHTML()}
+      </div>
     </div>
   `
 
@@ -187,6 +199,18 @@ export function renderProgress() {
   main.querySelector('#goal-select').addEventListener('change', (e) => {
     setDailyGoal(parseInt(e.target.value))
     renderProgress()
+  })
+
+  // Tab switch between overview and insights
+  const overview = main.querySelector('#tab-overview')
+  const insightsPane = main.querySelector('#tab-insights')
+  main.querySelectorAll('.vocab-tab[data-ptab]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      main.querySelectorAll('.vocab-tab[data-ptab]').forEach(b => b.classList.toggle('active', b === btn))
+      const showInsights = btn.dataset.ptab === 'insights'
+      overview.style.display = showInsights ? 'none' : ''
+      insightsPane.style.display = showInsights ? '' : 'none'
+    })
   })
 }
 

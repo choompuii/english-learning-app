@@ -24,10 +24,10 @@ import { renderOnboarding } from './pages/onboarding.js'
 import { renderProfile } from './pages/profile.js'
 import { renderPlacement } from './pages/placement.js'
 import { renderAdaptive } from './pages/adaptive.js'
+import { renderPracticeHub } from './pages/practice.js'
 import { renderLeaderboard } from './pages/leaderboard.js'
 import { renderSpeakingBrowser } from './pages/speaking.js'
 import { renderDaily } from './pages/daily.js'
-import { renderInsights } from './pages/insights.js'
 import { renderGamesHub, renderGame } from './pages/games.js'
 import { renderConversationHub, renderConversation } from './pages/conversation.js'
 import { renderIdiomsHub, renderIdiomCategory } from './pages/idioms.js'
@@ -72,12 +72,12 @@ route('/dictation/:id',   guard(({ id }) => renderDictation({ id })))
 route('/grammar',         guard(() => renderGrammarCheck()))
 route('/speaking',        guard(() => renderSpeakingBrowser()))
 route('/sentence-builder',guard(() => renderSentenceBuilder()))
+route('/practice',        guard(() => renderPracticeHub()))
 route('/speed-round',     guard(() => renderSpeedRound()))
 route('/daily',           guard(() => renderDaily()))
 route('/placement',       guard(() => renderPlacement()))
 route('/adaptive',        guard(() => renderAdaptive()))
 route('/leaderboard',     guard(() => renderLeaderboard()))
-route('/insights',        guard(() => renderInsights()))
 route('/games',           guard(() => renderGamesHub()))
 route('/games/:game',     guard(({ game }) => renderGame({ game })))
 route('/conversation',      guard(() => renderConversationHub()))

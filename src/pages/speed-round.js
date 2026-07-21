@@ -38,6 +38,11 @@ export function renderSpeedRound() {
 
   main.innerHTML = `
     <div class="page">
+      <div class="breadcrumb">
+        <a href="#/practice">Practice</a>
+        <span class="breadcrumb-sep">›</span>
+        <span>Speed Round</span>
+      </div>
       <div class="page-header">
         <h1>Speed Round</h1>
         <p>เห็นความหมายภาษาไทย → พิมพ์คำอังกฤษก่อน timeout — ${TIMER_SECONDS} วินาทีต่อคำ</p>

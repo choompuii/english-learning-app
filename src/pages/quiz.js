@@ -2,12 +2,14 @@ import { quizzes, getQuizById } from '../data/quizzes.js'
 import { lessons, getLessonById } from '../data/lessons.js'
 import { getQuizBest, recordQuizAttempt, getProgress } from '../store.js'
 import { renderQuestion } from '../components/quiz-question.js'
+import { collectMistakes } from './review-mistakes.js'
 import { getOrderedLessons } from '../utils/progression.js'
 import { confetti, floatXP, showNewBadges } from '../utils/fx.js'
 
 // Quiz browser — when no id given
 export function renderQuizBrowser() {
   const main = document.getElementById('main-content')
+  const mistakeCount = collectMistakes(getProgress()).length
 
   main.innerHTML = `
     <div class="page">
@@ -15,9 +17,11 @@ export function renderQuizBrowser() {
         <h1>Quizzes</h1>
         <p>Test your knowledge after each lesson</p>
       </div>
+      ${mistakeCount > 0 ? `
       <div style="margin-bottom:var(--sp-5)">
-        <a href="#/review-mistakes" class="btn btn-secondary">✗ ทบทวนข้อที่ตอบผิด</a>
+        <a href="#/review-mistakes" class="btn btn-secondary">✗ ทบทวนข้อที่ตอบผิด (${mistakeCount})</a>
       </div>
+      ` : ''}
       <div style="display:flex;flex-direction:column;gap:var(--sp-3)">
         ${quizzes.map(q => {
           const lesson = lessons.find(l => l.id === q.lessonId)

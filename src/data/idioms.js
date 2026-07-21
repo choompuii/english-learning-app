@@ -1,5 +1,5 @@
 // Idioms & Phrasal Verbs for Thai learners of English.
-// Static content only — no APIs. 6 categories (3 idiom, 3 phrasal verb).
+// Static content only — no APIs.
 // Each item: { id, phrase, meaning, thai, example, note? }
 
 export const idiomCategories = [
@@ -106,6 +106,38 @@ export const idiomCategories = [
         thai: "เจอปัญหาเดียวกัน ตกอยู่ในสถานการณ์เดียวกัน",
         example: "Do not worry, we are all in the same boat with these deadlines.",
         note: "ตรงตัว: อยู่ในเรือลำเดียวกัน"
+      },
+      {
+        id: "hit-the-road",
+        phrase: "hit the road",
+        meaning: "to leave or begin a journey",
+        thai: "ออกเดินทาง, ไปกันได้แล้ว",
+        example: "It's getting late, so we'd better hit the road.",
+        note: "หมายถึงออกเดินทางหรือไปกันเถอะ"
+      },
+      {
+        id: "under-your-nose",
+        phrase: "under your nose",
+        meaning: "very close to you but not noticed",
+        thai: "อยู่ตรงหน้าแท้ๆ แต่มองไม่เห็น",
+        example: "The keys were right under my nose the whole time.",
+        note: "ของอยู่ใกล้ตัวมากแต่หาไม่เจอ"
+      },
+      {
+        id: "no-big-deal",
+        phrase: "no big deal",
+        meaning: "not important or serious; nothing to worry about",
+        thai: "ไม่ใช่เรื่องใหญ่, เรื่องเล็กน้อย",
+        example: "Don't worry about the mistake — it's no big deal.",
+        note: "ใช้บอกว่าเรื่องนั้นไม่สำคัญ ไม่ต้องกังวล"
+      },
+      {
+        id: "sleep-on-it",
+        phrase: "sleep on it",
+        meaning: "to wait before deciding, thinking overnight",
+        thai: "ค่อยตัดสินใจพรุ่งนี้, ขอคิดดูก่อน",
+        example: "Don't decide now; sleep on it and tell me tomorrow.",
+        note: "เลื่อนการตัดสินใจไว้คิดข้ามคืน"
       }
     ]
   },
@@ -212,6 +244,38 @@ export const idiomCategories = [
         thai: "รู้สึกเศร้า หม่นหมอง",
         example: "I always feel blue on rainy Sunday afternoons.",
         note: "สีฟ้า (blue) ในภาษาอังกฤษสื่อถึงความเศร้า"
+      },
+      {
+        id: "have-a-chip-on-your-shoulder",
+        phrase: "have a chip on your shoulder",
+        meaning: "to feel resentful and easily angered about something",
+        thai: "เก็บความน้อยใจหรือแค้นไว้ในใจ",
+        example: "He's had a chip on his shoulder since he was passed over for promotion.",
+        note: "รู้สึกน้อยใจหรือขุ่นเคืองเก็บกดไว้"
+      },
+      {
+        id: "at-the-end-of-your-rope",
+        phrase: "at the end of your rope",
+        meaning: "having no patience or strength left",
+        thai: "หมดความอดทน, ทนไม่ไหวแล้ว",
+        example: "After three sleepless nights, she was at the end of her rope.",
+        note: "อดทนหรือรับมือต่อไปไม่ไหวแล้ว"
+      },
+      {
+        id: "walking-on-air",
+        phrase: "walking on air",
+        meaning: "feeling extremely happy and excited",
+        thai: "มีความสุขล้นใจ, ตัวลอย",
+        example: "Ever since she got the job offer, she's been walking on air.",
+        note: "ดีใจมากจนเหมือนตัวลอย"
+      },
+      {
+        id: "bite-someones-head-off",
+        phrase: "bite someone's head off",
+        meaning: "to respond angrily and sharply",
+        thai: "ตวาดหรือขึ้นเสียงใส่อย่างฉุนเฉียว",
+        example: "I only asked a simple question and he bit my head off.",
+        note: "ตอบด้วยความโมโหใส่คนอื่นแรงๆ"
       }
     ]
   },
@@ -285,7 +349,7 @@ export const idiomCategories = [
         meaning: "losing money or in debt",
         thai: "ขาดทุน เป็นหนี้ ติดลบ",
         example: "The company has been in the red for three years in a row.",
-        note: 'ตรงข้ามคือ "in the black" (มีกำไร)'
+        note: "ตรงข้ามคือ \"in the black\" (มีกำไร)"
       },
       {
         id: "learn-the-ropes",
@@ -318,6 +382,38 @@ export const idiomCategories = [
         thai: "ติดต่อพูดคุยกันสั้น ๆ เพื่ออัปเดตข้อมูล",
         example: "Let us touch base next week to see how the project is going.",
         note: "มาจากกีฬาเบสบอล"
+      },
+      {
+        id: "move-the-needle",
+        phrase: "move the needle",
+        meaning: "to make a noticeable difference or impact",
+        thai: "สร้างผลลัพธ์ที่เห็นได้ชัด",
+        example: "This new campaign should really move the needle on sales.",
+        note: "ทำให้ตัวเลขหรือผลงานเปลี่ยนแปลงชัดเจน"
+      },
+      {
+        id: "corner-the-market",
+        phrase: "corner the market",
+        meaning: "to dominate the supply or sales of something",
+        thai: "ครองตลาด, กุมส่วนแบ่งตลาดไว้เกือบทั้งหมด",
+        example: "The company has cornered the market on electric scooters.",
+        note: "ครอบครองตลาดสินค้านั้นแทบทั้งหมด"
+      },
+      {
+        id: "get-the-green-light",
+        phrase: "get the green light",
+        meaning: "to receive permission to proceed",
+        thai: "ได้รับไฟเขียว, ได้รับอนุมัติให้ดำเนินการ",
+        example: "We finally got the green light to launch the product.",
+        note: "ได้รับการอนุมัติให้เริ่มทำได้"
+      },
+      {
+        id: "put-all-your-eggs-in-one-basket",
+        phrase: "put all your eggs in one basket",
+        meaning: "to risk everything on a single plan",
+        thai: "ทุ่มทุกอย่างไว้ที่ทางเลือกเดียว",
+        example: "Investing everything in one client is putting all your eggs in one basket.",
+        note: "เสี่ยงทุ่มทุกอย่างไว้ที่เดียวไม่กระจายความเสี่ยง"
       }
     ]
   },
@@ -440,6 +536,38 @@ export const idiomCategories = [
         thai: "จดบันทึก เขียนลง",
         example: "Let me write down your phone number.",
         note: "แยกได้: write it down"
+      },
+      {
+        id: "throw-away",
+        phrase: "throw away",
+        meaning: "to get rid of something you no longer want",
+        thai: "ทิ้ง, โยนทิ้ง",
+        example: "Don't throw away those bottles; we can recycle them.",
+        note: "แยกได้: throw it away"
+      },
+      {
+        id: "clean-up",
+        phrase: "clean up",
+        meaning: "to make a place tidy and clean",
+        thai: "ทำความสะอาด, เก็บกวาดให้เรียบร้อย",
+        example: "We need to clean up the kitchen after cooking.",
+        note: "แยกได้: clean it up"
+      },
+      {
+        id: "try-on",
+        phrase: "try on",
+        meaning: "to put on clothing to see if it fits",
+        thai: "ลองสวมใส่เสื้อผ้าดู",
+        example: "Can I try on this shirt before I buy it?",
+        note: "แยกได้: try it on"
+      },
+      {
+        id: "hang-up",
+        phrase: "hang up",
+        meaning: "to end a phone call",
+        thai: "วางสาย (โทรศัพท์)",
+        example: "She hung up before I could say goodbye.",
+        note: "แยกได้: hang up on someone = วางสายใส่"
       }
     ]
   },
@@ -457,7 +585,7 @@ export const idiomCategories = [
         meaning: "to register at a hotel or airport when you arrive",
         thai: "เช็คอิน ลงทะเบียนเข้าพัก/ก่อนขึ้นเครื่อง",
         example: "We need to check in at the hotel before three o'clock.",
-        note: 'ตรงข้าม: check out (เช็คเอาต์)'
+        note: "ตรงข้าม: check out (เช็คเอาต์)"
       },
       {
         id: "check-out",
@@ -497,7 +625,7 @@ export const idiomCategories = [
         meaning: "to enter a bus, train, plane or boat",
         thai: "ขึ้น (รถเมล์ รถไฟ เครื่องบิน เรือ)",
         example: "Hurry up, we need to get on the train now.",
-        note: 'ตรงข้าม: get off (ลงจากรถ)'
+        note: "ตรงข้าม: get off (ลงจากรถ)"
       },
       {
         id: "get-off",
@@ -562,6 +690,38 @@ export const idiomCategories = [
         thai: "รีบ เร่งมือ",
         example: "Hurry up, or we will miss the bus!",
         note: null
+      },
+      {
+        id: "set-out",
+        phrase: "set out",
+        meaning: "to start a journey",
+        thai: "ออกเดินทาง, เริ่มออกเดินทาง",
+        example: "We set out for the mountains at dawn.",
+        note: "แยกไม่ได้: มักตามด้วย for + จุดหมาย"
+      },
+      {
+        id: "look-around",
+        phrase: "look around",
+        meaning: "to explore a place casually",
+        thai: "เดินดูรอบๆ, สำรวจสถานที่",
+        example: "We had an hour to look around the old town.",
+        note: "มักตามด้วยสถานที่ look around the market"
+      },
+      {
+        id: "stop-over",
+        phrase: "stop over",
+        meaning: "to stay somewhere briefly during a journey",
+        thai: "แวะพักระหว่างทาง",
+        example: "We stopped over in Dubai on the way to London.",
+        note: "แยกไม่ได้: มักตามด้วย in + เมือง"
+      },
+      {
+        id: "freshen-up",
+        phrase: "freshen up",
+        meaning: "to wash and make yourself feel clean and tidy",
+        thai: "ล้างหน้าล้างตา, ทำตัวให้สดชื่น",
+        example: "Let me freshen up before we go out for dinner.",
+        note: "แยกไม่ได้: ใช้กับตัวเองก่อนออกไปข้างนอก"
       }
     ]
   },
@@ -684,6 +844,756 @@ export const idiomCategories = [
         thai: "ยกเลิก (งานหรือแผน)",
         example: "They called off the conference because of the storm.",
         note: "แยกได้: call it off"
+      },
+      {
+        id: "scale-up",
+        phrase: "scale up",
+        meaning: "to increase the size or scope of a business or operation",
+        thai: "ขยายกิจการหรือการดำเนินงานให้ใหญ่ขึ้น",
+        example: "We plan to scale up production next quarter.",
+        note: "แยกได้: scale it up"
+      },
+      {
+        id: "roll-out",
+        phrase: "roll out",
+        meaning: "to launch a new product or service officially",
+        thai: "เปิดตัว, นำออกใช้อย่างเป็นทางการ",
+        example: "The company will roll out the new app next month.",
+        note: "แยกได้: roll it out"
+      },
+      {
+        id: "back-up",
+        phrase: "back up",
+        meaning: "to support someone or make a safety copy of data",
+        thai: "สนับสนุน, หรือสำรองข้อมูล",
+        example: "Can you back me up in the meeting tomorrow?",
+        note: "แยกได้: back it up / back me up"
+      },
+      {
+        id: "sign-off-on",
+        phrase: "sign off on",
+        meaning: "to give official approval to something",
+        thai: "อนุมัติอย่างเป็นทางการ, เซ็นอนุมัติ",
+        example: "The manager still needs to sign off on the budget.",
+        note: "แยกไม่ได้: ตามด้วย on + สิ่งที่อนุมัติ"
+      }
+    ]
+  },
+  {
+    id: "starter-idioms",
+    title: "Starter Idioms",
+    thai: "สำนวนพื้นฐานสำหรับผู้เริ่มต้น",
+    type: "idiom",
+    icon: "🌱",
+    level: "A1",
+    items: [
+      {
+        id: "no-problem",
+        phrase: "no problem",
+        meaning: "it's fine; you're welcome; that's easy to do",
+        thai: "ไม่มีปัญหา / ไม่เป็นไร",
+        example: "\"Thanks for your help!\" \"No problem!\"",
+        note: "ตอบรับคำขอบคุณ หรือบอกว่าทำได้สบายมาก"
+      },
+      {
+        id: "of-course",
+        phrase: "of course",
+        meaning: "yes, certainly",
+        thai: "แน่นอน / ได้เลย",
+        example: "\"Can you help me?\" \"Of course!\"",
+        note: "ใช้ตอบตกลงอย่างมั่นใจ"
+      },
+      {
+        id: "by-the-way",
+        phrase: "by the way",
+        meaning: "used to add something new to a conversation",
+        thai: "อ้อ / เอ้อ / พูดถึงเรื่องนี้",
+        example: "By the way, are you free tomorrow?",
+        note: "ใช้ขึ้นเรื่องใหม่ระหว่างคุยกัน"
+      },
+      {
+        id: "never-mind",
+        phrase: "never mind",
+        meaning: "it's not important; forget it",
+        thai: "ไม่เป็นไร / ช่างมันเถอะ",
+        example: "\"What did you say?\" \"Never mind, it's not important.\"",
+        note: "บอกให้อีกฝ่ายไม่ต้องกังวลหรือลืมไปได้"
+      },
+      {
+        id: "good-luck",
+        phrase: "good luck",
+        meaning: "a wish for success",
+        thai: "โชคดีนะ",
+        example: "Good luck with your exam!",
+        note: "อวยพรให้ประสบความสำเร็จ"
+      },
+      {
+        id: "take-care",
+        phrase: "take care",
+        meaning: "stay safe; goodbye (friendly)",
+        thai: "ดูแลตัวเองนะ / รักษาตัวนะ",
+        example: "See you next week. Take care!",
+        note: "ใช้ตอนบอกลาอย่างเป็นห่วง"
+      },
+      {
+        id: "at-all",
+        phrase: "at all",
+        meaning: "in any way (used to make negatives stronger)",
+        thai: "เลย / แม้แต่นิดเดียว",
+        example: "I don't like coffee at all.",
+        note: "เน้นประโยคปฏิเสธ แปลว่า \"เลย\""
+      },
+      {
+        id: "in-a-hurry",
+        phrase: "in a hurry",
+        meaning: "needing to do something quickly; rushed",
+        thai: "รีบ / กำลังรีบ",
+        example: "Sorry, I can't talk now. I'm in a hurry.",
+        note: "หมายถึงกำลังรีบ ไม่มีเวลา"
+      },
+      {
+        id: "for-example",
+        phrase: "for example",
+        meaning: "used to give one thing as an example",
+        thai: "ตัวอย่างเช่น / เช่น",
+        example: "I like fruit, for example apples and bananas.",
+        note: "ใช้ยกตัวอย่างประกอบ"
+      },
+      {
+        id: "on-time",
+        phrase: "on time",
+        meaning: "not late; at the right time",
+        thai: "ตรงเวลา",
+        example: "The bus came on time today.",
+        note: "แปลว่าตรงเวลา ไม่สาย"
+      }
+    ]
+  },
+  {
+    id: "food-idioms",
+    title: "Food Idioms",
+    thai: "สำนวนที่ใช้คำเกี่ยวกับอาหาร",
+    type: "idiom",
+    icon: "🍎",
+    level: "A2",
+    items: [
+      {
+        id: "the-apple-of-my-eye",
+        phrase: "the apple of my eye",
+        meaning: "a person you love very much and are proud of",
+        thai: "คนที่รักและหวงแหนมากที่สุด แก้วตาดวงใจ",
+        example: "His little daughter is the apple of his eye.",
+        note: "แก้วตาดวงใจ คนที่รักสุดหัวใจ"
+      },
+      {
+        id: "spill-the-beans",
+        phrase: "spill the beans",
+        meaning: "to tell a secret, often by accident",
+        thai: "เผลอบอกความลับ แฉความลับ",
+        example: "Don't spill the beans about the surprise party!",
+        note: "ตรงตัว 'ทำถั่วหก' = เผยความลับ"
+      },
+      {
+        id: "in-a-nutshell",
+        phrase: "in a nutshell",
+        meaning: "in a few words; put simply",
+        thai: "กล่าวโดยสรุป พูดสั้นๆ",
+        example: "In a nutshell, we need to save more money.",
+        note: "สรุปสั้นๆ ใจความสำคัญ"
+      },
+      {
+        id: "bring-home-the-bacon",
+        phrase: "bring home the bacon",
+        meaning: "to earn money to support your family",
+        thai: "หาเงินเลี้ยงครอบครัว",
+        example: "She works hard to bring home the bacon.",
+        note: "หาเลี้ยงชีพ นำรายได้กลับบ้าน"
+      },
+      {
+        id: "have-bigger-fish-to-fry",
+        phrase: "have bigger fish to fry",
+        meaning: "to have more important things to do",
+        thai: "มีเรื่องสำคัญกว่าให้ทำ",
+        example: "I can't help with this now; I have bigger fish to fry.",
+        note: "มีธุระสำคัญกว่าต้องจัดการก่อน"
+      },
+      {
+        id: "a-hard-nut-to-crack",
+        phrase: "a hard nut to crack",
+        meaning: "a difficult problem or person to deal with",
+        thai: "ปัญหาหรือคนที่จัดการยาก",
+        example: "This math question is a hard nut to crack.",
+        note: "เรื่องยากที่แก้ไขลำบาก"
+      },
+      {
+        id: "butter-someone-up",
+        phrase: "butter someone up",
+        meaning: "to be very nice to someone to get something",
+        thai: "ประจบเอาใจเพื่อหวังผล",
+        example: "He's buttering up the boss for a raise.",
+        note: "ป้อยอ ประจบเพื่อผลประโยชน์"
+      },
+      {
+        id: "full-of-beans",
+        phrase: "full of beans",
+        meaning: "having a lot of energy and feeling happy",
+        thai: "กระปรี้กระเปร่า มีพลังเต็มเปี่ยม",
+        example: "The kids were full of beans this morning.",
+        note: "สดใส คึกคัก มีชีวิตชีวา"
+      },
+      {
+        id: "take-it-with-a-grain-of-salt",
+        phrase: "take it with a grain of salt",
+        meaning: "to not fully believe something you are told",
+        thai: "อย่าเชื่อทั้งหมด รับฟังอย่างมีข้อสงสัย",
+        example: "Take his advice with a grain of salt.",
+        note: "ฟังหูไว้หู อย่าเชื่อทันที"
+      },
+      {
+        id: "gone-bananas",
+        phrase: "gone bananas",
+        meaning: "to have become crazy or very excited",
+        thai: "คลุ้มคลั่ง บ้าคลั่ง ตื่นเต้นสุดขีด",
+        example: "The crowd went bananas when the band came out.",
+        note: "บ้าคลั่ง หรือตื่นเต้นมาก"
+      },
+      {
+        id: "cool-as-a-cucumber",
+        phrase: "cool as a cucumber",
+        meaning: "very calm and relaxed, even under pressure",
+        thai: "ใจเย็นสงบ ไม่ตื่นตระหนก",
+        example: "She stayed cool as a cucumber during the interview.",
+        note: "ใจเย็นมาก ไม่ตกใจง่าย"
+      },
+      {
+        id: "piece-of-the-pie",
+        phrase: "piece of the pie",
+        meaning: "a share of something good, like money or profit",
+        thai: "ส่วนแบ่งจากผลประโยชน์ก้อนหนึ่ง",
+        example: "Everyone wants a piece of the pie when profits rise.",
+        note: "ส่วนแบ่งจากของดีหรือกำไร"
+      }
+    ]
+  },
+  {
+    id: "money-idioms",
+    title: "Money Idioms",
+    thai: "สำนวนเกี่ยวกับเงินและการเงิน",
+    type: "idiom",
+    icon: "💰",
+    level: "B1",
+    items: [
+      {
+        id: "tighten-your-belt",
+        phrase: "tighten your belt",
+        meaning: "to spend less money because you have less than before",
+        thai: "ประหยัดหรือรัดเข็มขัดเรื่องการใช้จ่าย",
+        example: "After losing his job, the whole family had to tighten their belts.",
+        note: "ตรงตัว 'รัดเข็มขัด' = ใช้จ่ายน้อยลง"
+      },
+      {
+        id: "break-the-bank",
+        phrase: "break the bank",
+        meaning: "to cost more money than you can afford",
+        thai: "แพงเกินไปจนจ่ายไม่ไหว",
+        example: "A short weekend trip won't break the bank.",
+        note: "มักใช้รูปปฏิเสธ 'won't break the bank' = ไม่แพงเกินไป"
+      },
+      {
+        id: "a-rip-off",
+        phrase: "a rip-off",
+        meaning: "something that is far too expensive for what it is",
+        thai: "ของที่แพงเกินจริง โดนหลอกขายแพง",
+        example: "Twenty dollars for a small coffee is a total rip-off.",
+        note: "โดนฟันราคา ของแพงเกินคุณค่า"
+      },
+      {
+        id: "cheapskate",
+        phrase: "cheapskate",
+        meaning: "a person who hates spending money, even a little",
+        thai: "คนขี้เหนียว ตระหนี่มาก",
+        example: "Don't be such a cheapskate; leave the waiter a tip.",
+        note: "คำเชิงลบ หมายถึงคนขี้เหนียวจัด"
+      },
+      {
+        id: "pay-through-the-nose",
+        phrase: "pay through the nose",
+        meaning: "to pay a very high price for something",
+        thai: "จ่ายแพงมากเกินควร",
+        example: "We paid through the nose for tickets to the final match.",
+        note: "จ่ายแพงหูฉี่"
+      },
+      {
+        id: "foot-the-bill",
+        phrase: "foot the bill",
+        meaning: "to pay for something, often for other people too",
+        thai: "เป็นคนออกเงินจ่ายค่าใช้จ่าย",
+        example: "My uncle offered to foot the bill for the whole dinner.",
+        note: "รับผิดชอบจ่ายบิลแทนคนอื่น"
+      },
+      {
+        id: "make-ends-meet",
+        phrase: "make ends meet",
+        meaning: "to have just enough money for the things you need",
+        thai: "หาเงินพอใช้จ่ายในชีวิตประจำวัน",
+        example: "With prices rising, it's hard to make ends meet.",
+        note: "หาเงินให้พอกับรายจ่าย"
+      },
+      {
+        id: "money-to-burn",
+        phrase: "money to burn",
+        meaning: "to have a lot of extra money to spend freely",
+        thai: "มีเงินเหลือเฟือ ใช้จ่ายฟุ่มเฟือยได้",
+        example: "She buys new shoes every week; she must have money to burn.",
+        note: "มีเงินมากจนใช้แบบไม่คิด"
+      },
+      {
+        id: "save-for-a-rainy-day",
+        phrase: "save for a rainy day",
+        meaning: "to keep money for a time when you might need it",
+        thai: "เก็บเงินไว้ใช้ยามจำเป็นในอนาคต",
+        example: "It's wise to save some money for a rainy day.",
+        note: "เก็บเงินสำรองไว้ยามฉุกเฉิน"
+      },
+      {
+        id: "in-the-black",
+        phrase: "in the black",
+        meaning: "having money and not being in debt; making a profit",
+        thai: "มีกำไร ไม่เป็นหนี้ บัญชีเป็นบวก",
+        example: "After a good year, the company is finally in the black.",
+        note: "ตรงข้าม in the red = มีกำไร"
+      },
+      {
+        id: "cash-cow",
+        phrase: "cash cow",
+        meaning: "a product or business that makes a lot of money",
+        thai: "สินค้าหรือธุรกิจที่ทำเงินได้มากสม่ำเสมอ",
+        example: "That app has become a real cash cow for the studio.",
+        note: "แหล่งทำเงินหลักที่ทำกำไรงาม"
+      },
+      {
+        id: "living-beyond-your-means",
+        phrase: "living beyond your means",
+        meaning: "spending more money than you earn",
+        thai: "ใช้จ่ายเกินตัว เกินรายได้ที่หามาได้",
+        example: "They're living beyond their means and sinking into debt.",
+        note: "ใช้เงินมากกว่าที่หาได้"
+      }
+    ]
+  },
+  {
+    id: "health-idioms",
+    title: "Health & Body Idioms",
+    thai: "สำนวนเกี่ยวกับสุขภาพและร่างกาย",
+    type: "idiom",
+    icon: "🩺",
+    level: "B1",
+    items: [
+      {
+        id: "back-on-your-feet",
+        phrase: "back on your feet",
+        meaning: "healthy and well again after being sick",
+        thai: "หายป่วยและกลับมาแข็งแรงอีกครั้ง",
+        example: "After a week's rest, she was back on her feet.",
+        note: "ฟื้นตัว กลับมาแข็งแรงหลังป่วย"
+      },
+      {
+        id: "under-the-knife",
+        phrase: "under the knife",
+        meaning: "having a medical operation; surgery",
+        thai: "เข้ารับการผ่าตัด",
+        example: "He goes under the knife for his knee tomorrow.",
+        note: "เข้าห้องผ่าตัด"
+      },
+      {
+        id: "just-what-the-doctor-ordered",
+        phrase: "just what the doctor ordered",
+        meaning: "exactly what was needed to feel better",
+        thai: "สิ่งที่ต้องการพอดี ช่วยให้รู้สึกดีขึ้น",
+        example: "A hot bath was just what the doctor ordered.",
+        note: "สิ่งที่ต้องการเป๊ะ ช่วยให้สบายขึ้น"
+      },
+      {
+        id: "off-colour",
+        phrase: "off colour",
+        meaning: "feeling slightly ill or not your usual self",
+        thai: "รู้สึกไม่ค่อยสบาย ไม่เต็มร้อย",
+        example: "I'm feeling a bit off colour today.",
+        note: "ป่วยเล็กน้อย รู้สึกไม่สดชื่น"
+      },
+      {
+        id: "a-clean-bill-of-health",
+        phrase: "a clean bill of health",
+        meaning: "a doctor's confirmation that you are healthy",
+        thai: "ผลตรวจว่าสุขภาพแข็งแรงดีทุกอย่าง",
+        example: "The doctor gave me a clean bill of health.",
+        note: "ผลตรวจสุขภาพผ่านฉลุย"
+      },
+      {
+        id: "run-down",
+        phrase: "run down",
+        meaning: "tired and not healthy, often from overworking",
+        thai: "อ่อนเพลีย โทรม จากการหักโหม",
+        example: "You look run down; you need some rest.",
+        note: "ร่างกายอ่อนล้า ทรุดโทรม"
+      },
+      {
+        id: "black-out",
+        phrase: "black out",
+        meaning: "to suddenly lose consciousness for a short time",
+        thai: "หมดสติ เป็นลม ชั่วขณะ",
+        example: "He blacked out from the heat during the race.",
+        note: "หมดสติชั่วคราว หน้ามืด"
+      },
+      {
+        id: "pull-through",
+        phrase: "pull through",
+        meaning: "to recover from a serious illness or difficulty",
+        thai: "รอดจากอาการป่วยหนัก หายเป็นปกติ",
+        example: "It was serious, but the doctors say she'll pull through.",
+        note: "รอดชีวิต ฟื้นจากอาการหนัก"
+      },
+      {
+        id: "on-your-last-legs",
+        phrase: "on your last legs",
+        meaning: "very tired, weak, or close to failing",
+        thai: "อ่อนแรงจนแทบไปต่อไม่ไหว ใกล้หมดแรง",
+        example: "After the long hike, I was on my last legs.",
+        note: "หมดเรี่ยวแรง ใกล้ทรุด"
+      },
+      {
+        id: "sick-as-a-dog",
+        phrase: "sick as a dog",
+        meaning: "very ill, especially with a stomach or cold",
+        thai: "ป่วยหนักมาก ไม่สบายอย่างรุนแรง",
+        example: "I was sick as a dog all weekend with the flu.",
+        note: "ป่วยหนักมาก ทรมาน"
+      },
+      {
+        id: "recharge-your-batteries",
+        phrase: "recharge your batteries",
+        meaning: "to rest so you get your energy back",
+        thai: "พักผ่อนเพื่อเติมพลังให้ร่างกาย",
+        example: "I took a short holiday to recharge my batteries.",
+        note: "ชาร์จพลัง พักฟื้นให้สดชื่น"
+      },
+      {
+        id: "fit-as-a-fiddle",
+        phrase: "fit as a fiddle",
+        meaning: "very healthy and in good physical shape",
+        thai: "สุขภาพแข็งแรงดีมาก ฟิตเปรี๊ยะ",
+        example: "My grandfather is eighty but fit as a fiddle.",
+        note: "แข็งแรงสมบูรณ์ดีเยี่ยม"
+      }
+    ]
+  },
+  {
+    id: "advanced-idioms",
+    title: "Advanced Idioms",
+    thai: "สำนวนขั้นสูงที่เจ้าของภาษาใช้",
+    type: "idiom",
+    icon: "🎯",
+    level: "C1",
+    items: [
+      {
+        id: "a-blessing-in-disguise",
+        phrase: "a blessing in disguise",
+        meaning: "something that seems bad at first but turns out to be good",
+        thai: "สิ่งที่ดูเหมือนร้ายแต่กลับกลายเป็นผลดีในภายหลัง",
+        example: "Losing that job was a blessing in disguise; it pushed me to start my own company.",
+        note: "ใช้ตอนมองย้อนกลับไป เชิงบวก น้ำเสียงปลอบใจ"
+      },
+      {
+        id: "the-elephant-in-the-room",
+        phrase: "the elephant in the room",
+        meaning: "an obvious problem no one wants to talk about",
+        thai: "ปัญหาใหญ่ที่ทุกคนรู้แต่ไม่มีใครกล้าพูดถึง",
+        example: "Let's address the elephant in the room: are we actually running out of money?",
+        note: "ตรงตัวคือ 'ช้างในห้อง' เรื่องอึดอัดที่ถูกเลี่ยง"
+      },
+      {
+        id: "steal-someones-thunder",
+        phrase: "steal someone's thunder",
+        meaning: "to take attention or credit that someone else deserved",
+        thai: "ชิงซีนหรือแย่งความสนใจที่ควรเป็นของคนอื่น",
+        example: "She announced her engagement at my party and totally stole my thunder.",
+        note: "เชิงลบเล็กน้อย สื่อว่ารู้สึกถูกแย่งความเด่น"
+      },
+      {
+        id: "on-thin-ice",
+        phrase: "on thin ice",
+        meaning: "in a risky situation where a small mistake could cause trouble",
+        thai: "อยู่ในสถานการณ์เสี่ยง พลาดนิดเดียวก็เดือดร้อน",
+        example: "After showing up late twice, he's already on thin ice with the boss.",
+        note: "ตรงตัวคือ 'บนน้ำแข็งบาง' สื่อความเปราะบาง"
+      },
+      {
+        id: "the-tip-of-the-iceberg",
+        phrase: "the tip of the iceberg",
+        meaning: "a small visible part of a much larger hidden problem",
+        thai: "เป็นแค่ส่วนเล็กๆ ของปัญหาที่ใหญ่กว่านั้นมาก",
+        example: "These complaints are just the tip of the iceberg; the real issues run much deeper.",
+        note: "เน้นว่าปัญหาที่เห็นเป็นแค่เศษเสี้ยว"
+      },
+      {
+        id: "throw-in-the-towel",
+        phrase: "throw in the towel",
+        meaning: "to give up or admit defeat",
+        thai: "ยอมแพ้ เลิกล้มความพยายาม",
+        example: "After months of losses, they finally threw in the towel and closed the shop.",
+        note: "มาจากมวย โยนผ้าเช็ดตัวคือยอมแพ้"
+      },
+      {
+        id: "read-between-the-lines",
+        phrase: "read between the lines",
+        meaning: "to understand a hidden or implied meaning that isn't stated directly",
+        thai: "เข้าใจความหมายที่ซ่อนอยู่ระหว่างบรรทัด",
+        example: "He didn't say no outright, but read between the lines and you'll see he's not interested.",
+        note: "สื่อการตีความนัยที่ไม่ได้พูดตรงๆ"
+      },
+      {
+        id: "beat-around-the-bush",
+        phrase: "beat around the bush",
+        meaning: "to avoid saying something directly or getting to the point",
+        thai: "พูดอ้อมค้อม ไม่ยอมเข้าประเด็น",
+        example: "Stop beating around the bush and just tell me what happened.",
+        note: "เชิงตำหนิ มักใช้บอกให้พูดตรงๆ"
+      },
+      {
+        id: "burn-the-midnight-oil",
+        phrase: "burn the midnight oil",
+        meaning: "to work or study late into the night",
+        thai: "ทำงานหรืออ่านหนังสือดึกดื่นจนเช้า",
+        example: "I've been burning the midnight oil all week to finish this report.",
+        note: "น้ำเสียงเป็นทางการเล็กน้อย สื่อความขยัน"
+      },
+      {
+        id: "cut-to-the-chase",
+        phrase: "cut to the chase",
+        meaning: "to get to the important point without wasting time",
+        thai: "เข้าเรื่องเลย พูดตรงประเด็นโดยไม่เยิ่นเย้อ",
+        example: "We're short on time, so let me cut to the chase: we need more staff.",
+        note: "ค่อนข้างลำลอง ใช้ตอนอยากรีบเข้าประเด็น"
+      },
+      {
+        id: "bite-the-bullet",
+        phrase: "bite the bullet",
+        meaning: "to force yourself to do something unpleasant that you've been avoiding",
+        thai: "กัดฟันทำสิ่งที่ยากหรือไม่อยากทำให้เสร็จ",
+        example: "I hate going to the dentist, but I'll just have to bite the bullet.",
+        note: "สื่อการยอมทนทำสิ่งที่เลี่ยงไม่ได้"
+      },
+      {
+        id: "the-best-of-both-worlds",
+        phrase: "the best of both worlds",
+        meaning: "a situation where you enjoy the advantages of two different things at once",
+        thai: "ได้ข้อดีของทั้งสองฝ่ายพร้อมกัน",
+        example: "Working from home two days a week gives me the best of both worlds.",
+        note: "เชิงบวก สื่อว่าไม่ต้องเลือกอย่างใดอย่างหนึ่ง"
+      },
+      {
+        id: "jump-on-the-bandwagon",
+        phrase: "jump on the bandwagon",
+        meaning: "to join an activity or trend that has become popular",
+        thai: "แห่ตามกระแสหรือทำตามคนอื่นเพราะมันกำลังฮิต",
+        example: "Once the diet went viral, everyone jumped on the bandwagon.",
+        note: "มักมีนัยเชิงลบเล็กน้อย สื่อการตามกระแส"
+      }
+    ]
+  },
+  {
+    id: "starter-phrasals",
+    title: "Starter Phrasal Verbs",
+    thai: "กริยาวลีพื้นฐานสำหรับผู้เริ่มต้น",
+    type: "phrasal",
+    icon: "🌱",
+    level: "A1",
+    items: [
+      {
+        id: "come-in",
+        phrase: "come in",
+        meaning: "to enter a room or place",
+        thai: "เข้ามา",
+        example: "Please come in and sit down.",
+        note: "ใช้เชิญให้เข้ามาข้างใน"
+      },
+      {
+        id: "go-home",
+        phrase: "go home",
+        meaning: "to leave for your house",
+        thai: "กลับบ้าน",
+        example: "It's late. Let's go home.",
+        note: "ไม่ต้องใช้ to เช่น go home (ไม่ใช่ go to home)"
+      },
+      {
+        id: "get-in",
+        phrase: "get in",
+        meaning: "to enter a car or small space",
+        thai: "ขึ้นรถ / เข้าไป",
+        example: "Get in the car, we are leaving now.",
+        note: "ใช้กับรถเก๋ง แท็กซี่ (รถใหญ่ใช้ get on)"
+      },
+      {
+        id: "get-out",
+        phrase: "get out",
+        meaning: "to leave a car or place",
+        thai: "ออกไป / ลงจากรถ",
+        example: "We stopped and got out of the car.",
+        note: "ตรงข้ามกับ get in"
+      },
+      {
+        id: "put-down",
+        phrase: "put down",
+        meaning: "to place something on a surface",
+        thai: "วางลง",
+        example: "Please put down your bag here.",
+        note: "แยกได้: put it down (ไม่ใช่ put down it)"
+      },
+      {
+        id: "turn-around",
+        phrase: "turn around",
+        meaning: "to face the other way",
+        thai: "หันกลับ / หันหลัง",
+        example: "Turn around and look at me.",
+        note: "หมายถึงหมุนตัวไปอีกทาง"
+      },
+      {
+        id: "look-at",
+        phrase: "look at",
+        meaning: "to direct your eyes to something",
+        thai: "มองดู / ดู",
+        example: "Look at the beautiful sky!",
+        note: "ต้องมี at เสมอ เช่น look at me"
+      },
+      {
+        id: "stand-up",
+        phrase: "stand up",
+        meaning: "to rise to your feet",
+        thai: "ยืนขึ้น",
+        example: "Everyone, please stand up.",
+        note: "ตรงข้ามกับ sit down"
+      },
+      {
+        id: "put-away",
+        phrase: "put away",
+        meaning: "to store something in its place",
+        thai: "เก็บเข้าที่",
+        example: "Put away your toys before dinner.",
+        note: "แยกได้: put them away (เก็บของเข้าที่)"
+      },
+      {
+        id: "go-in",
+        phrase: "go in",
+        meaning: "to enter a place",
+        thai: "เข้าไป",
+        example: "The door is open. Let's go in.",
+        note: "เดินเข้าไปข้างใน (ผู้พูดมองจากข้างนอก)"
+      }
+    ]
+  },
+  {
+    id: "advanced-phrasals",
+    title: "Advanced Phrasal Verbs",
+    thai: "กริยาวลีขั้นสูง",
+    type: "phrasal",
+    icon: "🚀",
+    level: "C1",
+    items: [
+      {
+        id: "iron-out",
+        phrase: "iron out",
+        meaning: "to resolve small problems or difficulties",
+        thai: "แก้ไขปัญหาเล็กๆ น้อยๆ ให้เรียบร้อย",
+        example: "We still need to iron out a few details before we sign the contract.",
+        note: "แยกได้ (iron out the details); ตรงตัวคือรีดให้เรียบ"
+      },
+      {
+        id: "gloss-over",
+        phrase: "gloss over",
+        meaning: "to avoid discussing something or treat it as unimportant",
+        thai: "พูดผ่านๆ หรือมองข้ามเรื่องสำคัญไปแบบไม่ลงลึก",
+        example: "The report glossed over the safety concerns entirely.",
+        note: "แยกไม่ได้ มักมีนัยเชิงลบว่าปกปิด"
+      },
+      {
+        id: "weigh-up",
+        phrase: "weigh up",
+        meaning: "to carefully consider the different factors before deciding",
+        thai: "ชั่งน้ำหนักข้อดีข้อเสียก่อนตัดสินใจ",
+        example: "You should weigh up the pros and cons before quitting.",
+        note: "แยกได้; พบมากในภาษาอังกฤษแบบบริติช"
+      },
+      {
+        id: "bank-on",
+        phrase: "bank on",
+        meaning: "to rely on something happening; to count on it",
+        thai: "พึ่งพาหรือมั่นใจว่าสิ่งนั้นจะเกิดขึ้น",
+        example: "Don't bank on the weather staying nice for the trip.",
+        note: "แยกไม่ได้ มักใช้ในรูปปฏิเสธเตือนไม่ให้มั่นใจ"
+      },
+      {
+        id: "brush-up-on",
+        phrase: "brush up on",
+        meaning: "to improve or refresh a skill you already have",
+        thai: "ฟื้นฟูหรือทบทวนทักษะที่เคยมีให้ดีขึ้น",
+        example: "I need to brush up on my French before the trip to Paris.",
+        note: "แยกไม่ได้ ใช้กับทักษะที่เคยเรียนมาแล้ว"
+      },
+      {
+        id: "come-down-to",
+        phrase: "come down to",
+        meaning: "to be ultimately determined by a single key factor",
+        thai: "สรุปแล้วขึ้นอยู่กับปัจจัยสำคัญเพียงอย่างเดียว",
+        example: "In the end, it all comes down to how much you're willing to spend.",
+        note: "แยกไม่ได้ ใช้สรุปว่าอะไรคือหัวใจสำคัญ"
+      },
+      {
+        id: "cash-in-on",
+        phrase: "cash in on",
+        meaning: "to take advantage of a situation to gain money or benefit",
+        thai: "ฉวยโอกาสหาผลประโยชน์จากสถานการณ์",
+        example: "Many brands tried to cash in on the viral trend.",
+        note: "แยกไม่ได้ มักมีนัยเชิงลบว่าเอาเปรียบ"
+      },
+      {
+        id: "own-up-to",
+        phrase: "own up to",
+        meaning: "to admit that you did something wrong",
+        thai: "ยอมรับผิดในสิ่งที่ตัวเองทำ",
+        example: "It took courage for him to own up to the mistake.",
+        note: "แยกไม่ได้ น้ำเสียงจริงใจ สื่อความรับผิดชอบ"
+      },
+      {
+        id: "rope-in",
+        phrase: "rope in",
+        meaning: "to persuade or involve someone in an activity, often reluctantly",
+        thai: "ดึงหรือชวนให้ใครมาช่วยทำบางอย่าง มักแบบไม่เต็มใจ",
+        example: "They roped me in to help organize the whole event.",
+        note: "แยกได้ (rope me in); ลำลอง สื่อโดนชวนแกมบังคับ"
+      },
+      {
+        id: "phase-out",
+        phrase: "phase out",
+        meaning: "to gradually stop using or producing something",
+        thai: "ค่อยๆ ยกเลิกหรือเลิกใช้สิ่งใดสิ่งหนึ่งทีละน้อย",
+        example: "The company plans to phase out plastic packaging by next year.",
+        note: "แยกได้ เน้นการเลิกแบบค่อยเป็นค่อยไป"
+      },
+      {
+        id: "tone-down",
+        phrase: "tone down",
+        meaning: "to make something less strong, extreme, or offensive",
+        thai: "ลดความรุนแรงหรือความจัดจ้านของบางสิ่งลง",
+        example: "The editor asked her to tone down the harsh language.",
+        note: "แยกได้ (tone it down); ใช้กับคำพูด สี อารมณ์"
+      },
+      {
+        id: "single-out",
+        phrase: "single out",
+        meaning: "to choose one person or thing from a group for special attention",
+        thai: "เลือกเจาะจงคนหรือสิ่งใดสิ่งหนึ่งออกมาเป็นพิเศษ",
+        example: "The teacher singled him out for praise in front of the class.",
+        note: "แยกได้ ใช้ได้ทั้งชมและตำหนิ"
       }
     ]
   }

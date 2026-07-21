@@ -67,8 +67,9 @@ function weeklyXp(log, weeks = 8) {
   return buckets
 }
 
-export function renderInsights() {
-  const main = document.getElementById('main-content')
+// Returns the Insights markup as a string so it can be embedded as a tab inside
+// the Progress page (see progress.js). All content is <a>-link based — no listeners.
+export function insightsContentHTML() {
   const state = getProgress()
   const log = getActivityLog()
 
@@ -102,13 +103,7 @@ export function renderInsights() {
 
   const hasData = accuracy.length > 0 || activeDays > 0
 
-  main.innerHTML = `
-    <div class="page" style="max-width:820px">
-      <div class="page-header">
-        <h1>📈 Insights</h1>
-        <p>วิเคราะห์การเรียนของคุณจากข้อมูลที่บันทึกไว้ — ดูจุดแข็ง จุดที่ควรพัฒนา และแนวโน้ม</p>
-      </div>
-
+  return `
       ${!hasData ? `
         <div class="empty-state">
           <div class="empty-state-icon">🌱</div>
@@ -199,6 +194,5 @@ export function renderInsights() {
         </div>
         ` : ''}
       `}
-    </div>
   `
 }

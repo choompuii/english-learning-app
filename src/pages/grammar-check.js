@@ -27,6 +27,13 @@ export function renderGrammarCheck() {
 
   main.innerHTML = `
     <div class="page">
+      <div class="breadcrumb">
+        <a href="#/skills">Skills</a>
+        <span class="breadcrumb-sep">›</span>
+        <a href="#/skills/writing">Writing</a>
+        <span class="breadcrumb-sep">›</span>
+        <span>Grammar Checker</span>
+      </div>
       <div class="page-header">
         <h1>Grammar Checker</h1>
         <p>ตรวจสอบ grammar ภาษาอังกฤษสำหรับข้อผิดพลาดที่พบบ่อย</p>

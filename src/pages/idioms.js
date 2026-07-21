@@ -17,6 +17,7 @@ function shuffle(arr) {
 }
 
 const TYPE_LABEL = { idiom: 'สำนวน (Idioms)', phrasal: 'Phrasal Verbs' }
+const LEVEL_ORDER = ['A1', 'A2', 'B1', 'B2', 'C1', 'C2']
 
 // ── Hub ───────────────────────────────────────────────────────────────
 export function renderIdiomsHub() {
@@ -25,6 +26,10 @@ export function renderIdiomsHub() {
   for (const c of idiomCategories) {
     if (!byType[c.type]) byType[c.type] = []
     byType[c.type].push(c)
+  }
+  // Show categories in CEFR order (A1 → C1) within each type.
+  for (const type of Object.keys(byType)) {
+    byType[type].sort((a, b) => LEVEL_ORDER.indexOf(a.level) - LEVEL_ORDER.indexOf(b.level))
   }
 
   main.innerHTML = `
