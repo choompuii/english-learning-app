@@ -111,8 +111,6 @@ function nextQuestion() {
   main.innerHTML = `
     <div class="page" style="max-width:600px">
       <div class="breadcrumb">
-        <a href="#/practice">Practice</a>
-        <span class="breadcrumb-sep">›</span>
         <span>Adaptive Practice</span>
       </div>
       <div class="page-header">

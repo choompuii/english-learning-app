@@ -39,8 +39,6 @@ export function renderSpeedRound() {
   main.innerHTML = `
     <div class="page">
       <div class="breadcrumb">
-        <a href="#/practice">Practice</a>
-        <span class="breadcrumb-sep">›</span>
         <span>Speed Round</span>
       </div>
       <div class="page-header">

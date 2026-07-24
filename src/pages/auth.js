@@ -617,7 +617,7 @@ const COLORS = ['#2d6a4f','#1e40af','#7c3aed','#be185d','#b45309','#065f46','#1e
 
 async function renderAccountPage(user, main) {
   const [profile, progress] = await Promise.all([getProfile(), Promise.resolve(getProgress())])
-  const displayName = profile?.display_name || user.email.split('@')[0]
+  const displayName = profile?.display_name || user.email?.split('@')[0] || 'Learner'
   const color = profile?.avatar_color || '#2d6a4f'
   const initial = displayName[0].toUpperCase()
   const stats = [

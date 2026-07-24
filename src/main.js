@@ -13,7 +13,7 @@ import { renderQuizBrowser, renderQuiz } from './pages/quiz.js'
 import { renderProgress } from './pages/progress.js'
 import { renderSearch } from './pages/search.js'
 import { renderNotebook } from './pages/notebook.js'
-import { renderReviewMistakes } from './pages/review-mistakes.js'
+import { renderCloze } from './pages/cloze.js'
 import { renderDictationBrowser, renderDictation } from './pages/dictation.js'
 import { renderCourseHub, renderLevelBrowser, renderUnitBrowser, renderCourseSection } from './pages/course.js'
 import { renderGrammarCheck } from './pages/grammar-check.js'
@@ -24,7 +24,6 @@ import { renderOnboarding } from './pages/onboarding.js'
 import { renderProfile } from './pages/profile.js'
 import { renderPlacement } from './pages/placement.js'
 import { renderAdaptive } from './pages/adaptive.js'
-import { renderPracticeHub } from './pages/practice.js'
 import { renderLeaderboard } from './pages/leaderboard.js'
 import { renderSpeakingBrowser } from './pages/speaking.js'
 import { renderDaily } from './pages/daily.js'
@@ -66,13 +65,12 @@ route('/quiz/:id',        guard(({ id }) => renderQuiz({ id })))
 route('/progress',        guard(() => renderProgress()))
 route('/search',          guard(() => renderSearch()))
 route('/notebook',        guard(() => renderNotebook()))
-route('/review-mistakes', guard(() => renderReviewMistakes()))
+route('/cloze',           guard(() => renderCloze()))
 route('/dictation',       guard(() => renderDictationBrowser()))
 route('/dictation/:id',   guard(({ id }) => renderDictation({ id })))
 route('/grammar',         guard(() => renderGrammarCheck()))
 route('/speaking',        guard(() => renderSpeakingBrowser()))
 route('/sentence-builder',guard(() => renderSentenceBuilder()))
-route('/practice',        guard(() => renderPracticeHub()))
 route('/speed-round',     guard(() => renderSpeedRound()))
 route('/daily',           guard(() => renderDaily()))
 route('/placement',       guard(() => renderPlacement()))

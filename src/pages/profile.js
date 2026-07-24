@@ -44,7 +44,7 @@ export async function renderProfile() {
   const initial      = (displayName[0] || 'U').toUpperCase()
   const xp           = progress.xp || 0
   const rank         = getRank(xp)
-  const badges       = getBadges(progress)
+  const badges       = getBadges()
   const earnedBadges = badges.filter(b => b.earned)
 
   const completedLessons = Object.values(progress.lessons || {}).filter(l => l.status === 'completed').length

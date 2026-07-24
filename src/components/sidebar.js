@@ -121,12 +121,28 @@ const navItems = [
     icon: `<svg class="nav-icon" viewBox="0 0 24 24"><rect x="3" y="8" width="5" height="3" rx="1"/><rect x="10" y="8" width="5" height="3" rx="1"/><rect x="17" y="8" width="4" height="3" rx="1"/><rect x="3" y="13" width="7" height="3" rx="1"/><rect x="12" y="13" width="5" height="3" rx="1"/></svg>`
   },
   {
-    id: 'practice',
-    label: 'Practice',
-    hash: '/practice',
+    id: 'speed-round',
+    label: 'Speed Round',
+    hash: '/speed-round',
     group: 'Practice',
     mobile: false,
     icon: `<svg class="nav-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>`
+  },
+  {
+    id: 'adaptive',
+    label: 'Adaptive Practice',
+    hash: '/adaptive',
+    group: 'Practice',
+    mobile: false,
+    icon: `<svg class="nav-icon" viewBox="0 0 24 24"><line x1="18" y1="5" x2="18" y2="19"/><line x1="12" y1="2" x2="12" y2="22"/><line x1="6" y1="8" x2="6" y2="21"/></svg>`
+  },
+  {
+    id: 'cloze',
+    label: 'Cloze Test',
+    hash: '/cloze',
+    group: 'Practice',
+    mobile: false,
+    icon: `<svg class="nav-icon" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><line x1="7" y1="10" x2="11" y2="10"/><line x1="13" y1="10" x2="17" y2="10"/><line x1="7" y1="14" x2="9" y2="14"/></svg>`
   },
   {
     id: 'leaderboard',
@@ -228,7 +244,7 @@ async function _renderSidebarInner() {
   if (!user) { sidebar.innerHTML = ''; return }
 
   const profile = user ? await getProfile() : null
-  const displayName = profile?.display_name || (user ? user.email.split('@')[0] : null)
+  const displayName = profile?.display_name || user.email?.split('@')[0] || 'Learner'
 
   sidebar.innerHTML = `
     <a class="sidebar-logo" href="#/">
